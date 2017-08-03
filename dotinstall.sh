@@ -5,5 +5,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 ln -s `pwd`/vimrc $HOME/.vimrc
 ln -s `pwd`/tmux.conf $HOME/.tmux.conf
+cat `pwd`/gitconfig >> $HOME/.gitconfig
 
 echo source `pwd`/zshrc >> ~/.zshrc
