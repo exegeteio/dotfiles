@@ -3,7 +3,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'endel/vim-github-colorscheme'
 Plug 'tpope/vim-fugitive'
-" Plug 'bling/vim-airline'
+Plug 'bling/vim-airline'
+Plug 'airblade/vim-gitgutter'
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim'
@@ -34,3 +35,6 @@ set colorcolumn=+1
 " Numbers
 set number
 set numberwidth=5
+
+" Maps `jj` to escape.
+imap jj <Esc>
