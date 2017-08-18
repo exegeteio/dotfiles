@@ -6,7 +6,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'bling/vim-airline'
 Plug 'airblade/vim-gitgutter'
 
-Plug 'vim-syntastic/symtastic
+Plug 'vim-syntastic/symtastic'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim'
