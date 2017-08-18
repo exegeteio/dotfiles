@@ -6,6 +6,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'bling/vim-airline'
 Plug 'airblade/vim-gitgutter'
 
+Plug 'vim-syntastic/symtastic
+Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -16,6 +18,7 @@ call plug#end()
 
 nnoremap ;o :NERDTreeToggle .<CR>
 nnoremap ;s :shell<CR>
+nnoremap ;l :NERDComComment
 
 " Soft tabs
 set tabstop=2
