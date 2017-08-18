@@ -20,6 +20,7 @@ nnoremap ;o :NERDTreeToggle .<CR>
 nnoremap ;s :shell<CR>
 nnoremap ;l :call NERDComment("n", "Toggle")<CR>
 nnoremap <C-l> :call NERDComment("n", "Toggle")<CR>
+vnoremap <C-l> :call NERDComment("n", "Toggle")<CR>
 
 " Soft tabs
 set tabstop=2
