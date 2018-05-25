@@ -43,3 +43,5 @@ set numberwidth=5
 
 " Maps `jj` to escape.
 imap jj <Esc>
+
+set autoindent smartindent
