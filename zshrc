@@ -6,7 +6,7 @@
 [[ -x "/usr/bin/tmux" ]] && [[ -z "$TMUX" ]] && exec tmux
 
 export ZSH_THEME="blinks"
-plugins=(git docker rails ruby elixir phoenix)
+plugins=(git docker rails ruby)
 source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
