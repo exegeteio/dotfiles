@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PACKAGES='vim git zsh docker-ce docker-ce-cli containerd.io libpq-dev libsqlite3-dev'
+PACKAGES='vim git zsh build-essential docker-ce docker-ce-cli containerd.io libpq-dev libsqlite3-dev libxml2-dev libxslt-dev ruby-dev'
 
 # Check for an X Server
 if [ ! -z "${DISPLAY}" ]; then
@@ -36,4 +36,9 @@ else
   usermod -aG docker ${SUDO_USER}
 fi
 
+curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+
 docker run --rm hello-world
+
+gem install -q rails bundle
