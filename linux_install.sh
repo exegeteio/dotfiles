@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PACKAGES='git zsh docker-ce docker-ce-cli containerd.io libpq-dev libsqlite3-dev'
+PACKAGES='vim git zsh docker-ce docker-ce-cli containerd.io libpq-dev libsqlite3-dev'
 
 # Check for an X Server
 if [ ! -z "${DISPLAY}" ]; then

@@ -5,7 +5,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 
 echo "Installing vim-plug"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-echo "Done!  Run :PlugInstall within vim to install plugins."
+vim +PlugInstall +qall
 
 ln -s `pwd`/vimrc $HOME/.vimrc
 ln -s `pwd`/tmux.conf $HOME/.tmux.conf
