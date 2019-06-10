@@ -2,8 +2,8 @@
 
 [[ $- != *i*  ]] && return
 # One for windows, one for Mac.
-[[ -x "/usr/local/bin/tmux" ]] && [[ -z "$TMUX" ]] && exec tmux
-[[ -x "/usr/bin/tmux" ]] && [[ -z "$TMUX" ]] && exec tmux
+# [[ -x "/usr/local/bin/tmux" ]] && [[ -z "$TMUX" ]] && exec tmux
+# [[ -x "/usr/bin/tmux" ]] && [[ -z "$TMUX" ]] && exec tmux
 
 export ZSH_THEME="blinks"
 plugins=(git docker rails ruby)
