@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PACKAGES='vim git zsh build-essential docker-ce docker-ce-cli containerd.io libpq-dev libsqlite3-dev libxml2-dev libxslt-dev ruby-dev'
+PACKAGES='vim git zsh build-essential docker-ce docker-ce-cli containerd.io libpq-dev libsqlite3-dev libxml2-dev libxslt-dev ruby-dev nodejs npm'
 
 # Check for an X Server
 if [ ! -z "${DISPLAY}" ]; then
