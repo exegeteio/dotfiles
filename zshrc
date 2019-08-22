@@ -32,3 +32,7 @@ cd $(pwd)
 # Time download with curl.
 alias curltime='curl -w "Download Speed: %{speed_download} bps\nConnect:  %{time_connect} s\nStart Transfer: %{time_starttransfer} s\nTotal Time: %{time_total} s\n"'
 eval "$(rbenv init -)"
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
