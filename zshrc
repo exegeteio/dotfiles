@@ -5,7 +5,7 @@
 # [[ -x "/usr/local/bin/tmux" ]] && [[ -z "$TMUX" ]] && exec tmux
 # [[ -x "/usr/bin/tmux" ]] && [[ -z "$TMUX" ]] && exec tmux
 
-export ZSH_THEME="blinks"
+export ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git docker ruby)
 source $ZSH/oh-my-zsh.sh
 
@@ -31,8 +31,9 @@ cd $(pwd)
 
 # Time download with curl.
 alias curltime='curl -w "Download Speed: %{speed_download} bps\nConnect:  %{time_connect} s\nStart Transfer: %{time_starttransfer} s\nTotal Time: %{time_total} s\n"'
-eval "$(rbenv init -)"
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
