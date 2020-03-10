@@ -7,6 +7,8 @@ xcode-select --install
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew install \
   git \
+  homebrew/cask-fonts/font-meslo-for-powerline \
+  homebrew/cask-fonts/font-meslo-nerd-font \
   httpie \
   mas \
   python \
@@ -23,15 +25,11 @@ brew install \
 # 409203825 == Numbers
 # 468369783 == iClip
 mas install \
-  405843582 \
   413857545 \
-  468369783 \
   926036361 \
-  1176895641 \
   1356178125
 
 # Launch Apps
-open -a Alfred
 open -a iClip
 open -a Divvy
 
@@ -45,4 +43,6 @@ open https://www.mozilla.org/en-US/firefox/download/thanks/
 # VS Code
 open https://code.visualstudio.com/docs/?dv=osx
 
+# Install Alfred, manully!
+open https://www.alfredapp.com/
 
