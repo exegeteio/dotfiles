@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Beginning MacOS setup..."
+
 # XCode CLI
 xcode-select --install
 
