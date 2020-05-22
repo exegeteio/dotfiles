@@ -2,7 +2,7 @@
 [[ $- != *i*  ]] && return
 [[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && exec tmux
 
-export ZSH="/Users/exegete/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(git)
