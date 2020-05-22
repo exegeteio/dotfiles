@@ -13,7 +13,7 @@ if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
   alias e="vim"
 else
-  export EDITOR='vim'
+  export EDITOR='code -wn'
   alias e="code"
 fi
 
