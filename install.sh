@@ -4,31 +4,19 @@ DOTFILES_LOCATION=`cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd 
 BACKUP_DIR=$HOME/.dotfiles-orig-$(date +%F)
 mkdir -p $BACKUP_DIR
 
-configure_git
-
-case "$OSTYPE" in
-  darwin*)  /bin/bash macos.sh ;;
-  linux*)   /bin/bash linux.sh ;;
-  *)        echo "No detailed install for: $OSTYPE" ;;
-esac
-
-configure_zsh
-backup_and_link .p10k.zsh p10k.zsh
-backup_and_link .zshrc zshrc
-
-configure_vim
-backup_and_link .vimrc vimrc
-
-configure_tmux
-backup_and_link .tmux.conf tmux.conf
+## Here thar be functions!
 
 configure_zsh () {
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+  backup_and_link .p10k.zsh p10k.zsh
+  backup_and_link .zshrc zshrc
 }
 
 configure_vim () {
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  backup_and_link .vimrc vimrc
+  vim +PlugInstall +qall
 }
 
 move_file_to_backup () {
@@ -74,8 +62,24 @@ function configure_tmux () {
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "Delete this file to stop launching tmux when zsh starts" > $HOME/.auto_tmux
   fi
+  backup_and_link .tmux.conf tmux.conf
 }
 
+
+## Actually do stuff!
+configure_git
+
+case "$OSTYPE" in
+  darwin*)  /bin/bash macos.sh ;;
+  linux*)   /bin/bash linux.sh ;;
+  *)        echo "No detailed install for: $OSTYPE" ;;
+esac
+
+configure_zsh
+configure_vim
+configure_tmux
+
+# Cleanup:
 unset move_file_to_backup
 unset backup_and_link
 unset configure_git
