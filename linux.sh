@@ -10,7 +10,7 @@ fi
 echo "Attempting to install:  ${PACKAGES}"
 
 # Install docker pre-req's
-apt-get update -qq && apt-get install -qqy \
+sudo apt-get update -qq && sudo apt-get install -qqy \
   apt-transport-https \
   ca-certificates \
   curl \
@@ -18,25 +18,25 @@ apt-get update -qq && apt-get install -qqy \
   software-properties-common
 
 # Add docker's GPG key
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
 # Add docker's ubuntu repo
-add-apt-repository \
+sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
 
-apt-get update -qq && apt-get install -qqy ${PACKAGES}
+sudo apt-get update -qq && sudo apt-get install -qqy ${PACKAGES}
 
 if [ -z "${SUDO_USER}" ]; then
   echo "Adding ${USER} to the \"docker\" group."
-  usermod -aG docker ${USER}
+  sudo usermod -aG docker ${USER}
 else
   echo "Adding ${SUDO_USER} to the \"docker\" group."
-  usermod -aG docker ${SUDO_USER}
+  sudo usermod -aG docker ${SUDO_USER}
 fi
 
-curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 
 docker run --rm hello-world
