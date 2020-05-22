@@ -17,6 +17,7 @@ cask "lastpass"
 cask "outline-manager"
 cask "outline"
 cask "spectacle"
+cask "signal"
 cask "visual-studio-code"
 
 brew "coreutils"
