@@ -1,12 +1,11 @@
 # If running interactively, do not do anything.
-
 [[ $- != *i*  ]] && return
-# One for windows, one for Mac.
-# [[ -x "/usr/local/bin/tmux" ]] && [[ -z "$TMUX" ]] && exec tmux
-[[ -x "/usr/bin/tmux" ]] && [[ -z "$TMUX" ]] && exec tmux
+[[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && exec tmux
 
+export ZSH="/Users/exegete/.oh-my-zsh"
 export ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(git docker ruby)
+
+plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
@@ -24,16 +23,15 @@ cd() {
   if [ -f "aliases" ]
   then
     . ./aliases
-    echo "Applied alieses file"
+    echo "Applied aliases file"
   fi
 }
-cd $(pwd)
-
-# Time download with curl.
-alias curltime='curl -w "Download Speed: %{speed_download} bps\nConnect:  %{time_connect} s\nStart Transfer: %{time_starttransfer} s\nTotal Time: %{time_total} s\n"'
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export PORT=3000
+[[ ! -f "$(which kubectl)" ]] || source <(kubectl completion zsh)
