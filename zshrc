@@ -24,6 +24,13 @@ else
   alias e="code"
 fi
 
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f "$(which kubectl)" ]] || source <(kubectl completion zsh)
+
 # Applies aliases file when it exists
 cd() {
   builtin cd $*
@@ -34,11 +41,5 @@ cd() {
   fi
 }
 
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
-fi
-
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 export PORT=3000
-[[ ! -f "$(which kubectl)" ]] || source <(kubectl completion zsh)
+
