@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PACKAGES='vim git zsh build-essential docker-ce docker-ce-cli containerd.io'
+PACKAGES='vim git zsh build-essential docker-ce docker-ce-cli containerd.io fonts-powerline'
 
 # Check for an X Server
 if [ ! -z "${DISPLAY}" ]; then
