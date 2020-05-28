@@ -41,5 +41,7 @@ cd() {
   fi
 }
 
+alias a="source ./aliases"
+
 export PORT=3000
 
