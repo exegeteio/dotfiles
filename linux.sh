@@ -4,7 +4,7 @@ PACKAGES='vim git zsh build-essential docker-ce docker-ce-cli containerd.io font
 
 # Check for an X Server
 if [ ! -z "${DISPLAY}" ]; then
-  PACKAGES="gnome-tweaks code chromium-browser firefox ${PACKAGES}"
+  PACKAGES="gnome-tweaks code chromium-browser firefox ulauncher ${PACKAGES}"
 fi
 
 echo "Attempting to install:  ${PACKAGES}"
