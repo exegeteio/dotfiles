@@ -41,6 +41,8 @@ cd() {
   fi
 }
 
+[[ -f "./aliases" ]] || cd ./
+
 alias a="source ./aliases"
 
 export PORT=3000
