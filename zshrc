@@ -45,5 +45,5 @@ cd() {
 
 alias a="source ./aliases"
 
-export PORT=3000
+export PORT=3100
 
