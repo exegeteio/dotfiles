@@ -41,7 +41,7 @@ cd() {
   fi
 }
 
-[[ -f "./aliases" ]] || cd ./
+[[ -f "./aliases" ]] || source ./aliases
 
 alias a="source ./aliases"
 
