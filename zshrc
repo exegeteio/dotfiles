@@ -44,6 +44,7 @@ cd() {
 [[ ! -f "./aliases" ]] || source ./aliases
 
 alias a="source ./aliases"
+alias n="vi ~/code/notes/"
 
 export PORT=3000
 
