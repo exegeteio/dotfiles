@@ -10,6 +10,7 @@ DOTFILES_LOCATION=$(dirname "$0")
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
+brew tap homebrew/cask-fonts
 brew bundle --file=$DOTFILES_LOCATION/Brewfile
 
 # Disable Notification Center and remove the menu bar icon
