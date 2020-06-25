@@ -19,4 +19,4 @@ export PATH="$PATH:$HOME/go/bin/"
 
 export PORT=3000
 
-[[ ! -f "~/.aliases" ]] || source ~/.aliases
+[[ ! -f "$HOME/.aliases" ]] || source $HOME/.aliases
