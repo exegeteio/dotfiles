@@ -12,6 +12,8 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
+export PATH="$PATH:$HOME/go/bin/"
+
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [[ ! -f "$(which kubectl)" ]] || source <(kubectl completion zsh)
 
