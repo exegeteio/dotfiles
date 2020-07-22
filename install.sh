@@ -19,6 +19,10 @@ configure_vim () {
   vim +PlugInstall +qall
 }
 
+configure_aliases () {
+  backup_and_link .aliases aliases.sh
+}
+
 move_file_to_backup () {
   if [[ -f $HOME/$1 ]]; then
     echo "Backing up $HOME/$1 to $BACKUP_DIR"
@@ -78,6 +82,7 @@ esac
 configure_zsh
 configure_vim
 configure_tmux
+configure_aliases
 
 # Cleanup:
 unset move_file_to_backup

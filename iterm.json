@@ -1,5 +1,9 @@
 {
-  "Right Option Key Sends" : 2,
+  "Ansi 5 Color" : {
+    "Green Component" : 0,
+    "Blue Component" : 0.73333334922790527,
+    "Red Component" : 0.73333334922790527
+  },
   "Tags" : [
 
   ],
@@ -8,32 +12,32 @@
     "Blue Component" : 1,
     "Red Component" : 0.3333333432674408
   },
-  "Ansi 6 Color" : {
-    "Green Component" : 0.73333334922790527,
-    "Blue Component" : 0.73333334922790527,
-    "Red Component" : 0
-  },
+  "Use Non-ASCII Font" : false,
   "Draw Powerline Glyphs" : true,
   "Bold Color" : {
     "Green Component" : 1,
     "Blue Component" : 1,
     "Red Component" : 1
   },
-  "Ansi 1 Color" : {
-    "Green Component" : 0,
-    "Blue Component" : 0,
+  "Ansi 7 Color" : {
+    "Green Component" : 0.73333334922790527,
+    "Blue Component" : 0.73333334922790527,
     "Red Component" : 0.73333334922790527
   },
-  "Normal Font" : "MesloLGLNerdFontComplete-Regular 15",
-  "Horizontal Spacing" : 1,
+  "Ansi 8 Color" : {
+    "Green Component" : 0.3333333432674408,
+    "Blue Component" : 0.3333333432674408,
+    "Red Component" : 0.3333333432674408
+  },
+  "Ansi 9 Color" : {
+    "Green Component" : 0.3333333432674408,
+    "Blue Component" : 0.3333333432674408,
+    "Red Component" : 1
+  },
   "Rows" : 30,
   "Default Bookmark" : "No",
-  "Custom Directory" : "No",
-  "Ansi 4 Color" : {
-    "Green Component" : 0,
-    "Blue Component" : 0.73333334922790527,
-    "Red Component" : 0
-  },
+  "Badge Max Height" : 0.20000000000000001,
+  "Transparency" : 0,
   "Badge Max Width" : 0.5,
   "Use Bright Bold" : true,
   "Non-ASCII Anti Aliased" : true,
@@ -206,6 +210,10 @@
       "Action" : 10,
       "Text" : "[1;2D"
     },
+    "0xf703-0x280000" : {
+      "Action" : 10,
+      "Text" : "f"
+    },
     "0xf700-0x240000" : {
       "Action" : 10,
       "Text" : "[1;5A"
@@ -233,6 +241,10 @@
     "0xf701-0x260000" : {
       "Action" : 10,
       "Text" : "[1;6B"
+    },
+    "0xf702-0x280000" : {
+      "Action" : 10,
+      "Text" : "b"
     },
     "0xf72b-0x20000" : {
       "Action" : 10,
@@ -282,15 +294,15 @@
             "path" : "path",
             "maxwidth" : 1.7976931348623157e+308,
             "base: priority" : 5,
+            "minwidth" : 0,
+            "base: compression resistance" : 1,
             "shared text color" : {
               "Red Component" : 0.90000000000000002,
               "Color Space" : "sRGB",
               "Blue Component" : 0.63,
               "Alpha Component" : 1,
               "Green Component" : 0.63
-            },
-            "base: compression resistance" : 1,
-            "minwidth" : 0
+            }
           },
           "layout advanced configuration dictionary value" : {
             "font" : ".AppleSystemUIFont 12",
@@ -305,6 +317,7 @@
           "knobs" : {
             "maxwidth" : 1.7976931348623157e+308,
             "base: priority" : 5,
+            "minwidth" : 0,
             "base: compression resistance" : 1,
             "shared text color" : {
               "Red Component" : 0.80145,
@@ -312,8 +325,7 @@
               "Blue Component" : 0.63,
               "Alpha Component" : 1,
               "Green Component" : 0.90000000000000002
-            },
-            "minwidth" : 0
+            }
           },
           "layout advanced configuration dictionary value" : {
             "font" : ".AppleSystemUIFont 12",
@@ -329,15 +341,15 @@
             "maxwidth" : 1.7976931348623157e+308,
             "iTermStatusBarGitComponentPollingIntervalKey" : 2,
             "base: priority" : 5,
+            "minwidth" : 0,
+            "base: compression resistance" : 1,
             "shared text color" : {
               "Red Component" : 0.63,
               "Color Space" : "sRGB",
               "Blue Component" : 0.82710000000000006,
               "Alpha Component" : 1,
               "Green Component" : 0.90000000000000002
-            },
-            "base: compression resistance" : 1,
-            "minwidth" : 0
+            }
           },
           "layout advanced configuration dictionary value" : {
             "font" : ".AppleSystemUIFont 12",
@@ -385,6 +397,7 @@
         "configuration" : {
           "knobs" : {
             "base: priority" : 5,
+            "base: compression resistance" : 1,
             "shared text color" : {
               "Red Component" : 0.90000000000000002,
               "Color Space" : "sRGB",
@@ -392,7 +405,6 @@
               "Alpha Component" : 1,
               "Green Component" : 0.63
             },
-            "base: compression resistance" : 1,
             "format" : "M\/dd h:mm"
           },
           "layout advanced configuration dictionary value" : {
@@ -415,7 +427,7 @@
     "Blue Component" : 1,
     "Red Component" : 0.3333333432674408
   },
-  "Name" : "Default",
+  "Name" : "dotfiles",
   "Cursor Text Color" : {
     "Green Component" : 1,
     "Blue Component" : 1,
@@ -428,13 +440,27 @@
     "Blue Component" : 0.73333334922790527,
     "Red Component" : 0.73333334922790527
   },
-  "Transparency" : 0,
   "Ansi 0 Color" : {
     "Green Component" : 0,
     "Blue Component" : 0,
     "Red Component" : 0
   },
-  "Guid" : "F64F938C-3A4F-4719-8AF1-4917E823B2AA",
+  "Ansi 1 Color" : {
+    "Green Component" : 0,
+    "Blue Component" : 0,
+    "Red Component" : 0.73333334922790527
+  },
+  "Horizontal Spacing" : 1,
+  "Custom Directory" : "No",
+  "Badge Top Margin" : 10,
+  "Right Option Key Sends" : 2,
+  "Ansi 6 Color" : {
+    "Green Component" : 0.73333334922790527,
+    "Blue Component" : 0.73333334922790527,
+    "Red Component" : 0
+  },
+  "Guid" : "F4DB31B2-E3D4-41CC-A003-CDB32B03F387",
+  "Normal Font" : "MesloLGLNerdFontComplete-Regular 16",
   "Ansi 2 Color" : {
     "Green Component" : 0.73333334922790527,
     "Blue Component" : 0,
@@ -445,27 +471,9 @@
     "Blue Component" : 0,
     "Red Component" : 0.73333334922790527
   },
-  "Ansi 5 Color" : {
+  "Ansi 4 Color" : {
     "Green Component" : 0,
     "Blue Component" : 0.73333334922790527,
-    "Red Component" : 0.73333334922790527
-  },
-  "Use Non-ASCII Font" : false,
-  "Ansi 7 Color" : {
-    "Green Component" : 0.73333334922790527,
-    "Blue Component" : 0.73333334922790527,
-    "Red Component" : 0.73333334922790527
-  },
-  "Ansi 8 Color" : {
-    "Green Component" : 0.3333333432674408,
-    "Blue Component" : 0.3333333432674408,
-    "Red Component" : 0.3333333432674408
-  },
-  "Ansi 9 Color" : {
-    "Green Component" : 0.3333333432674408,
-    "Blue Component" : 0.3333333432674408,
-    "Red Component" : 1
-  },
-  "Badge Max Height" : 0.20000000000000001,
-  "Badge Top Margin" : 10
+    "Red Component" : 0
+  }
 }
