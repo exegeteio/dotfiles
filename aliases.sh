@@ -49,5 +49,6 @@ alias ll="ls -lh"
 
 duck() { lynx "https://duckduckgo.com/lite?q=$*" }
 cht() { http --body "https://cht.sh/$*" | less }
+w() { for (( ; ; )) do clear; $*; sleep 1; done }
 
 alias '?'=duck
