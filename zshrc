@@ -23,3 +23,5 @@ export PORT=3000
 [[ ! -f "$HOME/.aliases" ]] || source $HOME/.aliases
 
 export PATH="/usr/local/opt/ruby/bin:$PATH"
+export JOURNAL_PATH="~/Desktop/journal"
+

@@ -48,6 +48,8 @@ alias ls="ls -G"
 alias ll="ls -lh"
 alias gf="git fetch --all -p"
 
+alias journal='vi $JOURNAL_PATH$(date +%Y/%m/%d.md)'
+
 duck() { lynx "https://duckduckgo.com/lite?q=$*" }
 cht() { http --body "https://cht.sh/$*" | less }
 w() { for (( ; ; )) do clear; $*; sleep 1; done }
