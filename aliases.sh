@@ -49,6 +49,8 @@ alias ll="ls -lh"
 alias gf="git fetch --all -p"
 
 alias journal='vi $JOURNAL_PATH$(date +%Y/%m/%d.md)'
+# Alias for checking out potential phishing links.
+alias phish="http --follow -p hH"
 
 duck() { lynx "https://duckduckgo.com/lite?q=$*" }
 cht() { http --body "https://cht.sh/$*" | less }
