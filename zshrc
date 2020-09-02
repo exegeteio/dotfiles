@@ -17,9 +17,9 @@ export CDPATH="$CDPATH:$HOME/code/:$HOME/code/github/:$HOME/code/gitlab/"
 
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [[ ! -f "$(which kubectl)" ]] || source <(kubectl completion zsh)
+[[ ! -f "$(which rbenv)" ]] || eval "$(rbenv init -)"
 
 export PORT=3000
 
 [[ ! -f "$HOME/.aliases" ]] || source $HOME/.aliases
 
-export PATH="/usr/local/opt/ruby/bin:$PATH"
