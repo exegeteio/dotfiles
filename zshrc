@@ -13,7 +13,7 @@ if type brew &>/dev/null; then
 fi
 
 export PATH="$PATH:$HOME/go/bin/"
-export CDPATH="$CDPATH:$HOME/code/:$HOME/code/github/:$HOME/code/gitlab/"
+export CDPATH="$CDPATH:$HOME/code/:$HOME/code/github/:$HOME/code/gitlab/:$HOME/Desktop/"
 
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [[ ! -f "$(which kubectl)" ]] || source <(kubectl completion zsh)
@@ -22,4 +22,6 @@ export CDPATH="$CDPATH:$HOME/code/:$HOME/code/github/:$HOME/code/gitlab/"
 export PORT=3000
 
 [[ ! -f "$HOME/.aliases" ]] || source $HOME/.aliases
+
+export JOURNAL_PATH="~/Desktop/journal"
 
