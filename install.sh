@@ -78,6 +78,7 @@ configure_zsh
 configure_vim
 configure_tmux
 configure_aliases
+backup_and_link .gitignore gitignore
 
 # Cleanup:
 unset move_file_to_backup
