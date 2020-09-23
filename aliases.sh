@@ -1,24 +1,13 @@
 # Set up SSH Agent
-SSH_ENV="$HOME/.ssh/agent-environment"
-
-function start_agent {
-    echo "Initialising new SSH agent..."
-    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-    echo succeeded
-    chmod 600 "${SSH_ENV}"
-    . "${SSH_ENV}" > /dev/null
-}
-
-# Source SSH settings, if applicable
-
-if [ -f "${SSH_ENV}" ]; then
-    . "${SSH_ENV}" > /dev/null
-    #ps ${SSH_AGENT_PID} doesn't work under cywgin
-    ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-        start_agent;
-    }
-else
-    start_agent;
+# Poached from:  https://code.visualstudio.com/docs/remote/containers#_using-ssh-keys
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  # Check for a currently running instance of the agent
+  RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
+  if [ "$RUNNING_AGENT" = "0" ]; then
+    # Launch a new instance of the agent
+    ssh-agent -s &> ~/.ssh/ssh-agent
+  fi
+  eval `cat ~/.ssh/ssh-agent`
 fi
 
 # Preferred editor for local and remote sessions
