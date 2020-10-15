@@ -23,5 +23,5 @@ export PORT=3000
 
 [[ ! -f "$HOME/.aliases" ]] || source $HOME/.aliases
 
-export JOURNAL_PATH="~/Desktop/journal"
+export JOURNAL_PATH="~/Desktop/journal/"
 
