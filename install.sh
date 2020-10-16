@@ -7,16 +7,16 @@ mkdir -p $BACKUP_DIR
 ## Here thar be functions!
 
 configure_zsh () {
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-  backup_and_link .p10k.zsh p10k.zsh
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+  # backup_and_link .p10k.zsh p10k.zsh
   backup_and_link .zshrc zshrc
 }
 
 configure_vim () {
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   backup_and_link .vimrc vimrc
-  vim +PlugInstall +qall
+  # vim +PlugInstall +qall
 }
 
 configure_aliases () {
@@ -61,28 +61,24 @@ configure_git () {
 }
 
 function configure_tmux () {
-  read -p "Enable tmux in every shell session? " -n 1
-  echo ""
-  if [[ $REPLY =~ ^[Yy]$ ]]; then
-    echo "Delete this file to stop launching tmux when zsh starts" > $HOME/.auto_tmux
-  fi
   backup_and_link .tmux.conf tmux.conf
 }
 
 
 ## Actually do stuff!
-configure_git
+# configure_git
 
-case "$OSTYPE" in
-  darwin*)  /bin/bash macos.sh ;;
-  linux*)   /bin/bash linux.sh ;;
-  *)        echo "No detailed install for: $OSTYPE" ;;
-esac
+# case "$OSTYPE" in
+#   darwin*)  /bin/bash macos.sh ;;
+#   linux*)   /bin/bash linux.sh ;;
+#   *)        echo "No detailed install for: $OSTYPE" ;;
+# esac
 
 configure_zsh
 configure_vim
 configure_tmux
 configure_aliases
+backup_and_link .gitignore gitignore
 
 # Cleanup:
 unset move_file_to_backup
