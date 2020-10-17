@@ -43,9 +43,7 @@ journal() {
   git pull
   mkdir -p $(date +%Y/%m)
   vi $(date +%Y/%m/%d.md)
-  git add .
-  git commit -m $(date +%F)
-  git push
+  git add . && git commit -m $(date +%F) && git push &
 }
 # Alias for checking out potential phishing links.
 alias phish="http --follow -p hH"
