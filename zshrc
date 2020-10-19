@@ -12,12 +12,13 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
-export PATH="$PATH:$HOME/go/bin/"
+export PATH="$PATH:$HOME/go/bin/:$HOME/bin/"
 export CDPATH="$CDPATH:$HOME/code/:$HOME/code/github/:$HOME/code/gitlab/:$HOME/Desktop/"
 
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 [[ ! -f "$(which kubectl)" ]] || source <(kubectl completion zsh)
 [[ ! -f "$(which rbenv)" ]] || eval "$(rbenv init -)"
+[[ ! -f "$(which gh)" ]] || eval "$(gh completion --shell=zsh)"
 
 export PORT=3000
 
