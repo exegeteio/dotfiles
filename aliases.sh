@@ -37,7 +37,14 @@ alias ls="ls -G"
 alias ll="ls -lh"
 alias gf="git fetch --all -p"
 
-alias journal='vi $JOURNAL_PATH$(date +%Y/%m/%d.md)'
+journal() {
+  [[ -d $JOURNAL_PATH ]] || git clone git@github.com:/exegete46/journal.git $JOURNAL_PATH
+  cd $JOURNAL_PATH
+  git pull
+  mkdir -p $(date +%Y/%m)
+  vi $(date +%Y/%m/%d.md)
+  git add . && git commit -m $(date +%F) && git push &
+}
 # Alias for checking out potential phishing links.
 alias phish="http --follow -p hH"
 
