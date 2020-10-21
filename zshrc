@@ -12,7 +12,7 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
-export PATH="$PATH:$HOME/go/bin/:$HOME/bin/"
+export PATH="$HOME/go/bin/:$PATH"
 export CDPATH="$CDPATH:$HOME/code/:$HOME/code/github/:$HOME/code/gitlab/:$HOME/Desktop/"
 
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -24,5 +24,5 @@ export PORT=3000
 
 [[ ! -f "$HOME/.aliases" ]] || source $HOME/.aliases
 
-export JOURNAL_PATH="~/Desktop/journal"
+export JOURNAL_PATH="$HOME/Desktop/journal/"
 
