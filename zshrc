@@ -26,3 +26,6 @@ export PORT=3000
 
 export JOURNAL_PATH="$HOME/Desktop/journal/"
 
+# Prettier Docker commands, parallel builds.
+export DOCKER_BUILDKIT=1
+
