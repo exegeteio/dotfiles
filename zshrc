@@ -3,7 +3,7 @@
 [[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && exec tmux
 
 export ZSH="$HOME/.oh-my-zsh"
-export ZSH_THEME="gentoo"
+export ZSH_THEME="codespaces"
 
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
