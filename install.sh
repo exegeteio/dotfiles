@@ -10,6 +10,7 @@ configure_zsh () {
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
   # backup_and_link .p10k.zsh p10k.zsh
+  cp codespaces.zsh-theme $ZSH_CUSTOM/themes/
   backup_and_link .zshrc zshrc
 }
 
