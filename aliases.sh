@@ -33,7 +33,6 @@ cd() {
 
 alias a="source ./aliases"
 alias n="(cd ~/code/notes ; git pull -q & vi README.md)"
-alias ls="ls -G"
 alias ll="ls -lh"
 alias gf="git fetch --all -p"
 
