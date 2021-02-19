@@ -29,8 +29,6 @@ export JOURNAL_PATH="$HOME/Desktop/journal/"
 # Prettier Docker commands, parallel builds.
 export DOCKER_BUILDKIT=1
 
-export DATABASE_URL="postgres://postgres:postgres@127.0.0.1/database"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
