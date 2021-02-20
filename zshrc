@@ -20,7 +20,7 @@ export CDPATH="$CDPATH:$HOME:$HOME/code/:$HOME/code/github/:$HOME/code/gitlab/:$
 [[ ! -f "$(which rbenv)" ]] || eval "$(rbenv init -)"
 [[ ! -f "$(which gh)" ]] || eval "$(gh completion --shell=zsh)"
 
-export PORT=3000
+[[ -z "$PORT" ]] && export PORT=3000
 
 [[ ! -f "$HOME/.aliases" ]] || source $HOME/.aliases
 
