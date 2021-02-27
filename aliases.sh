@@ -39,7 +39,7 @@ alias ll="ls -lh"
 alias gf="git fetch --all -p"
 
 journal() {
-  [[ -d $JOURNAL_PATH ]] || git clone git@github.com:/exegete46/journal.git $JOURNAL_PATH
+  [[ -d $JOURNAL_PATH ]] || git clone git@github.com:/exegeteio/journal.git $JOURNAL_PATH
   cd $JOURNAL_PATH
   git pull
   mkdir -p $(date +%Y/%m)
