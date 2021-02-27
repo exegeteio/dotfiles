@@ -2,20 +2,49 @@
 ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
 DOTFILES_LOCATION=`cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd `
 BACKUP_DIR=$HOME/.dotfiles-orig-$(date +%F)
+BASH=$(which bash)
+GIT=$(which git)
 mkdir -p $BACKUP_DIR
+mkdir -p $HOME/bin
+
+set -e
+
+# Make sure git and bash exist.
+[[ -x "$BASH" ]] || (echo "You must have bash installed to proceed!"; exit 127)
+[[ -x "$GIT" ]] || (echo "You must have git installed to proceed!"; exit 127)
+# gcc is required for so much.
+[[ -x "$(which gcc)" ]] || (echo "You must have gcc installed to proceed!"; exit 127)
+
 
 ## Here thar be functions!
 
+## Start with Homebrew:
+configure_brew () {
+  if [ -d "$HOME/.brew/Homebrew" ]; then
+    (cd $HOME/.brew/Homebrew && git pull -q)
+  else
+    git clone https://github.com/Homebrew/brew $HOME/.brew/Homebrew
+  fi
+  ln -s $HOME/.brew/Homebrew/bin $HOME/.brew/bin
+  BREW=$(which brew)
+  [[ -x "$BREW" ]] || (echo "Could not find brew after install!"; exit 1)
+}
+
 configure_zsh () {
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-  # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-  # backup_and_link .p10k.zsh p10k.zsh
+  if [ -d "$HOME/.oh-my-zsh" ]; then
+    (cd $HOME/.oh-my-zsh && git pull -q)
+  else
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+  fi
+
+  # Custom theme.
   cp codespaces.zsh-theme $ZSH_CUSTOM/themes/
   backup_and_link .zshrc zshrc
+  [[ -z "$ZSH" ]] || source $HOME/.zshrc
 }
 
 configure_vim () {
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   backup_and_link .vimrc vimrc
   # vim +PlugInstall +qall
 }
@@ -70,16 +99,19 @@ function configure_tmux () {
 # configure_git
 
 # case "$OSTYPE" in
-#   darwin*)  /bin/bash macos.sh ;;
-#   linux*)   /bin/bash linux.sh ;;
+#   darwin*)  $BASH macos.sh ;;
+#   linux*)   $BASH linux.sh ;;
 #   *)        echo "No detailed install for: $OSTYPE" ;;
 # esac
 
+configure_brew
 configure_zsh
 configure_vim
 configure_tmux
 configure_aliases
 backup_and_link .gitignore gitignore
+
+source $HOME/.zshrc
 
 # Cleanup:
 unset move_file_to_backup
