@@ -7,9 +7,6 @@ xcode-select --install
 
 DOTFILES_LOCATION=$(dirname "$0")
 
-# Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
 brew tap homebrew/cask-fonts
 brew bundle --file=$DOTFILES_LOCATION/Brewfile
 
