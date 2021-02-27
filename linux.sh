@@ -1,6 +1,15 @@
-#!/bin/sh
+#!/bin/bash
 
-PACKAGES='vim git zsh build-essential docker-ce docker-ce-cli containerd.io fonts-powerline httpie'
+set -e
+
+[[ "$EUID" -eq 0 ]] || (echo "Must use sudo or be root for this script! - $EUID"; exit 1)
+
+
+# These will get installed.
+PACKAGES='vim git zsh build-essential fonts-powerline httpie docker-ce docker-ce-cli containerd.io'
+
+# Don't ask questions!
+export DEBIAN_FRONTEND=noninteractive
 
 # Check for an X Server
 if [ ! -z "${DISPLAY}" ]; then
@@ -10,7 +19,7 @@ fi
 echo "Attempting to install:  ${PACKAGES}"
 
 # Install docker pre-req's
-sudo apt-get update -qq && sudo apt-get install -qqy \
+apt-get update -qq && apt-get install --no-install-recommends -qqy \
   apt-transport-https \
   ca-certificates \
   curl \
@@ -18,25 +27,29 @@ sudo apt-get update -qq && sudo apt-get install -qqy \
   software-properties-common
 
 # Add docker's GPG key
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
 # Add docker's ubuntu repo
-sudo add-apt-repository \
+add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
 
-sudo apt-get update -qq && sudo apt-get install -qqy ${PACKAGES}
+apt-get update -qq && apt-get install \
+  -qqy --no-install-recommends \
+  ${PACKAGES}
+
+curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 
 if [ -z "${SUDO_USER}" ]; then
   echo "Adding ${USER} to the \"docker\" group."
-  sudo usermod -aG docker ${USER}
+  usermod -aG docker ${USER}
 else
   echo "Adding ${SUDO_USER} to the \"docker\" group."
-  sudo usermod -aG docker ${SUDO_USER}
+  usermod -aG docker ${SUDO_USER}
 fi
 
-sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-
 docker run --rm hello-world
+
+[[ -x "$(which brew)" ]] && brew bundle --file=Brewfile
