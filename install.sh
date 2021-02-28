@@ -24,8 +24,8 @@ configure_brew () {
     (cd $HOME/.brew/Homebrew && git pull -q)
   else
     git clone https://github.com/Homebrew/brew $HOME/.brew/Homebrew
+    ln -s $HOME/.brew/Homebrew/bin $HOME/.brew/bin
   fi
-  ln -s $HOME/.brew/Homebrew/bin $HOME/.brew/bin
   BREW=$(which brew)
   [[ -x "$BREW" ]] || (echo "Could not find brew after install!"; exit 1)
 }
