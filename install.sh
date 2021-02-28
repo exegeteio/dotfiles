@@ -26,6 +26,7 @@ configure_brew () {
     git clone https://github.com/Homebrew/brew $HOME/.brew/Homebrew
     ln -s $HOME/.brew/Homebrew/bin $HOME/.brew/bin
   fi
+  export PATH="$HOME/.brew/bin:$PATH" # Also in zshrc.
   BREW=$(which brew)
   [[ -x "$BREW" ]] || (echo "Could not find brew after install!"; exit 1)
 }
