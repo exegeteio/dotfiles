@@ -5,7 +5,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_THEME="codespaces"
 
-plugins=(git)
+# plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 if type brew &>/dev/null; then
