@@ -68,27 +68,9 @@ backup_and_link () {
 }
 
 configure_git () {
-  if [[ -z $(git config --global user.name) ]]; then
-    read -p "Name for .gitconfig: "
-    git config --global user.name "$REPLY"
-  fi
-
-  if [[ -z $(git config --global user.email) ]]; then
-    read -p "Email for .gitconfig: "
-    git config --global user.email "$REPLY"
-  fi
-
-  if [[ -z $(git config --global --get-regex alias.\*) ]]; then
-    echo "Adding aliases to $HOME/.gitconfig"
-    cat $DOTFILES_LOCATION/gitconfig >> $HOME/.gitconfig
-  else
-    read -p "Aliases exist in $HOME/.gitconfig - Overwrite? " -n 1
-    echo ""
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-      git config --global --remove-section alias 2>/dev/null
-      cat $DOTFILES_LOCATION/gitconfig >> $HOME/.gitconfig
-    fi
-  fi
+  backup_and_link .git git
+  backup_and_link .gitconfig gitconfig
+  backup_and_link .gitignore gitignore
 }
 
 function configure_tmux () {
@@ -110,14 +92,14 @@ configure_zsh
 configure_vim
 configure_tmux
 configure_aliases
-backup_and_link .gitignore gitignore
+configure_git
 
 source $HOME/.zshrc
 
 # Cleanup:
-unset move_file_to_backup
 unset backup_and_link
 unset configure_git
 unset configure_tmux
 unset configure_vim
 unset configure_zsh
+unset move_file_to_backup
