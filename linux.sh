@@ -6,7 +6,7 @@ set -e
 
 
 # These will get installed.
-PACKAGES='vim git zsh build-essential fonts-powerline httpie docker-ce docker-ce-cli containerd.io'
+PACKAGES='keychain vim git zsh build-essential fonts-powerline httpie docker-ce docker-ce-cli containerd.io'
 
 # Don't ask questions!
 export DEBIAN_FRONTEND=noninteractive
