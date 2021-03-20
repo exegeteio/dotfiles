@@ -4,10 +4,14 @@ DOTFILES_LOCATION=`cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd 
 BACKUP_DIR=$HOME/.dotfiles-orig-$(date +%F)
 BASH=$(which bash)
 GIT=$(which git)
-mkdir -p $BACKUP_DIR
-mkdir -p $HOME/bin
 
 set -e
+
+mkdir -p $BACKUP_DIR
+mkdir -p $HOME/bin
+mkdir -p $HOME/.config/
+cp $PWD/bin/* $HOME/bin
+[[ -d "$HOME/.config/lynx" ]] || ln -s $PWD/lynx $HOME/.config/lynx
 
 # Make sure git and bash exist.
 [[ -x "$BASH" ]] || (echo "You must have bash installed to proceed!"; exit 127)
