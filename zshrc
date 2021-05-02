@@ -33,6 +33,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Alias for my local journal.
 export JOURNAL_PATH="$HOME/Desktop/journal/"
+export NOTES_PATH="$HOME/Desktop/notes/"
 
 # Prettier Docker commands, parallel builds.
 export DOCKER_BUILDKIT=1

@@ -8,9 +8,8 @@ GIT=$(which git)
 set -e
 
 mkdir -p $BACKUP_DIR
-mkdir -p $HOME/bin
 mkdir -p $HOME/.config/
-cp $PWD/bin/* $HOME/bin
+ln $PWD/bin $HOME/bin
 [[ -d "$HOME/.config/lynx" ]] || ln -s $PWD/lynx $HOME/.config/lynx
 
 # Make sure git and bash exist.

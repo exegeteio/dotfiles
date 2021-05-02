@@ -38,18 +38,9 @@ cd() {
 [[ ! -f "./aliases" ]] || source ./aliases
 
 alias a="source ./aliases"
-alias n="(cd ~/code/notes ; git pull -q & vi README.md)"
 alias ll="ls -lh"
 alias gf="git fetch --all -p"
 
-journal() {
-  [[ -d $JOURNAL_PATH ]] || git clone git@github.com:/exegeteio/journal.git $JOURNAL_PATH
-  cd $JOURNAL_PATH
-  git pull
-  mkdir -p $(date +%Y/%m)
-  vi $(date +%Y/%m/%d.md)
-  git add . && git commit -m $(date +%F) && git push &
-}
 # Alias for checking out potential phishing links.
 alias phish="http --follow -p hH"
 
