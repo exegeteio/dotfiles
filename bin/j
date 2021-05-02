@@ -1,0 +1,13 @@
+#!/bin/bash
+
+[[ -d $JOURNAL_PATH ]] || git clone git@github.com:/exegeteio/journal.git $JOURNAL_PATH
+SUBJECT=""
+test -n "$1" && SUBJECT="-$1"
+cd $JOURNAL_PATH
+git pull
+mkdir -p $(date +%Y/%m)
+vi $(date +%Y/%m/%d$SUBJECT.md)
+git add . \
+	&& git commit -qnm "$SUBJECT - $(date +%F)" \
+	&& git push -q
+cd - 1>/dev/null
