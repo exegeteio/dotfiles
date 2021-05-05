@@ -2,7 +2,7 @@
 
 [[ -d $NOTES_PATH ]] || git clone git@github.com:/exegeteio/notes.git $NOTES_PATH
 SUBJECT=$(date +%Y/%m/%d.md)
-test -n "$1" && SUBJECT="$1.md"
+test -n "$1" && SUBJECT="$(dirname $1)/$(basename $1 .md).md"
 cd $NOTES_PATH
 git pull -q &
 mkdir -p $(dirname $SUBJECT)
