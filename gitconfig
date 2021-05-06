@@ -10,3 +10,6 @@
 [init]
 	defaultBranch = main
 
+[include]
+  path = ~/.gituser
+
