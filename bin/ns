@@ -1,3 +1,5 @@
 #!/bin/sh
 
+[[ -d $NOTES_PATH ]] || git clone git@github.com:/exegeteio/notes.git $NOTES_PATH
 editor-and-commit $NOTES_PATH
+cd $NOTES_PATH && git push && cd -
