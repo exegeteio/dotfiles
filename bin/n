@@ -6,8 +6,7 @@ test -n "$1" && SUBJECT="$(dirname $1)/$(basename $1 .md).md"
 cd $NOTES_PATH
 git pull -q &
 mkdir -p $(dirname $SUBJECT)
-vi $SUBJECT
-git add . \
-	&& git commit -qnm "$SUBJECT - $(date +%F)" \
-	&& git push -q
+[[ -f $SUBJECT ]] || echo "# $SUBJECT" >> $SUBJECT
+editor-and-commit $SUBJECT
+git push -q
 cd - 1>/dev/null
