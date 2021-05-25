@@ -1,0 +1,3 @@
+#!/bin/sh
+
+editor-and-commit $NOTES_PATH
