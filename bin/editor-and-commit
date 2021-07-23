@@ -1,5 +1,5 @@
 #!/bin/sh
 
 $EDITOR $*
-git add . && git commit -qnm "$* - $(date +%F)"
+git add . && git commit -qnm "$* - $(date +%F) $SUBJECT"
 

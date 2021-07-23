@@ -1,12 +1,39 @@
 #!/bin/bash
 
-[[ -d $NOTES_PATH ]] || git clone git@github.com:/exegeteio/notes.git $NOTES_PATH
-SUBJECT=$(date +%Y/%m/%d.md)
-test -n "$1" && SUBJECT="$(dirname $1)/$(basename $1 .md).md"
+# Check if the notes exist
+[[ -d $NOTES_PATH ]] || (echo "Notes not found at:  $NOTES_PATH" ; exit 1)
+
+# Skip collection if the file exists.
+if [ -f "$NOTES_PATH/$1" ]; then
+	FILE=$1
+else
+	# Pull Subject from CLI.
+	test -n "$*" && SUBJECT="$*"
+	# Read the subject
+	test -n "$*" || read -p "Note title: " SUBJECT
+	# Format as slug.
+	SLUG=$(echo $SUBJECT | sed -r s/[^a-zA-Z0-9]+/-/g | tr A-Z a-z)
+	# Get file name.
+	FILE=$(date +%Y-%m-%d-$SLUG.md)
+fi
+# Jump into our Notes repo.
 cd $NOTES_PATH
+# Git pull, but do it in the background.
 git pull -q &
-mkdir -p $(dirname $SUBJECT)
-[[ -f $SUBJECT ]] || echo "# $SUBJECT" >> $SUBJECT
-editor-and-commit $SUBJECT
+
+# If file doesn't exist, create it with my template.
+TEMPL="---
+layout: default
+title: $SUBJECT
+tags:
+  - todo
+---
+
+Have fun writing about $SUBJECT!"
+[[ -f $FILE ]] || echo "$TEMPL" >> $FILE
+# Alias for edit and commit.
+editor-and-commit $FILE
+# Push it real good! /snp
 git push -q
+# Change back to the previous directory.
 cd - 1>/dev/null

@@ -34,7 +34,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Alias for my local journal.
 export JOURNAL_PATH="$HOME/Desktop/journal/"
-export NOTES_PATH="$HOME/Desktop/notes/"
+export NOTES_PATH="$HOME/code/exegete.io/_posts"
 compdef "_files -W $NOTES_PATH" n
 
 # Prettier Docker commands, parallel builds.
