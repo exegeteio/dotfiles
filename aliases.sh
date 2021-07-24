@@ -1,10 +1,10 @@
 # Set up SSH Agent
 # Poached from:  https://code.visualstudio.com/docs/remote/containers#_using-ssh-keys
 if [ -d "$HOME/.ssh" ]; then
-  if [ -z "$SSH_AUTH_SOCK" ]; then
-    if [ -e "$(which keychain)" ]; then
-      eval $(keychain --eval --agents ssh id_rsa)
-    else
+  if [ -e "$(which keychain)" ]; then
+    eval $(keychain --eval --agents ssh id_rsa)
+  else
+    if [ -z "$SSH_AUTH_SOCK" ]; then
       # Check for a currently running instance of the agent
       RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
       if [ "$RUNNING_AGENT" = "0" ]; then
