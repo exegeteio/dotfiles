@@ -43,3 +43,7 @@ set numberwidth=5
 imap jj <Esc>
 
 set autoindent smartindent
+
+" Use the system clipboard for yank/paste.
+set clipboard=unnamed
+

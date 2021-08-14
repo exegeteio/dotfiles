@@ -2,7 +2,7 @@
 # Poached from:  https://code.visualstudio.com/docs/remote/containers#_using-ssh-keys
 if [ -d "$HOME/.ssh" ]; then
   if [ -e "$(which keychain)" ]; then
-    eval $(keychain --eval --agents ssh id_rsa)
+    eval $(keychain --quiet --eval --agents ssh id_rsa)
   else
     if [ -z "$SSH_AUTH_SOCK" ]; then
       # Check for a currently running instance of the agent
