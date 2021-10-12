@@ -45,6 +45,9 @@ configure_zsh () {
   cp codespaces.zsh-theme $ZSH_CUSTOM/themes/
   backup_and_link .zshrc zshrc
   [[ -z "$ZSH" ]] || source $HOME/.zshrc
+
+  # Setup Fuzzy Finder
+  [[ -x "$(which fzf)" ]] && $(brew --prefix fzf)/install --all
 }
 
 configure_vim () {

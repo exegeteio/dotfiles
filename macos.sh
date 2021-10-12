@@ -10,9 +10,6 @@ DOTFILES_LOCATION=$(dirname "$0")
 brew tap homebrew/cask-fonts
 brew bundle --file=$DOTFILES_LOCATION/Brewfile
 
-# Disable Notification Center and remove the menu bar icon
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
-
 # Disable “natural” (Lion-style) scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
@@ -43,29 +40,15 @@ defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
-# Finder: show hidden files by default
-#defaults write com.apple.finder AppleShowAllFiles -bool true
-
-# Finder: show all filename extensions
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
-
 # Finder: show status bar
 defaults write com.apple.finder ShowStatusBar -bool true
 
 # Finder: show path bar
 defaults write com.apple.finder ShowPathbar -bool true
 
-# Use list view in all Finder windows by default
+# Use column view in all Finder windows by default
 # Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
 defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
-
-# Set the icon size of Dock items to 36 pixels
-defaults write com.apple.dock tilesize -int 36
-
-# Wipe all (default) app icons from the Dock
-# This is only really useful when setting up a new Mac, or if you don’t use
-# the Dock to launch apps.
-defaults write com.apple.dock persistent-apps -array
 
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
@@ -74,8 +57,7 @@ defaults write com.apple.dock autohide -bool true
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
 defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 
-
-# Set Safari’s home page to `about:blank` for faster loading
+# Set Safari’s home page to `tabliss` for prettier starting
 defaults write com.apple.Safari HomePage -string "https://web.tabliss.io/"
 
 # Enable Safari’s debug menu

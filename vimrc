@@ -1,16 +1,11 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'endel/vim-github-colorscheme'
 Plug 'jiangmiao/auto-pairs'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/HTML-AutoCloseTag'
-Plug 'vim-syntastic/syntastic'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
