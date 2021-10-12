@@ -26,7 +26,7 @@ export CDPATH="$CDPATH:$HOME:$HOME/code/:$HOME/code/github/:$HOME/code/gitlab/:$
 export NVM_DIR="$HOME/.nvm"
 # Load NVM is installed anywhere
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
-[ -s "$HOME/.brew/Homebrew/opt/nvm/nvm.sh" ] && . "$HOME/.brew/Homebrew/opt/nvm/nvm.sh"
+[ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix)/nvm.sh"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # Personal aliases.
@@ -42,4 +42,7 @@ export DOCKER_BUILDKIT=1
 
 # Only set the port if not already set.  Good for devcontainers.
 [[ -z "$PORT" ]] && export PORT=3000
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_TMUX_OPTS="-p 40%"
 

@@ -52,3 +52,4 @@ wiki() { lynx "https://en.m.wikipedia.org/w/index.php?search=$*" }
 
 alias '?'=duck
 alias '??'=google
+alias 'r'=bin/rails
