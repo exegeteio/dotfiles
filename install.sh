@@ -9,8 +9,7 @@ set -e
 
 mkdir -p $BACKUP_DIR
 mkdir -p $HOME/.config/
-ln -s $PWD/bin $HOME/bin
-[[ -d "$HOME/.config/lynx" ]] || ln -s $PWD/lynx $HOME/.config/lynx
+[[ -d "$HOME/bin/" ]] || ln -s $DOTFILES_LOCATION/bin $HOME/bin
 
 # Make sure git and bash exist.
 [[ -x "$BASH" ]] || (echo "You must have bash installed to proceed!"; exit 127)
@@ -24,7 +23,7 @@ ln -s $PWD/bin $HOME/bin
 ## Start with Homebrew:
 configure_brew () {
   if [ -d "$HOME/.brew/Homebrew" ]; then
-    (cd $HOME/.brew/Homebrew && git pull -q)
+    echo Homebrew already installed.
   else
     git clone https://github.com/Homebrew/brew $HOME/.brew/Homebrew
     ln -s $HOME/.brew/Homebrew/bin $HOME/.brew/bin
@@ -36,7 +35,7 @@ configure_brew () {
 
 configure_zsh () {
   if [ -d "$HOME/.oh-my-zsh" ]; then
-    (cd $HOME/.oh-my-zsh && git pull -q)
+    echo Oh My Zsh already installed.
   else
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
   fi

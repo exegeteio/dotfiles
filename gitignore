@@ -4,3 +4,5 @@
 .*.swp
 **/.env
 .Trashes
+.byebug_history
+

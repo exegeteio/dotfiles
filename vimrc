@@ -2,9 +2,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
-Plug 'endel/vim-github-colorscheme'
 Plug 'jiangmiao/auto-pairs'
-Plug 'vim-scripts/HTML-AutoCloseTag'
 Plug 'sheerun/vim-polyglot'
 
 call plug#end()
