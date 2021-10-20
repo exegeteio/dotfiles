@@ -1,6 +1,10 @@
 # If running interactively, do not do anything.
 [[ $- != *i*  ]] && return
-[[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && exec tmux
+
+export PATH="$HOME/bin:$HOME/.brew/bin:$HOME/go/bin/:/usr/local/opt/python@3.8/bin:$PATH"
+export CDPATH="$CDPATH:$HOME:$HOME/code/:$HOME/code/github/:$HOME/code/gitlab/:$HOME/Desktop/"
+
+[[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && exec tmux
 
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_THEME="codespaces"
@@ -11,9 +15,6 @@ source $ZSH/oh-my-zsh.sh
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
-
-export PATH="$HOME/bin:$HOME/.brew/bin:$HOME/go/bin/:/usr/local/opt/python@3.8/bin:$PATH"
-export CDPATH="$CDPATH:$HOME:$HOME/code/:$HOME/code/github/:$HOME/code/gitlab/:$HOME/Desktop/"
 
 # Kubectl command completion if available.
 [[ ! -f "$(which kubectl)" ]] || source <(kubectl completion zsh)
@@ -26,7 +27,7 @@ export CDPATH="$CDPATH:$HOME:$HOME/code/:$HOME/code/github/:$HOME/code/gitlab/:$
 export NVM_DIR="$HOME/.nvm"
 # Load NVM is installed anywhere
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
-[ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix)/nvm.sh"
+[ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # Personal aliases.

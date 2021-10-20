@@ -24,6 +24,7 @@ brew 'httpie'
 brew 'keychain'
 brew 'nvm'
 brew 'rbenv'
+brew 'ripgrep'
 brew 'tmux'
 brew 'wget'
 

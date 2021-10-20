@@ -17,7 +17,13 @@ if [ -d "$HOME/.ssh" ]; then
 fi
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+  export EDITOR='code -wr'
+  alias e="code"
+elif [[ -n $TMUX ]]; then
+  export EDITOR='vim'
+  alias e="vim"
+elif [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
   alias e="vim"
 else

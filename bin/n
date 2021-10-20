@@ -31,8 +31,10 @@ tags:
 
 Have fun writing about $SUBJECT!"
 [[ -f $FILE ]] || echo "$TEMPL" >> $FILE
+[[ -z "$TMUX" ]] || tmux run "echo #{pane_id}" > ~/.notes_pane
 # Alias for edit and commit.
 editor-and-commit $FILE
+[[ -z "$TMUX" ]] || rm -f > ~/.notes_pane
 # Push it real good! /snp
 git push -q
 # Change back to the previous directory.

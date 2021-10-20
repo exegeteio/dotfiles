@@ -1,0 +1,7 @@
+#!/bin/sh
+if [[ -d "spec" ]]; then
+  find spec | fzf-tmux -p
+else
+  echo "No spec dir!"
+  exit 1
+fi
