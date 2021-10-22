@@ -45,5 +45,5 @@ export DOCKER_BUILDKIT=1
 [[ -z "$PORT" ]] && export PORT=3000
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_TMUX_OPTS="-p 40%"
+[[ -z "$TMUX" ]] || export FZF_TMUX_OPTS="-p 40%"
 

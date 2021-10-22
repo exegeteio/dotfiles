@@ -1,0 +1,2 @@
+#!/bin/sh
+evg $(rg --vimgrep "$*" | fzf)

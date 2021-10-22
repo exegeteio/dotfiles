@@ -19,16 +19,12 @@ fi
 # Preferred editor for local and remote sessions
 if [[ "$TERM_PROGRAM" == "vscode" ]]; then
   export EDITOR='code -wr'
-  alias e="code"
 elif [[ -n $TMUX ]]; then
   export EDITOR='vim'
-  alias e="vim"
 elif [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
-  alias e="vim"
 else
   export EDITOR='code -wr'
-  alias e="code"
 fi
 
 # Applies aliases file when it exists

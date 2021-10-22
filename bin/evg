@@ -1,0 +1,12 @@
+#!/bin/sh
+IFS=':' read -ra parts <<< "$*"
+file="${parts[0]}"
+line="${parts[1]}"
+pos="${parts[2]}"
+if [[ $EDITOR == vi* ]]; then
+    e +$line $file
+elif [[ $EDITOR == code* ]]; then
+    e -g $file:$line:$pos
+else
+    e $file
+fi
