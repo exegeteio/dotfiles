@@ -1,0 +1,10 @@
+#!/bin/sh
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+  code -r $*
+elif [[ -n $TMUX ]]; then
+  vim $*
+elif [[ -n $SSH_CONNECTION ]]; then
+  vim $*
+else
+  code $*
+fi
