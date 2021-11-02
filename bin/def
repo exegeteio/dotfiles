@@ -1,2 +1,2 @@
 #!/bin/sh
-rg -e "(def)\s+(self\.)?$*" .
+rg -pe "(def)\s+(self\.)?$*" .

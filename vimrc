@@ -12,6 +12,8 @@ nnoremap ;s :shell<CR>
 nnoremap ;l :call NERDComment("n", "Toggle")<CR>
 nnoremap <C-/> :call NERDComment("n", "Toggle")<CR>
 vnoremap <C-/> :call NERDComment("n", "Toggle")<CR>
+" Write with capital or lowercase w.
+command! W :w
 
 " Soft tabs
 set tabstop=2
