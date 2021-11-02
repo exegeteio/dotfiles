@@ -4,7 +4,7 @@
 export PATH="$HOME/bin:$HOME/.brew/bin:$HOME/go/bin/:/usr/local/opt/python@3.8/bin:$PATH"
 export CDPATH="$CDPATH:$HOME:$HOME/code/:$HOME/code/github/:$HOME/code/gitlab/:$HOME/Desktop/"
 
-[[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && exec tmux
+[[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && [[ -z "$VSCODE_PID" ]] && [[ "$TERM_PROGRAM" != "vscode" ]]&& exec tmux
 
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_THEME="codespaces"
