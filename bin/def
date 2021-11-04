@@ -1,2 +1,4 @@
 #!/bin/sh
-rg -pe "(def)\s+(self\.)?$*" .
+needle=$1
+shift 1
+rg -pe "(def)\s+(self\.)?$needle" $*
