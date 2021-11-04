@@ -13,6 +13,8 @@ nnoremap ;s :shell<CR>
 nnoremap ;l :call NERDComment("n", "Toggle")<CR>
 " Add the current filename and line number to the active tmux notes buffer.
 nnoremap ;n :execute ":!echo %:".line('.')." \| anote"<CR><CR>
+" Add the current highlight to the active tmux notes buffer.
+vnoremap ;n :'<,'>!anote<CR><CR>u
 nnoremap <C-/> :call NERDComment("n", "Toggle")<CR>
 vnoremap <C-/> :call NERDComment("n", "Toggle")<CR>
 " Write with capital or lowercase w.
