@@ -1,22 +1,28 @@
+" plugins
 call plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
+" Required for vim-airline to show the branch name.
+Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
 
 call plug#end()
 
-nnoremap ;o :NERDTreeToggle .<CR>
+" config plugins
+"nnoremap ;o :NERDTreeToggle .<CR>
+"nnoremap ;l :call NERDComment("n", "Toggle")<CR>
+"nnoremap <C-/> :call NERDComment("n", "Toggle")<CR>
+"vnoremap <C-/> :call NERDComment("n", "Toggle")<CR>
+"/plugins
+
 nnoremap ;s :shell<CR>
-nnoremap ;l :call NERDComment("n", "Toggle")<CR>
 " Add the current filename and line number to the active tmux notes buffer.
 nnoremap ;n :execute ":!echo %:".line('.')." \| anote"<CR><CR>
 " Add the current highlight to the active tmux notes buffer.
 vnoremap ;n :'<,'>!anote<CR><CR>u
-nnoremap <C-/> :call NERDComment("n", "Toggle")<CR>
-vnoremap <C-/> :call NERDComment("n", "Toggle")<CR>
 " Write with capital or lowercase w.
 command! W :w
 
