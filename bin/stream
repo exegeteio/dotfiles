@@ -1,0 +1,6 @@
+#!/bin/sh
+tmux -L stream new-session -s stream -d
+tmux -L stream split-window -v 'wee'
+tmux -L stream resize-pane -t 1 -y 7
+tmux -L stream select-pane -t 0
+tmux -L stream attach
