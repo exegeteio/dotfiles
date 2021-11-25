@@ -46,8 +46,6 @@ alias gf="git fetch --all -p"
 # Alias for checking out potential phishing links.
 alias phish="http --follow -p hH"
 
-duck() { lynx "https://duckduckgo.com/lite?q=$*" }
-google() { lynx "https://google.com/search?q=$*" }
 cht() { http --body "https://cht.sh/$*" | less }
 w() { for (( ; ; )) do clear; $*; sleep 1; done }
 wiki() { lynx "https://en.m.wikipedia.org/w/index.php?search=$*" }
