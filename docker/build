@@ -1,3 +1,4 @@
 #!/bin/sh
-docker build --pull --tag=exegete46/wee -f weechat.Dockerfile .
-docker build --pull --tag=exegete46/lynx -f lynx.Dockerfile .
+docker build -q --pull --tag=wee -f weechat.Dockerfile .
+docker build -q --pull --tag=lynx -f lynx.Dockerfile .
+docker build -q --pull --tag=speedtest -f speedtest.Dockerfile .
