@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 if [[ "$TERM_PROGRAM" == "vscode" ]]; then
   code -r $*
 elif [[ -n $TMUX ]]; then
