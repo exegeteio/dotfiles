@@ -2,7 +2,7 @@ prompt() {
     if [ ! -z "${GITHUB_USER}" ]; then
         local USERNAME="@${GITHUB_USER}"
     else
-        local USERNAME="%n"
+        local USERNAME="%h"
     fi
     PROMPT="%{$fg[green]%}${USERNAME} %(?:%{$reset_color%}➜ :%{$fg_bold[red]%}➜ )"
     PROMPT+='%{$fg_bold[blue]%}%~%{$reset_color%} $(git_prompt_info)%{$fg[white]%}$ %{$reset_color%}'

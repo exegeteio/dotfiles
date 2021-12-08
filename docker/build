@@ -1,4 +1,0 @@
-#!/bin/sh
-docker build -q --pull --tag=wee -f weechat.Dockerfile .
-docker build -q --pull --tag=lynx -f lynx.Dockerfile .
-docker build -q --pull --tag=speedtest -f speedtest.Dockerfile .
