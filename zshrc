@@ -7,7 +7,7 @@ export CDPATH="$CDPATH:$HOME:$HOME/code/:$HOME/code/github/:$HOME/code/gitlab/:$
 [[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && [[ -z "$VSCODE_PID" ]] && [[ "$TERM_PROGRAM" != "vscode" ]]&& exec tmux
 
 export ZSH="$HOME/.oh-my-zsh"
-export ZSH_THEME="codespaces"
+export ZSH_THEME="afowler"
 
 # plugins=(git)
 source $ZSH/oh-my-zsh.sh
