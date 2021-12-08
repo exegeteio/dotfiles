@@ -8,6 +8,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
+Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
 
