@@ -46,7 +46,7 @@ configure_zsh () {
   [[ -z "$ZSH" ]] || source $HOME/.zshrc
 
   # Setup Fuzzy Finder
-  [[ -x "$(which fzf)" ]] && $(brew --prefix fzf)/install --all
+  [[ -f "$(which fzf)" ]] && $(brew --prefix fzf)/install --all
 }
 
 configure_vim () {
