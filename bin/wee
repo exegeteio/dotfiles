@@ -1,2 +1,2 @@
 #!/bin/sh
-dr -v $HOME/.weechat:/home/weechat/.weechat wee $*
+dr -v $HOME/.weechat:/home/weechat/.weechat --name weechat wee $*
