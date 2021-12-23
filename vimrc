@@ -9,8 +9,12 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
 Plug 'vim-ruby/vim-ruby'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
+
+" Trying out Dracula.
+colorscheme dracula
 
 " config plugins
 "nnoremap ;o :NERDTreeToggle .<CR>
@@ -24,6 +28,8 @@ nnoremap ;s :shell<CR>
 nnoremap ;n :execute ":!echo %:".line('.')." \| anote"<CR><CR>
 " Add the current highlight to the active tmux notes buffer.
 vnoremap ;n :'<,'>!anote<CR><CR>u
+" Execute current line
+nnoremap ;1 :.!zsh<CR>
 " Write with capital or lowercase w.
 command! W :w
 
