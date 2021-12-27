@@ -41,7 +41,6 @@ configure_zsh () {
   fi
 
   # Custom theme.
-  cp codespaces.zsh-theme $ZSH_CUSTOM/themes/
   backup_and_link .zshrc zshrc
   [[ -z "$ZSH" ]] || source $HOME/.zshrc
 
