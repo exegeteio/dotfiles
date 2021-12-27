@@ -1,2 +1,2 @@
 #!/bin/sh
-evg $(rg --vimgrep -e "(def)\s+(self\.)?$*" | fzf)
+evg $(rg --vimgrep -e "(def)\s+(self\.)?$*" | menu)
