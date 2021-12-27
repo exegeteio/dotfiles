@@ -1,0 +1,10 @@
+#!/bin/sh
+if [[ -x $(which fzf2) ]]; then
+  exec fzf
+else
+  IFS=$'\n' lines=$(</dev/stdin)
+  select sel in $lines; do
+    echo $sel
+    exit
+  done < /dev/tty
+fi

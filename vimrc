@@ -9,12 +9,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
 Plug 'vim-ruby/vim-ruby'
-Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
-
-" Trying out Dracula.
-colorscheme dracula
 
 " config plugins
 "nnoremap ;o :NERDTreeToggle .<CR>
@@ -47,6 +43,8 @@ set textwidth=100
 set formatoptions=qrn1
 set wrapmargin=0
 set colorcolumn=+1
+colorscheme peachpuff
+
 
 " Numbers
 set number
