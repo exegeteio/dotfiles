@@ -58,3 +58,7 @@ set autoindent smartindent
 " Use the system clipboard for yank/paste.
 set clipboard=unnamed
 
+" start at last place you were editing
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+"au BufWritePost ~/.vimrc so ~/.vimrc
+
