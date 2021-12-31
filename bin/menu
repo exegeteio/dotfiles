@@ -1,5 +1,5 @@
 #!/bin/sh
-if [[ -x $(which fzf2) ]]; then
+if [[ -x $(which fzf) ]]; then
   exec fzf
 else
   IFS=$'\n' lines=$(</dev/stdin)
