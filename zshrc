@@ -1,7 +1,7 @@
 # If running interactively, do not do anything.
 [[ $- != *i*  ]] && return
 
-export PATH="$HOME/bin:$HOME/.brew/bin:$HOME/go/bin/:/usr/local/opt/python@3.8/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.brew/bin:$HOME/go/bin:$HOME/.rbenv/bin:/usr/local/opt/python@3.8/bin:$PATH"
 export CDPATH="$CDPATH:$HOME:$HOME/code/:$HOME/code/github/:$HOME/code/github/exegeteio/:$HOME/code/gitlab/:$HOME/Desktop/"
 
 [[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && [[ -z "$VSCODE_PID" ]] && [[ "$TERM_PROGRAM" != "vscode" ]]&& exec tmux
@@ -27,7 +27,7 @@ fi
 export NVM_DIR="$HOME/.nvm"
 # Load NVM is installed anywhere
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
-[ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
+[ -x "$(which brew)" ] && [ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # Personal aliases.
@@ -45,5 +45,6 @@ export DOCKER_BUILDKIT=1
 [[ -z "$PORT" ]] && export PORT=3000
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.asdf/asdf.sh ] && source ~/.asdf/asdf.sh
 [[ -z "$TMUX" ]] || export FZF_TMUX_OPTS="-p 40%"
 

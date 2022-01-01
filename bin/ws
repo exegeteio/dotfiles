@@ -1,0 +1,13 @@
+#!/bin/bash
+image=$(basename $0)
+echo "Starting $image"
+dr --name $image \
+  --hostname $image \
+  --privileged \
+  -v $HOME/code:/home/$(whoami)/code \
+  -v $HOME:/home/$(whoami)/host \
+  -v $HOME/.ssh:/home/$(whoami)/.ssh \
+  -v $SSH_AUTH_SOCK:$SSH_AUTH_SOCK \
+  -v /var/run/docker.sock.raw:/var/run/docker.sock \
+  -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
+  $image

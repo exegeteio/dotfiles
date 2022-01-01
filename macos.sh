@@ -8,7 +8,8 @@ xcode-select --install
 DOTFILES_LOCATION=$(dirname "$0")
 
 brew tap homebrew/cask-fonts
-brew bundle --file=$DOTFILES_LOCATION/Brewfile
+brew bundle --file=$DOTFILES_LOCATION/brewfiles/base
+brew bundle --file=$DOTFILES_LOCATION/brewfiles/macos
 
 # Disable “natural” (Lion-style) scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
