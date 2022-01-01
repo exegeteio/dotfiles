@@ -1,15 +1,13 @@
 #!/bin/bash
-ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
-DOTFILES_LOCATION=`cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd `
+DOTFILES_PATH=`cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd `
 BACKUP_DIR=$HOME/.dotfiles-orig-$(date +%F)
 BASH=$(which bash)
 GIT=$(which git)
 
 set -e
 
-mkdir -p $BACKUP_DIR
 mkdir -p $HOME/.config/
-[[ -d "$HOME/bin/" ]] || ln -s $DOTFILES_LOCATION/bin $HOME/bin
+[[ -d "$HOME/bin/" ]] || ln -s $DOTFILES_PATH/bin $HOME/bin
 
 # Make sure git and bash exist.
 [[ -x "$BASH" ]] || (echo "You must have bash installed to proceed!"; exit 127)
@@ -19,19 +17,6 @@ mkdir -p $HOME/.config/
 
 
 ## Here thar be functions!
-
-## Start with Homebrew:
-configure_brew () {
-  if [ -d "$HOME/.brew/Homebrew" ]; then
-    echo Homebrew already installed.
-  else
-    git clone https://github.com/Homebrew/brew $HOME/.brew/Homebrew
-    ln -s $HOME/.brew/Homebrew/bin $HOME/.brew/bin
-  fi
-  export PATH="$HOME/.brew/bin:$PATH" # Also in zshrc.
-  BREW=$(which brew)
-  [[ -x "$BREW" ]] || (echo "Could not find brew after install!"; exit 1)
-}
 
 configure_zsh () {
   if [ -d "$HOME/.oh-my-zsh" ]; then
@@ -45,13 +30,15 @@ configure_zsh () {
   [[ -z "$ZSH" ]] || source $HOME/.zshrc
 
   # Setup Fuzzy Finder
-  [[ -f "$(which fzf)" ]] && $(brew --prefix fzf)/install --all
+  if [[ -f "$(which brew)" ]] && [[ -f "$(which fzf)" ]]; then
+    $(brew --prefix fzf)/install --all
+  fi
 }
 
 configure_vim () {
   curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   backup_and_link .vimrc vimrc
-  # vim +PlugInstall +qall
+  vim +PlugInstall +qall
 }
 
 configure_aliases () {
@@ -60,15 +47,17 @@ configure_aliases () {
 
 move_file_to_backup () {
   if [[ -f $HOME/$1 ]]; then
+    [ -d $BACKUP_DIR ] || mkdir -p $BACKUP_DIR
     echo "Backing up $HOME/$1 to $BACKUP_DIR"
     mv $HOME/$1 $BACKUP_DIR/
+    rm -f $HOME/$1
   fi
-  rm -f $HOME/$1
 }
 
 backup_and_link () {
   move_file_to_backup $1
-  ln -s $DOTFILES_LOCATION/$2 $HOME/$1
+  echo "Linking $2 to $1"
+  ln -s $DOTFILES_PATH/$2 $HOME/$1
 }
 
 configure_git () {
@@ -82,23 +71,22 @@ function configure_tmux () {
 }
 
 
-## Actually do stuff!
-# configure_git
-
 # case "$OSTYPE" in
 #   darwin*)  $BASH macos.sh ;;
 #   linux*)   $BASH linux.sh ;;
 #   *)        echo "No detailed install for: $OSTYPE" ;;
 # esac
 
-configure_brew
+echo "Configuring ZSH..."
 configure_zsh
+echo "Configuring VIM..."
 configure_vim
+echo "Configuring tmux..."
 configure_tmux
+echo "Configuring Aliases..."
 configure_aliases
+echo "Configuring git..."
 configure_git
-
-source $HOME/.zshrc
 
 # Cleanup:
 unset backup_and_link

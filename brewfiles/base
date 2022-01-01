@@ -1,0 +1,11 @@
+# frozen_string_literal: true
+
+tap 'homebrew/cask'
+
+brew 'fzf'
+brew 'gh'
+brew 'httpie'
+brew 'nvm'
+brew 'rbenv'
+brew 'ripgrep'
+brew 'tmux'

@@ -52,4 +52,3 @@ fi
 
 docker run --rm hello-world
 
-[[ -x "$(which brew)" ]] && brew bundle --file=Brewfile

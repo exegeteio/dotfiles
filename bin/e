@@ -5,6 +5,8 @@ elif [[ -n $TMUX ]]; then
   vim $*
 elif [[ -n $SSH_CONNECTION ]]; then
   vim $*
+elif [[ -n $DOCKER ]]; then
+  vim $*
 else
   code $*
 fi
