@@ -11,6 +11,10 @@ export ZSH_THEME="afowler"
 
 # plugins=(git)
 source $ZSH/oh-my-zsh.sh
+# autoload -Uz compinit promptinit
+# compinit
+# promptinit
+# prompt afowler
 
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
@@ -35,7 +39,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Alias for my local journal.
 export JOURNAL_PATH="$HOME/Desktop/journal/"
-export NOTES_PATH="$HOME/code/exegete.io/_posts"
+export NOTES_PATH="$HOME/code/github/exegeteio/exegete.io/_posts"
 compdef "_files -W $NOTES_PATH" n
 
 # Prettier Docker commands, parallel builds.

@@ -35,6 +35,16 @@ configure_zsh () {
   fi
 }
 
+configure_bash () {
+  backup_and_link .bashrc bashrc
+  backup_and_link .git-ps1 git-ps1.sh
+
+  # Setup Fuzzy Finder
+  if [[ -f "$(which brew)" ]] && [[ -f "$(which fzf)" ]]; then
+    $(brew --prefix fzf)/install --all
+  fi
+}
+
 configure_vim () {
   curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   backup_and_link .vimrc vimrc
@@ -79,6 +89,8 @@ function configure_tmux () {
 
 echo "Configuring ZSH..."
 configure_zsh
+echo "Configuring Bash..."
+configure_bash
 echo "Configuring VIM..."
 configure_vim
 echo "Configuring tmux..."
@@ -94,4 +106,5 @@ unset configure_git
 unset configure_tmux
 unset configure_vim
 unset configure_zsh
+unset configure_bash
 unset move_file_to_backup

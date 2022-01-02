@@ -17,11 +17,11 @@ if [ -d "$HOME/.ssh" ]; then
 fi
 
 # Preferred editor for local and remote sessions
-if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+if [ "$TERM_PROGRAM" = "vscode" ]; then
   export EDITOR='code -wr'
-elif [[ -n $TMUX ]]; then
+elif [ -n $TMUX ]; then
   export EDITOR='vim'
-elif [[ -n $SSH_CONNECTION ]]; then
+elif [ -n $SSH_CONNECTION ]; then
   export EDITOR='vim'
 else
   export EDITOR='code -wr'
@@ -30,14 +30,13 @@ fi
 # Applies aliases file when it exists
 cd() {
   builtin cd $*
-  if [ -f "aliases" ]
-  then
-    . ./aliases
+  if [ -f "aliases" ]; then
+    source ./aliases
     echo "Applied aliases file"
   fi
 }
 
-[[ ! -f "./aliases" ]] || source ./aliases
+[ ! -f "./aliases" ] || source ./aliases
 
 alias a="source ./aliases"
 alias ll="ls -lh"
@@ -46,10 +45,8 @@ alias gf="git fetch --all -p"
 # Alias for checking out potential phishing links.
 alias phish="http --follow -p hH"
 
-cht() { http --body "https://cht.sh/$*" | less }
-w() { for (( ; ; )) do clear; $*; sleep 1; done }
-wiki() { lynx "https://en.m.wikipedia.org/w/index.php?search=$*" }
+w() { for (( ; ; )) do clear; $*; sleep 1; done; }
 
 alias '?'=duck
 alias '??'=google
-alias 'r'=bin/rails
+alias r=bin/rails
