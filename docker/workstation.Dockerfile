@@ -34,9 +34,9 @@ COPY docker/workstation /tmp/scripts
 RUN /tmp/scripts/compose.sh
 RUN /tmp/scripts/asdf.sh
 
-COPY --chown=${HOST_USER}:root ./ /home/${HOST_USER}/dotfiles
+COPY --chown=${HOST_USER}:root ./ /home/${HOST_USER}/.dotfiles
 COPY --chown=${HOST_USER}:root docker/workstation/entry.sh /entry.sh
-WORKDIR /home/${HOST_USER}/dotfiles
+WORKDIR /home/${HOST_USER}/.dotfiles
 RUN /usr/bin/zsh ./install.sh
 
 WORKDIR /home/${HOST_USER}
