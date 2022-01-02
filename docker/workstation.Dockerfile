@@ -7,8 +7,11 @@ RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -qqy --no-install-recommends \
         build-essential \
         git \
+        less \
         libssl-dev \
+        ripgrep \
         ruby-build \
+        ruby \
         ssh-client \
         sudo \
         tmux \
