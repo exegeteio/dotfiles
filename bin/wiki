@@ -1,0 +1,3 @@
+#!/bin/bash
+url="https://en.m.wikipedia.org/w/index.php?search=$(urlencode $*)"
+exec lynx "$url"
