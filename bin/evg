@@ -1,13 +1,12 @@
-#!/bin/bash
-IFS=':' read -ra parts <<< "$*"
-file="${parts[0]}"
-line="${parts[1]}"
-pos="${parts[2]}"
-echo "Editing $file:$line:$pos"
-if [[ $EDITOR == vi* ]]; then
-    e +$line $file
-elif [[ $EDITOR == code* ]]; then
-    e -g $file:$line:$pos
-else
-    e $file
-fi
+#!/usr/bin/env ruby
+
+ARGV.each do |arg|
+    puts "Editing #{arg}}..."
+    if ENV['EDITOR'].match(/^vi/)
+        (file, line, pos) = arg.split(':')
+        system("vim +#{line} #{file}")
+    else
+        # VS Code can take the original output..
+        system("code -g #{arg}")
+    end
+end
