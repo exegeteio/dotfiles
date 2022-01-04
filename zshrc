@@ -52,6 +52,8 @@ compdef "_files -W $NOTES_PATH" n
 
 # Prettier Docker commands, parallel builds.
 export DOCKER_BUILDKIT=1
+# Allow connect back to rails from inside Docker.
+export RAILS_DEVELOPMENT_HOSTS=host.docker.internal,localhost,.ngrok.io
 
 # Only set the port if not already set.  Good for devcontainers.
 [[ -z "$PORT" ]] && export PORT=3000
