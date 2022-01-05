@@ -28,6 +28,8 @@ vnoremap ;n :'<,'>!anote<CR><CR>u
 nnoremap ;1 :.!zsh<CR>
 " Write with capital or lowercase w.
 command! W :w
+" Get current branch from git.
+nnoremap ;g :execute 'norm i' . system("git branch --show-current")<CR>
 
 " Soft tabs
 set tabstop=2
