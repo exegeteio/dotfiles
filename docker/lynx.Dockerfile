@@ -1,4 +1,4 @@
 FROM alpine
 RUN apk add --no-cache lynx
-COPY ./lynx /etc
+COPY ./docker/lynx /etc
 ENTRYPOINT ["lynx"]

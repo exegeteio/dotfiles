@@ -24,7 +24,7 @@ RUN /tmp/docker.sh
 # MacOS home dir compatability.
 RUN ln -s /home /Users
 # Setup local user.
-RUN useradd -m -s /usr/bin/zsh -u ${UID} -g root ${HOST_USER}
+RUN useradd -d /workstation -m -s /usr/bin/zsh -u ${UID} -g root ${HOST_USER}
 RUN echo "${HOST_USER} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${HOST_USER} \
     && chmod 0440 /etc/sudoers.d/${HOST_USER}
 USER ${HOST_USER}
@@ -34,12 +34,12 @@ COPY docker/workstation /tmp/scripts
 RUN /tmp/scripts/compose.sh
 RUN /tmp/scripts/asdf.sh
 
-COPY --chown=${HOST_USER}:root ./ /home/${HOST_USER}/.dotfiles
+COPY --chown=${HOST_USER}:root ./ /workstation/.dotfiles
 COPY --chown=${HOST_USER}:root docker/workstation/entry.sh /entry.sh
-WORKDIR /home/${HOST_USER}/.dotfiles
+WORKDIR /workstation/.dotfiles
 RUN /usr/bin/zsh ./install.sh
 
-WORKDIR /home/${HOST_USER}
+WORKDIR /workstation
 
 ENTRYPOINT ["/entry.sh"]
 CMD ["/usr/bin/zsh"]

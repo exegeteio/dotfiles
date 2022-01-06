@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e # Stop on error.
+CMD="docker build -q --pull --build-arg=HOST_USER=$(whoami) --build-arg=HOST_HOME=$HOME"
+for df in *.Dockerfile; do
+  IFS='.' read -ra fparts <<< "$df"
+  echo "Building ${fparts[0]}..."
+  # Notice ../ so we can bring in any config from this dir.
+  $CMD --tag=${fparts[0]} -f $df ../ > /dev/null
+done
