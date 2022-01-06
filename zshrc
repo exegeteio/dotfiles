@@ -11,43 +11,57 @@ export CDPATH="$CDPATH:$HOME:$HOME/code/:$HOME/code/github/:$HOME/code/github/ex
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_THEME="afowler"
 
-# [[ -z "$DEBUG" ]] || echo "Loading omzsh"
-# plugins=(git)
+[[ -z "$DEBUG" ]] || echo "Loading omzsh"
+# plugins=(git gh ruby)
 source $ZSH/oh-my-zsh.sh
+# Non-omzsh prompt info.
 # autoload -Uz compinit promptinit
 # compinit
 # promptinit
-# prompt afowler
+# prompt default
 
 [[ -z "$DEBUG" ]] || echo "Setting FPATH"
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
-
-# Required for completions
-fpath=($HOME/.zsh-completions $fpath)
-autoload -U compinit && compinit
-
+#
+# # Required for completions
+# fpath=($HOME/.zsh-completions $fpath)
+# autoload -U compinit && compinit
+#
 # [[ -z "$DEBUG" ]] || echo "Kubectl completion"
 # [[ ! -f "$(which kubectl)" ]] || source <(kubectl completion zsh)
 [[ -z "$DEBUG" ]] || echo "Initializing rbenv"
-[[ ! -f "$(which rbenv)" ]] || eval "$(rbenv init -)"
-[[ -z "$DEBUG" ]] || echo "Github CLI completion"
-[[ ! -f "$(which gh)" ]] || eval "$(gh completion --shell=zsh)"
+alias rbenv="unalias rbenv; eval \"\$(rbenv init -)\"; rbenv"
+# [[ -z "$DEBUG" ]] || echo "Github CLI completion"
+# [[ ! -f "$(which gh)" ]] || eval "$(gh completion --shell=zsh)"
 
 # NVM for managing versions of Node on the system.
 export NVM_DIR="$HOME/.nvm"
 # Load NVM is installed anywhere
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
-[ -x "$(which brew)" ] && [ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+_nvm_init() {
+  if [ -s "$NVM_DIR/nvm.sh" ]; then
+    echo "$NVM_DIR/nvm.sh"
+    return
+  fi
+  if [ -s "/usr/local/opt/nvm/nvm.sh" ]; then
+    echo "/usr/local/opt/nvm/nvm.sh"
+    return
+  fi
+  if [ -x "$(which brew)" ] && [ -s "$(brew --prefix nvm)/nvm.sh" ]; then
+    echo "$(brew --prefix nvm)/nvm.sh"
+    return
+  fi
+}
+alias nvm="unalias nvm; source $(_nvm_init) ; nvm"
 
 # Personal aliases.
 [[ ! -f "$HOME/.aliases" ]] || source $HOME/.aliases
 
 # Alias for my local journal.
 export JOURNAL_PATH="$HOME/Desktop/journal/"
-export NOTES_PATH="$HOME/code/github/exegeteio/exegete.io/_posts"
+# Allows overriding with ~/.zshenv
+[ -z "$NOTES_PATH" ] && export NOTES_PATH="$HOME/code/github/exegeteio/exegete.io/_posts"
 compdef "_files -W $NOTES_PATH" n
 
 # Prettier Docker commands, parallel builds.
@@ -60,9 +74,8 @@ export RAILS_DEVELOPMENT_HOSTS=host.docker.internal,localhost,.ngrok.io
 
 [[ -z "$DEBUG" ]] || echo "Loading fzf"
 [ -f ~/.fzf.zsh ] && export FZF=$(which fzf) && source ~/.fzf.zsh
-[ -f ~/.asdf/asdf.sh ] && source ~/.asdf/asdf.sh
-
 [[ -z "$TMUX" ]] || export FZF_TMUX_OPTS="-p 40%"
+[ -f ~/.asdf/asdf.sh ] && source ~/.asdf/asdf.sh
 
 #########
 # vi mode
