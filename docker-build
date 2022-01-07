@@ -1,8 +1,0 @@
-#!/bin/sh
-CMD="docker build -q --pull --build-arg=HOST_USER=$(whoami) --build-arg=HOST_HOME=$HOME"
-$CMD --tag=wee -f docker/weechat.Dockerfile ./docker/
-$CMD --tag=lynx -f docker/lynx.Dockerfile ./docker/
-$CMD --tag=speedtest -f docker/speedtest.Dockerfile ./docker/
-$CMD --tag=golang -f docker/golang.Dockerfile ./docker/
-$CMD --tag=golang -f docker/golang.Dockerfile ./docker/
-$CMD --tag=workstation --build-arg=UID=$(id -u) -f docker/workstation.Dockerfile ./

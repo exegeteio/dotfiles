@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+
+cd $NOTES_PATH
+git checkout main
+git pull
+git merge drafts
+git push
+git checkout drafts
+git rebase main
+cd - >/dev/null

@@ -6,6 +6,8 @@ GIT=$(which git)
 
 set -e
 
+./build
+
 mkdir -p $HOME/.config/
 [[ -d "$HOME/bin/" ]] || ln -s $DOTFILES_PATH/bin $HOME/bin
 
