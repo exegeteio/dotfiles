@@ -97,6 +97,7 @@ export KEYTIMEOUT=1
 bindkey "^F" history-incremental-search-forward
 bindkey "^R" history-incremental-search-backward
 [ -z "$FZF" ] || bindkey "^R" fzf-history-widget
+[ -z "$FZF" ] || bindkey "^T" fzf-file-widget
 
 # beginning search with arrow keys and j/k
 bindkey "^[OA" up-line-or-beginning-search
@@ -117,6 +118,7 @@ bindkey -M vicmd '/' history-incremental-search-forward
 bindkey -M viins '^R' history-incremental-pattern-search-backward
 bindkey -M viins '^F' history-incremental-pattern-search-forward
 [ -z "$FZF" ] || bindkey -M viins "^R" fzf-history-widget
+[ -z "$FZF" ] || bindkey -M viins "^t" fzf-file-widget
 
 # Setup Golang
 export GOPATH=$HOME/code/go
