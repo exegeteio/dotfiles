@@ -1,3 +1,4 @@
+#!/bin/bash
 # If running interactively, do not do anything.
 [[ -z "$DEBUG" ]] || echo "Checking interactive"
 [[ $- != *i*  ]] && return
@@ -13,7 +14,7 @@ export ZSH_THEME="afowler"
 
 [[ -z "$DEBUG" ]] || echo "Loading omzsh"
 # plugins=(git gh ruby)
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 # Non-omzsh prompt info.
 # autoload -Uz compinit promptinit
 # compinit
@@ -53,15 +54,15 @@ _nvm_init() {
     return
   fi
 }
-alias nvm="unalias nvm; source $(_nvm_init) ; nvm"
+alias nvm="unalias nvm; source \$(_nvm_init) ; nvm"
 
 # Personal aliases.
-[[ ! -f "$HOME/.aliases" ]] || source $HOME/.aliases
+[[ ! -f "$HOME/.aliases" ]] || source "$HOME/.aliases"
 
 # Alias for my local journal.
 export JOURNAL_PATH="$HOME/icloud/journal/"
 # Allows overriding with ~/.zshenv
-[ -z "$NOTES_PATH" ] && export NOTES_PATH="$HOME/code/github/exegeteio/exegete.io/_posts"
+[[ -z "$NOTES_PATH" ]] && export NOTES_PATH="$HOME/code/github/exegeteio/exegete.io/_posts"
 compdef "_files -W $NOTES_PATH" n
 
 # Prettier Docker commands, parallel builds.
@@ -73,9 +74,13 @@ export RAILS_DEVELOPMENT_HOSTS=host.docker.internal,localhost,.ngrok.io
 [[ -z "$PORT" ]] && export PORT=3000
 
 [[ -z "$DEBUG" ]] || echo "Loading fzf"
-[ -f ~/.fzf.zsh ] && export FZF=$(which fzf) && source ~/.fzf.zsh
+if [[ -f ~/.fzf.zsh ]]; then
+  FZF="$(which fzf)"
+  source "$HOME/.fzf.zsh"
+fi
+export FZF
 [[ -z "$TMUX" ]] || export FZF_TMUX_OPTS="-p 40%"
-[ -f ~/.asdf/asdf.sh ] && source ~/.asdf/asdf.sh
+[[ -f ~/.asdf/asdf.sh ]] && source "$HOME/.asdf/asdf.sh"
 
 #########
 # vi mode
@@ -96,8 +101,6 @@ export KEYTIMEOUT=1
 # incremental search in insert mode
 bindkey "^F" history-incremental-search-forward
 bindkey "^R" history-incremental-search-backward
-[ -z "$FZF" ] || bindkey "^R" fzf-history-widget
-[ -z "$FZF" ] || bindkey "^T" fzf-file-widget
 
 # beginning search with arrow keys and j/k
 bindkey "^[OA" up-line-or-beginning-search
@@ -112,13 +115,18 @@ bindkey "^N" history-search-forward
 
 # incremental search in vi command mode
 bindkey -M vicmd '?' history-incremental-search-backward
-[ -z "$FZF" ] || bindkey -M vicmd '?' fzf-history-widget
 bindkey -M vicmd '/' history-incremental-search-forward
 # navigate matches in incremental search
 bindkey -M viins '^R' history-incremental-pattern-search-backward
 bindkey -M viins '^F' history-incremental-pattern-search-forward
-[ -z "$FZF" ] || bindkey -M viins "^R" fzf-history-widget
-[ -z "$FZF" ] || bindkey -M viins "^t" fzf-file-widget
+
+if [[ -z "$FZF" ]]; then
+  bindkey "^R" fzf-history-widget
+  bindkey "^T" fzf-file-widget
+  bindkey -M vicmd '?' fzf-history-widget
+  bindkey -M viins "^R" fzf-history-widget
+  bindkey -M viins "^t" fzf-file-widget
+fi
 
 # Setup Golang
 export GOPATH=$HOME/code/go

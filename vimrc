@@ -43,6 +43,7 @@ autocmd BufRead,BufNewFile $JOURNAL_PATH* setlocal path+=$JOURNAL_PATH/**
 autocmd BufRead,BufNewFile $NOTES_PATH* setlocal path+=$NOTES_PATH/**
 set suffixesadd+=.md
 nnoremap ;t gf
+nnoremap ;f :!find . -iname \*<cword>\* \| menu<CR>
 nnoremap ;g :silent execute "grep! " . shellescape(expand("<cword>"))<CR>:copen<CR>
 
 " Soft tabs
