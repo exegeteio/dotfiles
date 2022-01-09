@@ -1,11 +1,19 @@
-# frozen_string_literal: true
-
-tap 'homebrew/cask'
-
-brew 'fzf'
-brew 'gh'
-brew 'httpie'
-brew 'nvm'
-brew 'rbenv'
-brew 'ripgrep'
-brew 'tmux'
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+tap "homebrew/services"
+brew "bash"
+brew "fzf"
+brew "gh"
+brew "git"
+brew "gnu-sed"
+brew "httpie"
+brew "nvm"
+brew "rbenv"
+brew "ripgrep"
+brew "ruby"
+brew "shellcheck"
+brew "tmux"
+brew "tree"
+brew "watch"
+brew "wget"
