@@ -1,15 +1,15 @@
 #!/bin/bash
-DOTFILES_PATH=`cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd `
-BACKUP_DIR=$HOME/.dotfiles-orig-$(date +%F)
-BASH=$(which bash)
-GIT=$(which git)
+DOTFILES_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)"
+BACKUP_DIR="$HOME/.dotfiles-orig-$(date +%F)"
+BASH="$(which bash)"
+GIT="$(which git)"
 
 set -e
 
 ./build
 
-mkdir -p $HOME/.config/
-[[ -d "$HOME/bin/" ]] || ln -s $DOTFILES_PATH/bin $HOME/bin
+mkdir -p "$HOME/.config/"
+[[ -d "$HOME/bin/" ]] || ln -s "$DOTFILES_PATH/bin" "$HOME/bin"
 
 # Make sure git and bash exist.
 [[ -x "$BASH" ]] || (echo "You must have bash installed to proceed!"; exit 127)
@@ -29,11 +29,10 @@ configure_zsh () {
 
   # Custom theme.
   backup_and_link .zshrc zshrc
-  [[ -z "$ZSH" ]] || source $HOME/.zshrc
 
   # Setup Fuzzy Finder
   if [[ -f "$(which brew)" ]] && [[ -f "$(which fzf)" ]]; then
-    $(brew --prefix fzf)/install --all
+    "$(brew --prefix fzf)"/install --all
   fi
 }
 
@@ -43,12 +42,12 @@ configure_bash () {
 
   # Setup Fuzzy Finder
   if [[ -f "$(which brew)" ]] && [[ -f "$(which fzf)" ]]; then
-    $(brew --prefix fzf)/install --all
+    "$(brew --prefix fzf)"/install --all
   fi
 }
 
 configure_vim () {
-  curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   backup_and_link .vimrc vimrc
   vim +PlugInstall +qall
 }
@@ -58,18 +57,18 @@ configure_aliases () {
 }
 
 move_file_to_backup () {
-  if [[ -f $HOME/$1 ]]; then
-    [ -d $BACKUP_DIR ] || mkdir -p $BACKUP_DIR
+  if [[ -f "$HOME/$1" ]]; then
+    [ -d "$BACKUP_DIR" ] || mkdir -p "$BACKUP_DIR"
     echo "Backing up $HOME/$1 to $BACKUP_DIR"
-    mv $HOME/$1 $BACKUP_DIR/
-    rm -f $HOME/$1
+    mv "$HOME/$1" "$BACKUP_DIR/"
+    rm -f "$HOME/$1"
   fi
 }
 
 backup_and_link () {
-  move_file_to_backup $1
+  move_file_to_backup "$1"
   echo "Linking $2 to $1"
-  ln -s $DOTFILES_PATH/$2 $HOME/$1
+  ln -s "$DOTFILES_PATH/$2" "$HOME/$1"
 }
 
 configure_git () {
