@@ -21,15 +21,29 @@ call plug#end()
 
 nnoremap ;s :shell<CR>
 " Add the current filename and line number to the active tmux notes buffer.
-nnoremap ;n :execute ":!echo %:".line('.')." \| anote"<CR><CR>
+nnoremap ;n :silent execute ":!echo %:".line('.')." \| anote"<CR>
 " Add the current highlight to the active tmux notes buffer.
-vnoremap ;n :'<,'>!anote<CR><CR>u
+vnoremap ;n :'<,'>!anote<CR>u
 " Execute current line
 nnoremap ;1 :.!zsh<CR>
 " Write with capital or lowercase w.
 command! W :w
+command! Wq :wq
 " Get current branch from git.
-nnoremap ;g :execute 'norm i' . system("git branch --show-current")<CR>
+nnoremap ;b :execute 'norm i' . system("git branch --show-current")<CR>
+" Reload vimrc.
+nnoremap ;rr :so ~/.vimrc<CR>
+
+" Second Brain
+if executable('gg')
+  set grepprg=rg\ --vimgrep\ -i
+endif
+autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+autocmd BufRead,BufNewFile $JOURNAL_PATH* setlocal path+=$JOURNAL_PATH/**
+autocmd BufRead,BufNewFile $NOTES_PATH* setlocal path+=$NOTES_PATH/**
+set suffixesadd+=.md
+nnoremap ;t gf
+nnoremap ;g :silent execute "grep! " . shellescape(expand("<cword>"))<CR>:copen<CR>
 
 " Soft tabs
 set tabstop=2
@@ -62,5 +76,4 @@ set clipboard=unnamed
 
 " start at last place you were editing
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"au BufWritePost ~/.vimrc so ~/.vimrc
 

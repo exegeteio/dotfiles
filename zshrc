@@ -59,7 +59,7 @@ alias nvm="unalias nvm; source $(_nvm_init) ; nvm"
 [[ ! -f "$HOME/.aliases" ]] || source $HOME/.aliases
 
 # Alias for my local journal.
-export JOURNAL_PATH="$HOME/Desktop/journal/"
+export JOURNAL_PATH="$HOME/icloud/journal/"
 # Allows overriding with ~/.zshenv
 [ -z "$NOTES_PATH" ] && export NOTES_PATH="$HOME/code/github/exegeteio/exegete.io/_posts"
 compdef "_files -W $NOTES_PATH" n
