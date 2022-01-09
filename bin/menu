@@ -1,10 +1,15 @@
-#!/bin/bash
-if [[ -x $(which fzf) ]]; then
-  exec fzf
+#!/usr/bin/env bash
+if [[ -x "$(which fzf)" ]]; then
+  exec fzf -1
 else
-  IFS=$'\n' lines=$(</dev/stdin)
-  select sel in $lines; do
-    echo $sel
-    exit
-  done < /dev/tty
+  lines="$(</dev/stdin)"
+  readarray -t parts <<< $lines
+  if [ "${#parts[@]}" == "1" ]; then
+    echo ${parts[0]}
+  else
+    select sel in $lines; do
+      echo $sel
+      exit
+    done < /dev/tty
+  fi
 fi
