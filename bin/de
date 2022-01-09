@@ -1,2 +1,2 @@
-#!/bin/sh
+#!/bin/bash
 evg "$(rg --vimgrep -e "(def)\s+(self\.)?$*" | menu)"

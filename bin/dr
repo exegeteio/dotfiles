@@ -1,2 +1,2 @@
-#!/bin/sh
-exec docker run --rm -it $*
+#!/bin/bash
+exec docker run --rm -it "$@"

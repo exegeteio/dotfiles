@@ -1,5 +1,5 @@
-#!/bin/sh
+#!/bin/bash
 while IFS= read -r str; do
-  tmux send-keys -t $(cat ~/.notes_pane) "$str" Enter
+  tmux send-keys -t "$(cat ~/.notes_pane)" "$str" Enter
 done
 

@@ -1,4 +1,4 @@
-#!/bin/sh
-needle=$1
+#!/bin/bash
+needle="$1"
 shift 1
-rg -pe "(def)\s+(self\.)?$needle" $*
+rg -pe "(def)\s+(self\.)?$needle" "$@"

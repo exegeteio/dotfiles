@@ -1,2 +1,2 @@
 #!/bin/bash
-dr -v $HOME:$HOME -p 3000:3000 golang
+dr -v "$HOME:$HOME" -p 3000:3000 golang

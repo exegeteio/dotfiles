@@ -1,2 +1,2 @@
-#!/bin/sh
-exec docker-compose $@
+#!/bin/bash
+exec docker-compose "$@"

@@ -1,2 +1,2 @@
-#!/bin/sh
-git grep $*
+#!/bin/bash
+git grep "$@"

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Stolen from rwxrob:  github.com/rwxrob/dot
 
 buf="$*"

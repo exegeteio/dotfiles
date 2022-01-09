@@ -1,3 +1,3 @@
-#!/bin/sh
+#!/bin/bash
 url="https://lite.duckduckgo.com/lite/?q=$(urlencode "$*")"
 exec lynx "$url"

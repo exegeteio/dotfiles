@@ -1,2 +1,2 @@
-#!/bin/sh
-bundle exec rspec --fail-fast --profile 5 $*
+#!/bin/bash
+bundle exec rspec --fail-fast --profile 5 "$@"

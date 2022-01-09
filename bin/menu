@@ -3,12 +3,12 @@ if [[ -x "$(which fzf)" ]]; then
   exec fzf -1
 else
   lines="$(</dev/stdin)"
-  readarray -t parts <<< $lines
-  if [ "${#parts[@]}" == "1" ]; then
-    echo ${parts[0]}
+  readarray -t parts <<< "$lines"
+  if [[ "${#parts[@]}" == "1" ]]; then
+    echo "${parts[0]}"
   else
     select sel in $lines; do
-      echo $sel
+      echo "$sel"
       exit
     done < /dev/tty
   fi

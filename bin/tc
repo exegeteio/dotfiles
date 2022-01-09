@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Just clear the terminal.
 if [ -z "$TMUX" ]; then
   clear

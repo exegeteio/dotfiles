@@ -1,2 +1,2 @@
 #!/bin/bash
-http --body https://cht.sh/$(urlencode $*) | less
+http --body "https://cht.sh/$(urlencode "$*")" | less
