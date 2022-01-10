@@ -5,13 +5,15 @@ test -n "$1" && subject="$1"
 [[ -d $NOTES_PATH ]] || mkdir -p "$NOTES_PATH"
 cd "$NOTES_PATH" || exit
 
-existing="$(find . -iname "*${subject}*.md" | menu)"
-if [ -f "$existing" ]; then
-	subject=$existing
-else
-	subject="$subject.md"
-	test -n "$2" && group="$2/"
-	[[ -d "$group" ]] || mkdir "$group"
+if [[ ! -f "$NOTES_PATH/$subject" ]]; then
+	existing="$(find . -iname "*${subject}*.md" | menu)"
+	if [ -f "$existing" ]; then
+		subject=$existing
+	else
+		subject="$subject.md"
+		test -n "$2" && group="$2/"
+		[[ -d "$group" ]] || mkdir "$group"
+	fi
 fi
 
 # Allow direction of commands to notes.
