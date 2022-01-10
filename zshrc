@@ -32,8 +32,6 @@ fi
 #
 # [[ -z "$DEBUG" ]] || echo "Kubectl completion"
 # [[ ! -f "$(which kubectl)" ]] || source <(kubectl completion zsh)
-[[ -z "$DEBUG" ]] || echo "Initializing rbenv"
-alias rbenv="unalias rbenv; eval \"\$(rbenv init -)\"; rbenv"
 # [[ -z "$DEBUG" ]] || echo "Github CLI completion"
 # [[ ! -f "$(which gh)" ]] || eval "$(gh completion --shell=zsh)"
 

@@ -23,12 +23,22 @@ else
   export EDITOR='code -wr'
 fi
 
+[[ -z "$DEBUG" ]] || echo "Initializing rbenv"
+alias rbenv="unalias rbenv; eval \"\$(rbenv init -)\"; rbenv"
+
 # Applies aliases file when it exists
 cd() {
   builtin cd $*
   if [ -f "aliases" ]; then
     source ./aliases
     echo "Applied aliases file"
+  fi
+  if [ -z "$RBENV_SHELL" ]; then
+    if [ -f ".ruby-version" ] || [ -f ".ruby-gemset" ]; then
+      unalias rbenv 2>/dev/null
+      eval "$(rbenv init -)"
+      cd .
+    fi
   fi
 }
 
