@@ -36,8 +36,8 @@ alias nvm="unalias nvm; source \$(_nvm_init) ; nvm"
 [[ ! -f "$HOME/.aliases" ]] || source "$HOME/.aliases"
 
 # Alias for my local journal.
-export JOURNAL_PATH="$HOME/icloud/journal/"
-export NOTES_PATH="$HOME/code/github/exegeteio/exegete.io/_posts"
+export NOTES_PATH="$HOME/icloud/vnotes/"
+export BLOG_PATH="$HOME/code/github/exegeteio/exegete.io/_posts"
 # compdef "_files -W $NOTES_PATH" n
 
 # Prettier Docker commands, parallel builds.

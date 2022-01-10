@@ -1,44 +1,30 @@
 #!/bin/bash
 
-# Check if the notes exist
-[[ -d "$NOTES_PATH" ]] || (echo "Notes not found at:  $NOTES_PATH" ; exit 1)
+test -n "$1" && subject="$1"
 
-# Skip collection if the file exists.
-if [[ -f "$NOTES_PATH/$1" ]]; then
-	FILE=$1
-else
-	# Pull Subject from CLI.
-	test -n "$*" && SUBJECT="$*"
-	# Read the subject
-	test -n "$*" || read -rp "Note title: " SUBJECT
-	# Format as slug.
-	SLUG="$(echo "$SUBJECT" | sed -r s/[^a-zA-Z0-9]+/-/g | tr "[:upper:]" "[:lower:]")"
-	# Get file name.
-	FILE="$(date +%Y-%m-%d)-$SLUG.md"
-fi
-# Jump into our Notes repo.
+[[ -d $NOTES_PATH ]] || mkdir -p "$NOTES_PATH"
 cd "$NOTES_PATH" || exit
-# Git pull, but do it in the background.
-git pull -q &
 
-# If file doesn't exist, create it with my template.
-TEMPL="---
-layout: default
-title: $SUBJECT
-tags:
-  - todo
----
+existing="$(find . -iname "*${subject}*.md" | menu)"
+if [ -f "$existing" ]; then
+	subject=$existing
+else
+	subject="$subject.md"
+	test -n "$2" && group="$2/"
+	[[ -d "$group" ]] || mkdir "$group"
+fi
 
-Have fun writing about $SUBJECT!"
-[[ -f "$FILE" ]] || echo "$TEMPL" >> "$FILE"
+# Allow direction of commands to notes.
 if [[ -n "$TMUX" ]]; then
 	tmux run "echo #{pane_id}" > ~/.notes_pane
 	basename "$FILE" > ~/.notes_pane.title
 fi
-# Alias for edit and commit.
-editor-and-commit "$FILE"
+
+vi "$group$subject"
+
+# Cleanup redirection notes.
 [[ -z "$TMUX" ]] || rm -f ~/.notes_pane*
-# Push it real good! /snp
-git push -q
-# Change back to the previous directory.
+
+git add "$group$subject" \
+	&& git commit -qnm "$subject - $(date +%F)"
 cd - 1>/dev/null || exit

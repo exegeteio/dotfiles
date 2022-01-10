@@ -39,8 +39,8 @@ if executable('gg')
   set grepprg=rg\ --vimgrep\ -i
 endif
 autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
-autocmd BufRead,BufNewFile $JOURNAL_PATH* setlocal path+=$JOURNAL_PATH/**
 autocmd BufRead,BufNewFile $NOTES_PATH* setlocal path+=$NOTES_PATH/**
+autocmd BufRead,BufNewFile $BLOG_PATH* setlocal path+=$BLOG_PATH/**
 set suffixesadd+=.md
 nnoremap ;t gf
 nnoremap ;f :!find . -iname \*<cword>\* \| menu<CR>

@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Check if the Blog exist
+[[ -d "$BLOG_PATH" ]] || (echo "Blog not found at:  $BLOG_PATH" ; exit 1)
+
+# Skip collection if the file exists.
+if [[ -f "$BLOG_PATH/$1" ]]; then
+	FILE=$1
+else
+	# Pull Subject from CLI.
+	test -n "$*" && SUBJECT="$*"
+	# Read the subject
+	test -n "$*" || read -rp "Blog title: " SUBJECT
+	# Format as slug.
+	SLUG="$(echo "$SUBJECT" | sed -r s/[^a-zA-Z0-9]+/-/g | tr "[:upper:]" "[:lower:]")"
+	# Get file name.
+	FILE="$(date +%Y-%m-%d)-$SLUG.md"
+fi
+# Jump into our Blog repo.
+cd "$BLOG_PATH" || exit
+# Git pull, but do it in the background.
+git pull -q &
+
+# If file doesn't exist, create it with my template.
+TEMPL="---
+layout: default
+title: $SUBJECT
+tags:
+  - todo
+---
+
+Have fun writing about $SUBJECT!"
+[[ -f "$FILE" ]] || echo "$TEMPL" >> "$FILE"
+# Alias for edit and commit.
+editor-and-commit "$FILE"
+# Push it real good! /snp
+git push -q
+# Change back to the previous directory.
+cd - 1>/dev/null || exit

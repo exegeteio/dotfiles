@@ -2,7 +2,7 @@
 set -e
 
 (
-  cd "$NOTES_PATH"
+  cd "$BLOG_PATH"
   git checkout main
   git pull
   git merge drafts

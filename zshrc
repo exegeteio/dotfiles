@@ -57,11 +57,12 @@ alias nvm="unalias nvm; source \$(_nvm_init) ; nvm"
 # Personal aliases.
 [[ ! -f "$HOME/.aliases" ]] || source "$HOME/.aliases"
 
-# Alias for my local journal.
-export JOURNAL_PATH="$HOME/icloud/journal/"
 # Allows overriding with ~/.zshenv
-[[ -z "$NOTES_PATH" ]] && export NOTES_PATH="$HOME/code/github/exegeteio/exegete.io/_posts"
+[[ -z "$NOTES_PATH" ]] && export NOTES_PATH="$HOME/icloud/vnotes/"
 compdef "_files -W $NOTES_PATH" n
+# Allows overriding with ~/.zshenv
+[[ -z "$BLOG_PATH" ]] && export BLOG_PATH="$HOME/code/github/exegeteio/exegete.io/_posts"
+compdef "_files -W $BLOG_PATH" b
 
 # Prettier Docker commands, parallel builds.
 export DOCKER_BUILDKIT=1
