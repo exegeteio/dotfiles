@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 if [[ -x "$(which fzf)" ]]; then
-  exec fzf -0 -1
+  exec fzf -0 -1 -m
 else
   lines="$(</dev/stdin)"
   readarray -t parts <<< "$lines"
