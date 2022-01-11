@@ -1,0 +1,64 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "os",
+          "style": "diamond",
+          "trailing_diamond": "\uE0B4 ",
+          "leading_diamond": "\uE0B6",
+          "foreground": "#9B6BDF",
+          "background": "#424242",
+          "properties": {
+            "prefix": "",
+            "postfix": ""
+          }
+        },
+        {
+          "type": "path",
+          "style": "diamond",
+          "trailing_diamond": "\uE0B4",
+          "leading_diamond": "\uE0B6",
+          "foreground": "#3EC669",
+          "background": "#424242",
+          "properties": {
+            "style": "folder"
+          }
+        },
+        {
+          "type": "git",
+          "style": "diamond",
+          "trailing_diamond": "\uE0B4 ",
+          "leading_diamond": " \uE0B6",
+          "foreground": "#43CCEA",
+          "background": "#424242",
+          "properties": {
+            "branch_icon": "",
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true,
+            "postfix": " \u276F",
+            "template": "{{ .HEAD }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }}"
+          }
+        },
+        {
+          "type": "exit",
+          "style": "diamond",
+          "trailing_diamond": "\uE0B4 ",
+          "leading_diamond": "\uE0B6",
+          "foreground": "#242424",
+          "background": "#33DD2D",
+          "background_templates": ["{{ if gt .Code 0 }}#f1184c{{ end }}"],
+          "properties": {
+            "template": "\uF7d4",
+             "prefix": "",
+             "postfix": ""
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -50,20 +50,4 @@ export DOCKER_BUILDKIT=1
 [[ -f "$HOME/.asdf/asdf.sh" ]] && source "$HOME/.asdf/asdf.sh"
 [[ -z "$TMUX" ]] || export FZF_TMUX_OPTS="-p 40%"
 
-source "$HOME/.git-ps1"
-__ps1() {
-  local dir="${PWD##*/}" B P="$" \
-    green='\[\e[32m\]' blue='\[\e[36m\]' \
-    yellow='\[\e[33m\]' x='\[\e[0m\]'
-
-  [[ "$EUID" == 0 ]] && P='#'
-  [[ "$PWD" = / ]] && dir=/
-  [[ "$PWD" = "$HOME" ]] && dir='~'
-
-  B="$(__git_ps1)"
-
-  PS1="$blue\h$green $dir$yellow$B $blue$P$x "
-}
-
-PROMPT_COMMAND="__ps1"
-
+[[ -n "$(which oh-my-posh)" ]] && eval "$(oh-my-posh --init --shell bash --config "$HOME/code/dotfiles/omp.json")"

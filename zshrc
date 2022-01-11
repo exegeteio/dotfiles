@@ -9,17 +9,20 @@ export CDPATH="$CDPATH:$HOME:$HOME/code/:$HOME/code/github/:$HOME/code/github/ex
 [[ -z "$DEBUG" ]] || echo "Checking tmux"
 [[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && [[ -z "$VSCODE_PID" ]] && [[ "$TERM_PROGRAM" != "vscode" ]]&& exec tmux
 
-export ZSH="$HOME/.oh-my-zsh"
-export ZSH_THEME="afowler"
+# export ZSH="$HOME/.oh-my-zsh"
+# export ZSH_THEME="afowler"
 
 [[ -z "$DEBUG" ]] || echo "Loading omzsh"
 # plugins=(git gh ruby)
-source "$ZSH/oh-my-zsh.sh"
+# source "$ZSH/oh-my-zsh.sh"
 # Non-omzsh prompt info.
-# autoload -Uz compinit promptinit
-# compinit
+autoload -Uz compinit promptinit
+compinit
+# autoload -Uz promptinit
 # promptinit
 # prompt default
+
+[[ -n "$(which oh-my-posh)" ]] && eval "$(oh-my-posh --init --shell zsh --config "$HOME/code/dotfiles/omp.json")"
 
 [[ -z "$DEBUG" ]] || echo "Setting FPATH"
 if type brew &>/dev/null; then
@@ -119,7 +122,7 @@ bindkey -M vicmd '/' history-incremental-search-forward
 bindkey -M viins '^R' history-incremental-pattern-search-backward
 bindkey -M viins '^F' history-incremental-pattern-search-forward
 
-if [[ -z "$FZF" ]]; then
+if [[ -n "$FZF" ]]; then
   bindkey "^R" fzf-history-widget
   bindkey "^T" fzf-file-widget
   bindkey -M vicmd '?' fzf-history-widget
