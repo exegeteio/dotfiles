@@ -32,7 +32,7 @@ tags:
 Have fun writing about $SUBJECT!"
 [[ -f "$FILE" ]] || echo "$TEMPL" >> "$FILE"
 # Alias for edit and commit.
-editor-and-commit "$FILE"
+vi.commit "$FILE"
 # Push it real good! /snp
 git push -q
 # Change back to the previous directory.

@@ -1,0 +1,2 @@
+#!/bin/bash
+rg.vim -e "(def)\s+(self\.)?$*"

@@ -2,12 +2,17 @@
 if [[ -x "$(which fzf)" ]]; then
   exec fzf -0 -1 -m
 else
-  lines="$(</dev/stdin)"
-  readarray -t parts <<< "$lines"
-  if [[ "${#parts[@]}" == "1" ]]; then
-    echo "${parts[0]}"
+  in=$(</dev/stdin)
+  if [[ -z "$in" ]]; then
+    echo "menu - nothing to display"
+    exit 1
+  fi
+  readarray lines <<< $in
+  if [[ "${#lines[@]}" == "1" ]]; then
+    echo "${lines[0]}"
   else
-    select sel in $lines; do
+    IFS=$'\n'
+    select sel in ${lines[@]}; do
       echo "$sel"
       exit
     done < /dev/tty

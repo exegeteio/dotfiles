@@ -1,0 +1,5 @@
+#!/bin/bash
+(
+  cd "$NOTES_PATH";
+  vi.line $(todo | menu)
+)

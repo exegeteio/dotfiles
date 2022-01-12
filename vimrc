@@ -21,9 +21,9 @@ call plug#end()
 
 nnoremap ;s :shell<CR>
 " Add the current filename and line number to the active tmux notes buffer.
-nnoremap ;n :silent execute ":!echo %:".line('.')." \| anote"<CR>
+nnoremap ;n :silent execute ":!echo %:".line('.')." \| n.add"<CR>
 " Add the current highlight to the active tmux notes buffer.
-vnoremap ;n :'<,'>!anote<CR>u
+vnoremap ;n :'<,'>!n.add<CR>u
 " Execute current line
 nnoremap ;1 :.!zsh<CR>
 " Write with capital or lowercase w.

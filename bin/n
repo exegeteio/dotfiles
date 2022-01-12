@@ -28,5 +28,7 @@ vi "$group$subject"
 [[ -z "$TMUX" ]] || rm -f ~/.notes_pane*
 
 git add "$group$subject" \
+	&& git add -p . \
+	&& git status -s \
 	&& git commit -qnm "$subject - $(date +%F)"
 cd - 1>/dev/null || exit

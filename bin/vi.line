@@ -1,0 +1,13 @@
+#!/bin/bash
+IFS=':' read -ra parts <<< "$@"
+file="${parts[0]}"
+if [[ -z "$file" ]]; then
+    echo "No file to edit" "$@"
+    exit 1
+fi
+echo "Editing $file ${parts[1]}"
+if [[ ${parts[1]} =~ [0-9]+ ]]; then
+    exec vi "+${parts[1]}" "$file"
+else
+    exec vi "$file"
+fi

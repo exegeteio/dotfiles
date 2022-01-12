@@ -1,5 +1,0 @@
-#!/bin/bash
-
-$EDITOR "$@"
-git add "$*" && git commit -qnm "$* - $(date +%F) $SUBJECT"
-

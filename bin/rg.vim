@@ -4,4 +4,4 @@ needle="$1"
 # Shift the term off the input array.
 shift 1
 # Do the do!
-evg "$(rg --vimgrep "$needle" "$@" | menu)"
+vi.line "$(rg --vimgrep "$needle" "$@" | sort | menu)"

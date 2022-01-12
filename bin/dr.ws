@@ -1,8 +1,6 @@
 #!/bin/bash
-image=$(basename "$0")
-echo "Starting $image"
-dr --name "$image" \
-  --hostname "$image" \
+dr --name "workstation" \
+  --hostname "workstation" \
   --privileged \
   -v "$HOME:$HOME" \
   -v "$HOME/.ssh:/workstation/.ssh" \
@@ -13,4 +11,4 @@ dr --name "$image" \
   -e "SSH_AUTH_SOCK=$SSH_AUTH_SOCK" \
   -e "PORT=$PORT" \
   -p "$PORT:$PORT" \
-  "$image"
+  "workstation"
