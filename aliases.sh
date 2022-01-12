@@ -53,6 +53,7 @@ cd() {
 [ ! -f "./aliases" ] || source ./aliases
 
 alias a="source ./aliases"
+alias ls="ls --color=auto"
 alias ll="ls -lh"
 alias gf="git fetch --all -p"
 
