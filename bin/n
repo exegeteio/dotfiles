@@ -22,7 +22,7 @@ if [[ -n "$TMUX" ]]; then
 	basename "$FILE" > ~/.notes_pane.title
 fi
 
-vi "$group$subject"
+$EDITOR "$group$subject"
 
 # Cleanup redirection notes.
 [[ -z "$TMUX" ]] || rm -f ~/.notes_pane*

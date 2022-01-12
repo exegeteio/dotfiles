@@ -1,5 +1,5 @@
 #!/bin/bash
 
-vi.line "$@"
+$EDITOR "$@"
 git add "$*" && git commit -qnm "$* - $(date +%F) - vi.commit"
 

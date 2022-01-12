@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+output = [] # TODO
+$stdin.readlines.each do |line|
+  parts = line.split(':')
+  line = parts[1] if parts[1].match(/^\t+/)
+  if line
+    output << ["+#{parts[1]}", parts[0]]
+  end
+end
+if output.one?
+  puts "#{output.first[0]} #{output.first[1]}"
+else
+  output.each { |o| puts o.last }
+end

@@ -1,5 +1,5 @@
 #!/bin/bash
 (
   cd "$NOTES_PATH";
-  vi.line $(todo | menu)
+  $EDITOR $(todo --vimgrep | menu | rg.args)
 )
