@@ -61,7 +61,8 @@ alias nvm="unalias nvm; source \$(_nvm_init) ; nvm"
 [[ ! -f "$HOME/.aliases" ]] || source "$HOME/.aliases"
 
 # Allows overriding with ~/.zshenv
-[[ -z "$NOTES_PATH" ]] && export NOTES_PATH="$HOME/icloud/vnotes/"
+[[ -z "$NOTES_PATH" ]] && NOTES_PATH="$HOME/icloud/vnotes/"
+export NOTES_PATH
 compdef "_files -W $NOTES_PATH" n
 # Allows overriding with ~/.zshenv
 [[ -z "$BLOG_PATH" ]] && export BLOG_PATH="$HOME/code/github/exegeteio/exegete.io/_posts"
