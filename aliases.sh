@@ -36,12 +36,17 @@ _detect_rbenv() {
 }
 _detect_rbenv
 
-# Applies aliases file when it exists
-cd() {
-  builtin cd $*
+_detect_aliases() {
   if [ -f "aliases" ]; then
     echo "aliases file available"
   fi
+}
+_detect_aliases
+
+# Applies aliases file when it exists
+cd() {
+  builtin cd $*
+  _detect_aliases
   _detect_rbenv
 }
 
