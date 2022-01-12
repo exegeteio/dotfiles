@@ -12,4 +12,4 @@ export PATH="$HOME/.brew/bin:$PATH" # Also in zshrc.
 BREW="$(which brew)"
 [[ -x "$BREW" ]] || (echo "Could not find brew after install!"; exit 1)
 $BREW bundle --file="$DOTFILES_PATH/brewfiles/base"
-
+[[ -f "$DOTFILES_PATH/brewfiles/$(uname -s)" ]] && $BREW bundle --file="$DOTFILES/brewfiles/$(uname -s)"
