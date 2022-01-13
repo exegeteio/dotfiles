@@ -1,3 +1,12 @@
 #!/bin/bash
 
-dr lynx "$@"
+if [[ -f "/var/run/docker.sock" ]]; then
+  echo "Docker lynx..."
+  dr lynx "$@"
+else
+  echo "Falling back to local lynx..."
+  /usr/local/bin/lynx \
+    -cfg "$HOME/code/dotfiles/docker/lynx/lynx.cfg" \
+    -lss "$HOME/code/dotfiles/docker/lynx/lynx.lss" \
+    "$@"
+fi
