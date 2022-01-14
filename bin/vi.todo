@@ -1,0 +1,2 @@
+#!/bin/bash
+vi $(todo --vimgrep | menu | rg.args)
