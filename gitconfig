@@ -6,6 +6,7 @@
   lgf = !"git lg1 --name-only"
 	maindiff = diff main...HEAD
 	bstash = !"git stash -um \"WIP: $(git.branch)\""
+	s = "status -sb"
 [core]
 	excludesFile = ~/.gitignore
 	hooksPath = ~/.git/hooks
