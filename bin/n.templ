@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "# $(date +%F)"
+echo
+[[ -f "$NOTES_PATH/.templ.md" ]] && cat "$NOTES_PATH/templ.md"
+echo
+[[ -f "$NOTES_PATH/goals.md" ]] && cat "$NOTES_PATH/goals.md"
+
