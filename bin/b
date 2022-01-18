@@ -5,35 +5,39 @@
 
 # Skip collection if the file exists.
 if [[ -f "$BLOG_PATH/$1" ]]; then
-	FILE=$1
+	file=$1
 else
 	# Pull Subject from CLI.
-	test -n "$*" && SUBJECT="$*"
+	test -n "$*" && subject="$*"
 	# Read the subject
-	test -n "$*" || read -rp "Blog title: " SUBJECT
+	test -n "$*" || read -rp "Blog title: " subject
 	# Format as slug.
-	SLUG="$(echo "$SUBJECT" | sed -r s/[^a-zA-Z0-9]+/-/g | tr "[:upper:]" "[:lower:]")"
+	slug="$(echo "$subject" | sed -r s/[^a-zA-Z0-9]+/-/g | tr "[:upper:]" "[:lower:]")"
+	existing="$(find $BLOG_PATH -iname "*${slug}*.md" | menu)"
+	if [ -f "$existing" ]; then
+		subject=$existing
+	else
+		subject="$subject.md"
+		test -n "$2" && group="$2/"
+		[[ -d "$group" ]] || mkdir "$group"
+	fi
 	# Get file name.
-	FILE="$(date +%Y-%m-%d)-$SLUG.md"
+	file="$(date +%Y-%m-%d)-$slug.md"
 fi
 # Jump into our Blog repo.
 cd "$BLOG_PATH" || exit
-# Git pull, but do it in the background.
-git pull -q &
 
 # If file doesn't exist, create it with my template.
-TEMPL="---
+templ="---
 layout: default
-title: $SUBJECT
+title: $subject
 tags:
   - todo
 ---
 
-Have fun writing about $SUBJECT!"
-[[ -f "$FILE" ]] || echo "$TEMPL" >> "$FILE"
+Have fun writing about $subject!"
+[[ -f "$file" ]] || echo "$templ" >> "$file"
 # Alias for edit and commit.
-vi.commit "$FILE"
-# Push it real good! /snp
-git push -q
+vi.commit "$file"
 # Change back to the previous directory.
 cd - 1>/dev/null || exit
