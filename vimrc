@@ -17,13 +17,14 @@ call plug#end()
 "nnoremap ;l :call NERDComment("n", "Toggle")<CR>
 "nnoremap <C-/> :call NERDComment("n", "Toggle")<CR>
 "vnoremap <C-/> :call NERDComment("n", "Toggle")<CR>
-"/plugins
+" /plugins
 
 nnoremap ;s :shell<CR>
 " Add the current filename and line number to the active tmux notes buffer.
 nnoremap ;n :silent execute ":!echo %:".line('.')." \| n.add"<CR>
 " Add the current highlight to the active tmux notes buffer.
 vnoremap ;n :'<,'>!n.add<CR>u
+
 " Execute current line
 nnoremap ;1 :.!zsh<CR>
 " Write with capital or lowercase w.
@@ -33,11 +34,9 @@ command! Wq :wq
 nnoremap ;b :execute 'norm i' . system("git.branch")<CR><Esc>kJa
 " Reload vimrc.
 nnoremap ;rr :so ~/.vimrc<CR>
+nnoremap ;rn :set rnu!<CR>
 
-" Second Brain
-if executable('gg')
-  set grepprg=rg\ --vimgrep\ -i
-endif
+set grepprg=rg\ --vimgrep\ -i
 autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 autocmd BufRead,BufNewFile $NOTES_PATH* setlocal path+=$NOTES_PATH/**
 autocmd BufRead,BufNewFile $BLOG_PATH* setlocal path+=$BLOG_PATH/**
