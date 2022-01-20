@@ -1,0 +1,2 @@
+#!/bin/bash
+be rspec $(fspec "$@")
