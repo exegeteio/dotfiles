@@ -61,6 +61,8 @@ set wrapmargin=0
 set colorcolumn=+1
 colorscheme peachpuff
 
+" Spell good in markdown!
+autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
 
 " Numbers
 set number
