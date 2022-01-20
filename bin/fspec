@@ -1,6 +1,6 @@
 #!/bin/bash
 if [[ -d "spec" ]]; then
-  exec find spec | menu
+  exec find spec -name \*_spec.rb | menu
 else
   echo "No spec dir!"
   exit
