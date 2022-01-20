@@ -15,14 +15,14 @@ else
 	slug="$(echo "$subject" | sed -r s/[^a-zA-Z0-9]+/-/g | tr "[:upper:]" "[:lower:]")"
 	existing="$(find $BLOG_PATH -iname "*${slug}*.md" | menu)"
 	if [ -f "$existing" ]; then
-		subject=$existing
+		file=$existing
 	else
 		subject="$subject.md"
 		test -n "$2" && group="$2/"
 		[[ -d "$group" ]] || mkdir "$group"
+		# Get file name.
+		file="$(date +%Y-%m-%d)-$slug.md"
 	fi
-	# Get file name.
-	file="$(date +%Y-%m-%d)-$slug.md"
 fi
 # Jump into our Blog repo.
 cd "$BLOG_PATH" || exit
