@@ -1,0 +1,14 @@
+#!/bin/bash
+timeout=$1
+shift 1
+echo "Every $timeout $@"
+while true; do
+  timeout "$timeout" "$@"
+  if [[ "$?" == "124" ]]; then 
+    # Catch interupts.
+    sleep .5
+  else
+    # Ended before timeout!  Need to sleep for fast commands.
+    sleep "$timeout"
+  fi
+done

@@ -9,6 +9,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
 Plug 'vim-ruby/vim-ruby'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -79,3 +80,11 @@ set clipboard=unnamed
 " start at last place you were editing
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" Lint with ALE / Rubocop
+" Set specific linters
+let g:ale_linters = { 'ruby': ['rubocop'] }
+let g:ale_linters_explicit = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_column_always = 1
+" Disable ALE auto highlights
+let g:ale_set_highlights = 0
