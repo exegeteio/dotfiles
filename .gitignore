@@ -2,5 +2,4 @@
 .Trashes
 .DS_Store
 **/*.lock.json
-bin/md.hdate
-go/md.hdate/md.hdate
+

@@ -1,21 +1,15 @@
 #!/bin/bash
 
-CGO_ENABLED=0
+export CGO_ENABLED=0
 
 _build () {
   echo "Building $1..."
-  cd $1;
-  go build -o $1
-  if [ -d "$DOTFILES_PATH" ]; then
-    cp $1 $DOTFILES_PATH/bin
-    if ! grep -q "bin/$1" "$DOTFILES_PATH/.gitignore"; then
-      echo "bin/$1" >> $DOTFILES_PATH/.gitignore
-    fi
-  fi
-  cd - >/dev/null
-  echo "go/$1/$1" >> $DOTFILES_PATH/.gitignore
+  (
+    cd "$1" || exit
+    go install
+  )
 }
 
 for i in *; do
-  [ -f "$i/main.go" ] && [ -f "$i/go.mod" ] && _build $i
+  [ -f "$i/main.go" ] && [ -f "$i/go.mod" ] && _build "$i"
 done
