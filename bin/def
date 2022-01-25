@@ -1,4 +1,0 @@
-#!/bin/bash
-needle="$1"
-shift 1
-rg -pe "(def)\s+(self\.)?$needle" "$@"
