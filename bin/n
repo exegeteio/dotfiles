@@ -22,13 +22,15 @@ if [[ -n "$TMUX" ]]; then
 	basename "$FILE" > ~/.notes_pane.title
 fi
 
-$EDITOR "+set nonumber" "$group$subject"
+$EDITOR "$group$subject"
 
 # Cleanup redirection notes.
 [[ -z "$TMUX" ]] || rm -f ~/.notes_pane*
 
-git add "$group$subject" \
-	&& git add -p . \
-	&& git status -s \
-	&& git commit -qnm "$subject - $(date +%F)"
+if [[ ! -z "$(git status -s)" ]]; then
+	git add "$group$subject" \
+		&& git add -p . \
+		&& git status -s \
+		&& git commit -qnm "$subject - $(date +%F)"
+fi
 cd - 1>/dev/null || exit
