@@ -2,14 +2,26 @@
 
 export CGO_ENABLED=0
 
-_build () {
-  echo "Building $1..."
+_install () {
+  echo "Installing $1..."
   (
     cd "$1" || exit
     go install
   )
 }
 
+_build () {
+  echo "Building $1..."
+  (
+    cd "$1" || exit
+    ./build
+  )
+}
+
 for i in *; do
-  [ -f "$i/main.go" ] && [ -f "$i/go.mod" ] && _build "$i"
+  if [[ -x "$i/main" ]]; then
+    _build "$i"
+  else
+    [ -f "$i/main.go" ] && [ -f "$i/go.mod" ] && _install "$i"
+  fi
 done
