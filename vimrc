@@ -5,7 +5,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 " Required for vim-airline to show the branch name.
 Plug 'tpope/vim-fugitive'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
 Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
 Plug 'vim-ruby/vim-ruby'
@@ -41,6 +41,7 @@ set grepprg=rg\ --vimgrep\ -i
 autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 autocmd BufRead,BufNewFile $NOTES_PATH* setlocal path+=$NOTES_PATH/**
 autocmd BufRead,BufNewFile $BLOG_PATH* setlocal path+=$BLOG_PATH/**
+autocmd BufNewFile,BufRead $NOTES_PATH* setlocal nonu nornu
 set suffixesadd+=.md
 nnoremap ;t gf
 nnoremap ;f :!find . -iname \*<cword>\* \| menu<CR>
@@ -66,8 +67,10 @@ colorscheme peachpuff
 autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
 
 " Numbers
-set number
-set numberwidth=5
+" set number
+" TODO - Do I like this?
+set nu rnu
+set numberwidth=4
 
 " Maps `jj` to escape.
 imap jj <Esc>
