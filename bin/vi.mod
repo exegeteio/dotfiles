@@ -1,3 +1,5 @@
 #!/bin/bash
 set -e
-vi $(git status -s | columnize | cut -d" " -f2 | sort | menu)
+files=$(git.mod | cut -d" " -f2 | sort | menu)
+[ -z "$files" ] && exit 1
+vi $files

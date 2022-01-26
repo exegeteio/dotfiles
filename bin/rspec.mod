@@ -1,4 +1,5 @@
 #!/bin/bash
-specs=$(git status -s spec/ | columnize | cut -d" " -f2 | sort | menu)
+specs=$(git.mod spec/ | cut -d" " -f2 | sort | menu)
+[ -z "$spec" ] && exit 1
 echo "Running:  $specs"
 be rspec $specs

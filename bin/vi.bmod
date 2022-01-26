@@ -1,3 +1,4 @@
 #!/bin/bash
 set -e
-vi $(git maindiff --name-only | columnize | sort | menu)
+files=$(git.bmod | sort | menu)
+vi $files
