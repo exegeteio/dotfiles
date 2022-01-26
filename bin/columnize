@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
 
 $stdin.readlines.each do |line|
-  puts line.strip
+  puts line.strip.gsub /\s+/, ' '
 end

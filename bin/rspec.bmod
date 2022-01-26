@@ -1,5 +1,5 @@
 #!/bin/bash
 set -e
-specs=$(git maindiff --name-only spec/ | strip | sort | menu)
+specs=$(git maindiff --name-only spec/ | columnize | sort | menu)
 echo "Running: $specs"
 be rspec $specs
