@@ -14,13 +14,11 @@ fi
 
 # Preferred editor for local and remote sessions
 if [ "$TERM_PROGRAM" = "vscode" ]; then
-  export EDITOR='code -wr'
-elif [ -n $TMUX ]; then
-  export EDITOR='vim'
-elif [ -n $SSH_CONNECTION ]; then
-  export EDITOR='vim'
+  export EDITOR='code'
+  export EDITOR_ARGS='code.args'
 else
-  export EDITOR='code -wr'
+  export EDITOR='vim'
+  export EDITOR_ARGS='vi.args'
 fi
 
 [[ -z "$DEBUG" ]] || echo "Initializing rbenv"

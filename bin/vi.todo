@@ -1,2 +1,2 @@
 #!/bin/bash
-vi $(todo --vimgrep | menu | rg.args)
+vi $(todo --vimgrep | menu | $EDITOR_ARGS)
