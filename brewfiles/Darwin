@@ -17,4 +17,5 @@ cask 'visual-studio-code'
 
 brew 'git'
 brew 'gnu-sed'
+brew 'golang'
 brew 'wget'

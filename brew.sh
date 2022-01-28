@@ -14,4 +14,6 @@ BREW="$(which brew)"
 
 echo "Installing brew bundle from $DOTFILES_PATH/brewfiles"
 $BREW bundle --file="$DOTFILES_PATH/brewfiles/base"
-[[ -f "$DOTFILES_PATH/brewfiles/$(uname -s)" ]] && $BREW bundle --file="$DOTFILES/brewfiles/$(uname -s)"
+if [[ -f "$DOTFILES_PATH/brewfiles/$(uname -s)" ]]; then
+  $BREW bundle --file="$DOTFILES_PATH/brewfiles/$(uname -s)"
+fi

@@ -4,8 +4,10 @@ tap "homebrew/core"
 tap "homebrew/services"
 tap "jandedobbeleer/oh-my-posh"
 tap "homebrew/cask-fonts"
+
+cask "font-fira-code-nerd-font"
+
 brew "bash"
-brew "font-fira-code-nerd-font"
 brew "fzf"
 brew "gh"
 brew "git"
