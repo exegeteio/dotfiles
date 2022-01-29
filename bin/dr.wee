@@ -1,2 +1,8 @@
 #!/bin/bash
-dr -v "$HOME/.weechat:/home/weechat/.weechat" --name weechat weechat "$@"
+if [[ -f "/var/run/docker.sock" ]]; then
+  echo "Docker weechat..."
+  dr -v "$HOME/.weechat:/home/weechat/.weechat" --name weechat weechat "$@"
+else
+  echo "Falling back to local lynx..."
+  /usr/local/bin/weechat "$@"
+fi
