@@ -38,25 +38,6 @@ fi
 # [[ -z "$DEBUG" ]] || echo "Github CLI completion"
 # [[ ! -f "$(which gh)" ]] || eval "$(gh completion --shell=zsh)"
 
-# NVM for managing versions of Node on the system.
-export NVM_DIR="$HOME/.nvm"
-# Load NVM is installed anywhere
-_nvm_init() {
-  if [ -s "$NVM_DIR/nvm.sh" ]; then
-    echo "$NVM_DIR/nvm.sh"
-    return
-  fi
-  if [ -s "/usr/local/opt/nvm/nvm.sh" ]; then
-    echo "/usr/local/opt/nvm/nvm.sh"
-    return
-  fi
-  if [ -x "$(which brew)" ] && [ -s "$(brew --prefix nvm)/nvm.sh" ]; then
-    echo "$(brew --prefix nvm)/nvm.sh"
-    return
-  fi
-}
-alias nvm="unalias nvm; source \$(_nvm_init) ; nvm"
-
 # Personal aliases.
 [[ ! -f "$HOME/.aliases" ]] || source "$HOME/.aliases"
 

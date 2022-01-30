@@ -34,6 +34,21 @@ _detect_rbenv() {
 }
 _detect_rbenv
 
+# NVM for managing versions of Node on the system.
+export NVM_DIR="$HOME/.nvm"
+# Load NVM is installed anywhere
+alias nvm="unalias nvm; eval \"\$(< $NVM_DIR/nvm.sh)\"; nvm"
+_detect_nvm() {
+  if [ -z "$NVM_BIN" ]; then
+    if [ -f "package.json" ]; then
+      echo "Detected nvm..."
+      unalias nvm 2>/dev/null
+      eval "$(< $NVM_DIR/nvm.sh)"
+    fi
+  fi
+}
+_detect_nvm
+
 _detect_aliases() {
   if [ -f "aliases" ]; then
     echo "aliases file available"
@@ -46,6 +61,7 @@ cd() {
   builtin cd $*
   _detect_aliases
   _detect_rbenv
+  _detect_nvm
 }
 
 [ ! -f "./aliases" ] || source ./aliases
