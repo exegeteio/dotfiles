@@ -14,7 +14,7 @@ fi
 
 # Preferred editor for local and remote sessions
 if [ "$TERM_PROGRAM" = "vscode" ]; then
-  export EDITOR='code'
+  export EDITOR='code -wr'
   export EDITOR_ARGS='code.args'
 else
   export EDITOR='vim'
