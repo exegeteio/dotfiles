@@ -3,12 +3,19 @@
 if [ -d "$HOME/.ssh" ]; then
   if [ -z "$SSH_AUTH_SOCK" ]; then
     # Check for a currently running instance of the agent
-    RUNNING_AGENT="`ps -ax | grep 'ssh-agent -s' | grep -v grep | wc -l | tr -d '[:space:]'`"
-    if [ "$RUNNING_AGENT" = "0" ]; then
+    if [ -z "$SSH_AGENT_PID" ] && source ~/.ssh/ssh-agent
+    _agent="$(ps -p $SSH_AGENT_PID &>-)"
+    if [ -z "$?" ]; then
+      echo "Launging new SSH Agent..."
       # Launch a new instance of the agent
       ssh-agent -s &> ~/.ssh/ssh-agent
+      source ~/.ssh/ssh-agent
     fi
-    eval `cat ~/.ssh/ssh-agent`
+  fi
+  _keys="$(ssh-add -l)"
+  if [ "$?" = "1" ]; then
+    echo "No SSH keys found in ssh-agent"
+    # ssh-add
   fi
 fi
 
@@ -20,6 +27,7 @@ else
   export EDITOR='vim'
   export EDITOR_ARGS='vi.args'
 fi
+alias e="$EDITOR"
 
 [[ -z "$DEBUG" ]] || echo "Initializing rbenv"
 alias rbenv="unalias rbenv; eval \"\$(rbenv init -)\"; rbenv"
