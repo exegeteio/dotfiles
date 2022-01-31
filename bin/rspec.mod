@@ -1,5 +1,5 @@
 #!/bin/bash
 specs=$(git.mod spec/ | cut -d" " -f2 | sort | menu)
-[ -z "$spec" ] && exit 1
+[ -z "$specs" ] && echo "No specs selected!  $specs" && exit 1
 echo "Running:  $specs"
 be rspec $specs
