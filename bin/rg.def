@@ -1,2 +1,0 @@
-#!/bin/bash
-rg.vim -e "(def|class|module)\s+(self\.)?$*"

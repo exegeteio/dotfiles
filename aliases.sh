@@ -28,6 +28,7 @@ else
   export EDITOR_ARGS='vi.args'
 fi
 alias e="$EDITOR"
+export PAGER="less -r"
 
 [[ -z "$DEBUG" ]] || echo "Initializing rbenv"
 alias rbenv="unalias rbenv; eval \"\$(rbenv init -)\"; rbenv"

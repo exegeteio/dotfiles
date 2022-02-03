@@ -1,4 +1,5 @@
 #!/bin/bash
 set -e
 files=$(git.bmod | sort | menu)
+[ -z "$files" ] && echo "No files" && exit 1
 $EDITOR $files

@@ -38,6 +38,6 @@ tags:
 Have fun writing about $subject!"
 [[ -f "$file" ]] || echo "$templ" >> "$file"
 # Alias for edit and commit.
-vi.commit "$file"
+e.commit "$file"
 # Change back to the previous directory.
 cd - 1>/dev/null || exit

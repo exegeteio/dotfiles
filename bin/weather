@@ -1,2 +1,2 @@
 #!/bin/bash
-http "wttr.in/$*" | less
+http "wttr.in/$*" | $PAGER

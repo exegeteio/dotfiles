@@ -1,2 +1,0 @@
-#!/bin/bash
-$EDITOR $(todo --vimgrep | menu | $EDITOR_ARGS)

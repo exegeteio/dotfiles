@@ -1,0 +1,2 @@
+#!/bin/bash
+e.rg -e "(def|class|module)\s+(self\.)?$*"
