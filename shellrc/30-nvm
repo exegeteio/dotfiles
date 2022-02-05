@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# NVM for managing versions of Node on the system.
+export NVM_DIR="$HOME/.nvm"
+# Load NVM is installed anywhere
+alias nvm="unalias nvm; eval \"\$(< "$NVM_DIR/nvm.sh")\"; nvm"
+

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+[[ -z "$DEBUG" ]] || echo "Initializing rbenv"
+eval "$(rbenv init - --no-rehash)"
+
