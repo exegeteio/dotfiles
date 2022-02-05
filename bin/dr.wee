@@ -3,6 +3,6 @@ if [[ -f "/var/run/docker.sock" ]]; then
   echo "Docker weechat..."
   dr -v "$HOME/.weechat:/home/weechat/.weechat" --name weechat weechat "$@"
 else
-  echo "Falling back to local lynx..."
+  echo "Falling back to local weechat..."
   /usr/local/bin/weechat "$@"
 fi
