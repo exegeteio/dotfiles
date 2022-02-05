@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PATH="$HOME/bin:$HOME/.brew/bin:$HOME/go/bin:$HOME/.rbenv/bin:/usr/local/opt/python@3.8/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.config/dotfiles/bin:$HOME/.brew/bin:$HOME/go/bin:$HOME/.rbenv/bin:$PATH"
 export CDPATH="$CDPATH:$HOME:$HOME/code/:$HOME/code/github/:$HOME/code/github/exegeteio/:$HOME/code/gitlab/:$HOME/Desktop/"
 
 [[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && [[ -z "$VSCODE_PID" ]] && [[ "$TERM_PROGRAM" != "vscode" ]]&& exec tmux
@@ -51,3 +51,5 @@ export DOCKER_BUILDKIT=1
 [[ -z "$TMUX" ]] || export FZF_TMUX_OPTS="-p 40%"
 
 [[ -n "$(which oh-my-posh)" ]] && eval "$(oh-my-posh --init --shell bash --config "$HOME/code/dotfiles/omp.json")"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

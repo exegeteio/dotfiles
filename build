@@ -1,8 +1,11 @@
 #!/bin/bash
 
-export DOTFILES_PATH=`cd "$( dirname "${BASH_SOURCE[0]}"  )" >/dev/null 2>&1 && pwd `
-
 for i in *; do
-  [ -x "$i/build" ] && (cd $i; exec ./build)
+  if [ -x "$i/build" ]; then
+    (
+      cd "$i"
+      ./build
+    )
+  fi
 done
 

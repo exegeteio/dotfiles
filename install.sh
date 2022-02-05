@@ -1,22 +1,24 @@
 #!/bin/bash
-DOTFILES_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)"
+SOURCE_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)"
 BACKUP_DIR="$HOME/.dotfiles-orig-$(date +%F)"
 BASH="$(which bash)"
 GIT="$(which git)"
 
 set -e
 
+# Build 
 ./build
 
 mkdir -p "$HOME/.config/"
-[[ -d "$HOME/bin/" ]] || ln -s "$DOTFILES_PATH/bin" "$HOME/bin"
+DOTFILES_PATH="$HOME/.config/dotfiles"
+rm -f "$DOTFILES_PATH"
+ln -s "$SOURCE_PATH" "$DOTFILES_PATH"
 
 # Make sure git and bash exist.
 [[ -x "$BASH" ]] || (echo "You must have bash installed to proceed!"; exit 127)
 [[ -x "$GIT" ]] || (echo "You must have git installed to proceed!"; exit 127)
 # gcc is required for so much.
 [[ -x "$(which gcc)" ]] || (echo "You must have gcc installed to proceed!"; exit 127)
-
 
 ## Here thar be functions!
 

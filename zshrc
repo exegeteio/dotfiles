@@ -3,7 +3,7 @@
 [[ -z "$DEBUG" ]] || echo "Checking interactive"
 [[ $- != *i*  ]] && return
 
-export PATH="$HOME/bin:$HOME/.brew/bin:$HOME/go/bin:$HOME/.rbenv/bin:/usr/local/opt/python@3.8/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.config/dotfiles/bin:$HOME/.brew/bin:$HOME/go/bin:$HOME/.rbenv/bin:$PATH"
 export CDPATH="$CDPATH:$HOME:$HOME/code/:$HOME/code/github/:$HOME/code/github/exegeteio/:$HOME/code/gitlab/:$HOME/Desktop/"
 
 [[ -z "$DEBUG" ]] || echo "Checking tmux"
