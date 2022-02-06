@@ -2,44 +2,39 @@ FROM ubuntu:latest
 ARG UID=1000
 ARG GID=1000
 ARG HOST_USER=exegete
+ARG HOST_HOME=/home/exegete
 ENV DOCKER=true
-RUN apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -qqy --no-install-recommends \
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -qqy --no-install-recommends \
         build-essential \
-        git \
-        less \
-        libssl-dev \
-        ripgrep \
-        ruby-build \
-        ruby \
+        curl \
         ssh-client \
         sudo \
-        tmux \
         ubuntu-server \
         zsh
 
 COPY docker/workstation/docker.sh /tmp/
 RUN /tmp/docker.sh
 
-# MacOS home dir compatability.
-RUN ln -s /home /Users
 # Setup local user.
-RUN useradd -d /workstation -m -s /usr/bin/zsh -u ${UID} -g root ${HOST_USER}
+RUN useradd -d ${HOST_HOME} -m -s /usr/bin/zsh -u ${UID} -g root ${HOST_USER}
 RUN echo "${HOST_USER} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${HOST_USER} \
     && chmod 0440 /etc/sudoers.d/${HOST_USER}
 USER ${HOST_USER}
-RUN mkdir $HOME/code $HOME/host
+RUN mkdir ${HOST_HOME}/code ${HOST_HOME}/host
 
 COPY docker/workstation /tmp/scripts
 RUN /tmp/scripts/compose.sh
 RUN /tmp/scripts/asdf.sh
 
-COPY --chown=${HOST_USER}:root ./ /workstation/.dotfiles
+COPY --chown=${HOST_USER}:root ./ ${HOST_HOME}/.dotfiles
 COPY --chown=${HOST_USER}:root docker/workstation/entry.sh /entry.sh
-WORKDIR /workstation/.dotfiles
+WORKDIR ${HOST_HOME}/.dotfiles
 RUN /usr/bin/zsh ./install.sh
+RUN sudo ./linux.sh
+RUN /usr/bin/zsh ./brew.sh
 
-WORKDIR /workstation
+WORKDIR ${HOST_HOME}
 
 ENTRYPOINT ["/entry.sh"]
 CMD ["/usr/bin/zsh"]
