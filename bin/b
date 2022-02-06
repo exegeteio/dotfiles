@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Check if the Blog exist
 [[ -d "$BLOG_PATH" ]] || (echo "Blog not found at:  $BLOG_PATH" ; exit 1)

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ## Returns the full path to any changed files in the current directory
 ## or any subdirectories recursively one to a line. Useful for detecting

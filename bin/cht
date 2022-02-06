@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/usr/bin/env bash
 http --body "https://cht.sh/$(urlencode "$*")" | $PAGER

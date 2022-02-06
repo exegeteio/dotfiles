@@ -1,4 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+GIT="$(which git)"
+[[ -x "$GIT" ]] || (echo "You must have git installed to proceed!"; exit 1)
+# gcc is required for so much.
+[[ -x "$(which gcc)" ]] || (echo "You must have gcc installed to proceed!"; exit 1)
 
 DOTFILES_PATH=$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)
 

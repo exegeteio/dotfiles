@@ -1,6 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export CGO_ENABLED=0
+
+[ -x "$(which go)" ] || exit 1
 
 _install () {
   echo "Installing $1..."

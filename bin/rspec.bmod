@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 specs=$(git.bmod spec/ | sort | menu)
 echo "Running: $specs"

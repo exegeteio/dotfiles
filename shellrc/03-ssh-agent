@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Set up SSH Agent
 # Poached from:  https://code.visualstudio.com/docs/remote/containers#_using-ssh-keys

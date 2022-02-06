@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ## Returns the number of changed files in the current directory or any
 ## subdirectories recursively. Useful for detecting changes and taking

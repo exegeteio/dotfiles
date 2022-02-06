@@ -2,63 +2,63 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
     {
-      "type": "prompt",
       "alignment": "left",
       "segments": [
         {
-          "type": "os",
-          "style": "diamond",
-          "trailing_diamond": "\uE0B4 ",
-          "leading_diamond": "\uE0B6",
+          "background": "#424242",
           "foreground": "#9B6BDF",
-          "background": "#424242",
+          "leading_diamond": "\ue0b6",
           "properties": {
-            "prefix": "",
-            "postfix": ""
-          }
+            "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}}"
+          },
+          "style": "diamond",
+          "trailing_diamond": "\ue0b4 ",
+          "type": "os"
         },
         {
-          "type": "path",
-          "style": "diamond",
-          "trailing_diamond": "\uE0B4",
-          "leading_diamond": "\uE0B6",
+          "background": "#424242",
           "foreground": "#3EC669",
-          "background": "#424242",
+          "leading_diamond": "\ue0b6",
           "properties": {
-            "style": "folder"
-          }
+            "style": "folder",
+            "template": " {{ .Path }} "
+          },
+          "style": "diamond",
+          "trailing_diamond": "\ue0b4",
+          "type": "path"
         },
         {
-          "type": "git",
-          "style": "diamond",
-          "trailing_diamond": "\uE0B4 ",
-          "leading_diamond": " \uE0B6",
-          "foreground": "#43CCEA",
           "background": "#424242",
+          "foreground": "#43CCEA",
+          "leading_diamond": " \ue0b6",
           "properties": {
             "branch_icon": "",
             "fetch_stash_count": true,
             "fetch_status": true,
             "fetch_upstream_icon": true,
-            "postfix": " \u276F",
-            "template": "{{ .HEAD }}{{ if .Staging.Changed }} \uF046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uF044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \uF692 {{ .StashCount }}{{ end }}"
-          }
+            "template": " {{ .HEAD }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} \u276f"
+          },
+          "style": "diamond",
+          "trailing_diamond": "\ue0b4 ",
+          "type": "git"
         },
         {
-          "type": "exit",
-          "style": "diamond",
-          "trailing_diamond": "\uE0B4 ",
-          "leading_diamond": "\uE0B6",
-          "foreground": "#242424",
           "background": "#33DD2D",
-          "background_templates": ["{{ if gt .Code 0 }}#f1184c{{ end }}"],
+          "background_templates": [
+            "{{ if gt .Code 0 }}#f1184c{{ end }}"
+          ],
+          "foreground": "#242424",
+          "leading_diamond": "\ue0b6",
           "properties": {
-            "template": "\uF7d4",
-             "prefix": "",
-             "postfix": ""
-          }
+            "template": "\uf7d4"
+          },
+          "style": "diamond",
+          "trailing_diamond": "\ue0b4 ",
+          "type": "exit"
         }
-      ]
+      ],
+      "type": "prompt"
     }
-  ]
+  ],
+  "version": 1
 }

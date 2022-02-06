@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Allows overriding with ~/.zshenv
 [[ -z "$NOTES_PATH" ]] && NOTES_PATH="$HOME/icloud/vnotes/"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export DOTFILES_PATH="$HOME/.config/dotfiles"
 export PATH="$HOME/bin:$HOME/.config/dotfiles/bin:$HOME/.brew/bin:$HOME/go/bin:$HOME/.rbenv/bin:$PATH"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # If running interactively, do not do anything.
 [[ -z "$DEBUG" ]] || echo "Checking interactive"
 [[ ! -o interactive ]] && return

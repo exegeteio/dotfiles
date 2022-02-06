@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # */5 * * * * $HOME/bin/rsync.fromfile 2>&1 >> /tmp/rsync.log
 INPUT=${1-~/.auto_rsync}
 OUTPUT=${2-~/rsync}

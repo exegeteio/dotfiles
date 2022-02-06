@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Allows overriding with ~/.zshenv
 [[ -z "$BLOG_PATH" ]] && export BLOG_PATH="$HOME/code/github/exegeteio/exegete.io/_posts"

@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/usr/bin/env bash
 be rspec $(fspec "$@")

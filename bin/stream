@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 tmux -L stream new-session -s stream -d
 tmux -L stream split-window -v 'dr.wee'
 tmux -L stream resize-pane -t 1 -y 7

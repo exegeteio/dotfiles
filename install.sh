@@ -1,8 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 SOURCE_PATH="$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)"
 BACKUP_DIR="$HOME/.dotfiles-orig-$(date +%F)"
 BASH="$(which bash)"
-GIT="$(which git)"
 
 set -e
 
@@ -16,31 +15,19 @@ ln -s "$SOURCE_PATH" "$DOTFILES_PATH"
 
 # Make sure git and bash exist.
 [[ -x "$BASH" ]] || (echo "You must have bash installed to proceed!"; exit 127)
-[[ -x "$GIT" ]] || (echo "You must have git installed to proceed!"; exit 127)
-# gcc is required for so much.
-[[ -x "$(which gcc)" ]] || (echo "You must have gcc installed to proceed!"; exit 127)
 
 ## Here thar be functions!
 
 configure_zsh () {
-  if [ -d "$HOME/.oh-my-zsh" ]; then
-    echo Oh My Zsh already installed.
-  else
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-  fi
-
-  # Custom theme.
   backup_and_link .zshrc zshrc
-
   # Setup Fuzzy Finder
-  if [[ -f "$(which brew)" ]] && [[ -f "$(which fzf)" ]]; then
+  if [[ -x "$(which brew)" ]] && [[ -x "$(which fzf)" ]]; then
     "$(brew --prefix fzf)"/install --all
   fi
 }
 
 configure_bash () {
   backup_and_link .bashrc bashrc
-  backup_and_link .git-ps1 git-ps1.sh
 
   # Setup Fuzzy Finder
   if [[ -f "$(which brew)" ]] && [[ -f "$(which fzf)" ]]; then
@@ -49,9 +36,10 @@ configure_bash () {
 }
 
 configure_vim () {
-  curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  mkdir -p "$HOME/.vim/autoload/"
+  cp plug.vim "$HOME/.vim/autoload/"
   backup_and_link .vimrc vimrc
-  vim +PlugInstall +qall
+  [ -x "$(which vim)" ] && vim +PlugInstall +qall
 }
 
 move_file_to_backup () {

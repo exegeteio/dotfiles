@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 $EDITOR "$@"
 git add "$*" && git commit -qnm "$* - $(date +%F) - e.commit"

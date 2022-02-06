@@ -1,9 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
 [[ "$EUID" -eq 0 ]] || (echo "Must use sudo or be root for this script! - $EUID"; exit 1)
-
 
 # These will get installed.
 PACKAGES='keychain vim git zsh build-essential fonts-powerline httpie docker-ce docker-ce-cli containerd.io'
@@ -42,13 +41,10 @@ apt-get update -qq && apt-get install \
 curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
-if [ -z "${SUDO_USER}" ]; then
-  echo "Adding ${USER} to the \"docker\" group."
-  usermod -aG docker ${USER}
-else
+if [ ! -z "${SUDO_USER}" ]; then
   echo "Adding ${SUDO_USER} to the \"docker\" group."
   usermod -aG docker ${SUDO_USER}
 fi
 
-docker run --rm hello-world
+[ -x "./brew.sh" ] && ./brew.sh
 

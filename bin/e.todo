@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 files=$(todo --vimgrep | menu | $EDITOR_ARGS)
 [ -z "$files" ] && echo "No files" && exit 1
 $EDITOR $files

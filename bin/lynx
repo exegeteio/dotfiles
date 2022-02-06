@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [[ -f "/var/run/docker.sock" ]]; then
   echo "Docker lynx..."

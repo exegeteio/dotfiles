@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 dr --name "workstation" \
   --hostname "workstation" \
   --privileged \

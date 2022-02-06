@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 [[ -z "$DEBUG" ]] || echo "Loading fzf"
 if [[ -f "~/.fzf.$RBENV_SHELL" ]]; then

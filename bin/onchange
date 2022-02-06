@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ## Runs the passed command (assuming the first argument is another
 ## command) anytime anything in the current or any subdirectory
