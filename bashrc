@@ -6,3 +6,5 @@ done
 
 [[ -n "$(which oh-my-posh)" ]] && eval "$(oh-my-posh --init --shell bash --config "$HOME/.config/dotfiles/omp.json")"
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
