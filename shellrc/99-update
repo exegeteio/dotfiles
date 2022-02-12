@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Script to auto-update my dotfiles if necessary.  "Necessary" as determined by
+# being checked in the last day.
+
+tmp="/tmp/dotfiles-update_$(date +%F).log"
+
+if [ ! -e "$tmp" ]; then
+  (
+    cd ~/.config/dotfiles || exit 1
+    git bstash >> "$tmp"
+    git pull >> "$tmp"
+    git stash pop >> "$tmp"
+  )
+fi
