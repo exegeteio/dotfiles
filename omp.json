@@ -12,8 +12,20 @@
             "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}}"
           },
           "style": "diamond",
-          "trailing_diamond": "\ue0b4 ",
           "type": "os"
+        },
+        {
+          "background": "#424242",
+          "foreground": "#ccc",
+          "foreground_templates": [
+            "{{ if .SSHSession }}#f88{{ end }}"
+          ],
+          "properties": {
+            "template": " {{ if .SSHSession }}\uF817 {{ end }}{{ trunc 4 .HostName | lower }}"
+          },
+          "style": "diamond",
+          "trailing_diamond": "\ue0b4 ",
+          "type": "session"
         },
         {
           "background": "#424242",
