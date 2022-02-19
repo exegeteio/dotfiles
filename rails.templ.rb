@@ -71,6 +71,20 @@ SNIPPET
     before: '</body>'
   )
 
+  # CSS For Rails Forms
+  css = <<-SNIPPET
+
+label {
+  display: block;
+}
+
+SNIPPET
+  inject_into_file(
+    'app/assets/stylesheets/application.css',
+    css
+    # before: '</body>'
+  )
+
   # Transition to HAML
   rails_command 'haml:erb2haml HAML_RAILS_DELETE_ERB=true'
 
