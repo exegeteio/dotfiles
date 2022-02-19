@@ -5,7 +5,7 @@ if [[ -f "/var/run/docker.sock" ]]; then
   dr lynx "$@"
 else
   echo "Falling back to local lynx..."
-  /usr/local/bin/lynx \
+  /usr/bin/env lynx \
     -cfg "$HOME/code/dotfiles/docker/lynx/lynx.cfg" \
     -lss "$HOME/code/dotfiles/docker/lynx/lynx.lss" \
     "$@"

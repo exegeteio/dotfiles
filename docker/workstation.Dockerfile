@@ -5,12 +5,16 @@ ARG HOST_USER=exegete
 ARG HOST_HOME=/home/exegete
 ENV DOCKER=true
 ENV DEBIAN_FRONTEND=noninteractive
+ENV WORKSPACE=/workspace
 RUN apt-get update && apt-get install -qqy --no-install-recommends \
         build-essential \
         curl \
+        libreadline-dev \
+        libssl-dev \
         ssh-client \
         sudo \
         ubuntu-server \
+        zlib1g-dev \
         zsh
 
 COPY docker/workstation/docker.sh /tmp/
@@ -21,7 +25,6 @@ RUN useradd -d ${HOST_HOME} -m -s /usr/bin/zsh -u ${UID} -g root ${HOST_USER}
 RUN echo "${HOST_USER} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${HOST_USER} \
     && chmod 0440 /etc/sudoers.d/${HOST_USER}
 USER ${HOST_USER}
-RUN mkdir ${HOST_HOME}/code ${HOST_HOME}/host
 
 COPY docker/workstation /tmp/scripts
 RUN /tmp/scripts/compose.sh
@@ -34,7 +37,7 @@ RUN /usr/bin/zsh ./install.sh
 RUN sudo ./linux.sh
 RUN /usr/bin/zsh ./brew.sh
 
-WORKDIR ${HOST_HOME}
+WORKDIR ${WORKSPACE}
 
 ENTRYPOINT ["/entry.sh"]
 CMD ["/usr/bin/zsh"]

@@ -4,5 +4,5 @@ if [[ -f "/var/run/docker.sock" ]]; then
   dr -v "$HOME/.weechat:/home/weechat/.weechat" --name weechat weechat "$@"
 else
   echo "Falling back to local weechat..."
-  /usr/local/bin/weechat "$@"
+  /usr/bin/env weechat "$@"
 fi
