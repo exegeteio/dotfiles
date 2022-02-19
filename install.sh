@@ -67,6 +67,10 @@ function configure_tmux () {
   backup_and_link .tmux.conf tmux.conf
 }
 
+function configure_railsrc () {
+  backup_and_link .railsrc railsrc
+}
+
 
 # case "$OSTYPE" in
 #   darwin*)  $BASH macos.sh ;;
@@ -84,6 +88,8 @@ echo "Configuring tmux..."
 configure_tmux
 echo "Configuring git..."
 configure_git
+echo "Configuring railsrc..."
+configure_railsrc
 
 # Cleanup:
 unset backup_and_link

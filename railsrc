@@ -1,0 +1,5 @@
+--asset-pipeline=propshaft
+--database=postgresql
+--javascript=importmap
+--skip-action-mailbox
+--template=$DOTFILES_PATH/rails.templ.rb
