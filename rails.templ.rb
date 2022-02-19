@@ -2,6 +2,24 @@
 
 # Template for building Rails apps my way.
 
+# Enable pgcrypto for UUID
+
+file 'db/migrate/00000000_enable_uuid.rb', <<-MIGRATION
+  # db/migrate/00000000_enable_uuid.rb
+  class EnableUuid < ActiveRecord::Migration[6.0]
+    def change
+      enable_extension 'pgcrypto'
+    end
+  end
+MIGRATION
+
+file 'config/initializers/uuid.rb', <<-CODE
+  # config/initializers/uuid.rb
+  Rails.application.config.generators do |g|
+    g.orm :active_record, primary_key_type: :uuid
+  end
+CODE
+
 after_bundle do
   gem_group :development, :test do
     gem 'bullet'
