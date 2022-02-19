@@ -45,6 +45,32 @@ after_bundle do
     before: '</head>'
   )
 
+  # HTML Navigation
+  nav = <<-SNIPPET
+  <header>
+    <nav>
+      <%= link_to 'Home', root_path %>
+    </nav>
+  </header>
+SNIPPET
+  inject_into_file(
+    'app/views/layouts/application.html.erb',
+    nav,
+    after: '<body>'
+  )
+
+  # HTML Footer
+  footer = <<-SNIPPET
+  <footer>
+    <%= link_to 'Home', root_path %>
+  </footer>
+SNIPPET
+  inject_into_file(
+    'app/views/layouts/application.html.erb',
+    footer,
+    before: '</body>'
+  )
+
   # Transition to HAML
   rails_command 'haml:erb2haml HAML_RAILS_DELETE_ERB=true'
 
