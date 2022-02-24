@@ -38,6 +38,7 @@ nnoremap ;b :execute 'norm i' . system("git.branch")<CR><Esc>kJa
 " Reload vimrc.
 nnoremap ;rr :so ~/.vimrc<CR>
 nnoremap ;rn :set rnu!<CR>
+nnoremap ;rs :set spell!<CR>
 
 set grepprg=rg\ --vimgrep\ -i
 autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
