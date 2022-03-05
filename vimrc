@@ -10,11 +10,13 @@ Plug 'sheerun/vim-polyglot'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
 Plug 'vim-ruby/vim-ruby'
 Plug 'dense-analysis/ale'
+Plug 'junegunn/fzf'
 
 call plug#end()
 
 " config plugins
 "nnoremap ;o :NERDTreeToggle .<CR>
+nnoremap ;o :FZF<CR>
 "nnoremap ;l :call NERDComment("n", "Toggle")<CR>
 "nnoremap <C-/> :call NERDComment("n", "Toggle")<CR>
 "vnoremap <C-/> :call NERDComment("n", "Toggle")<CR>
@@ -36,6 +38,7 @@ nnoremap ;b :execute 'norm i' . system("git.branch")<CR><Esc>kJa
 " Reload vimrc.
 nnoremap ;rr :so ~/.vimrc<CR>
 nnoremap ;rn :set rnu!<CR>
+nnoremap ;rs :set spell!<CR>
 
 set grepprg=rg\ --vimgrep\ -i
 autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
@@ -91,4 +94,4 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
 " Disable ALE auto highlights
 let g:ale_set_highlights = 0
-nnoremap ;rc :execute ":!rubocop -A %"<CR>
+nnoremap ;rc :execute ":!rubocop -a %"<CR>

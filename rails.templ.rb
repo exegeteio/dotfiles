@@ -22,6 +22,7 @@ CODE
 
 after_bundle do
   gem_group :development, :test do
+    gem 'annotate'
     gem 'bullet'
     gem 'bundle-audit'
     gem 'haml-rails'
@@ -29,6 +30,9 @@ after_bundle do
   end
   # Install added gems.
   run 'bundle update'
+
+  # Setup annotate
+  rails_command 'g annotate:install'
 
   # Setup bullet
   rails_command 'g bullet:install'
@@ -52,7 +56,7 @@ after_bundle do
       <%= link_to 'Home', root_path %>
     </nav>
   </header>
-SNIPPET
+  SNIPPET
   inject_into_file(
     'app/views/layouts/application.html.erb',
     nav,
@@ -64,11 +68,24 @@ SNIPPET
   <footer>
     <%= link_to 'Home', root_path %>
   </footer>
-SNIPPET
+  SNIPPET
   inject_into_file(
     'app/views/layouts/application.html.erb',
     footer,
     before: '</body>'
+  )
+
+  # CSS For Rails Forms
+  css = <<~SNIPPET
+
+    label {
+      display: block;
+    }
+
+  SNIPPET
+  inject_into_file(
+    'app/assets/stylesheets/application.css',
+    css
   )
 
   # Transition to HAML
@@ -89,7 +106,57 @@ SNIPPET
 
   # Run rubocop before initial commit.
   run 'rubocop --init'
-  run 'rubocop -a', abort_on_failure: false
+  ruborake = <<~SNIPPET
+
+  begin
+    require 'rubocop/rake_task'
+
+    task :default => %i[rubocop test]
+
+    desc 'Run rubocop'
+    task :rubocop do
+      RuboCop::RakeTask.new
+    end
+  rescue LoadError # No rubocop
+  end
+  SNIPPET
+  inject_into_file(
+    'Rakefile',
+    ruborake
+  )
+  enable_cops = {
+    'require' => %w[
+      rubocop-rails
+    ],
+    'AllCops' => {
+      'NewCops' => 'enable',
+      'Exclude' => %w[
+        bin/**/*
+        db/migrate/**/*
+        db/schema.rb
+      ]
+    },
+    'Style/Documentation' => {
+      'Exclude' => %w[
+        config/**/*
+        spec/**/*
+        test/**/*
+      ]
+    },
+    'Metrics/BlockLength' => {
+      'Exclude' => %w[
+        config/**/*
+        lib/tasks/auto_annotate_models.rake
+        spec/**/*
+        test/**/*
+      ]
+    }
+  }.to_yaml
+  inject_into_file(
+    '.rubocop.yml',
+    enable_cops
+  )
+  run 'rubocop -A', abort_on_failure: false
   git add: '.'
   git commit: "-anm 'Thanks, Rubocop!'"
 

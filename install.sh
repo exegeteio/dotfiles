@@ -43,7 +43,7 @@ configure_vim () {
 }
 
 move_file_to_backup () {
-  if [[ -f "$HOME/$1" ]]; then
+  if [[ -e "$HOME/$1" ]]; then
     [ -d "$BACKUP_DIR" ] || mkdir -p "$BACKUP_DIR"
     echo "Backing up $HOME/$1 to $BACKUP_DIR"
     mv "$HOME/$1" "$BACKUP_DIR/"
