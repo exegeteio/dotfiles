@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# docker volume create workstation
+# -v "workstation:$HOME" \
+
 dr --name "workstation" \
   --hostname "workstation" \
   --privileged \
