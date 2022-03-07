@@ -1,41 +1,44 @@
-// Place your settings in this file to overwrite the default settings
-// On MacOS find this file at:  ~/Library/Application Support/Code/User/settings.json
 {
+    "editor.fontFamily": "FiraCode Nerd Font, Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 18,
     "editor.tabSize": 2,
-    "editor.wordWrap": true,
-    "sync.gist": "605685f632ab4f9e8add0fe337cc1db1",
-    "sync.lastUpload": "2017-07-13T18:27:37.535Z",
-    "sync.autoDownload": false,
-    "sync.autoUpload": false,
-    "sync.lastDownload": "2017-06-05T16:47:46.005Z",
-    "sync.version": 262,
-    "sync.showSummary": true,
-    "sync.forceDownload": false,
-    "sync.anonymousGist": false,
-    "vsicons.presets.hideFolders": false,
-    "editor.fontSize": 14,
-    "sync.host": "",
-    "sync.pathPrefix": "",
+    "editor.wordWrap": "on",
+    "files.autoSave": "onFocusChange",
+    "ruby.codeCompletion": "rcodetools",
+    "ruby.intellisense": "rubyLocate",
+    "ruby.rubocop.executePath": "/Users/exegete/.rbenv/shims/",
+    "ruby.useBundler": true,
+    "screencastMode.fontSize": 40,
+    "solargraph.diagnostics": true,
+    "solargraph.formatting": true,
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.tabs.enabled": false,
+    "terminal.integrated.tabs.location": "left",
+    "vim.vimrc.enable": true,
     "window.zoomLevel": 1,
-    "editor.renderWhitespace": "boundary",
-    "vim.disableAnnoyingNeovimMessage": true,
-    "sync.quietSync": false,
-    "sync.askGistName": false,
-    "extensions.ignoreRecommendations": false,
-    "workbench.startupEditor": "newUntitledFile",
-    "files.associations": {
-        "*.md": "markdown",
-        "*.tt2": "html"
+    "workbench.colorTheme": "Tinacious Design (High Contrast)",
+    "workbench.sideBar.location": "right",
+    "terminal.integrated.profiles.osx": {
+        "zsh": {
+            "path": "/bin/zsh",
+            "args": [
+                "-l"
+            ]
+        },
     },
+    "terminal.integrated.fontSize": 18,
+    "html.format.wrapLineLength": 80,
     "git.autofetch": true,
-    "task.slowProviderWarning": [
-        "rake"
-    ],
-    "liveshare.allowGuestDebugControl": true,
-    "terminal.integrated.fontFamily": "MesloLGS NF",
-    "workbench.activityBar.visible": true,
-    "html.autoClosingTags": false,
-    "vsonline.accountProvider": "Microsoft",
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue"
+    "editor.lineNumbers": "relative",
+    "ruby.useLanguageServer": true,
+    "ruby.rubocop.onSave": false,
+    "go.toolsManagement.autoUpdate": true,
+    "terminal.integrated.confirmOnExit": "hasChildProcesses",
+    "[ruby]": {
+        "editor.defaultFormatter": "misogi.ruby-rubocop"
+    },
+    "terminal.integrated.minimumContrastRatio": 7,
+    "workbench.startupEditor": "none",
+    "solargraph.commandPath": "/Users/exegete/.rbenv/shims/solargraph",
+    "solargraph.autoformat": true
 }
