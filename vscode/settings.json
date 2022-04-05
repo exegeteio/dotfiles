@@ -15,8 +15,7 @@
     "terminal.integrated.tabs.enabled": false,
     "terminal.integrated.tabs.location": "left",
     "vim.vimrc.enable": true,
-    "window.zoomLevel": 1,
-    "workbench.colorTheme": "Tinacious Design (High Contrast)",
+    "workbench.colorTheme": "GitHub Dark Default",
     "workbench.sideBar.location": "right",
     "terminal.integrated.profiles.osx": {
         "zsh": {
@@ -40,5 +39,8 @@
     "terminal.integrated.minimumContrastRatio": 7,
     "workbench.startupEditor": "none",
     "solargraph.commandPath": "/Users/exegete/.rbenv/shims/solargraph",
-    "solargraph.autoformat": true
+    "solargraph.autoformat": true,
+    "window.zoomLevel": 2,
+    "editor.bracketPairColorization.enabled": true,
+    "gitlens.plusFeatures.enabled": false
 }
