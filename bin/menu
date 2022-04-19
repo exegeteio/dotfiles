@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 if [[ -x "$(which fzf)" ]]; then
-  exec fzf -0 -1 -m
+  exec fzf -0 -1 -m --bind ctrl-a:select-all
 else
   in=$(</dev/stdin)
   if [[ -z "$in" ]]; then

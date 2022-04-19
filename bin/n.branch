@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-n "$(git.branch)" "$(basename $PWD)"
+n "$(g.branch)" "$(basename $PWD)"

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set -e
-specs=$(git.bmod spec/ | sort | menu)
+specs=$(g.bmod spec/**/*_spec.rb | sort | menu)
 echo "Running: $specs"
 be rspec $specs

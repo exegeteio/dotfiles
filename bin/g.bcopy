@@ -1,4 +1,4 @@
 #!/bin/bash
 # FEATURE:  Make this work on Windows and/or Linux.
-git.branch | pbcopy
-echo "Copied to clipboard:  $(git.branch)"
+g.branch | pbcopy
+echo "Copied to clipboard:  $(g.branch)"
