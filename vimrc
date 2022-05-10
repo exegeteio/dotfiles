@@ -34,7 +34,7 @@ nnoremap ;1 :.!zsh<CR>
 command! W :w
 command! Wq :wq
 " Get current branch from git.
-nnoremap ;b :execute 'norm i' . system("git.branch")<CR><Esc>kJa
+nnoremap ;b :execute 'norm i' . system("g.branch")<CR><Esc>kJa
 " Reload vimrc.
 nnoremap ;rr :so ~/.vimrc<CR>
 nnoremap ;rn :set rnu!<CR>

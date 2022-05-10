@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+tag="$(basename $(pwd))"
+echo "Building: $tag"
+docker build "--tag=$tag" . && dr "$tag"
