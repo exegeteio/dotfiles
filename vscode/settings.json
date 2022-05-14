@@ -42,5 +42,17 @@
     "solargraph.autoformat": true,
     "window.zoomLevel": 2,
     "editor.bracketPairColorization.enabled": true,
-    "gitlens.plusFeatures.enabled": false
+    "gitlens.plusFeatures.enabled": false,
+    "editor.inlineSuggest.enabled": true,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.formatOnSave": true,
+    "bracket-pair-colorizer-2.depreciation-notice": false,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
