@@ -6,6 +6,9 @@ if test -n "$buf"; then
   if [[ "$buf" == "wave" ]]; then
     buf="mannim4WaveAnimated"
   fi
+  if [[ "$buf" == "clear" ]]; then
+    buf="/c"
+  fi
   tmux -L stream send -t '{marked}' "$buf" Enter
   exit
 fi
