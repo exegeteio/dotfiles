@@ -27,9 +27,23 @@ after_bundle do
     gem 'bundle-audit'
     gem 'haml-rails'
     gem 'rubocop-rails'
+    gem 'rubocop-rails_config'
+    gem 'dotenv-rails'
   end
   # Install added gems.
   run 'bundle update'
+
+  # Ignore .env in .gitignore.
+  gitignore = <<-SNIPPET
+# Ignore .env files
+.env
+.env-production
+.env-development
+  SNIPPET
+  inject_into_file(
+    '.gitignore',
+    gitignore
+  )
 
   # Setup annotate
   rails_command 'g annotate:install'
@@ -125,6 +139,11 @@ after_bundle do
     ruborake
   )
   enable_cops = {
+    'inherit_gem' => {
+      'rubocop-rails_config' => %w[
+        config/rails.yml
+      ]
+    },
     'require' => %w[
       rubocop-rails
     ],
