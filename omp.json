@@ -8,10 +8,8 @@
           "background": "#424242",
           "foreground": "#9B6BDF",
           "leading_diamond": "\ue0b6",
-          "properties": {
-            "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}}"
-          },
           "style": "diamond",
+          "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}}",
           "type": "os"
         },
         {
@@ -20,10 +18,8 @@
           "foreground_templates": [
             "{{ if .SSHSession }}#f88{{ end }}"
           ],
-          "properties": {
-            "template": " {{ if .SSHSession }}\uF817 {{ end }}{{ trunc 4 .HostName | lower }}"
-          },
           "style": "diamond",
+          "template": " {{ if .SSHSession }}\uf817 {{ end }}{{ trunc 4 .HostName | lower }}",
           "trailing_diamond": "\ue0b4 ",
           "type": "session"
         },
@@ -32,10 +28,10 @@
           "foreground": "#3EC669",
           "leading_diamond": "\ue0b6",
           "properties": {
-            "style": "folder",
-            "template": " {{ .Path }} "
+            "style": "folder"
           },
           "style": "diamond",
+          "template": " {{ .Path }} ",
           "trailing_diamond": "\ue0b4",
           "type": "path"
         },
@@ -47,10 +43,10 @@
             "branch_icon": "",
             "fetch_stash_count": true,
             "fetch_status": true,
-            "fetch_upstream_icon": true,
-            "template": " {{ .HEAD }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} \u276f"
+            "fetch_upstream_icon": true
           },
           "style": "diamond",
+          "template": " {{ .HEAD }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} \u276f",
           "trailing_diamond": "\ue0b4 ",
           "type": "git"
         },
@@ -61,10 +57,8 @@
           ],
           "foreground": "#242424",
           "leading_diamond": "\ue0b6",
-          "properties": {
-            "template": "\uf7d4"
-          },
           "style": "diamond",
+          "template": "\uf7d4",
           "trailing_diamond": "\ue0b4 ",
           "type": "exit"
         }
@@ -72,5 +66,5 @@
       "type": "prompt"
     }
   ],
-  "version": 1
+  "version": 2
 }

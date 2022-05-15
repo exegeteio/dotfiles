@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-if [[ -f "/var/run/docker.sock" ]]; then
+if [[ -e "/var/run/docker.sock" ]]; then
   echo "Docker weechat..."
   dr -v "$HOME/.weechat:/home/weechat/.weechat" --name weechat weechat "$@"
 else
