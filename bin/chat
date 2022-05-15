@@ -3,11 +3,14 @@
 
 buf="$*"
 if test -n "$buf"; then
-  tmux -L stream send -t 1 "$buf" Enter
+  if [[ "$buf" == "wave" ]]; then
+    buf="mannim4WaveAnimated"
+  fi
+  tmux -L stream send -t '{marked}' "$buf" Enter
   exit
 fi
 
 IFS=
 while read -r line; do
-  tmux -L stream send -t 1 "$line" Enter
+  tmux -L stream send -t '{marked}' "$line" Enter
 done
