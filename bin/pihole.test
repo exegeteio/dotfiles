@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
+echo "=== 192.168.86.2"
 host ads.google.com 192.168.86.2 | grep -i 'has address'
-host ads.google.com 192.168.86.3 | grep -i 'has address'
 host www.google.com 192.168.86.2 | grep -i 'has address'
+echo "=== 192.168.86.3"
+host ads.google.com 192.168.86.3 | grep -i 'has address'
 host www.google.com 192.168.86.3 | grep -i 'has address'
