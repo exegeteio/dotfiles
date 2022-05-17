@@ -6,15 +6,19 @@ if [ -d "$HOME/.ssh" ]; then
   [[ -z "$DEBUG" ]] || echo "Initializing ssh-agent"
   if [ -z "$SSH_AUTH_SOCK" ]; then
     # Check for a currently running instance of the agent
-    [ -z "$SSH_AGENT_PID" ] && source "$HOME/.ssh/ssh-agent"
-    _agent="$(ps -p "$SSH_AGENT_PID" &>-)"
-    if [ -z "$?" ]; then
-      echo "Launging new SSH Agent..."
-      # Launch a new instance of the agent
-      ssh-agent -s &> ~/.ssh/ssh-agent
-      source $HOME/.ssh/ssh-agent
-    fi
+    [[ -z "$DEBUG" ]] || echo "Is SSH_AGENT_PID empty? $SSH_AGENT_PID ..."
+    source "$HOME/.ssh/ssh-agent"
   fi
+
+  _agent="$(ps -p "$SSH_AGENT_PID")"
+  # "1" is is the exit code when the pid is not found.
+  if [ "1" -eq "$?" ]; then
+    echo "Launching new SSH Agent..."
+    # Launch a new instance of the agent
+    ssh-agent -s &> ~/.ssh/ssh-agent
+    source $HOME/.ssh/ssh-agent
+  fi
+
   _keys="$(ssh-add -l)"
   if [ "$?" = "1" ]; then
     echo "No SSH keys found in ssh-agent"
