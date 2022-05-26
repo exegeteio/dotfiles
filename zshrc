@@ -40,10 +40,10 @@ bindkey "^F" history-incremental-search-forward
 bindkey "^R" history-incremental-search-backward
 
 # beginning search with arrow keys and j/k
-bindkey "^[OA" up-line-or-beginning-search
-bindkey "^[OB" down-line-or-beginning-search
-bindkey -M vicmd "k" up-line-or-beginning-search
-bindkey -M vicmd "j" down-line-or-beginning-search
+# bindkey "^[OA" up-line-or-beginning-search
+# bindkey "^[OB" down-line-or-beginning-search
+# bindkey -M vicmd "k" up-line-or-beginning-search
+# bindkey -M vicmd "j" down-line-or-beginning-search
 
 # beginning search in insert mode, redundant with the up/down arrows above
 # but a little easier to press.
