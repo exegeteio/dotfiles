@@ -2,8 +2,9 @@
 
 for i in *; do
   if [ -x "$i/build" ]; then
+    echo "Building $i..."
     (
-      cd "$i"
+      cd "./$i"
       ./build
     )
   fi

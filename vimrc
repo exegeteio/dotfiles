@@ -94,4 +94,4 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
 " Disable ALE auto highlights
 let g:ale_set_highlights = 0
-nnoremap ;rc :execute ":!rubocop -a %"<CR>
+nnoremap ;rc :execute ":!be rubocop -a %"<CR>
