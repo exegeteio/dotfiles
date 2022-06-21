@@ -8,6 +8,7 @@
 	bstash = !"git stash -um \"WIP: $(g.branch)\""
 	s = "status -sb"
   g = "checkout Gemfile.lock"
+	a = "add -p"
 [core]
 	excludesFile = ~/.gitignore
 	hooksPath = ~/.git/hooks

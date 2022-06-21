@@ -21,11 +21,11 @@ file 'config/initializers/uuid.rb', <<-CODE
 CODE
 
 after_bundle do
+  gem 'haml-rails'
   gem_group :development, :test do
     gem 'annotate'
     gem 'bullet'
     gem 'bundle-audit'
-    gem 'haml-rails'
     gem 'rubocop-rails'
     gem 'rubocop-rails_config'
     gem 'dotenv-rails'
@@ -34,11 +34,11 @@ after_bundle do
   run 'bundle update'
 
   # Ignore .env in .gitignore.
-  gitignore = <<-SNIPPET
-# Ignore .env files
-.env
-.env-production
-.env-development
+  gitignore = <<~SNIPPET
+    # Ignore .env files
+    .env
+    .env-production
+    .env-development
   SNIPPET
   inject_into_file(
     '.gitignore',
@@ -122,17 +122,17 @@ after_bundle do
   run 'rubocop --init'
   ruborake = <<~SNIPPET
 
-  begin
-    require 'rubocop/rake_task'
+    begin
+      require 'rubocop/rake_task'
 
-    task :default => %i[rubocop test]
+      task :default => %i[rubocop test]
 
-    desc 'Run rubocop'
-    task :rubocop do
-      RuboCop::RakeTask.new
+      desc 'Run rubocop'
+      task :rubocop do
+        RuboCop::RakeTask.new
+      end
+    rescue LoadError # No rubocop
     end
-  rescue LoadError # No rubocop
-  end
   SNIPPET
   inject_into_file(
     'Rakefile',
