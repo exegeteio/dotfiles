@@ -126,4 +126,13 @@
     "key": "shift+cmd+b",
     "command": "workbench.action.toggleAuxiliaryBar"
   },
+  {
+    "key": "shift+alt+cmd+c",
+    "command": "copyRelativeFilePath"
+  },
+  {
+    "key": "shift+alt+cmd+c",
+    "command": "-copyRelativeFilePath",
+    "when": "!editorFocus"
+  },
 ]
