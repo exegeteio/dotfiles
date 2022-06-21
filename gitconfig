@@ -7,6 +7,7 @@
 	maindiff = diff main...HEAD
 	bstash = !"git stash -um \"WIP: $(g.branch)\""
 	s = "status -sb"
+  g = "checkout Gemfile.lock"
 [core]
 	excludesFile = ~/.gitignore
 	hooksPath = ~/.git/hooks
@@ -19,3 +20,10 @@
 [pull]
 	rebase = true
 
+[checkout]
+	guess = false
+
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE

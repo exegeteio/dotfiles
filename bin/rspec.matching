@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-specs=$(rg --files spec/**/*_spec.rb "$@")
+specs=$(rg -l --glob "spec/**/*_spec.rb" "$@" | menu)
 [ -z "$specs" ] && echo "[rspec.matching] No specs selected!  $specs" && exit 1
 echo "[rspec.matching] Running:  $specs"
 be rspec $specs

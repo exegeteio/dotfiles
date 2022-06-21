@@ -6,3 +6,21 @@
 .Trashes
 .byebug_history
 
+# Ignore Docker for now
+/Dockerfile
+/docker-compose.yml
+/.dockerignore
+/.devcontainer*
+/.docker/
+
+/.rubocop.yml
+/.rubocop_todo.yml
+/Gemfile.lock
+
+config/initializers/bullet.rb
+/data/sql
+/public/**/*.map
+
+# VS Code config
+/.vscode
+/bin/solargraph

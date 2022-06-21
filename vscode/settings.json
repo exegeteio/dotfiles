@@ -50,7 +50,6 @@
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "editor.formatOnSave": true,
     "bracket-pair-colorizer-2.depreciation-notice": false,
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
