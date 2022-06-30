@@ -15,7 +15,7 @@
     "terminal.integrated.tabs.enabled": false,
     "terminal.integrated.tabs.location": "left",
     "vim.vimrc.enable": true,
-    "workbench.colorTheme": "GitHub Dark Default",
+    "workbench.colorTheme": "Tinacious Design (High Contrast)",
     "workbench.sideBar.location": "right",
     "terminal.integrated.profiles.osx": {
         "zsh": {
@@ -23,7 +23,7 @@
             "args": [
                 "-l"
             ]
-        },
+        }
     },
     "terminal.integrated.fontSize": 18,
     "html.format.wrapLineLength": 80,
@@ -40,9 +40,6 @@
     "workbench.startupEditor": "none",
     "solargraph.commandPath": "/Users/exegete/.rbenv/shims/solargraph",
     "solargraph.autoformat": true,
-    "window.zoomLevel": 2,
-    "editor.bracketPairColorization.enabled": true,
-    "gitlens.plusFeatures.enabled": false,
     "editor.inlineSuggest.enabled": true,
     "[typescriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -53,5 +50,6 @@
     "bracket-pair-colorizer-2.depreciation-notice": false,
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "window.zoomLevel": 2
 }
