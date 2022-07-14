@@ -64,7 +64,7 @@ set textwidth=100
 set formatoptions=qrn1
 set wrapmargin=0
 set colorcolumn=+1
-colorscheme peachpuff
+colorscheme elflord
 
 " Spell good in markdown!
 autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
