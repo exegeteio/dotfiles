@@ -83,9 +83,9 @@ esac
 case "$REMOTE_CONTAINERS" in
   true*)  INSTALLER="$INSTALLER-dc" ;;
 esac
-INSTALLER="./$INSTALLER.sh"
+INSTALLER="$SOURCE_PATH/$INSTALLER.sh"
 echo "Attempting INSTALLER: $INSTALLER"
-[[ -x "$INSTALLER" ]] && bash $INSTALLER
+[[ -x "$INSTALLER" ]] && bash "$INSTALLER"
 
 echo "Configuring ZSH..."
 configure_zsh
