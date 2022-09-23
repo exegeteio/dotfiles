@@ -5,6 +5,8 @@ BASH="$(which bash)"
 
 set -e
 
+echo "STARTING INSTALL..."
+
 # Build 
 ./build
 
