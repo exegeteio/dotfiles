@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 
-echo "=== 192.168.86.2"
-host ads.google.com 192.168.86.2 | grep -i 'has address'
-host www.google.com 192.168.86.2 | grep -i 'has address'
-echo "=== 192.168.86.3"
-host ads.google.com 192.168.86.3 | grep -i 'has address'
-host www.google.com 192.168.86.3 | grep -i 'has address'
+piholes="192.168.86.2 192.168.86.3"
+
+for pihole in $piholes
+do
+  echo "=== $pihole"
+  host ads.google.com "$pihole" | grep -i 'has address'
+  host www.google.com "$pihole" | grep -i 'has address'
+done
+

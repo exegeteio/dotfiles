@@ -72,11 +72,18 @@ function configure_railsrc () {
 }
 
 
-# case "$OSTYPE" in
-#   darwin*)  $BASH macos.sh ;;
-#   linux*)   $BASH linux.sh ;;
-#   *)        echo "No detailed install for: $OSTYPE" ;;
-# esac
+INSTALLER=""
+case "$OSTYPE" in
+  darwin*)  INSTALLER="macos" ;;
+  linux*)   INSTALLER="linux" ;;
+  *)        echo "No detailed install for: $OSTYPE" ;;
+esac
+case "$REMOTE_CONTAINERS" in
+  true*)  INSTALLER="$INSTALLER-dc" ;;
+esac
+INSTALLER="./$INSTALLER.sh"
+echo "Attempting INSTALLER: $INSTALLER"
+[[ -x "$INSTALLER" ]] && bash $INSTALLER
 
 echo "Configuring ZSH..."
 configure_zsh

@@ -65,5 +65,4 @@ if [[ -n "$FZF" ]]; then
   bindkey -M viins "^t" fzf-file-widget
 fi
 
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

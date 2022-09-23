@@ -21,3 +21,6 @@ export RAILS_DEVELOPMENT_HOSTS=host.docker.internal,localhost,.ngrok.io
 export GOPATH=$HOME/code/go
 export GOBIN=$GOPATH/bin
 export PATH=$GOBIN:$PATH
+
+# Rancher Desktop
+[[ -d "$HOME/.rd/bin" ]] && export PATH="$HOME/.rd/bin:$PATH"
