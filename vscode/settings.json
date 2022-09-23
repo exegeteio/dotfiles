@@ -12,6 +12,7 @@
     "solargraph.diagnostics": true,
     "solargraph.formatting": true,
     "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.defaultProfile.linux": "zsh",
     "terminal.integrated.tabs.enabled": false,
     "terminal.integrated.tabs.location": "left",
     "vim.vimrc.enable": true,

@@ -21,5 +21,5 @@ if [ ! -z "${SUDO_USER}" ]; then
   sudo usermod -aG docker ${SUDO_USER}
 fi
 
-echo sudo chsh -s $(which zsh) $(whoami)
+sudo usermod --shell "$(which zsh)" "$(whoami)"
 
