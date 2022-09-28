@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-specs=$(rg -l --glob "spec/**/*_spec.rb" "$@" | menu)
-[ -z "$specs" ] && echo "[rspec.matching] No specs selected!  $specs" && exit 1
-echo "[rspec.matching] Running:  $specs"
-be rspec $specs
+# Pick out the search term.
+needle="$1"
+# Shift the term off the input array.
+shift 1
+be rspec -E "$needle" "$@"
