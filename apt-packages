@@ -3,10 +3,12 @@ build-essential
 ca-certificates
 curl
 git
+golang
 gnupg-agent
 httpie
 less
 libssl-dev
+procps
 ripgrep
 ruby
 ruby-build
@@ -15,4 +17,5 @@ ssh-client
 sudo
 tmux
 vim
+wget
 zsh

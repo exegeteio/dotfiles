@@ -80,7 +80,7 @@ case "$OSTYPE" in
   linux*)   INSTALLER="linux" ;;
   *)        echo "No detailed install for: $OSTYPE" ;;
 esac
-case "$REMOTE_CONTAINERS" in
+case "${REMOTE_CONTAINERS:-$DOCKER}" in
   true*)  INSTALLER="$INSTALLER-dc" ;;
 esac
 INSTALLER="$SOURCE_PATH/$INSTALLER.sh"

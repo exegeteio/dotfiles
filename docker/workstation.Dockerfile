@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM debian:latest
 ARG UID=1000
 ARG GID=1000
 ARG HOST_USER=exegete
@@ -9,11 +9,11 @@ ENV WORKSPACE=/workspace
 RUN apt-get update && apt-get install -qqy --no-install-recommends \
         build-essential \
         curl \
+        git \
         libreadline-dev \
         libssl-dev \
         ssh-client \
         sudo \
-        ubuntu-server \
         zlib1g-dev \
         zsh
 
@@ -21,12 +21,12 @@ COPY docker/workstation/docker.sh /tmp/
 RUN /tmp/docker.sh
 
 # Setup local user.
-RUN useradd -d ${HOST_HOME} -m -s /usr/bin/zsh -u ${UID} -g root ${HOST_USER}
+RUN useradd -d ${HOST_HOME} -m -s /usr/bin/zsh -u ${UID} -g root -g ssh ${HOST_USER}
 RUN echo "${HOST_USER} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${HOST_USER} \
     && chmod 0440 /etc/sudoers.d/${HOST_USER}
 USER ${HOST_USER}
 
-COPY docker/workstation /tmp/scripts
+COPY docker/workstation/ /tmp/scripts/
 RUN /tmp/scripts/compose.sh
 RUN /tmp/scripts/asdf.sh
 

@@ -8,8 +8,10 @@ tmp="/tmp/dotfiles-update_$(date +%F).log"
 if [ ! -e "$tmp" ]; then
   (
     cd ~/.config/dotfiles || exit 1
-    git bstash >> "$tmp"
-    git pull >> "$tmp"
-    git stash pop >> "$tmp"
+    if [ -e ".git" ]; then
+      git bstash >> "$tmp"
+      git pull >> "$tmp"
+      git stash pop >> "$tmp"
+    fi
   )
 fi

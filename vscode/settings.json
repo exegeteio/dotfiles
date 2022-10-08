@@ -51,10 +51,13 @@
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "window.zoomLevel": 2,
-    "editor.renderWhitespace": "none",
-    "terminal.integrated.tabs.enabled": false,
     "diffEditor.ignoreTrimWhitespace": false,
+    "editor.renderWhitespace": "none",
     "editor.stickyScroll.enabled": true,
+    "remote.containers.dotfiles.installCommand": "~/dotfiles/install.sh",
+    "remote.containers.dotfiles.repository": "https://github.com/exegete46/dotfiles.git",`
+    "remote.containers.dotfiles.targetPath": "~/dotfiles",
+    "terminal.integrated.tabs.enabled": false,
+    "window.zoomLevel": 2,
     "workbench.layoutControl.enabled": false
 }

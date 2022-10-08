@@ -34,3 +34,8 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[credential]
+	helper = "!f() { /home/vscode/.vscode-server/bin/74b1f979648cc44d385a2286793c226e611f59e7/node /tmp/vscode-remote-containers-0551e7debb1d23cc8a2f22d0e06bfd3bfbc68d80.js $*; }; f"
+[safe]
+	directory = /workspaces
+	directory = /workspaces/dotfiles
