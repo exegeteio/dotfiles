@@ -18,7 +18,7 @@ fi
 
 # Allow direction of commands to notes.
 if [[ -n "$TMUX" ]]; then
-	tmux run "echo #{pane_id}" > ~/.notes_pane
+	tmux run "echo #{pane_id} > ~/.notes_pane"
 	basename "$FILE" > ~/.notes_pane.title
 fi
 

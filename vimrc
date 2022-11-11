@@ -25,6 +25,7 @@ nnoremap ;o :FZF<CR>
 nnoremap ;s :shell<CR>
 " Add the current filename and line number to the active tmux notes buffer.
 nnoremap ;n :silent execute ":!echo %:".line('.')." \| n.add"<CR>
+nnoremap ;nl :silent execute ":!echo %:".line('.')." \| pbcopy"<CR>
 " Add the current highlight to the active tmux notes buffer.
 vnoremap ;n :'<,'>!n.add<CR>u
 
@@ -49,6 +50,8 @@ set suffixesadd+=.md
 nnoremap ;t gf
 nnoremap ;f :!find . -iname \*<cword>\* \| menu<CR>
 nnoremap ;g :silent execute "grep! " . shellescape(expand("<cword>"))<CR>:copen<CR>
+" Fix Y in neovim:
+nnoremap Y yy
 
 " Soft tabs
 set tabstop=2

@@ -11,10 +11,6 @@
   { "key": "cmd+8", "command": "workbench.action.openEditorAtIndex8" },
   { "key": "cmd+9", "command": "workbench.action.openEditorAtIndex9" },
   {
-    "key": "cmd+\\",
-    "command": "workbench.action.toggleSidebarVisibility"
-  },
-  {
     "key": "shift+cmd+j",
     "command": "workbench.action.toggleMaximizedPanel"
   },
@@ -135,4 +131,46 @@
     "command": "-copyRelativeFilePath",
     "when": "!editorFocus"
   },
+  {
+    "key": "cmd+k g",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "-workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  {
+    "key": "cmd+k g",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "-workbench.view.scm",
+    "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+  },
+  {
+    "key": "cmd+k /",
+    "command": "workbench.action.findInFiles"
+  },
+  {
+    "key": "cmd+k e",
+    "command": "workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled"
+  },
+  {
+    "key": "shift+cmd+e",
+    "command": "-workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled"
+  },
+  {
+    "key": "cmd+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  }
 ]

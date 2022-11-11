@@ -55,9 +55,14 @@
     "editor.renderWhitespace": "none",
     "editor.stickyScroll.enabled": true,
     "remote.containers.dotfiles.installCommand": "~/dotfiles/install.sh",
-    "remote.containers.dotfiles.repository": "https://github.com/exegete46/dotfiles.git",`
+    "remote.containers.dotfiles.repository": "https://github.com/exegete46/dotfiles.git",
     "remote.containers.dotfiles.targetPath": "~/dotfiles",
     "terminal.integrated.tabs.enabled": false,
     "window.zoomLevel": 2,
-    "workbench.layoutControl.enabled": false
+    "workbench.layoutControl.enabled": false,
+    "editor.minimap.enabled": false,
+    "zenMode.centerLayout": false,
+    "zenMode.hideStatusBar": false,
+    "zenMode.hideLineNumbers": false,
+    "zenMode.fullScreen": false
 }
