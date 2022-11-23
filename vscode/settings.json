@@ -52,6 +52,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "diffEditor.ignoreTrimWhitespace": false,
+    "editor.minimap.enabled": false,
     "editor.renderWhitespace": "none",
     "editor.stickyScroll.enabled": true,
     "remote.containers.dotfiles.installCommand": "~/dotfiles/install.sh",
@@ -59,10 +60,10 @@
     "remote.containers.dotfiles.targetPath": "~/dotfiles",
     "terminal.integrated.tabs.enabled": false,
     "window.zoomLevel": 2,
+    "workbench.activityBar.visible": false,
     "workbench.layoutControl.enabled": false,
-    "editor.minimap.enabled": false,
     "zenMode.centerLayout": false,
-    "zenMode.hideStatusBar": false,
+    "zenMode.fullScreen": false,
     "zenMode.hideLineNumbers": false,
-    "zenMode.fullScreen": false
+    "zenMode.hideStatusBar": false
 }
