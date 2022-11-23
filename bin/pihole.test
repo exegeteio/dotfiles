@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-piholes="192.168.86.2 192.168.86.3"
+echo "=== default"
+host ads.google.com | grep -i 'has address'
+host www.google.com | grep -i 'has address'
 
-for pihole in $piholes
+for pihole in $PIHOLES
 do
   echo "=== $pihole"
   host ads.google.com "$pihole" | grep -i 'has address'
