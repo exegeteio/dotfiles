@@ -3,7 +3,7 @@
 [ -x "$(which docker)" ] && [ -e "/var/run/docker.sock" ] || exit 1
 
 set -e # Stop on error.
-CMD="docker build -q --pull --build-arg=HOST_USER=$(whoami) --build-arg=HOST_HOME=$HOME"
+CMD="docker build --pull --quiet --build-arg=HOST_USER=$(whoami) --build-arg=UID=$(id -u) --build-arg=GID=$(id -g) --build-arg=HOST_HOME=$HOME"
 for df in *.Dockerfile; do
   IFS='.' read -ra fparts <<< "$df"
   echo "  Building ${fparts[0]}..."

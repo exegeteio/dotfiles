@@ -16,12 +16,11 @@ RUN apt-get update && apt-get install -qqy --no-install-recommends \
         sudo \
         zlib1g-dev \
         zsh
-
 COPY docker/workstation/docker.sh /tmp/
 RUN /tmp/docker.sh
 
 # Setup local user.
-RUN useradd -d ${HOST_HOME} -m -s /usr/bin/zsh -u ${UID} -g root -g ssh ${HOST_USER}
+RUN ln -s /home /Users && useradd -d ${HOST_HOME} -m -s /usr/bin/zsh -u ${UID} -g root -g ssh ${HOST_USER}
 RUN echo "${HOST_USER} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${HOST_USER} \
     && chmod 0440 /etc/sudoers.d/${HOST_USER}
 USER ${HOST_USER}
