@@ -8,8 +8,9 @@
   bstash = !"git stash -um \"WIP: $(g.branch)\""
   s = "status -sb"
   g = "checkout Gemfile.lock"
-	a = "add -p"
+  a = "add -p ':!/Gemfile.lock' ':!/config/database.yml'"
   co = "checkout"
+  cop = "checkout -p ':!/Gemfile.lock' ':!/config/database.yml'"
 [core]
   excludesFile = ~/.gitignore
   hooksPath = ~/.git/hooks
@@ -37,5 +38,5 @@
 [credential]
   helper = "!f() { /home/vscode/.vscode-server/bin/74b1f979648cc44d385a2286793c226e611f59e7/node /tmp/vscode-remote-containers-0551e7debb1d23cc8a2f22d0e06bfd3bfbc68d80.js $*; }; f"
 [safe]
-	directory = /workspaces
-	directory = /workspaces/dotfiles
+  directory = /workspaces
+  directory = /workspaces/dotfiles

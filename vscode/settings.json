@@ -28,7 +28,6 @@
     },
     "terminal.integrated.fontSize": 18,
     "html.format.wrapLineLength": 80,
-    "git.autofetch": true,
     "ruby.useLanguageServer": true,
     "ruby.rubocop.onSave": false,
     "go.toolsManagement.autoUpdate": true,
@@ -65,5 +64,30 @@
     "zenMode.centerLayout": false,
     "zenMode.fullScreen": false,
     "zenMode.hideLineNumbers": false,
-    "zenMode.hideStatusBar": false
+    "ruby.format": "standard",
+    "zenMode.fullScreen": false,
+    "zenMode.hideStatusBar": false,
+    "zenMode.hideTabs": false,
+    "ruby.lint": {
+        "standard": true
+    },
+    "githubPullRequests.fileListLayout": "flat",
+    "githubPullRequests.queries": [
+        {
+            "label": "Waiting For My Review",
+            "query": "is:open review-requested:${user}"
+        },
+        {
+            "label": "Assigned To Me",
+            "query": "is:open assignee:${user}"
+        },
+        {
+            "label": "Created By Me",
+            "query": "is:open author:${user}"
+        },
+        {
+            "label": "Involves Me",
+            "query": "is:open involves:${user}"
+        }
+    ]
 }
