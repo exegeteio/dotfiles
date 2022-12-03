@@ -7,7 +7,6 @@
     "ruby.codeCompletion": "rcodetools",
     "ruby.intellisense": "rubyLocate",
     "ruby.rubocop.executePath": "/Users/exegete/.rbenv/shims/",
-    "ruby.useBundler": true,
     "screencastMode.fontSize": 40,
     "solargraph.diagnostics": true,
     "solargraph.formatting": true,
@@ -17,7 +16,6 @@
     "terminal.integrated.tabs.location": "left",
     "vim.vimrc.enable": true,
     "workbench.colorTheme": "Tinacious Design (High Contrast)",
-    "workbench.sideBar.location": "right",
     "terminal.integrated.profiles.osx": {
         "zsh": {
             "path": "/bin/zsh",
@@ -33,7 +31,7 @@
     "go.toolsManagement.autoUpdate": true,
     "terminal.integrated.confirmOnExit": "hasChildProcesses",
     "[ruby]": {
-        "editor.defaultFormatter": "misogi.ruby-rubocop"
+        "editor.defaultFormatter": "rebornix.ruby"
     },
     "terminal.integrated.minimumContrastRatio": 7,
     "workbench.startupEditor": "none",
@@ -58,19 +56,14 @@
     "remote.containers.dotfiles.repository": "https://github.com/exegete46/dotfiles.git",
     "remote.containers.dotfiles.targetPath": "~/dotfiles",
     "terminal.integrated.tabs.enabled": false,
-    "window.zoomLevel": 2,
-    "workbench.activityBar.visible": false,
     "workbench.layoutControl.enabled": false,
     "zenMode.centerLayout": false,
     "zenMode.fullScreen": false,
-    "zenMode.hideLineNumbers": false,
-    "ruby.format": "standard",
     "zenMode.fullScreen": false,
+    "zenMode.hideLineNumbers": false,
+    "zenMode.hideStatusBar": false,
     "zenMode.hideStatusBar": false,
     "zenMode.hideTabs": false,
-    "ruby.lint": {
-        "standard": true
-    },
     "githubPullRequests.fileListLayout": "flat",
     "githubPullRequests.queries": [
         {
@@ -89,5 +82,14 @@
             "label": "Involves Me",
             "query": "is:open involves:${user}"
         }
-    ]
+    ],
+    "ruby.format": "rubocop",
+    "ruby.lint": {
+        "rubocop": true,
+        "reek": true
+    },
+    "workbench.sideBar.location": "right",
+    "rubyLsp.rubyVersionManager": "rbenv",
+    "editor.formatOnSave": false,
+    "window.zoomLevel": 1
 }
