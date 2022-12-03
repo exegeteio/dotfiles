@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
 [[ -z "$DEBUG" ]] || echo "Checking tmux"
-[[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && [[ -z "$VSCODE_PID" ]] && [[ "$TERM_PROGRAM" != "vscode" ]]&& exec tmux
+if [[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && [[ -z "$VSCODE_PID" ]] && [[ "$TERM_PROGRAM" != "vscode" ]]; then
+  if [[ -z "$SSH_CLIENT" ]]; then
+    exec tmux
+  else
+    me="$(whoami)"
+    if tmux has-session -t "$me" 2>/dev/null; then
+      exec tmux -2 attach-session -t "$me"
+    else
+      exec tmux -2 new-session -s "$me"
+    fi
+  fi
+fi
 
