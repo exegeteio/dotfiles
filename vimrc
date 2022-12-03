@@ -11,35 +11,38 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries'  }
 Plug 'vim-ruby/vim-ruby'
 Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf'
+Plug 'ecomba/vim-ruby-refactoring'
+Plug 'adelarsq/vim-matchit'
 
 call plug#end()
 
+let mapleader = ";"
 " config plugins
-"nnoremap ;o :NERDTreeToggle .<CR>
-nnoremap ;o :FZF<CR>
-"nnoremap ;l :call NERDComment("n", "Toggle")<CR>
+"nnoremap <Leader>o :NERDTreeToggle .<CR>
+nnoremap <Leader>o :FZF<CR>
+"nnoremap <Leader>l :call NERDComment("n", "Toggle")<CR>
 "nnoremap <C-/> :call NERDComment("n", "Toggle")<CR>
 "vnoremap <C-/> :call NERDComment("n", "Toggle")<CR>
 " /plugins
 
-nnoremap ;s :shell<CR>
+nnoremap <Leader>s :shell<CR>
 " Add the current filename and line number to the active tmux notes buffer.
-nnoremap ;n :silent execute ":!echo %:".line('.')." \| n.add"<CR>
-nnoremap ;nl :silent execute ":!echo %:".line('.')." \| pbcopy"<CR>
+nnoremap <Leader>n :silent execute ":!echo %:".line('.')." \| n.add"<CR>
+nnoremap <Leader>nl :silent execute ":!echo %:".line('.')." \| pbcopy"<CR>
 " Add the current highlight to the active tmux notes buffer.
-vnoremap ;n :'<,'>!n.add<CR>u
+vnoremap <Leader>n :'<,'>!n.add<CR>u
 
 " Execute current line
-nnoremap ;1 :.!zsh<CR>
+nnoremap <Leader>1 :.!zsh<CR>
 " Write with capital or lowercase w.
 command! W :w
 command! Wq :wq
 " Get current branch from git.
-nnoremap ;b :execute 'norm i' . system("g.branch")<CR><Esc>kJa
+nnoremap <Leader>b :execute 'norm i' . system("g.branch")<CR><Esc>kJa
 " Reload vimrc.
-nnoremap ;rr :so ~/.vimrc<CR>
-nnoremap ;rn :set rnu!<CR>
-nnoremap ;rs :set spell!<CR>
+nnoremap <Leader>rr :so ~/.vimrc<CR>
+nnoremap <Leader>rn :set rnu!<CR>
+nnoremap <Leader>rs :set spell!<CR>
 
 set grepprg=rg\ --vimgrep\ -i
 autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
@@ -47,9 +50,9 @@ autocmd BufRead,BufNewFile $NOTES_PATH* setlocal path+=$NOTES_PATH/**
 autocmd BufRead,BufNewFile $BLOG_PATH* setlocal path+=$BLOG_PATH/**
 autocmd BufNewFile,BufRead $NOTES_PATH* setlocal nonu nornu
 set suffixesadd+=.md
-nnoremap ;t gf
-nnoremap ;f :!find . -iname \*<cword>\* \| menu<CR>
-nnoremap ;g :silent execute "grep! " . shellescape(expand("<cword>"))<CR>:copen<CR>
+nnoremap <Leader>t gf
+nnoremap <Leader>f :!find . -iname \*<cword>\* \| menu<CR>
+nnoremap <Leader>g :silent execute "grep! " . shellescape(expand("<cword>"))<CR>:copen<CR>
 " Fix Y in neovim:
 nnoremap Y yy
 
@@ -75,8 +78,8 @@ autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
 " Numbers
 " set number
 " TODO - Do I like this?
-set nu rnu
-set numberwidth=4
+" set nu rnu
+set numberwidth=3
 
 " Maps `jj` to escape.
 imap jj <Esc>
@@ -97,4 +100,4 @@ let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
 " Disable ALE auto highlights
 let g:ale_set_highlights = 0
-nnoremap ;rc :execute ":!be rubocop -a %"<CR>
+nnoremap <Leader>rc :execute ":!be rubocop -a %"<CR>
