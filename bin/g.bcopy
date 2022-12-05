@@ -1,4 +1,4 @@
 #!/bin/bash
 # FEATURE:  Make this work on Windows and/or Linux.
-g.branch | pbcopy
+echo -n $(g.branch) | pbcopy
 echo "Copied to clipboard:  $(g.branch)"
