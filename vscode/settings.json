@@ -1,69 +1,28 @@
 {
-    "editor.fontFamily": "FiraCode Nerd Font, Fira Code, Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontSize": 18,
-    "editor.tabSize": 2,
-    "editor.wordWrap": "on",
-    "files.autoSave": "onFocusChange",
-    "ruby.codeCompletion": "rcodetools",
-    "ruby.intellisense": "rubyLocate",
-    "ruby.rubocop.executePath": "/Users/exegete/.rbenv/shims/",
-    "screencastMode.fontSize": 40,
-    "solargraph.diagnostics": true,
-    "solargraph.formatting": true,
-    "terminal.integrated.defaultProfile.osx": "zsh",
-    "terminal.integrated.defaultProfile.linux": "zsh",
-    "terminal.integrated.tabs.enabled": false,
-    "terminal.integrated.tabs.location": "left",
-    "vim.vimrc.enable": true,
-    "workbench.colorTheme": "Tinacious Design (High Contrast)",
-    "terminal.integrated.profiles.osx": {
-        "zsh": {
-            "path": "/bin/zsh",
-            "args": [
-                "-l"
-            ]
-        }
-    },
-    "terminal.integrated.fontSize": 18,
-    "html.format.wrapLineLength": 80,
-    "ruby.useLanguageServer": true,
-    "ruby.rubocop.onSave": false,
-    "go.toolsManagement.autoUpdate": true,
-    "terminal.integrated.confirmOnExit": "hasChildProcesses",
-    "[ruby]": {
-        "editor.defaultFormatter": "rebornix.ruby"
-    },
-    "terminal.integrated.minimumContrastRatio": 7,
-    "workbench.startupEditor": "none",
-    "solargraph.commandPath": "/Users/exegete/.rbenv/shims/solargraph",
-    "solargraph.autoformat": true,
-    "editor.inlineSuggest.enabled": true,
-    "[typescriptreact]": {
+    "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "bracket-pair-colorizer-2.depreciation-notice": false,
-    "[html]": {
+    "[ruby]": {
+        "editor.defaultFormatter": "rebornix.ruby"
+    },
+    "[typescriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
+    "bracket-pair-colorizer-2.depreciation-notice": false,
     "diffEditor.ignoreTrimWhitespace": false,
-    "editor.minimap.enabled": false,
+    "editor.fontFamily": "FiraCode Nerd Font, Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 18,
+    "editor.formatOnSave": false,
+    "editor.inlineSuggest.enabled": true,
+    "editor.minimap.scale": 10,
     "editor.renderWhitespace": "none",
     "editor.stickyScroll.enabled": true,
-    "remote.containers.dotfiles.installCommand": "~/dotfiles/install.sh",
-    "remote.containers.dotfiles.repository": "https://github.com/exegete46/dotfiles.git",
-    "remote.containers.dotfiles.targetPath": "~/dotfiles",
-    "terminal.integrated.tabs.enabled": false,
-    "workbench.layoutControl.enabled": false,
-    "zenMode.centerLayout": false,
-    "zenMode.fullScreen": false,
-    "zenMode.fullScreen": false,
-    "zenMode.hideLineNumbers": false,
-    "zenMode.hideStatusBar": false,
-    "zenMode.hideStatusBar": false,
-    "zenMode.hideTabs": false,
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "files.autoSave": "onFocusChange",
     "githubPullRequests.fileListLayout": "flat",
     "githubPullRequests.queries": [
         {
@@ -83,13 +42,51 @@
             "query": "is:open involves:${user}"
         }
     ],
+    "githubRepositories.autoFetch.enabled": false,
+    "go.toolsManagement.autoUpdate": true,
+    "html.format.wrapLineLength": 80,
+    "remote.containers.dotfiles.installCommand": "~/dotfiles/install.sh",
+    "remote.containers.dotfiles.repository": "https://github.com/exegete46/dotfiles.git",
+    "remote.containers.dotfiles.targetPath": "~/dotfiles",
+    "ruby.codeCompletion": "rcodetools",
     "ruby.format": "rubocop",
+    "ruby.intellisense": "rubyLocate",
     "ruby.lint": {
-        "rubocop": true,
-        "reek": true
+        "reek": true,
+        "rubocop": true
     },
-    "workbench.sideBar.location": "right",
+    "ruby.rubocop.executePath": "/Users/exegete/.rbenv/shims/",
+    "ruby.rubocop.onSave": false,
+    "ruby.useLanguageServer": true,
     "rubyLsp.rubyVersionManager": "rbenv",
-    "editor.formatOnSave": false,
-    "window.zoomLevel": 1
+    "screencastMode.fontSize": 40,
+    "solargraph.autoformat": true,
+    "solargraph.commandPath": "/Users/exegete/.rbenv/shims/solargraph",
+    "solargraph.diagnostics": true,
+    "solargraph.formatting": true,
+    "terminal.integrated.confirmOnExit": "hasChildProcesses",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.fontSize": 18,
+    "terminal.integrated.minimumContrastRatio": 7,
+    "terminal.integrated.profiles.osx": {
+        "zsh": {
+            "args": [
+                "-l"
+            ],
+            "path": "/bin/zsh"
+        }
+    },
+    "terminal.integrated.tabs.enabled": false,
+    "terminal.integrated.tabs.location": "left",
+    "vim.vimrc.enable": true,
+    "window.zoomLevel": 2,
+    "workbench.colorTheme": "Tinacious Design (High Contrast)",
+    "workbench.layoutControl.enabled": false,
+    "workbench.sideBar.location": "right",
+    "workbench.startupEditor": "none",
+    "zenMode.fullScreen": false,
+    "zenMode.hideLineNumbers": false,
+    "zenMode.hideStatusBar": false,
+    "zenMode.hideTabs": false
 }

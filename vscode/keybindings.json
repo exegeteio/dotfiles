@@ -172,5 +172,28 @@
   {
     "key": "cmd+b",
     "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+k a",
+    "command": "workbench.action.toggleActivityBarVisibility"
+  },
+  {
+    "key": "cmd+k m",
+    "command": "-workbench.action.editor.changeLanguageMode",
+    "when": "!notebookEditorFocused"
+  },
+  {
+    "key": "cmd+k m",
+    "command": "editor.action.toggleMinimap",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+j",
+    "command": "-workbench.action.togglePanel"
+  },
+  {
+    "key": "cmd+j",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
   }
 ]
