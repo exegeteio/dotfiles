@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-source=$(mirror_displays portrait)
-hdmi=$(mirror_displays hdmi)
-dp=$(mirror_displays display_port)
-capture=$(mirror_displays capture)
+source=$(mirror.displays portrait)
+hdmi=$(mirror.displays hdmi)
+dp=$(mirror.displays display_port)
+capture=$(mirror.displays capture)
 if [ -n "$source" ]; then
   mirror -off
   [ -n "$hdmi" ] && mirror -l $source $hdmi
