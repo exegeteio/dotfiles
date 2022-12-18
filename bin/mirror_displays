@@ -3,8 +3,8 @@
 DISPLAYS = {
   "AW2521HF - 240" => "portrait",
   "Dell AW3418DW - 100" => "display_port",
+  "Dell AW3418DW - 60" => "display_port",
   "Dell AW3418DW - 50" => "hdmi",
-  "Dell AW3418DW - 60" => "hdmi",
   "HD60 X - 30" => "capture",
 }
 
