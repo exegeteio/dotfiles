@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "FiraCode Nerd Font, Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "JetBrainsMono Nerd Font, FiraCode Nerd Font, Fira Code, Menlo, Monaco, 'Courier New', monospace",
     "editor.fontSize": 18,
     "editor.tabSize": 2,
     "editor.wordWrap": "on",
