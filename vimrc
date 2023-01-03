@@ -13,6 +13,7 @@ Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf'
 Plug 'ecomba/vim-ruby-refactoring'
 Plug 'adelarsq/vim-matchit'
+Plug 'bignimbus/pop-punk.vim'
 
 call plug#end()
 
@@ -70,13 +71,16 @@ set textwidth=100
 set formatoptions=qrn1
 set wrapmargin=0
 set colorcolumn=+1
-colorscheme elflord
+
+autocmd colorscheme * :highlight Normal guibg=NONE ctermbg=NONE
+autocmd colorscheme * :highlight EndOfBuffer guibg=NONE ctermbg=NONE
+colorscheme pop-punk
 
 " Spell good in markdown!
 autocmd BufNewFile,BufRead *.md setlocal spell spelllang=en_us
 
 " Numbers
-" set number
+set number
 " TODO - Do I like this?
 " set nu rnu
 set numberwidth=3
