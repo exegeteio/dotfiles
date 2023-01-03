@@ -6,6 +6,7 @@ DISPLAYS = {
   "Dell AW3418DW - 60" => "display_port",
   "Dell AW3418DW - 50" => "hdmi",
   "HD60 X - 30" => "capture",
+  "HD60 X - 60" => "capture",
 }
 
 # Outputs in this order:
@@ -40,9 +41,13 @@ info.split("\n").each do |line|
   end
 end
 
+if ARGV.length.zero?
+  puts display_list.join(", ")
+end
+
 output = []
 ARGV.each do |requested|
   output << display_list.index(requested.strip) || "NOT FOUND"
 end
-puts output.join(" ")
+puts output.join(" ") if output.length > 0
 
