@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # Stolen from rwxrob:  github.com/rwxrob/dot
 
-tmux -L stream send -t '{marked}' "mannim4WaveAnimated" Enter
+tmux -L stream send -t '{marked}' "nikaHi" Enter
