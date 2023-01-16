@@ -12,5 +12,6 @@ if [[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] &
       exec tmux -2 new-session -s "$me"
     fi
   fi
+else
+  export TMUX=""
 fi
-

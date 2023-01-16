@@ -24,3 +24,6 @@ config/initializers/bullet.rb
 # VS Code config
 /.vscode
 /bin/solargraph
+
+# Local Netlify folder
+.netlify

@@ -6,5 +6,9 @@ if [[ -f "~/.fzf.$RBENV_SHELL" ]]; then
   source "$HOME/.fzf.$RBENV_SHELL"
 fi
 export FZF
-[[ -z "$TMUX" ]] || export FZF_TMUX_OPTS="-p 40%"
+if [[ -z "$TMUX" ]]; then
+  export FZF_TMUX_OPTS=""
+else
+  export FZF_TMUX_OPTS="-p 40%"
+fi
 
