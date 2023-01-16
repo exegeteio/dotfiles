@@ -1,6 +1,6 @@
 {
     "editor.fontFamily": "JetBrainsMono Nerd Font, FiraCode Nerd Font, Fira Code, Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontSize": 18,
+    "editor.fontSize": 22,
     "editor.tabSize": 2,
     "editor.wordWrap": "on",
     "files.autoSave": "onFocusChange",
@@ -24,7 +24,7 @@
             ]
         }
     },
-    "terminal.integrated.fontSize": 18,
+    "terminal.integrated.fontSize": 22,
     "html.format.wrapLineLength": 80,
     "git.autofetch": true,
     "ruby.useLanguageServer": true,
@@ -70,5 +70,7 @@
     "workbench.sideBar.location": "right",
     "rubyLsp.rubyVersionManager": "rbenv",
     "editor.formatOnSave": true,
-    "window.zoomLevel": 1
+    "window.zoomLevel": 1,
+    "debug.console.fontSize": 18,
+    "markdown.preview.fontSize": 18
 }
