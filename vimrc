@@ -15,6 +15,11 @@ Plug 'ecomba/vim-ruby-refactoring'
 Plug 'adelarsq/vim-matchit'
 Plug 'bignimbus/pop-punk.vim'
 
+" Evaluating:
+Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile' }
+" To install:  :InstallLspServer rb
+Plug 'jayli/vim-easycomplete'
+
 call plug#end()
 
 let mapleader = ";"
@@ -103,5 +108,5 @@ let g:ale_linters_explicit = 1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_column_always = 1
 " Disable ALE auto highlights
-let g:ale_set_highlights = 0
+let g:ale_set_highlights = 1
 nnoremap <Leader>rc :execute ":!be rubocop -a %"<CR>
