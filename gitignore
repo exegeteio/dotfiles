@@ -13,8 +13,8 @@
 /.devcontainer*
 /.docker/
 
-/.rubocop.yml
-/.rubocop_todo.yml
+/.rubocop*.yml
+/.reek*.yml
 /Gemfile.lock
 
 config/initializers/bullet.rb

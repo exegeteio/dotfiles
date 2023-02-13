@@ -9,6 +9,6 @@ packer="$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
 	"$packer";
 (cd "$packer" && git pull)
 
-nvim +PackerSync +qall
+nvim +PlugInstall +PackerSync
 
 

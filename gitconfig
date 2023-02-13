@@ -12,7 +12,7 @@
   maindiff = diff origin/main...HEAD
   bstash = !"git stash -um \"WIP: $(g.branch)\""
   s = "status -sb"
-  g = "checkout Gemfile.lock"
+  g = "checkout Gemfile.lock db/schema.rb"
   a = "add -p ':!/Gemfile.lock' ':!/config/database.yml'"
   co = "checkout"
   cop = "checkout -p ':!/Gemfile.lock' ':!/config/database.yml'"

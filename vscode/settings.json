@@ -69,8 +69,9 @@
     },
     "workbench.sideBar.location": "right",
     "rubyLsp.rubyVersionManager": "rbenv",
-    "editor.formatOnSave": true,
-    "window.zoomLevel": 1,
     "debug.console.fontSize": 18,
-    "markdown.preview.fontSize": 18
+    "markdown.preview.fontSize": 18,
+    "window.zoomLevel": 1,
+    "githubPullRequests.terminalLinksHandler": "github",
+    "workbench.iconTheme": "material-icon-theme"
 }
