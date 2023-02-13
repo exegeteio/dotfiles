@@ -2,11 +2,9 @@
 
 source=$(mirror.displays display_port)
 hdmi=$(mirror.displays hdmi)
-capture=$(mirror.displays capture)
 if [ -n "$source" ]; then
   mirror -off
   [ -n "$hdmi" ] && mirror -l $source $hdmi
-  [ -n "$capture" ] && mirror -l $source $capture
 else
   echo "Source not found!"
 fi

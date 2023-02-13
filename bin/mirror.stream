@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 
-source=$(mirror.displays capture)
-hdmi=$(mirror.displays hdmi)
+source=$(mirror.displays hdmi)
 dp=$(mirror.displays display_port)
 if [ -n "$source" ]; then
   mirror -off
-  [ -n "$hdmi" ] && mirror -l $source $hdmi
   [ -n "$dp" ] && mirror -l $source $dp
 else
   echo "Source not found!"
