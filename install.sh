@@ -44,6 +44,11 @@ configure_vim () {
   [ -x "$(which vim)" ] && vim +PlugInstall +qall
 }
 
+configure_nvim () {
+  backup_and_link .nvim nvim
+  [ -x "$(which nvim)" ] && nvim +PackerSync
+}
+
 move_file_to_backup () {
   if [[ -e "$HOME/$1" ]]; then
     [ -d "$BACKUP_DIR" ] || mkdir -p "$BACKUP_DIR"
@@ -93,6 +98,8 @@ echo "Configuring Bash..."
 configure_bash
 echo "Configuring VIM..."
 configure_vim
+echo "Configuring NeoVIM..."
+configure_nvim
 echo "Configuring tmux..."
 configure_tmux
 echo "Configuring git..."
