@@ -2,7 +2,7 @@
 
 export XDG_CONFIG_HOME="$HOME/.config/"
 export DOTFILES_PATH="$XDG_CONFIG_HOME/dotfiles"
-export PATH="$HOME/bin:$XDG_CONFIG_HOME/dotfiles/bin:$HOME/.brew/bin:$HOME/go/bin:$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/bin:$XDG_CONFIG_HOME/dotfiles/bin:$HOME/.brew/bin:$HOME/go/bin:$HOME/.rbenv/bin:$HOME/.deno/bin:$PATH"
 export CDPATH="$HOME:$HOME/code/:$HOME/code/github/:$HOME/code/github/exegeteio/:$HOME/code/gitlab/:$HOME/Desktop/"
 if [ ! -z "$WORKSPACE" ]; then
   export CDPATH="$WORKSPACE:$WORKSPACE/code/:$WORKSPACE/code/github/:$WORKSPACE/code/github/exegeteio/:$WORKSPACE/code/gitlab/:$WORKSPACE/Desktop/"
