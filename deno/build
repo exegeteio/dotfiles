@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-[ -x "$(which go)" ] || exit 1
+[ -x "$(which deno)" ] || exit 1
 
 for i in **/main.ts; do
   echo "  Installing $i..."
