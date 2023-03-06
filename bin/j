@@ -1,0 +1,4 @@
+#!/bin/sh
+q=$1
+[ -z "$q" ] && q="$(g.branch)"
+open "https://$JIRA_DOMAIN/secure/QuickSearch.jspa?searchString=$(urlencode $q)"
