@@ -426,8 +426,14 @@ cmp.setup {
 
 -- My customization
 vim.keymap.set('n', 'Y', 'yy')
+
+vim.keymap.set('n', '<leader>o', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>gg', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
+
 vim.api.nvim_create_user_command('W', 'w', {})
 vim.api.nvim_create_user_command('Wq', 'wq', {})
+
+-- Copy/paste from clipboard.
 vim.keymap.set('n', '<leader>c', '"+y')
 vim.keymap.set('n', '<leader>p', '"+p')
 vim.keymap.set('v', '<leader>c', '"+y')
