@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-be rspec $(fspec "$@")
+rspec $(fspec "$@")

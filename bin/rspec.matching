@@ -3,4 +3,4 @@
 needle="$1"
 # Shift the term off the input array.
 shift 1
-be rspec -E "$needle" "$@"
+rspec -E "$needle" "$@"
