@@ -221,7 +221,7 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim' },
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim', 'ruby' },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -342,6 +342,8 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
+  solargraph = {},
+  ruby_ls = {},
 
   lua_ls = {
     Lua = {
@@ -425,7 +427,12 @@ cmp.setup {
 }
 
 -- My customization
+vim.g.mapleader = ';'
+vim.g.maplocalleader = ';'
+
 vim.keymap.set('n', 'Y', 'yy')
+
+vim.o.hlsearch = true
 
 vim.keymap.set('n', '<leader>o', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>gg', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
