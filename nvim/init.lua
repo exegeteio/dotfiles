@@ -60,6 +60,10 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
 
+  -- My custom, since the below didn't seem to work.
+  use 'nvim-lua/plenary.nvim'
+  use 'ThePrimeagen/harpoon'
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -426,11 +430,28 @@ cmp.setup {
   },
 }
 
+-- My plugins
+
+local mark = require("harpoon.mark")
+local ui = require("harpoon.ui")
+
+vim.keymap.set("n", "<leader>q", mark.add_file)
+vim.keymap.set("n", "<C-q>", ui.toggle_quick_menu)
+
+vim.keymap.set("n", "<C-w>", function() ui.nav_next() end)
+vim.keymap.set("n", "<C-e>", function() ui.nav_prev() end)
+
 -- My customization
 vim.g.mapleader = ';'
 vim.g.maplocalleader = ';'
 
 vim.keymap.set('n', 'Y', 'yy')
+
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzz")
+vim.keymap.set("n", "N", "Nzz")
+vim.keymap.set("n", "G", "Gzz")
 
 vim.o.hlsearch = true
 
