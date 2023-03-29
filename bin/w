@@ -1,0 +1,10 @@
+#!/bin/bash
+
+folder="$1"
+
+if [ -z "$folder" ]; then
+  cd "$HOME/code"
+  folder=$(ls -1 | menu)
+fi
+
+exec tmux.re "$folder"
