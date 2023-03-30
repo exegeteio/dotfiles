@@ -19,6 +19,11 @@ done
 # Comes late for tab-completing CDPATH.
 compinit
 
+# Source init which use compdef.
+for rcfile in $HOME/.config/dotfiles/shellrc/compdef/*; do
+  source $rcfile
+done
+
 #########
 # vi mode
 #########

@@ -3,7 +3,7 @@
 folder="$1"
 
 if [ -z "$folder" ]; then
-  cd "$HOME/code"
+  cd "$CODE_PATH"
   folder=$(ls -1 | menu)
 fi
 
