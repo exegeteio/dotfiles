@@ -3,11 +3,11 @@ build-essential
 ca-certificates
 curl
 git
-golang
 gnupg-agent
 httpie
 less
 libssl-dev
+neovim
 procps
 ripgrep
 ruby
