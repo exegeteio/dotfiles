@@ -41,12 +41,12 @@ configure_vim () {
   mkdir -p "$HOME/.vim/autoload/"
   cp plug.vim "$HOME/.vim/autoload/"
   backup_and_link .vimrc vimrc
-  [ -x "$(which vim)" ] && vim +PlugInstall +qall
+  # [ -x "$(which vim)" ] && vim +PlugInstall +qall
 }
 
 configure_nvim () {
-  backup_and_link .nvim nvim
-  [ -x "$(which nvim)" ] && nvim +PackerSync
+  backup_and_link .config/nvim nvim
+  # [ -x "$(which nvim)" ] && nvim +PackerSync
 }
 
 move_file_to_backup () {

@@ -63,6 +63,7 @@ require('packer').startup(function(use)
   -- My custom, since the below didn't seem to work.
   use 'nvim-lua/plenary.nvim'
   use 'ThePrimeagen/harpoon'
+  use 'nvim-treesitter/nvim-treesitter-context'
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
