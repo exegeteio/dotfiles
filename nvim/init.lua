@@ -433,11 +433,22 @@ cmp.setup {
 
 -- My plugins
 
+require("harpoon").setup({
+  enter_on_sendcmd = true
+})
+require("telescope").load_extension('harpoon')
+
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
 vim.keymap.set("n", "<leader>q", mark.add_file)
 vim.keymap.set("n", "<C-q>", ui.toggle_quick_menu)
+-- vim.keymap.set("n", "<C-q>", "<cmd>Telescope harpoon marks<cr>")
+
+-- harpoon / rspec
+vim.keymap.set('n', '<leader>tt', function() require("harpoon.tmux").sendCommand("{down-of}", "tc; rspec %s\r", vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())) end)
+vim.keymap.set('n', '<leader>tl', function() require("harpoon.tmux").sendCommand("{down-of}", "tc; rspec %s:%s\r", vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()), vim.fn.line(".")) end)
+
 
 vim.keymap.set("n", "<C-w>", function() ui.nav_next() end)
 vim.keymap.set("n", "<C-e>", function() ui.nav_prev() end)

@@ -10,6 +10,7 @@
   lgf = !"git lg1 --name-only"
   churn = !"git lg1b | grep -v year | grep ago"
   maindiff = diff origin/main...HEAD
+  sdiff = diff --staged
   bstash = !"git stash -um \"WIP: $(g.branch)\""
   s = "status -sb"
   g = "checkout Gemfile.lock db/schema.rb"
