@@ -347,8 +347,9 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
-  solargraph = {},
+  -- solargraph = {},
   ruby_ls = {},
+  standardrb = {},
 
   lua_ls = {
     Lua = {
@@ -442,8 +443,8 @@ local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
 vim.keymap.set("n", "<leader>q", mark.add_file)
--- vim.keymap.set("n", "<C-q>", ui.toggle_quick_menu)
 vim.keymap.set("n", "<C-q>", "<cmd>Telescope harpoon marks<cr>")
+vim.keymap.set("n", "<C-Q>", ui.toggle_quick_menu)
 
 -- harpoon / rspec
 vim.keymap.set('n', '<leader>tt', function() require("harpoon.tmux").sendCommand("{down-of}", "tc; rspec %s\r", vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())) end)
@@ -487,6 +488,5 @@ vim.keymap.set('v', '<leader>c', '"+y')
 vim.keymap.set({ 'n', 'v' }, "<leader>ff", function()
   vim.lsp.buf.format({ async = true })
 end, opts)
-
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
