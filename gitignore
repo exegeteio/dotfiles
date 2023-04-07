@@ -27,3 +27,6 @@ config/initializers/bullet.rb
 
 # Local Netlify folder
 .netlify
+
+# Local config for pry
+/.pryrc

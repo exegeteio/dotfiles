@@ -449,9 +449,8 @@ vim.keymap.set("n", "<C-q>", ui.toggle_quick_menu)
 vim.keymap.set('n', '<leader>tt', function() require("harpoon.tmux").sendCommand("{down-of}", "tc; rspec %s\r", vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())) end)
 vim.keymap.set('n', '<leader>tl', function() require("harpoon.tmux").sendCommand("{down-of}", "tc; rspec %s:%s\r", vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()), vim.fn.line(".")) end)
 
-
-vim.keymap.set("n", "<C-w>", function() ui.nav_next() end)
-vim.keymap.set("n", "<C-e>", function() ui.nav_prev() end)
+vim.keymap.set("n", "<C-w>", function() ui.nav_prev() end)
+vim.keymap.set("n", "<C-e>", function() ui.nav_next() end)
 
 -- My customization
 vim.g.mapleader = ';'
@@ -469,6 +468,13 @@ vim.o.hlsearch = true
 
 vim.keymap.set('n', '<leader>o', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>gg', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
+
+-- Copy filename to clipboard.
+vim.keymap.set('n', '<leader>fc', "<cmd>:silent execute \":!echo % | pbcopy\"<cr>")
+vim.keymap.set('n', '<leader>fl', "<cmd>:silent execute \":!echo %:\".line('.').\" | pbcopy\"<cr>")
+
+-- Reload init.lua.
+vim.keymap.set('n', '<leader>rr', "<cmd>:so ~/.config/nvim/init.lua<cr>")
 
 vim.api.nvim_create_user_command('W', 'w', {})
 vim.api.nvim_create_user_command('Wq', 'wq', {})
