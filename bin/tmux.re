@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 target="$CODE_PATH/$*"
-[ -d "$target" ] && dir="$target"
+[ -e "$target" ] && dir="$target"
 
 if tmux has-session -t "=$*" 2>/dev/null; then
   if [ -z "$TMUX" ]; then
@@ -11,9 +11,6 @@ if tmux has-session -t "=$*" 2>/dev/null; then
   fi
 else
   tmux -2 new-session -s "$*" -c "${dir:-$CODE_PATH}" -d
-  if [ -z "$TMUX" ]; then
-    exec tmux -2 attach -t "$*"
-  else
-    exec tmux -2 switchc -t "$*"
-  fi
+  # Recurse
+  exec tmux.re "$*"
 fi

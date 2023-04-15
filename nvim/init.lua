@@ -471,7 +471,7 @@ vim.keymap.set('n', '<leader>o', require('telescope.builtin').find_files, { desc
 vim.keymap.set('n', '<leader>gg', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 
 -- Copy filename to clipboard.
-vim.keymap.set('n', '<leader>fc', "<cmd>:silent execute \":!echo % | pbcopy\"<cr>")
+vim.keymap.set('n', '<leader>fc', "<cmd>:silent execute \":!echo -n % | pbcopy\"<cr>")
 vim.keymap.set('n', '<leader>fl', "<cmd>:silent execute \":!echo %:\".line('.').\" | pbcopy\"<cr>")
 
 -- Reload init.lua.
