@@ -2,8 +2,11 @@
 
 # NVM for managing versions of Node on the system.
 export NVM_DIR="$HOME/.nvm"
+mkdir -p "$NVM_DIR"
 # Load NVM is installed anywhere
-if [[ -e "$NVM_DIR" ]]; then
-  eval "$(< "$NVM_DIR/nvm.sh")"
+if [[ -e "$NVM_DIR/nvm.sh" ]]; then
+  source "$NVM_DIR/nvm.sh"
+elif [ -s "$HOME/.brew/Homebrew/opt/nvm/nvm.sh" ]; then
+  source "$HOME/.brew/Homebrew/opt/nvm/nvm.sh"
 fi
 
