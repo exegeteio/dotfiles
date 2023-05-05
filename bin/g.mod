@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-git status -s "$@" | columnize | cut -d" " -f2
+git ss -s "$@" | columnize | cut -d" " -f2

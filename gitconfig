@@ -13,8 +13,9 @@
   sdiff = diff --staged
   bstash = !"git stash -um \"WIP: $(g.branch)\""
   s = "status -sb"
-  g = "checkout Gemfile.lock db/schema.rb"
-  a = "add -p ':!/Gemfile.lock' ':!/config/database.yml'"
+  ss = "status -s ':!/Gemfile.lock' ':!/config/database.yml' ':!/config/environments/test.rb'"
+  g = "checkout Gemfile.lock db/schema.rb config/environments/test.rb"
+  a = "add -p ':!/Gemfile.lock' ':!/config/database.yml' ':!/config/environments/test.rb'"
   co = "checkout"
   cop = "checkout -p ':!/Gemfile.lock' ':!/config/database.yml'"
 [core]
