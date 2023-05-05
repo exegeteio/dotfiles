@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-target="$CODE_PATH/$*"
+target="${CODE_PATH:-"$HOME/code"}/$*"
 [ -e "$target" ] && dir="$target"
 
 if tmux has-session -t "=$*" 2>/dev/null; then

@@ -221,6 +221,16 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>gg', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>gm', function(_)
+  require('telescope.builtin').find_files {
+    find_command = {"g.mod"}
+  }
+end, { desc = '[S]earch [M]odified' })
+vim.keymap.set('n', '<leader>gb', function(_)
+  require('telescope.builtin').find_files {
+    find_command = {"g.bmod"}
+  }
+end, { desc = '[S]earch [B]ranch Modified' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -447,8 +457,8 @@ vim.keymap.set("n", "<C-q>", "<cmd>Telescope harpoon marks<cr>")
 vim.keymap.set("n", "<C-Q>", ui.toggle_quick_menu)
 
 -- harpoon / rspec
-vim.keymap.set('n', '<leader>tt', function() require("harpoon.tmux").sendCommand("{down-of}", "tc; rspec %s\r", vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())) end)
-vim.keymap.set('n', '<leader>tl', function() require("harpoon.tmux").sendCommand("{down-of}", "tc; rspec %s:%s\r", vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()), vim.fn.line(".")) end)
+vim.keymap.set('n', '<leader>tt', function() require("harpoon.tmux").sendCommand("{down-of}", "tc; time rspec %s\r", vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())) end)
+vim.keymap.set('n', '<leader>tl', function() require("harpoon.tmux").sendCommand("{down-of}", "tc; time rspec %s:%s\r", vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()), vim.fn.line(".")) end)
 
 vim.keymap.set("n", "<C-w>", function() ui.nav_prev() end)
 vim.keymap.set("n", "<C-e>", function() ui.nav_next() end)
@@ -456,6 +466,9 @@ vim.keymap.set("n", "<C-e>", function() ui.nav_next() end)
 -- My customization
 vim.g.mapleader = ';'
 vim.g.maplocalleader = ';'
+
+-- Relative line numbers:
+vim.wo.relativenumber = true
 
 vim.keymap.set('n', 'Y', 'yy')
 
