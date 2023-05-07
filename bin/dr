@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-exec docker run --rm -it "$@"
+exec docker run --rm -it -v "$(pwd):/host" "$@"
