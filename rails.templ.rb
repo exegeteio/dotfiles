@@ -22,6 +22,7 @@ CODE
 
 after_bundle do
   gem 'haml-rails'
+  gem 'html2haml'
   gem_group :development, :test do
     gem 'annotate'
     gem 'bullet'
