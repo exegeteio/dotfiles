@@ -8,4 +8,6 @@ done
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Rust me one more time!
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
