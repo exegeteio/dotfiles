@@ -24,3 +24,8 @@ export PATH=$GOBIN:$PATH
 
 # Rancher Desktop
 [[ -d "$HOME/.rd/bin" ]] && export PATH="$HOME/.rd/bin:$PATH"
+
+# For tmux workspaces.
+if [ -z "$CODE_PATH" ]; then
+  export CODE_PATH="$HOME/code"
+fi
