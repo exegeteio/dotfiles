@@ -2,7 +2,13 @@
 
 [ -x "$(which deno)" ] || exit 1
 
-for i in **/main.ts; do
-  echo "  Installing $i..."
-  deno install -qf "$i"
+for i in *; do
+  echo "Looking for $i/main.ts..."
+  if [ -f "$i/main.ts" ]; then
+    (
+      echo "  Installing $i..."
+      cd $i
+      deno install -qfA "./main.ts"
+    )
+  fi
 done
