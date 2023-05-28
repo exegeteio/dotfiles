@@ -2,7 +2,7 @@
 
 # https://github.com/pi-hole/docker-pi-hole/blob/master/README.md
 
-PIHOLE_BASE="${PIHOLE_BASE:-$HOME}"
+PIHOLE_BASE="${PIHOLE_BASE:-$HOME/pihole}"
 [[ -d "$PIHOLE_BASE" ]] || mkdir -p "$PIHOLE_BASE" || { echo "Couldn't create storage directory: $PIHOLE_BASE"; exit 1; }
 
 # Update!
@@ -10,7 +10,7 @@ docker pull -q pihole/pihole
 
 # Restart if already running.
 if [ "$(docker inspect -f "{{.State.Health.Status}}" pi-hole)" == "healthy" ] ; then
-    docker stop pi-hole
+    docker kill pi-hole
     docker rm pi-hole
 fi
 
