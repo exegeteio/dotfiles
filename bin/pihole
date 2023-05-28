@@ -2,33 +2,18 @@
 
 # https://github.com/pi-hole/docker-pi-hole/blob/master/README.md
 
-PIHOLE_BASE="${PIHOLE_BASE:-$HOME/pihole}"
-[[ -d "$PIHOLE_BASE" ]] || mkdir -p "$PIHOLE_BASE" || { echo "Couldn't create storage directory: $PIHOLE_BASE"; exit 1; }
-
 # Update!
+cd ${DOTFILES_PATH:-$HOME/dotfiles}/pihole
 docker pull -q pihole/pihole
+docker compose build -q
 
 # Restart if already running.
 if [ "$(docker inspect -f "{{.State.Health.Status}}" pi-hole)" == "healthy" ] ; then
-    docker kill pi-hole
-    docker rm pi-hole
+    dc down -v
 fi
 
 # Note: ServerIP should be replaced with your external ip.
-docker run -d \
-    --name pi-hole \
-    -p 53:53/tcp -p 53:53/udp \
-    -p 80:80 \
-    -e TZ="America/Phoenix" \
-    -v "${PIHOLE_BASE}/etc-pihole:/etc/pihole" \
-    -v "${PIHOLE_BASE}/etc-dnsmasq.d:/etc/dnsmasq.d" \
-    --dns=127.0.0.1 --dns=1.1.1.1 --dns=8.8.8.8 \
-    --restart=unless-stopped \
-    --hostname pi.hole \
-    -e VIRTUAL_HOST="pi.hole" \
-    -e PROXY_LOCATION="pi.hole" \
-    -e ServerIP="127.0.0.1" \
-    pihole/pihole:latest
+docker compose up -d
 
 printf 'Starting up pi-hole container '
 for i in $(seq 1 20); do
@@ -46,3 +31,5 @@ for i in $(seq 1 20); do
         exit 1
     fi
 done;
+
+cd -

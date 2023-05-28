@@ -3,7 +3,6 @@
 health="$(docker inspect -f "{{.State.Health.Status}}" pi-hole)"
 
 if [ "$health" != "healthy" ]; then
-  docker kill pi-hole
-  docker rm pi-hole
+  cd ${DOTFILES_PATH:-$HOME/dotfiles}/pihole && docker compose down
   pihole
 fi
