@@ -12,6 +12,7 @@ services:
       - "53:53/udp"
       - "80:80/tcp"
     environment:
+      DNSMASQ_LISTENING: all
       TZ: 'America/Phoenix'
     dns:
       - 127.0.0.1
