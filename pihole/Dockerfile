@@ -1,3 +1,4 @@
 FROM pihole/pihole:latest
 
-COPY gravity.db /etc/pihole/gravity.db
+COPY gravity.db.gz /etc/pihole/
+RUN rm /etc/pihole/gravity.db && gunzip /etc/pihole/gravity.db.gz
