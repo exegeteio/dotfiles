@@ -1,24 +1,31 @@
 #!/usr/bin/env bash
 
-GIT="$(which git)"
-[[ -x "$GIT" ]] || (echo "You must have git installed to proceed!"; exit 1)
-# gcc is required for so much.
-[[ -x "$(which gcc)" ]] || (echo "You must have gcc installed to proceed!"; exit 1)
+set -e
 
-DOTFILES_PATH=$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)
-
-if [[ -d "$HOME/.brew/Homebrew" ]]; then
-  echo Homebrew already installed.
-else
-  git clone https://github.com/Homebrew/brew "$HOME/.brew/Homebrew"
-  ln -s "$HOME/.brew/Homebrew/bin" "$HOME/.brew/bin"
+OS="$(uname)"
+if [ "$OS" == "Linux" ]; then
+  prefix="/home/linuxbrew/.linuxbrew"
+elif [ "$OS" == "Darwin" ]; then
+  prefix="$HOME/.brew"
 fi
-export PATH="$HOME/.brew/bin:$PATH" # Also in zshrc.
-BREW="$(which brew)"
-[[ -x "$BREW" ]] || (echo "Could not find brew after install!"; exit 1)
 
-echo "Installing brew bundle from $DOTFILES_PATH/brewfiles"
-$BREW bundle --file="$DOTFILES_PATH/brewfiles/base"
-if [[ -f "$DOTFILES_PATH/brewfiles/$(uname -s)" ]]; then
-  $BREW bundle --file="$DOTFILES_PATH/brewfiles/$(uname -s)"
+
+export NONINTERACTIVE=1
+if [ ! -d "$prefix" ]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
+
+local="$HOME/.config/dotfiles/brew/"
+brewfilecmd="curl -fsSL https://raw.githubusercontent.com/exegeteio/dotfiles/main/brew/"
+if [ -d "$local" ]; then
+  brewfilecmd="cat $local"
+fi
+
+eval "$($prefix/bin/brew shellenv)"
+
+${brewfilecmd}/base | brew bundle install -q --file=-
+
+if [ "$OS" == "Darwin" ]; then
+  ${brewfilecmd}/Darwin | brew bundle install -q --file=-
+fi
+

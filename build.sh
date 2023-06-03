@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for i in *; do
+for i in build/*; do
   if [ -x "$i/build" ]; then
     echo "$i/build"
     (
