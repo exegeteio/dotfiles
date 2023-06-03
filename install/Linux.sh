@@ -3,7 +3,7 @@
 set -e
 
 # These will get installed.
-PACKAGES="$(< $XDG_CONFIG_HOME/dotfiles/apt-packages)"
+PACKAGES="$(< ${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles/apt-packages)"
 
 # Don't ask questions!
 export DEBIAN_FRONTEND=noninteractive
