@@ -3,4 +3,5 @@
 .DS_Store
 **/*.lock.json
 
-nvim/plugin
+dotfiles/vim/plugged
+xdg_config/nvim/plugin

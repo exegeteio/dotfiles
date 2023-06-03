@@ -30,4 +30,3 @@ config/initializers/bullet.rb
 
 # Local config for pry
 /.pryrc
-dotfiles/vim/plugged

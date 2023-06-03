@@ -5,11 +5,7 @@ echo "Beginning MacOS setup..."
 # XCode CLI
 xcode-select --install
 
-brew tap homebrew/cask-fonts
-brew bundle --file=$HOME/.config/dotfiles/brewfiles/base
-brew bundle --file=$HOME/.config/dotfiles/brewfiles/Darwin
-
-ln -s "$HOME/Library/Mobile Documents/com~apple~CloudDocs" "$HOME/icloud"
+[ -L "$HOME/icloud" ] || ln -s "$HOME/Library/Mobile Documents/com~apple~CloudDocs" "$HOME/icloud"
 
 # Disable “natural” (Lion-style) scrolling
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
