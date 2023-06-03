@@ -1,16 +1,8 @@
 FROM ubuntu:latest
-ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update -qqy \
-    && apt-get install -qqy --no-install-recommends \
-      build-essential \
-      ca-certificates \
-      curl \
-      file \
-      git \
-      sudo \
-      zsh \
-    && rm -rf /var/lib/apt/lists/*
+COPY linux ./linux
+COPY linux.sh ./
+RUN ./linux.sh
  
 RUN useradd -mU -G root exegete \
     && chsh -s "$(which zsh)" exegete \
@@ -19,8 +11,9 @@ RUN useradd -mU -G root exegete \
 USER exegete
 WORKDIR /home/exegete
 
-ADD ./ .config/dotfiles/
+ADD ./brew.sh brew .config/dotfiles/
 RUN .config/dotfiles/brew.sh
+ADD ./ .config/dotfiles/
 RUN .config/dotfiles/dotfiles.sh
 
 CMD ["/usr/bin/zsh", "-l"]
