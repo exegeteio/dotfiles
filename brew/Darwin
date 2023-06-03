@@ -1,23 +1,24 @@
 # frozen_string_literal: true
 
-tap 'homebrew/bundle'
-tap 'homebrew/cask'
-tap 'homebrew/core'
-tap 'homebrew/services'
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+tap "homebrew/services"
 
-cask '1password'
-cask 'discord'
-cask 'docker'
-cask 'firefox'
-cask 'hey'
-cask 'iterm2'
-cask 'notion'
-cask 'raycast'
-cask 'signal'
-cask 'rectangle'
-cask 'visual-studio-code'
+cask "1password"
+cask "discord"
+cask "docker"
+cask "firefox"
+cask "hey"
+cask "iterm2"
+cask "notion"
+cask "raycast"
+cask "signal"
+cask "rectangle"
+cask "visual-studio-code"
 
-brew 'git'
-brew 'gnu-sed'
-brew 'golang'
-brew 'wget'
+brew "bash"
+brew "git"
+brew "gnu-sed"
+brew "golang"
+brew "wget"
