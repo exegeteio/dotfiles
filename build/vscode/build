@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+ln -s "$HOME/.config/dotfiles/build/vscode/keybindings.json" "$HOME/Library/Application Support/Code/User/keybindings.json" 2>/dev/null
+ln -s "$HOME/.config/dotfiles/build/vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json" 2>/dev/null
+ln -s "$HOME/.config/dotfiles/build/vscode/keybindings.json" "$HOME/Library/Application Support/Code - Insiders/User/keybindings.json" 2>/dev/null
+ln -s "$HOME/.config/dotfiles/build/vscode/settings.json" "$HOME/Library/Application Support/Code - Insiders/User/settings.json" 2>/dev/null
+
