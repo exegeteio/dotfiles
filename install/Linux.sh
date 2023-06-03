@@ -2,10 +2,8 @@
 
 set -e
 
-[[ "$EUID" -eq 0 ]] || (echo "Must use sudo or be root for this script! - $EUID"; exit 1)
-
 # These will get installed.
-PACKAGES="$(< apt-packages)"
+PACKAGES="$(< $XDG_CONFIG_HOME/dotfiles/apt-packages)"
 
 # Don't ask questions!
 export DEBIAN_FRONTEND=noninteractive
@@ -15,13 +13,12 @@ if [ ! -z "${DISPLAY}" ]; then
   PACKAGES="gnome-tweaks code chromium-browser firefox ulauncher ${PACKAGES}"
 fi
 
+sudo apt-get update
 echo "Attempting to install:  ${PACKAGES}"
+sudo apt-get install ${PACKAGES}
 
-curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
-
-if [ ! -z "${SUDO_USER}" ]; then
-  echo "Adding ${SUDO_USER} to the \"docker\" group."
-  usermod -aG docker ${SUDO_USER}
+if [ ! -z "${USER}" ]; then
+  echo "Adding ${USER} to the \"docker\" group."
+  sudo usermod -aG docker ${USER}
 fi
 
