@@ -8,6 +8,7 @@ if [ ! -e "$dotfiles" ]; then
     mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}"
     ln -s "$(realpath $(dirname $0))" "$dotfiles"
   else
+    echo "Cloning dotfiles repo to ${dotfiles}..."
     git clone https://github.com/exegeteio/dotfiles.git "$dotfiles"
   fi
 fi

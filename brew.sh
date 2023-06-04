@@ -27,5 +27,7 @@ ${brewfilecmd}/base | brew bundle install -q --file=-
 
 if [ "$OS" == "Darwin" ]; then
   ${brewfilecmd}/Darwin | brew bundle install -q --file=-
+elif [ "$OS" == "Linux" ]; then
+  ${brewfilecmd}/Linux | brew bundle install -q --file=-
 fi
 
