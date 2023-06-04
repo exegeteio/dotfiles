@@ -12,7 +12,7 @@ WORKDIR /home/exegete
 
 ADD ./brew.sh brew .config/dotfiles/
 RUN .config/dotfiles/brew.sh
-ADD ./ .config/dotfiles/
-RUN sudo chown -R exegete:exegete /home/exegete && .config/dotfiles/install.sh
+
+RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/exegeteio/dotfiles/main/install.sh)"
 
 CMD ["/usr/bin/zsh", "-l"]
