@@ -21,4 +21,5 @@ brew "bash"
 brew "git"
 brew "gnu-sed"
 brew "golang"
+brew "neovim", args: ["HEAD"]
 brew "wget"

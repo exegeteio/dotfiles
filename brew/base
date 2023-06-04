@@ -14,7 +14,6 @@ brew "gh"
 brew "git"
 brew "gnu-sed"
 brew "httpie"
-brew "neovim", args: ["HEAD"]
 brew "nvm"
 brew "oh-my-posh"
 brew "rbenv"
