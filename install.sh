@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-set -e
-
+#
+# Before `set -e` so this can continue even if xcode already setup.
 [ -x "$(which xcode-select)" ] && xcode-select --install
+
+set -e
 
 dotfiles="${DOTFILES_PATH:-${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles}"
 if [ ! -e "$dotfiles" ]; then
