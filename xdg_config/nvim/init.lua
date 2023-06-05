@@ -359,7 +359,7 @@ local servers = {
   -- tsserver = {},
   -- solargraph = {},
   ruby_ls = {},
-  standardrb = {},
+  -- standardrb = {},
 
   lua_ls = {
     Lua = {
