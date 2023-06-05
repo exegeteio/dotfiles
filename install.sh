@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
+[ -x "$(which xcode-select)" ] && xcode-select --install
+
 dotfiles="${DOTFILES_PATH:-${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles}"
 if [ ! -e "$dotfiles" ]; then
   if [ -d "$(dirname $0)/dotfiles" ]; then

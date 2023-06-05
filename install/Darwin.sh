@@ -2,9 +2,6 @@
 
 echo "Beginning MacOS setup..."
 
-# XCode CLI
-xcode-select --install
-
 [ -L "$HOME/icloud" ] || ln -s "$HOME/Library/Mobile Documents/com~apple~CloudDocs" "$HOME/icloud"
 
 # Disable “natural” (Lion-style) scrolling
