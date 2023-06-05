@@ -9,8 +9,6 @@ elif [ "$OS" == "Darwin" ]; then
   prefix="$HOME/.brew"
 fi
 
-
-export NONINTERACTIVE=1
 if [ ! -d "$prefix" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
