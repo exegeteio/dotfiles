@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -e
+
+git fetch --all -p -q
+selected="$(git branch $@ | grep -v "HEAD" | grep -v '^\* ' | columnize | uniq2 | sort | menu)"
+if [ -z "$selected" ]; then
+	echo "Nothing selected."
+else
+	git checkout "$selected"
+fi

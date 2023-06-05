@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+
+selected="$(git reflog | grep -i "moving from" | awk '{ print $8 }' | uniq2 | head -n 10 | menu)"
+if [ -z "$selected" ]; then
+	echo "Nothing selected."
+else
+	git checkout "$selected"
+fi
