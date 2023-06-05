@@ -29,3 +29,5 @@ export PATH=$GOBIN:$PATH
 if [ -z "$CODE_PATH" ]; then
   export CODE_PATH="$HOME/code"
 fi
+
+[ -x "$(which bat)" ] && export PAGER="bat --plain"
