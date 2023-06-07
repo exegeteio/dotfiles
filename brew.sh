@@ -5,17 +5,16 @@ set -e
 OS="$(uname)"
 if [ "$OS" == "Linux" ]; then
   prefix="/home/linuxbrew/.linuxbrew"
-  brew="${prefix}/bin/brew"
 elif [ "$OS" == "Darwin" ]; then
-  brew="$(which brew)"
-  if [ ! -x "$brew" ]; then
-    prefix="$HOME/.brew"
-    brew="${prefix}/bin/brew"
-  fi
+  prefix="$HOME/.brew"
 fi
 
 if [ ! -d "$prefix" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+if [ ! -x "$(which brew)" ]; then
+  eval "$(${prefix}/bin/brew shellenv)"
 fi
 
 local="$HOME/.config/dotfiles/brew/"
@@ -23,8 +22,6 @@ brewfilecmd="curl -fsSL https://raw.githubusercontent.com/exegeteio/dotfiles/mai
 if [ -d "$local" ]; then
   brewfilecmd="cat $local"
 fi
-
-eval "$($brew shellenv)"
 
 ${brewfilecmd}/base | brew bundle install -q --file=-
 
