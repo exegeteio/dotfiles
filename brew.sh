@@ -5,8 +5,13 @@ set -e
 OS="$(uname)"
 if [ "$OS" == "Linux" ]; then
   prefix="/home/linuxbrew/.linuxbrew"
+  brew="${prefix}/bin/brew"
 elif [ "$OS" == "Darwin" ]; then
-  prefix="$HOME/.brew"
+  brew="$(which brew)"
+  if [ ! -x "$brew" ]; then
+    prefix="$HOME/.brew"
+    brew="${prefix}/bin/brew"
+  fi
 fi
 
 if [ ! -d "$prefix" ]; then
@@ -19,7 +24,7 @@ if [ -d "$local" ]; then
   brewfilecmd="cat $local"
 fi
 
-eval "$($prefix/bin/brew shellenv)"
+eval "$($brew shellenv)"
 
 ${brewfilecmd}/base | brew bundle install -q --file=-
 
