@@ -6,5 +6,8 @@ selected="$(git reflog | grep -i "moving from" | awk '{ print $8 }' | uniq2 | he
 if [ -z "$selected" ]; then
 	echo "Nothing selected."
 else
+	git g
 	git checkout "$selected"
+	# Hackery for work.
+	[ -f "$HOME/.Gemfile.lock" ] && [ -f "./Gemfile.lock" ] && cp "$HOME/Gemfile.lock" ./
 fi
