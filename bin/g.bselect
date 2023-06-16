@@ -2,12 +2,12 @@
 set -e
 
 git fetch --all -p -q
-selected="$(git branch $@ | grep -v "HEAD" | grep -v '^\* ' | columnize | uniq2 | sort | menu)"
+selected="$(git branch $@ | grep -v "HEAD" | sed 's/^\* //g' | columnize | uniq2 | sort | menu)"
 if [ -z "$selected" ]; then
 	echo "Nothing selected."
 else
 	git g
 	git checkout "$selected"
 	# Hackery for work.
-	[ -f "$HOME/.Gemfile.lock" ] && [ -f "./Gemfile.lock" ] && cp "$HOME/Gemfile.lock" ./
+	[ -f "$HOME/.Gemfile.lock" ] && [ -f "./Gemfile.lock" ] && cp "$HOME/.Gemfile.lock" ./Gemfile.lock
 fi

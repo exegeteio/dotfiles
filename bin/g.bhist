@@ -2,12 +2,12 @@
 
 set -e
 
-selected="$(git reflog | grep -i "moving from" | awk '{ print $8 }' | uniq2 | head -n 10 | menu)"
+selected="$(git reflog | grep -i "moving from" | awk '{ print $8 }' | uniq2 | head -n 25 | menu)"
 if [ -z "$selected" ]; then
 	echo "Nothing selected."
 else
 	git g
 	git checkout "$selected"
 	# Hackery for work.
-	[ -f "$HOME/.Gemfile.lock" ] && [ -f "./Gemfile.lock" ] && cp "$HOME/Gemfile.lock" ./
+	[ -f "$HOME/.Gemfile.lock" ] && [ -f "./Gemfile.lock" ] && cp "$HOME/.Gemfile.lock" ./Gemfile.lock
 fi
