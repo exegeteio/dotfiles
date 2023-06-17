@@ -7,7 +7,7 @@ tap "homebrew/services"
 
 cask "1password"
 cask "discord"
-cask "docker"
+cask "orbstack"
 cask "firefox"
 cask "hey"
 cask "iterm2"

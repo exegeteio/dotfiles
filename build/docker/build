@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-[ -x "$(which docker)" ] && [ -e "/var/run/docker.sock" ] || exit 1
+[ -x "$(which docker)" ] && ([ -e "/var/run/docker.sock" ] || [ -e "$HOME/.orbstack/run/docker.sock" ]) || exit 1
 
 set -e # Stop on error.
 CMD="docker build --pull --quiet --build-arg=HOST_USER=$(whoami) --build-arg=UID=$(id -u) --build-arg=GID=$(id -g) --build-arg=HOST_HOME=$HOME"
