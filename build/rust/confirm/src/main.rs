@@ -2,7 +2,7 @@ use std::env;
 use dialoguer::Confirm;
 
 fn main() {
-    let mut prompt: String = "Proceed?".to_string();
+    let mut prompt: String = "Confirm?".to_string();
 
     let args: Vec<String> = env::args().collect();
     if args.len() > 1 {
