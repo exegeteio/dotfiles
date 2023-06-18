@@ -12,6 +12,7 @@
   maindiff = diff origin/main...HEAD
   sdiff = diff --staged
   bstash = !"git stash -um \"WIP: $(g.branch) $(date +%F-%T)\""
+  spull = !"git stash -um \"spull: $(g.branch) $(date +%F-%T)\" && git pull && git stash pop"
   s = "status -sb"
   ss = "status -s ':!/Gemfile.lock' ':!/config/database.yml' ':!/config/environments/test.rb'"
   g = "checkout Gemfile.lock db/schema.rb config/environments/test.rb"
