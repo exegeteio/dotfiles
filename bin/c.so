@@ -4,6 +4,6 @@
 buf="$*"
 if test -n "$buf"; then
   msg="📢 Go check out, and consider following @$buf - twitch.tv/$buf 📢"
-  tmux -L stream send -t '{marked}' "$msg" Enter
+  c "$msg"
   exit
 fi
