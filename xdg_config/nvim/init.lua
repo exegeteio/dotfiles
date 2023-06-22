@@ -502,6 +502,9 @@ vim.keymap.set('n', '<leader>fl', "<cmd>:silent execute \":!echo %:\".line('.').
 -- Reload init.lua.
 vim.keymap.set('n', '<leader>rr', "<cmd>:so ~/.config/nvim/init.lua<cr>")
 
+-- Check time and/or reload current file.
+vim.keymap.set('n', '<leader>rf', "<cmd>:checkt<cr>")
+
 vim.api.nvim_create_user_command('W', 'w', {})
 vim.api.nvim_create_user_command('Wq', 'wq', {})
 
