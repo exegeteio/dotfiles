@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-[[ -z "$DEBUG" ]] || echo "Checking tmux"
 if [[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && [[ -z "$VSCODE_PID" ]] && [[ "$TERM_PROGRAM" != "vscode" ]]; then
   if [[ -z "$SSH_CLIENT" ]]; then
     tmux.re "main"
@@ -8,7 +7,4 @@ if [[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] &
   else
     tmux.re "$(whoami)"
   fi
-else
-  # Can't recall why this was here?  Knock it off.
-  # export TMUX=""
 fi

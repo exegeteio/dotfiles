@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
-[[ -z "$DEBUG" ]] || echo "Initializing rbenv"
 [ -x "$(which rbenv)" ] && eval "$(rbenv init - zsh)"
 

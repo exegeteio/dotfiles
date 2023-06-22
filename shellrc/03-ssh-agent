@@ -3,7 +3,6 @@
 # Set up SSH Agent
 # Poached from:  https://code.visualstudio.com/docs/remote/containers#_using-ssh-keys
 if [ -d "$HOME/.ssh" ]; then
-  [[ -z "$DEBUG" ]] || echo "Initializing ssh-agent"
   if [ -z "$SSH_AGENT_PID" ]; then
     # Check for a currently running instance of the agent
     [[ -z "$DEBUG" ]] || echo "Sourcing agent file"

@@ -10,13 +10,20 @@ export PATH="$HOME/.brew/bin:/opt/homebrew/bin:$PATH"
 [[ -z "$DEBUG" ]] || echo "Loading zsh promptinit"
 autoload -Uz compinit promptinit
 
-[[ -z "$DEBUG" ]] || echo "Setting FPATH"
+[[ -z "$DEBUG" ]] || echo "Adding zsh site-functions from brew FPATH"
 if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
 for rcfile in $HOME/.config/dotfiles/shellrc/*; do
-  source $rcfile
+  if [[ -z "$DEBUG" ]]; then
+    source $rcfile
+  else
+    echo "Sourcing ${rcfile}..."
+    start=$(date +%s)
+    source $rcfile
+    echo "Finished in: $(expr $(date +%s) - $start) seconds"
+  fi
 done
 
 # Comes late for tab-completing CDPATH.

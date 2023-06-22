@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
-[[ -z "$DEBUG" ]] || echo "Loading Oh My Posh"
 [[ -n "$(which oh-my-posh)" ]] && eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/larserikfinholt.omp.json)"
 

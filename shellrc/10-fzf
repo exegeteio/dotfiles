@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-[[ -z "$DEBUG" ]] || echo "Loading fzf"
 if [[ -f "~/.fzf.$RBENV_SHELL" ]]; then
   FZF="$(which fzf)"
   source "$HOME/.fzf.$RBENV_SHELL"
