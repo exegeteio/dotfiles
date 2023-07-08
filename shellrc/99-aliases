@@ -10,3 +10,4 @@ alias ls="ls --color=auto"
 alias phish="http --follow -p hH"
 alias :q="exit"
 alias r="$HOME/.config/dotfiles/bin/r" # To override shell builtin.
+alias grep="rg"
