@@ -236,7 +236,18 @@ end, { desc = '[S]earch [B]ranch Modified' })
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'typescript', 'help', 'vim', 'ruby' },
+  ensure_installed = {
+    'bash',
+    'go',
+    'html',
+    'lua',
+    'ruby',
+    'rust',
+    'typescript',
+    'vim',
+    'vimdoc',
+    'yaml'
+  },
 
   highlight = { enable = true },
   indent = { enable = true, disable = { 'python' } },
@@ -353,13 +364,14 @@ end
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
   -- clangd = {},
-  -- gopls = {},
+  gopls = {},
   -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
-  -- solargraph = {},
+  rubocop = {},
   ruby_ls = {},
+  rust_analyzer = {},
+  solargraph = {},
   -- standardrb = {},
+  -- tsserver = {},
 
   lua_ls = {
     Lua = {
