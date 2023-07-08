@@ -3,6 +3,9 @@
 [[ -z "$DEBUG" ]] || echo "Checking interactive"
 [[ ! -o interactive ]] && return
 
+# Brew setup first!
+export PATH="$HOME/.brew/bin:/opt/homebrew/bin:$PATH"
+
 # Need these for `n` and `b`.
 [[ -z "$DEBUG" ]] || echo "Loading zsh promptinit"
 autoload -Uz compinit promptinit
