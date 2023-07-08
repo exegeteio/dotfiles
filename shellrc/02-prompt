@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
 # [[ -n "$(which oh-my-posh)" ]] && eval "$(oh-my-posh init zsh)" # --config ${XDG_CONFIG_HOME}/dotfiles/omp.json)"
-
-export PS1="%1~ ↣ "
+loc="%F{magenta}%1~%f"
+bullet="%F{yellow}↣%f"
+export PS1="${loc} ${bullet} "
 
 if [ ! -z "$ZSH_VERSION" ]; then
   autoload -Uz vcs_info
   precmd () { vcs_info }
   zstyle ':vcs_info:*' formats ' %F{green}%b%f'
   setopt PROMPT_SUBST
-  export PROMPT='%1~${vcs_info_msg_0_} ↣ '
+  export PROMPT='${loc}${vcs_info_msg_0_} ${bullet} '
 fi
