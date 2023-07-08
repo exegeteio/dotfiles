@@ -18,11 +18,5 @@ if [ -d "$HOME/.ssh" ]; then
     ssh-agent -s | grep -v "echo" &> ~/.ssh/ssh-agent
     source $HOME/.ssh/ssh-agent
   fi
-
-  _keys="$(ssh-add -l)"
-  if [ "$?" = "1" ]; then
-    echo "No SSH keys found in ssh-agent"
-    # ssh-add
-  fi
 fi
 
