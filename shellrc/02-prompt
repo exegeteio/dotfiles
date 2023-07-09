@@ -1,14 +1,21 @@
 #!/usr/bin/env bash
-
-# [[ -n "$(which oh-my-posh)" ]] && eval "$(oh-my-posh init zsh)" # --config ${XDG_CONFIG_HOME}/dotfiles/omp.json)"
-loc="%F{magenta}%1~%f"
-bullet="%F{yellow}↣%f"
-export PS1="${loc} ${bullet} "
-
-if [ ! -z "$ZSH_VERSION" ]; then
-  autoload -Uz vcs_info
-  precmd () { vcs_info }
-  zstyle ':vcs_info:*' formats ' %F{green}%b%f'
+export GIT_PS1_SHOWCOLORHINTS=true
+source "$HOME/.git-prompt.sh"
+if [[ -n ${ZSH_VERSION-} ]]; then
   setopt PROMPT_SUBST
-  export PROMPT='${loc}${vcs_info_msg_0_} ${bullet} '
+  red='%F{red}'
+  green='%F{green}'
+  blue='%F{lblue}'
+  magenta='%F{magenta}'
+  cyan='%F{cyan}'
+  clear='%f'
+else
+  red=$'\001\e[31m\002'
+  green=$'\001\e[32m\002'
+  blue=$'\001\e[1;34m\002'
+  magenta=$'\001\e[1;35m\002'
+  cyan=$'\001\e[1;36m\002'
+  clear=$'\001\e[0m\002'
 fi
+export PS1="${magenta}\W$(__git_ps1 " %s") ${cyan}↣ ${clear}"
+export PROMPT="${magenta}%1~$(__git_ps1 ' %s') ${cyan}↣ ${clear}"

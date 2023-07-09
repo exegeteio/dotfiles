@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
+# Set vim mode.
+set -o vi
+
 for rcfile in $HOME/.config/dotfiles/shellrc/*; do
-  source $rcfile
+  [ -f "$rcfile" ] && source $rcfile
 done
 
-[[ -n "$(which oh-my-posh)" ]] && eval "$(oh-my-posh --init --shell bash --config "$HOME/.config/dotfiles/omp.json")"
-
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -x "$(which brew)" ] && [ -f "$(brew --prefix fzf)/shell/completion.bash" ] && source "$(brew --prefix fzf)/shell/completion.bash"
+[ -x "$(which brew)" ] && [ -f "$(brew --prefix fzf)/shell/key-bindings.bash" ] && source "$(brew --prefix fzf)/shell/key-bindings.bash"
 
 # Rust me one more time!
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
