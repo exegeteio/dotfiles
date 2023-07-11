@@ -3,19 +3,7 @@ export GIT_PS1_SHOWCOLORHINTS=true
 source "$HOME/.git-prompt.sh"
 if [[ -n ${ZSH_VERSION-} ]]; then
   setopt PROMPT_SUBST
-  red='%F{red}'
-  green='%F{green}'
-  blue='%F{lblue}'
-  magenta='%F{magenta}'
-  cyan='%F{cyan}'
-  clear='%f'
+  export PROMPT='%F{magenta}%1~$(__git_ps1 " %s") %F{cyan}↣ %f'
 else
-  red=$'\001\e[31m\002'
-  green=$'\001\e[32m\002'
-  blue=$'\001\e[1;34m\002'
-  magenta=$'\001\e[1;35m\002'
-  cyan=$'\001\e[1;36m\002'
-  clear=$'\001\e[0m\002'
+  export PS1='\[\033[1;35m\]\W$(__git_ps1 " %s") \[\033[1;36m\]↣ \[\033[0m\]'
 fi
-export PS1="${magenta}\W$(__git_ps1 " %s") ${cyan}↣ ${clear}"
-export PROMPT="${magenta}%1~$(__git_ps1 ' %s') ${cyan}↣ ${clear}"
