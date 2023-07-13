@@ -516,5 +516,9 @@ vim.keymap.set('v', '<leader>c', '"+y')
 vim.keymap.set({ 'n', 'v' }, "<leader>ff", function()
   vim.lsp.buf.format({ async = true })
 end, opts)
+
+-- Setup list options.
+vim.o.listchars = "space:*,trail:*,nbsp:*,extends:>,precedes:<,tab:|>"
+vim.keymap.set('n', '<leader>l', ':set list!<cr>')
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
