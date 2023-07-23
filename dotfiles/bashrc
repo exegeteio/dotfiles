@@ -17,5 +17,7 @@ done
 [ -x "$(which brew)" ] && [ -f "$(brew --prefix fzf)/shell/completion.bash" ] && source "$(brew --prefix fzf)/shell/completion.bash"
 [ -x "$(which brew)" ] && [ -f "$(brew --prefix fzf)/shell/key-bindings.bash" ] && source "$(brew --prefix fzf)/shell/key-bindings.bash"
 
+[[ -r "$(brew --prefix bash-completion)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix bash-completion)/etc/profile.d/bash_completion.sh"
+
 # Rust me one more time!
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
