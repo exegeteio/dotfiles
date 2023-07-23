@@ -5,7 +5,7 @@ export NVM_DIR="$HOME/.nvm"
 # Load NVM is installed anywhere
 if [[ -x "$NVM_DIR/nvm.sh" ]]; then
   source "$NVM_DIR/nvm.sh"
-elif [ -x "$HOME/.brew/Homebrew/opt/nvm/nvm.sh" ]; then
-  source "$HOME/.brew/Homebrew/opt/nvm/nvm.sh"
+elif [ -x "$(which brew)" ] && [ -e "$(brew --prefix nvm)/nvm.sh" ]; then
+  source "$(brew --prefix nvm)/nvm.sh"
 fi
 

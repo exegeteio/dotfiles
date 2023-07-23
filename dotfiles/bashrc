@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Brew setup first!
+export PATH="$HOME/.brew/bin:/opt/homebrew/bin:$PATH"
+
+# Silence warning on MacOS.
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # Set vim mode.
 set -o vi
 
