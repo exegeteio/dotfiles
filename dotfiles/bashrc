@@ -10,14 +10,26 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 set -o vi
 
 for rcfile in $HOME/.config/dotfiles/shellrc/*; do
-  [ -f "$rcfile" ] && source $rcfile
+  if [[ -z "$DEBUG" ]]; then
+    [ -f ${rcfile} ] && source $rcfile
+  else
+    echo "Sourcing ${rcfile}..."
+    start=$(date +%s)
+    [ -f ${rcfile} ] && source $rcfile
+    echo "Finished in: $(expr $(date +%s) - $start) seconds"
+  fi
 done
 
+[ -z "$DEBUG" ] || echo "~/.fzf.bash"
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -z "$DEBUG" ] || echo "fzf bash completion"
 [ -x "$(which brew)" ] && [ -f "$(brew --prefix fzf)/shell/completion.bash" ] && source "$(brew --prefix fzf)/shell/completion.bash"
+[ -z "$DEBUG" ] || echo "fzf keybindings"
 [ -x "$(which brew)" ] && [ -f "$(brew --prefix fzf)/shell/key-bindings.bash" ] && source "$(brew --prefix fzf)/shell/key-bindings.bash"
 
+[ -z "$DEBUG" ] || echo "bash completion"
 [[ -r "$(brew --prefix bash-completion)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix bash-completion)/etc/profile.d/bash_completion.sh"
 
 # Rust me one more time!
+[ -z "$DEBUG" ] || echo "cargo env"
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
