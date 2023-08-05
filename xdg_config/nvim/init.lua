@@ -245,7 +245,7 @@ require('nvim-treesitter.configs').setup {
     'rust',
     'typescript',
     'vim',
-    'vimdoc',
+    'vim',
     'yaml'
   },
 
