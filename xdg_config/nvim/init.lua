@@ -63,6 +63,7 @@ require('packer').startup(function(use)
   -- My custom, since the below didn't seem to work.
   use 'nvim-lua/plenary.nvim'
   use 'ThePrimeagen/harpoon'
+  use 'ThePrimeagen/git-worktree.nvim'
   use 'nvim-treesitter/nvim-treesitter-context'
 
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
@@ -479,6 +480,13 @@ vim.keymap.set('n', '<leader>tl', function() require("harpoon.tmux").sendCommand
 
 vim.keymap.set("n", "<C-w>", function() ui.nav_prev() end)
 vim.keymap.set("n", "<C-e>", function() ui.nav_next() end)
+
+-- git_worktree
+require("telescope").load_extension('git_worktree')
+vim.keymap.set('n', '<leader>gw', function(_)
+  require('telescope').extensions.git_worktree.git_worktrees()
+end, { desc = '[G]it [W]orktrees' })
+
 
 -- Insert current branchname,
 vim.keymap.set("n", "<leader>b", ":execute 'norm i' . system('g.branch')<CR><Esc>kJa")
