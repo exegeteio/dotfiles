@@ -193,6 +193,10 @@ require('gitsigns').setup {
 -- See `:help telescope` and `:help telescope.setup()`
 require('telescope').setup {
   defaults = {
+    layout_config = {
+      vertical = { width = 0.5 }
+    },
+    theme = 'dropdown',
     mappings = {
       i = {
         ['<C-u>'] = false,
@@ -221,6 +225,7 @@ vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc
 vim.keymap.set('n', '<leader>gg', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>gt', require('telescope.builtin').treesitter, { desc = '[G]oto [T]reesitter' })
 vim.keymap.set('n', '<leader>gm', function(_)
   require('telescope.builtin').find_files {
     find_command = {"g.mod"}
@@ -474,6 +479,9 @@ vim.keymap.set('n', '<leader>tl', function() require("harpoon.tmux").sendCommand
 
 vim.keymap.set("n", "<C-w>", function() ui.nav_prev() end)
 vim.keymap.set("n", "<C-e>", function() ui.nav_next() end)
+
+-- Insert current branchname,
+vim.keymap.set("n", "<leader>b", ":execute 'norm i' . system('g.branch')<CR><Esc>kJa")
 
 -- My customization
 vim.g.mapleader = ' '

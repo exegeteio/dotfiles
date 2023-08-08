@@ -9,7 +9,7 @@
   lgdb = lgd --first-parent --no-merges
   lgf = !"git lg1 --name-only"
   churn = !"git lg1b | grep -v year | grep ago"
-  maindiff = diff origin/main...HEAD
+  maindiff = diff main...HEAD
   sdiff = diff --staged
   bstash = !"git stash -um \"WIP: $(g.branch) $(date +%F-%T)\""
   spull = !"git stash -um \"spull: $(g.branch) $(date +%F-%T)\" && git pull && git stash pop"
