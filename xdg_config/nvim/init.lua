@@ -487,6 +487,16 @@ vim.keymap.set('n', '<leader>gw', function(_)
   require('telescope').extensions.git_worktree.git_worktrees()
 end, { desc = '[G]it [W]orktrees' })
 
+local Worktree = require("git-worktree")
+Worktree.on_tree_change(function(op, metadata)
+  if op == Worktree.Operations.Switch then
+    os.execute("rm ~/code/current")
+    os.execute("ln -s " .. metadata.path .. " ~/code/current")
+    os.execute("tmux setenv CURRENT_DIR '" .. metadata.path .. "'")
+    print("Switched current to " .. metadata.path)
+  end
+end)
+
 
 -- Insert current branchname,
 vim.keymap.set("n", "<leader>b", ":execute 'norm i' . system('g.branch')<CR><Esc>kJa")
