@@ -1,3 +1,4 @@
+--skip-test
 --asset-pipeline=propshaft
 --database=postgresql
 --javascript=importmap

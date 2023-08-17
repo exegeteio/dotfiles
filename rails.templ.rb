@@ -21,16 +21,18 @@ file 'config/initializers/uuid.rb', <<-CODE
 CODE
 
 after_bundle do
-  gem 'haml-rails'
-  gem 'html2haml'
   gem_group :development, :test do
     gem 'annotate'
     gem 'bullet'
     gem 'bundle-audit'
+    gem 'dotenv-rails'
+    gem 'rspec-rails'
     gem 'rubocop-rails'
     gem 'rubocop-rails_config'
-    gem 'dotenv-rails'
   end
+
+  gem 'view_component'
+
   # Install added gems.
   run 'bundle update'
 
@@ -45,6 +47,9 @@ after_bundle do
     '.gitignore',
     gitignore
   )
+
+  # Setup rspec
+  rails_command 'g rspec:install'
 
   # Setup annotate
   rails_command 'g annotate:install'
@@ -64,31 +69,8 @@ after_bundle do
     before: '</head>'
   )
 
-  # HTML Navigation
-  nav = <<-SNIPPET
-  <header>
-    <nav>
-      <%= link_to 'Home', root_path %>
-    </nav>
-  </header>
-  SNIPPET
-  inject_into_file(
-    'app/views/layouts/application.html.erb',
-    nav,
-    after: '<body>'
-  )
-
-  # HTML Footer
-  footer = <<-SNIPPET
-  <footer>
-    <%= link_to 'Home', root_path %>
-  </footer>
-  SNIPPET
-  inject_into_file(
-    'app/views/layouts/application.html.erb',
-    footer,
-    before: '</body>'
-  )
+  # Sets up nav, footer, and header components.
+  default_components
 
   # CSS For Rails Forms
   css = <<~SNIPPET
@@ -103,15 +85,12 @@ after_bundle do
     css
   )
 
-  # Transition to HAML
-  rails_command 'haml:erb2haml HAML_RAILS_DELETE_ERB=true'
-
   # Create a home controller and send the root to it.
   generate(:controller, 'home index')
   route "root to: 'home#index'"
 
   # Setup the database, generate schema.rb, and run the tests.
-  %w[db:create db:migrate db:seed db:test:prepare test].each do |task|
+  %w[db:prepare db:migrate db:test:prepare spec].each do |task|
     rails_command task, abort_on_failure: true
   end
 
@@ -122,17 +101,23 @@ after_bundle do
   # Run rubocop before initial commit.
   run 'rubocop --init'
   ruborake = <<~SNIPPET
-
     begin
       require 'rubocop/rake_task'
+      require 'rspec/core/rake_take'
 
-      task :default => %i[rubocop test]
+
+      task :default => %i[rubocop spec]
 
       desc 'Run rubocop'
       task :rubocop do
         RuboCop::RakeTask.new
       end
-    rescue LoadError # No rubocop
+
+      desc 'Run all rspec'
+      RSpec::Core::RakeTask.new(:spec) do |t|
+        t.ruby_opts = %w[-w]
+      end
+    rescue LoadError # No rubocop or rspec.
     end
   SNIPPET
   inject_into_file(
@@ -170,6 +155,9 @@ after_bundle do
         spec/**/*
         test/**/*
       ]
+    },
+    'Style/Documentation' => {
+      'Enabled' => false
     }
   }.to_yaml
   inject_into_file(
@@ -182,4 +170,51 @@ after_bundle do
 
   # Check the current bundle for any security issues.
   run 'bundle audit --update'
+end
+
+def default_components
+  # HTML Navigation
+  rails_command 'g component Header'
+  rails_command 'g component Navigation'
+  rails_command 'g component Footer'
+  header = <<-SNIPPET
+
+    <%= render HeaderComponent.new do %>
+      <%= render NavigationComponent.new %>
+    <% end %>
+
+  SNIPPET
+  inject_into_file(
+    'app/views/layouts/application.html.erb',
+    header,
+    after: '<body>'
+  )
+
+  file 'app/components/header_component.html.erb', <<~SNIPPET
+    <header>
+      <nav>
+        <%= content %>
+      </nav>
+    </header>
+  SNIPPET
+
+  file 'app/components/navigation_component.html.erb', <<~SNIPPET
+    <%= link_to 'Home', root_path %>
+  SNIPPET
+
+  # HTML Footer
+  file 'app/components/footer_component.html.erb', <<~SNIPPET
+    <footer>
+      <%= link_to 'Home', root_path %>
+    </footer>
+  SNIPPET
+
+  inject_into_file(
+    'app/views/layouts/application.html.erb',
+    "<%= render FooterComponent.new %>\n",
+    before: '</body>'
+  )
+
+  environment 'config.view_component.instrumentation_enabled = true', env: 'development'
+  environment 'config.view_component.use_deprecated_instrumentation_name = false', env: 'development'
 end
