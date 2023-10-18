@@ -9,11 +9,12 @@
   lgdb = lgd --first-parent --no-merges
   lgf = !"git lg1 --name-only"
   churn = !"git lg1b | grep -v year | grep ago"
-  maindiff = diff main...HEAD
+  maindiff = diff origin/main...HEAD
   sdiff = diff --staged
   bstash = !"git stash -um \"WIP: $(g.branch) $(date +%F-%T)\""
   spull = !"git stash -um \"spull: $(g.branch) $(date +%F-%T)\" && git pull && git stash pop"
   spullmain = !"git stash -um \"spull: $(g.branch) $(date +%F-%T)\" && git checkout main && git pull && git checkout - && git stash pop"
+  pullmain = !"git checkout main && git pull && git checkout -"
   s = "status -sb"
   ss = "status -s ':!/Gemfile.lock' ':!/config/database.yml' ':!/config/environments/test.rb'"
   g = "checkout Gemfile.lock db/schema.rb config/environments/test.rb"
