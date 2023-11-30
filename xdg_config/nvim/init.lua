@@ -225,6 +225,10 @@ require('lazy').setup({
     'ThePrimeagen/git-worktree.nvim',
     dependencies = {},
   },
+  {
+    'github/copilot.nvim',
+    dependencies = {},
+  },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
