@@ -8,3 +8,6 @@
 
 # Local Netlify folder
 .netlify
+
+# Jetbrains
+**/.idea/

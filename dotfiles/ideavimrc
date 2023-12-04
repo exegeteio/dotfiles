@@ -1,0 +1,40 @@
+
+" Leader as space!
+let mapleader = " "
+
+" Keymaps!
+map n nzz
+map N Nzz
+map G Gzz
+
+map <C-u> <C-u>zz
+map <C-d> <C-d>zz
+
+map <leader><space> <Action>(RecentFiles)
+map <leader>c <Action>($Copy)
+map <leader>ff <Action>(ReformatCode)
+map <leader>gm <Action>(RecentChangedFiles)
+map <leader>gs <Action>(SearchEverywhere)
+map <leader>gt <Action>(GotoSymbol)
+map <leader>o <Action>(GotoFile)
+map <leader>p <Action>($Paste)
+map <leader>rr :source ~/.ideavimrc<CR>
+" This doesn't work yet.  Not sure how to run only the current line.
+" map <leader>tl <Action>(RunContextGroup)
+map <leader>tt <Action>(Run)
+map <leader>vz <Action>(ToggleZenMode)
+
+" Visual Keymaps!
+vmap <leader>p <Action>($Paste)
+
+" Fix my slow lift on shift when doing :w.
+command! W :w
+command! Wq :wq
+
+" Set!
+set relativenumber
+set hlsearch true
+
+" Experimental!
+set textwidth=80
+set colorcolumn=+1

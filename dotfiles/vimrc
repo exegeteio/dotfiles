@@ -22,7 +22,7 @@ Plug 'jayli/vim-easycomplete'
 
 call plug#end()
 
-let mapleader = ";"
+let mapleader = " "
 " config plugins
 "nnoremap <Leader>o :NERDTreeToggle .<CR>
 nnoremap <Leader>o :FZF<CR>
