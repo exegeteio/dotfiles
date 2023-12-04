@@ -685,12 +685,12 @@ vim.keymap.set('n', '<leader>gm', function(_)
   require('telescope.builtin').find_files {
     find_command = {"g.mod"}
   }
-end, { desc = '[S]earch [M]odified' })
+end, { desc = '[G]oto [M]odified' })
 vim.keymap.set('n', '<leader>gb', function(_)
   require('telescope.builtin').find_files {
     find_command = {"g.bmod"}
   }
-end, { desc = '[S]earch [B]ranch Modified' })
+end, { desc = '[G]oto [B]ranch Modified' })
 
 
 -- Copy filename to clipboard.
