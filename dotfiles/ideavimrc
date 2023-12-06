@@ -13,14 +13,16 @@ map <C-d> <C-d>zz
 map <leader><space> <Action>(RecentFiles)
 map <leader>c <Action>($Copy)
 map <leader>ff <Action>(ReformatCode)
-map <leader>gm <Action>(RecentChangedFiles)
+map <leader>gd <Action>(GotoDeclaration)
+map <silent> <leader>gg viw:action FindInPath<CR><Esc>
+map <leader>gm <Action>(RecentFiles)
 map <leader>gs <Action>(SearchEverywhere)
 map <leader>gt <Action>(GotoSymbol)
 map <leader>o <Action>(GotoFile)
 map <leader>p <Action>($Paste)
 map <leader>rr :source ~/.ideavimrc<CR>
 " This doesn't work yet.  Not sure how to run only the current line.
-" map <leader>tl <Action>(RunContextGroup)
+map <leader>tl <Action>(GotoSymbol)
 map <leader>tt <Action>(Run)
 map <leader>vz <Action>(ToggleZenMode)
 
@@ -32,6 +34,7 @@ command! W :w
 command! Wq :wq
 
 " Set!
+set number
 set relativenumber
 set hlsearch true
 
