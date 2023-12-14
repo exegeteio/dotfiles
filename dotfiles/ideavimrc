@@ -1,3 +1,6 @@
+" Includes
+set highlightedyank
+set surround
 
 " Leader as space!
 let mapleader = " "
