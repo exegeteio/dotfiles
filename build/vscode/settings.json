@@ -73,5 +73,9 @@
     "markdown.preview.fontSize": 18,
     "window.zoomLevel": 1,
     "githubPullRequests.terminalLinksHandler": "github",
-    "workbench.iconTheme": "material-icon-theme"
+    "workbench.iconTheme": "material-icon-theme",
+    "githubPullRequests.pullBranch": "never",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    }
 }
