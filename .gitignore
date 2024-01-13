@@ -6,3 +6,6 @@
 dotfiles/vim/plugged
 xdg_config/nvim/plugin
 dotfiles/vim/.netrwhist
+
+# Neovim lock file go away.
+xdg_config/nvim/lazy-lock.json
