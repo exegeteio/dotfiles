@@ -22,9 +22,6 @@ os=$(uname)
 cd "$dotfiles"
 
 ./dotfiles.sh
-./brew.sh
-./build.sh
-[ "$os" == "Linux" ] && sudo ./linux.sh
 
 installer="$dotfiles/install/$os.sh"
 [[ -x "$installer" ]] && bash "$installer"
