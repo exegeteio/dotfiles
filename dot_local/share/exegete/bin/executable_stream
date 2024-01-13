@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+if tmux has-session -t "=stream" 2>/dev/null; then
+  echo "Existing session..."
+else
+  echo "Creating stream session..."
+  tmux -2 new-session -s stream -d dr.wee
+  tmux -2 select-pane -t stream -m
+fi
+
+exec tmux.re stream

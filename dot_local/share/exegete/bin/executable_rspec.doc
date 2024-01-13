@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+specs=$*
+[ -z "$specs" ] && specs=$(find ./spec -iname '*_spec.rb' | sort | menu)
+rspec --format=d --dry-run $specs

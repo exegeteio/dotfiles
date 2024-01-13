@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# If:
+# - Tmux exists.
+# - Not already in tmux.
+# - ~/.auto_tmux exists.
+# - Not in VS Code.
+# - Not in VS Code again.
+# - Not in Jetbrains' environment checker.
+# - Not in Jetbrains' shell environment checker (not the same as not in Jetbrains.
+if [[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && [[ -z "$VSCODE_PID" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && [[ -z "$INTELLIJ_ENVIRONMENT_READER" ]] && [[ -z "$FIG_JETBRAINS_SHELL_INTEGRATION" ]]; then
+  if [[ -z "$SSH_CLIENT" ]]; then
+    exec tmux.re "main"
+  else
+    exec tmux.re "$(whoami)"
+  fi
+fi

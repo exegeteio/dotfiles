@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#
+# Allows overriding with ~/.zshenv
+
+[[ -z "$BLOG_PATH" ]] && export BLOG_PATH="$HOME/code/github/exegeteio/exegete.io/src/_posts"
+if type compdef >/dev/null 2>&1; then
+  compdef "_files -W $BLOG_PATH" b
+fi
+

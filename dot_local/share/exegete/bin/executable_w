@@ -1,0 +1,15 @@
+#!/bin/bash
+
+folder="$1"
+
+if [ -z "$folder" ]; then
+  cd "${CODE_PATH:-${HOME}/code}"
+  folder=$(ls -1 | menu)
+fi
+
+if [ -z "$folder" ]; then
+  echo "No folder selected!"
+  exit
+fi
+
+exec tmux.re "${folder:-main}"

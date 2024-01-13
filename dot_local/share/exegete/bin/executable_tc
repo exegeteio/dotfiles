@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Just clear the terminal.
+if [ -z "$TMUX" ]; then
+  clear
+else
+  clear; tmux clear-history; clear
+fi
+

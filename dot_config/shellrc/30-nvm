@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# NVM for managing versions of Node on the system.
+export NVM_DIR="$HOME/.nvm"
+# Load NVM is installed anywhere
+if [[ -x "$NVM_DIR/nvm.sh" ]]; then
+  source "$NVM_DIR/nvm.sh"
+elif [ -x "$(which brew)" ] && [ -e "$(brew --prefix nvm)/nvm.sh" ]; then
+  source "$(brew --prefix nvm)/nvm.sh"
+fi
+

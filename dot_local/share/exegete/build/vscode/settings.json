@@ -1,0 +1,81 @@
+{
+    "editor.fontFamily": "JetBrainsMono Nerd Font, FiraCode Nerd Font, Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 22,
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "files.autoSave": "onFocusChange",
+    "ruby.codeCompletion": "rcodetools",
+    "ruby.intellisense": "rubyLocate",
+    "ruby.rubocop.executePath": "/Users/exegete/.rbenv/shims/",
+    "screencastMode.fontSize": 40,
+    "solargraph.diagnostics": true,
+    "solargraph.formatting": true,
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.tabs.enabled": false,
+    "terminal.integrated.tabs.location": "left",
+    "vim.vimrc.enable": true,
+    "workbench.colorTheme": "Tinacious Design (High Contrast)",
+    "terminal.integrated.profiles.osx": {
+        "zsh": {
+            "path": "/bin/zsh",
+            "args": [
+                "-l"
+            ]
+        }
+    },
+    "terminal.integrated.fontSize": 22,
+    "html.format.wrapLineLength": 80,
+    "git.autofetch": true,
+    "ruby.useLanguageServer": true,
+    "ruby.rubocop.onSave": false,
+    "go.toolsManagement.autoUpdate": true,
+    "terminal.integrated.confirmOnExit": "hasChildProcesses",
+    "[ruby]": {
+        "editor.defaultFormatter": "rebornix.ruby"
+    },
+    "terminal.integrated.minimumContrastRatio": 7,
+    "workbench.startupEditor": "none",
+    "solargraph.commandPath": "/Users/exegete/.rbenv/shims/solargraph",
+    "solargraph.autoformat": true,
+    "editor.inlineSuggest.enabled": true,
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "bracket-pair-colorizer-2.depreciation-notice": false,
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none",
+    "editor.stickyScroll.enabled": true,
+    "remote.containers.dotfiles.installCommand": "~/dotfiles/install.sh",
+    "remote.containers.dotfiles.repository": "https://github.com/exegete46/dotfiles.git",
+    "remote.containers.dotfiles.targetPath": "~/dotfiles",
+    "terminal.integrated.tabs.enabled": false,
+    "workbench.layoutControl.enabled": false,
+    "zenMode.centerLayout": false,
+    "zenMode.fullScreen": false,
+    "zenMode.hideLineNumbers": false,
+    "zenMode.hideStatusBar": false,
+    "ruby.format": "standard",
+    "ruby.lint": {
+        "standard": true,
+        "reek": true
+    },
+    "workbench.sideBar.location": "right",
+    "rubyLsp.rubyVersionManager": "rbenv",
+    "debug.console.fontSize": 18,
+    "markdown.preview.fontSize": 18,
+    "window.zoomLevel": 1,
+    "githubPullRequests.terminalLinksHandler": "github",
+    "workbench.iconTheme": "material-icon-theme",
+    "githubPullRequests.pullBranch": "never",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    }
+}

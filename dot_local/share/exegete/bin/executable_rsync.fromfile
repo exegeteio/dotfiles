@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# */5 * * * * $HOME/bin/rsync.fromfile 2>&1 >> /tmp/rsync.log
+INPUT=${1-~/.auto_rsync}
+OUTPUT=${2-~/rsync}
+if [[ ! -f "$INPUT" ]]; then
+  echo "Must specify an input filename."
+  exit 1
+fi
+if [[ ! -d "$OUTPUT" ]]; then
+  echo "Must specify a destination directory."
+  exit 1
+fi
+while IFS= read -ra loc; do
+  # Allow for blank lines.
+  if [[ ! -z "$loc" ]]; then
+    if [[ ! -e "$loc" ]]; then
+      echo "Nothing to sync at $loc"
+    fi
+    dest="${OUTPUT}/"
+    echo "Syncing $loc to $dest"
+    rsync -a --delete "$loc" "$dest"
+  fi
+done < $INPUT

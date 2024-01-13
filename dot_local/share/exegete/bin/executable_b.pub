@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -e
+
+(
+  cd "$BLOG_PATH"
+  git checkout main
+  git pull
+  git merge drafts
+  git push
+  git checkout drafts
+  git rebase main
+)

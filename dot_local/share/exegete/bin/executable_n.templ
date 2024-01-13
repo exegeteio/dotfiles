@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+md.hdate
+echo
+[[ -f "$NOTES_PATH/.templ.md" ]] && cat "$NOTES_PATH/.templ.md"
+echo
+[[ -f "$NOTES_PATH/goals.md" ]] && cat "$NOTES_PATH/goals.md"
+

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+[ -x "$(which docker-compose)" ] && exec docker-compose "$@"
+[ -x "$(which docker)" ] && exec docker compose "$@"

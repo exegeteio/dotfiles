@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+health="$(docker inspect -f "{{.State.Health.Status}}" pi-hole)"
+
+if [ "$health" != "healthy" ]; then
+  cd ${DOTFILES_PATH:-$HOME/dotfiles}/pihole && docker compose down
+  pihole
+fi

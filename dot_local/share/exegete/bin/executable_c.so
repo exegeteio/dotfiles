@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Stolen from rwxrob:  github.com/rwxrob/dot
+
+buf="$*"
+if test -n "$buf"; then
+  msg="📢 Go check out, and consider following @$buf - twitch.tv/$buf 📢"
+  c "$msg"
+  exit
+fi

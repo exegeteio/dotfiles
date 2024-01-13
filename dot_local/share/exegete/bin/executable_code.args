@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+output = [] # TODO
+$stdin.readlines.each do |line|
+  parts = line.split(':')
+  line = parts[1] if parts.length > 1 && parts[1].match(/^\t+/)
+  if line
+    output << parts[0..2]
+  end
+end
+output.each { |o| puts "-g #{o.join(':')}" }

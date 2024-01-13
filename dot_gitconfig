@@ -1,0 +1,55 @@
+[alias]
+  a = "add -p ':!/Gemfile.lock' ':!/config/database.yml' ':!/config/environments/test.rb'"
+  bstash = !"git stash -um \"WIP: $(g.branch) $(date +%F-%T)\""
+  churn = !"git lg1b | grep -v year | grep ago"
+  co = "checkout"
+  cop = "checkout -p ':!/Gemfile.lock' ':!/config/database.yml'"
+  g = "checkout Gemfile.lock db/schema.rb config/environments/test.rb"
+  lg = lg1
+  lg1 = lg1s --all
+  lg1b = lg1s --no-merges
+  lg1s = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'
+  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+  lgd = lgds --all
+  lgdb = lgd --first-parent --no-merges
+  lgds = log -p --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+  lgf = !"git lg1 --name-only"
+  maindiff = diff origin/main...HEAD
+  omerge = "merge -X ours"
+  pullmain = !"git checkout main && git pull && git checkout -"
+  s = "status -sb"
+  sdiff = diff --staged
+  spull = !"git stash -um \"spull: $(g.branch) $(date +%F-%T)\" && git pull && git stash pop"
+  spullmain = !"git stash -um \"spull: $(g.branch) $(date +%F-%T)\" && git checkout main && git pull && git checkout - && git stash pop"
+  ss = "status -s ':!/Gemfile.lock' ':!/config/database.yml' ':!/config/environments/test.rb'"
+  tmerge = "merge -X theirs"
+[core]
+  excludesFile = ~/.gitignore
+  hooksPath = ~/.git/hooks
+	editor = nvim
+[init]
+  defaultBranch = main
+
+[include]
+  path = ~/.gituser
+
+[pull]
+  rebase = true
+
+[checkout]
+  guess = false
+
+[diff]
+    tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[credential]
+  helper = "!f() { /home/vscode/.vscode-server/bin/74b1f979648cc44d385a2286793c226e611f59e7/node /tmp/vscode-remote-containers-0551e7debb1d23cc8a2f22d0e06bfd3bfbc68d80.js $*; }; f"
+[safe]
+  directory = /workspaces
+  directory = /workspaces/dotfiles

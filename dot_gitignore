@@ -1,0 +1,13 @@
+**/vendor/bundle
+**/node_modules
+.DS_Store
+.*.swp
+**/.env
+.Trashes
+.byebug_history
+
+# Local Netlify folder
+.netlify
+
+# Jetbrains
+**/.idea/

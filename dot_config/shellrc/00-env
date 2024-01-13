@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+export XDG_CONFIG_HOME="$HOME/.config/"
+export PATH="$HOME/bin:$HOME/.local/share/exegete/bin:$PATH"
+export CDPATH="$HOME:$HOME/code/:$HOME/Desktop/"
+
+# Prettier Docker commands, parallel builds.
+export DOCKER_BUILDKIT=1
+
+# Allow connect back to rails from inside Docker.
+export RAILS_DEVELOPMENT_HOSTS=host.docker.internal,localhost,.ngrok.io
+
+# Only set the port if not already set.  Good for devcontainers.
+[[ -z "$PORT" ]] && export PORT=3000
+
+# Setup Golang
+export GOPATH=$HOME/code/go
+export GOBIN=$GOPATH/bin
+export PATH=$GOBIN:$PATH
+
+# For tmux workspaces.
+if [ -z "$CODE_PATH" ]; then
+  export CODE_PATH="$HOME/code"
+fi
+
+[ -x "$(which bat)" ] && export PAGER="bat --plain"

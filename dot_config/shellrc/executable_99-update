@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Script to auto-update my dotfiles if necessary.  "Necessary" as determined by
+# being checked in the last day.
+
+tmp="/tmp/dotfiles-update_$(date +%F).log"
+
+if [ ! -e "$tmp" ]; then
+  chezmoi update 2>&1 >> $tmp
+fi

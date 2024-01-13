@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+dest="$HOME/Library/Application Support/Code/User"
+if [ -e "$dest" ]; then
+  rm -f "${dest}/keybindings.json" "${dest}/settings.json"
+  ln -s "$HOME/.config/dotfiles/build/vscode/keybindings.json" "${dest}/keybindings.json" 2>/dev/null
+  ln -s "$HOME/.config/dotfiles/build/vscode/settings.json" "${dest}/settings.json" 2>/dev/null
+fi
+

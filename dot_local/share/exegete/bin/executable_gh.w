@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+gh repo view --web

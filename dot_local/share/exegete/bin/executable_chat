@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Stolen from rwxrob:  github.com/rwxrob/dot
+
+buf="$*"
+if test -n "$buf"; then
+  tmux send-keys -t 'stream.0' "$buf" Enter
+  exit
+fi
+
+IFS=
+while read -r line; do
+  tmux send-keys -t 'stream.0' "$line" Enter
+done

@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+git branch --show-current

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+[ ! -z "$NTFY_TOPIC" ] && curl -s \
+	-H "Title: Work complete!" \
+	-d "${*}" \
+	"https://ntfy.sh/${NTFY_TOPIC}" \
+	1> /dev/null;
+say "Zug Zug.  Work complete!  ${*}"

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+export CGO_ENABLED=0
+
+[ -x "$(which go)" ] || exit 1
+
+_install () {
+  echo "  Installing $1..."
+  (
+    cd "$1" || exit
+    go install
+  )
+}
+
+_build () {
+  echo "  Building $1..."
+  (
+    cd "$1" || exit
+    ./build
+  )
+}
+
+for i in *; do
+  if [[ -x "$i/main" ]]; then
+    _build "$i"
+  else
+    [ -f "$i/main.go" ] && [ -f "$i/go.mod" ] && _install "$i"
+  fi
+done

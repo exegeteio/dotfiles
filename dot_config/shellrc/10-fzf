@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [[ -f "~/.fzf.$RBENV_SHELL" ]]; then
+  FZF="$(which fzf)"
+  source "$HOME/.fzf.$RBENV_SHELL"
+fi
+export FZF
+if [[ -z "$TMUX" ]]; then
+  export FZF_TMUX_OPTS=""
+else
+  export FZF_TMUX_OPTS="-p 40%"
+fi
+

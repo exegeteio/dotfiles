@@ -1,0 +1,6 @@
+--skip-test
+--asset-pipeline=propshaft
+--database=postgresql
+--javascript=importmap
+--skip-action-mailbox
+--template=$HOME/.local/share/exegete/rails.templ.rb

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+alias '?'=duck
+alias '??'=google
+alias a="source aliases"
+alias gf="git fetch --all -p"
+alias less="less -r"
+alias ll="ls -lh"
+alias ls="ls --color=auto"
+alias phish="http --follow -p hH"
+alias :q="exit"
+alias r="$HOME/.config/dotfiles/bin/r" # To override shell builtin.
+alias grep="rg"
+alias less="bat --plain"
+alias h="hanami"
+
+# Chezmoi
+alias cz="chezmoi"
+alias cz.a="cz apply"
+alias cz.e="cz edit"
+alias cz.cd="cz cd"

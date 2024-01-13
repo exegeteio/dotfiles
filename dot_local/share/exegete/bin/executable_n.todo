@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+(
+  cd "$NOTES_PATH";
+  $EDITOR $(todo --vimgrep | menu | $EDITOR_ARGS)
+)

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+files=$(git status -s | columnize | cut -d" " -f2 | $EDITOR_ARGS)
+[ -z "$files" ] && echo "No files" && exit 1
+$EDITOR $files

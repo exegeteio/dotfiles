@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+if [[ -x "$(which fzf-tmux)" ]]; then
+  exec fzf-tmux -p -0 -1 -m --bind ctrl-a:select-all
+elif [[ -x "$(which fzf)" ]]; then
+  exec fzf -0 -1 -m --bind ctrl-a:select-all
+else
+  in=$(</dev/stdin)
+  if [[ -z "$in" ]]; then
+    echo "menu - nothing to display"
+    exit 1
+  fi
+  readarray lines <<< $in
+  if [[ "${#lines[@]}" == "1" ]]; then
+    echo "${lines[0]}"
+  else
+    IFS=$'\n'
+    select sel in ${lines[@]}; do
+      echo "$sel"
+      exit
+    done < /dev/tty
+  fi
+fi

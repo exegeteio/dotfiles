@@ -1,0 +1,15 @@
+apt-transport-https
+build-essential
+ca-certificates
+curl
+file
+git
+less
+libssl-dev
+procps
+ssh-client
+sudo
+tmux
+vim
+wget
+zsh

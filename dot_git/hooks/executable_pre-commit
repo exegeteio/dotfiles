@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -e
+branch="$(git branch --show-current)"
+if [ "${branch}" = "master" -o "${branch}" = "main"  ]; then
+  # Make this hook interactive.
+  exec < /dev/tty
+  confirm "You're on $branch - Are you sure you want to commit?"
+fi
+

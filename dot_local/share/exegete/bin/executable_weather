@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+http "wttr.in/$*?0" | $PAGER

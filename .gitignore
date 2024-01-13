@@ -1,0 +1,8 @@
+.*.swp
+.Trashes
+.DS_Store
+**/*.lock.json
+
+dotfiles/vim/plugged
+xdg_config/nvim/plugin
+dotfiles/vim/.netrwhist

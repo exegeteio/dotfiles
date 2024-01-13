@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+[ -x "$(which docker)" ] && ([ -e "/var/run/docker.sock" ] || [ -e "$HOME/.orbstack/run/docker.sock" ]) || exit 1
+
+set -e # Stop on error.
+CMD="docker build --pull --quiet --build-arg=HOST_USER=$(whoami) --build-arg=UID=$(id -u) --build-arg=GID=$(id -g) --build-arg=HOST_HOME=$HOME"
+for df in *.Dockerfile; do
+  IFS='.' read -ra fparts <<< "$df"
+  echo "  Building ${fparts[0]}..."
+  # Notice ../ so we can bring in any config from this dir.
+  $CMD --tag=${fparts[0]} -f $df ../../ # > /dev/null
+done

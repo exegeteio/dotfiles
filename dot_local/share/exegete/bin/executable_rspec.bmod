@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+specs=$(g.bmod "spec/**/*_spec.rb" | sort | menu)
+echo "Running: $specs"
+rspec $specs

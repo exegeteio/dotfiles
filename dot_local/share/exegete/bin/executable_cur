@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+current="$HOME/code/current"
+pwd="$(pwd)"
+[ -L ~/code/current ] || (echo "~/code/current is not a link!" && exit 1)
+rm $current
+ln -s "${pwd}/${@}" "$current"
+w current

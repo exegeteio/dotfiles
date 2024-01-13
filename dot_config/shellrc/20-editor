@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# RubyMine if available
+if [[ "$FIG_JETBRAINS_SHELL_INTEGRATION" -eq "1" ]] && [[ -x "$(which rubymine)" ]]; then
+  echo "Using rubymine for editor"
+  export EDITOR='rubymine --wait'
+  export EDITOR_ARGS='code.args'
+  return
+fi
+
+# VS Code if available.
+if [ "$TERM_PROGRAM" = "vscode" ]; then
+  export EDITOR='code -wr'
+  export EDITOR_ARGS='code.args'
+  return
+fi
+
+if [ -x "$(which nvim)" ]; then
+  export EDITOR='nvim'
+else
+  export EDITOR='vim'
+fi
+export EDITOR_ARGS='vi.args'

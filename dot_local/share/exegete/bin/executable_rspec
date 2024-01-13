@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [ -x "$(which spring)" ]; then
+  echo "Switching to spring..."
+  exec spring rspec "$@"
+else
+  exec be rspec "$@"
+fi
