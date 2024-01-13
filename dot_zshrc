@@ -30,7 +30,7 @@ done
 compinit
 
 # Source init which use compdef.
-for rcfile in $HOME/.config/dotfiles/shellrc/compdef/*; do
+for rcfile in $HOME/.config/shellrc/compdef/*; do
   source $rcfile
 done
 
