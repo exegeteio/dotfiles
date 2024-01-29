@@ -1,81 +1,94 @@
 {
-    "editor.fontFamily": "JetBrainsMono Nerd Font, FiraCode Nerd Font, Fira Code, Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontSize": 22,
-    "editor.tabSize": 2,
-    "editor.wordWrap": "on",
-    "files.autoSave": "onFocusChange",
-    "ruby.codeCompletion": "rcodetools",
-    "ruby.intellisense": "rubyLocate",
-    "ruby.rubocop.executePath": "/Users/exegete/.rbenv/shims/",
-    "screencastMode.fontSize": 40,
-    "solargraph.diagnostics": true,
-    "solargraph.formatting": true,
-    "terminal.integrated.defaultProfile.osx": "zsh",
-    "terminal.integrated.defaultProfile.linux": "zsh",
-    "terminal.integrated.tabs.enabled": false,
-    "terminal.integrated.tabs.location": "left",
-    "vim.vimrc.enable": true,
-    "workbench.colorTheme": "Tinacious Design (High Contrast)",
-    "terminal.integrated.profiles.osx": {
-        "zsh": {
-            "path": "/bin/zsh",
-            "args": [
-                "-l"
-            ]
-        }
-    },
-    "terminal.integrated.fontSize": 22,
-    "html.format.wrapLineLength": 80,
-    "git.autofetch": true,
-    "ruby.useLanguageServer": true,
-    "ruby.rubocop.onSave": false,
-    "go.toolsManagement.autoUpdate": true,
-    "terminal.integrated.confirmOnExit": "hasChildProcesses",
-    "[ruby]": {
-        "editor.defaultFormatter": "rebornix.ruby"
-    },
-    "terminal.integrated.minimumContrastRatio": 7,
-    "workbench.startupEditor": "none",
-    "solargraph.commandPath": "/Users/exegete/.rbenv/shims/solargraph",
-    "solargraph.autoformat": true,
-    "editor.inlineSuggest.enabled": true,
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "bracket-pair-colorizer-2.depreciation-notice": false,
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
+    "chat.editor.fontSize": 20,
+    "debug.console.fontSize": 20,
     "diffEditor.ignoreTrimWhitespace": false,
+    "editor.fontFamily": "JetBrainsMono Nerd Font, FiraCode Nerd Font, Fira Code, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 20,
+    "editor.inlineSuggest.enabled": true,
     "editor.minimap.enabled": false,
     "editor.renderWhitespace": "none",
     "editor.stickyScroll.enabled": true,
-    "remote.containers.dotfiles.installCommand": "~/dotfiles/install.sh",
-    "remote.containers.dotfiles.repository": "https://github.com/exegete46/dotfiles.git",
-    "remote.containers.dotfiles.targetPath": "~/dotfiles",
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "files.autoSave": "onFocusChange",
+    "git.autofetch": true,
+    "html.format.wrapLineLength": 80,
+    "markdown.preview.fontSize": 20,
+    "scm.inputFontSize": 20,
+    "screencastMode.fontSize": 40,
+    "terminal.integrated.confirmOnExit": "hasChildProcesses",
+    "terminal.integrated.fontSize": 20,
+    "terminal.integrated.tabs.defaultColor": "terminal.ansiBlue",
     "terminal.integrated.tabs.enabled": false,
+    "terminal.integrated.tabs.location": "right",
+    "window.zoomLevel": 1,
     "workbench.layoutControl.enabled": false,
+    "workbench.sideBar.location": "right",
+    "workbench.startupEditor": "none",
     "zenMode.centerLayout": false,
     "zenMode.fullScreen": false,
     "zenMode.hideLineNumbers": false,
     "zenMode.hideStatusBar": false,
-    "ruby.format": "standard",
-    "ruby.lint": {
-        "standard": true,
-        "reek": true
-    },
-    "workbench.sideBar.location": "right",
-    "rubyLsp.rubyVersionManager": "rbenv",
-    "debug.console.fontSize": 18,
-    "markdown.preview.fontSize": 18,
-    "window.zoomLevel": 1,
-    "githubPullRequests.terminalLinksHandler": "github",
-    "workbench.iconTheme": "material-icon-theme",
-    "githubPullRequests.pullBranch": "never",
+    "editor.rulers": [
+        80,
+        120
+    ],
+
+    // VIM
+    // To improve performance"
     "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
-    }
+        "vscodevim.vim": 1
+    },
+    "vim.easymotion": true,
+    "vim.enableNeovim": true,
+    "vim.leader": "<space>",
+    "vim.overrideCopy": false,
+    "vim.smartRelativeLine": true,
+    "vim.vimrc.enable": true,
+    "vim.normalModeKeyBindings": [
+        { "before": [ "<leader>", "o" ],
+          "commands": [ "workbench.action.quickOpen" ] },
+        { "before": [ "<leader>", " " ],
+          "commands": [ "workbench.action.showEditorsInActiveGroup" ] },
+        { "before": [ "<leader>", "f", "c" ],
+          "commands": [ "copyFilePath" ] },
+        { "before": [ "<leader>", "f", "f" ],
+          "commands": [ "editor.action.formatDocument" ] },
+        { "before": [ "<leader>", "g", "d" ],
+          "commands": [ "editor.action.revealDefinition" ] },
+        { "before": [ "<leader>", "g", "g" ],
+          "commands": [ ":normal viw", "workbench.action.findInFiles" ]
+        }, { "before": [ "<leader>", "g", "s" ],
+          "commands": [ "workbench.action.findInFiles" ] },
+        { "before": [ "<leader>", "p" ],
+          "commands": [ "execPaste" ] },
+        { "before": [ "<leader>", "v", "z" ],
+          "commands": [ "workbench.action.toggleZenMode" ] },
+        { "before": [ "<leader>", "g", "p" ],
+          "commands": [ "github.copilot.generate" ] },
+        { "before": [ "<leader>", "g", "c" ],
+          "commands": [ "workbench.panel.chat.view.copilot.focus" ] },
+        { "before": [ ":", "W", "<CR>" ],
+          "commands": [ "workbench.action.files.save" ] },
+    ],
+    "vim.visualModeKeyBindings": [
+        { "before": [ "<leader>", "c" ],
+          "commands": [ "execCopy" ] },
+        { "before": [ "<leader>", "f", "f" ],
+          "commands": [ "editor.action.formatSelection" ] },
+        { "before": [ "<leader>", "p" ],
+          "commands": [ "execPaste" ] },
+    ],
+
+    // Ruby
+    "[ruby]": {
+        "editor.defaultFormatter": "Shopify.ruby-lsp",
+        "editor.formatOnSave": false,
+        "editor.formatOnType": true,
+        "editor.insertSpaces": true,
+        "editor.semanticHighlighting.enabled": false,
+        "editor.tabSize": 2,
+        "files.insertFinalNewline": true,
+        "files.trimTrailingWhitespace": true,
+    },
 }
