@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # RubyMine if available
-if [[ "$FIG_JETBRAINS_SHELL_INTEGRATION" -eq "1" ]] && [[ -x "$(which rubymine)" ]]; then
+if [[  ! -z "$IDEA_INITIAL_DIRECTORY" ]] && [[ -x "$(which rubymine)" ]]; then
   echo "Using rubymine for editor"
   export EDITOR='rubymine --wait'
   export EDITOR_ARGS='code.args'
