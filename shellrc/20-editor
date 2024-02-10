@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+[ -z "$DEBUG" ] || echo "Setting up EDITOR..."
 # RubyMine if available
 if [[  ! -z "$IDEA_INITIAL_DIRECTORY" ]] && [[ -x "$(which rubymine)" ]]; then
   echo "Using rubymine for editor"
@@ -21,3 +22,4 @@ else
   export EDITOR='vim'
 fi
 export EDITOR_ARGS='vi.args'
+[ -z "$DEBUG" ] || echo "Done setting up EDITOR..."

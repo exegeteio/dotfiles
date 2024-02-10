@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 export GIT_PS1_SHOWCOLORHINTS=true
-source "$HOME/.git-prompt.sh"
+[ -z "$DEBUG" ] || echo "Setting up PROMPT..."
 if [[ -n ${ZSH_VERSION-} ]]; then
   setopt PROMPT_SUBST
   export PROMPT='%F{cyan}$(hostname -s) %F{magenta}%1~$(__git_ps1 " %s") %F{cyan}↣ %f'
 else
   export PS1='\[\033[1;36m\]$(hostname -s) \[\033[1;35m\]\W$(__git_ps1 " %s") \[\033[1;36m\]↣ \[\033[0m\]'
 fi
+[ -z "$DEBUG" ] || echo "Done setting up PROMPT..."

@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# DEBUG=1
+# export PS4='+[${SECONDS}s][${BASH_SOURCE}:${LINENO}]: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'; set -x;
+
+[ -z "$DEBUG" ] || echo "Starting .bashrc"
+
 # Brew setup first!
 export PATH="$HOME/.brew/bin:/opt/homebrew/bin:$PATH"
 
@@ -9,27 +14,29 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # Set vim mode.
 set -o vi
 
-for rcfile in $HOME/.config/dotfiles/shellrc/*; do
-  if [[ -z "$DEBUG" ]]; then
-    [ -f ${rcfile} ] && source $rcfile
-  else
-    echo "Sourcing ${rcfile}..."
-    start=$(date +%s)
-    [ -f ${rcfile} ] && source $rcfile
-    echo "Finished in: $(expr $(date +%s) - $start) seconds"
-  fi
-done
+sh_combined="/tmp/shrc-combined_$(date +%F).bash"
 
-[ -z "$DEBUG" ] || echo "~/.fzf.bash"
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -z "$DEBUG" ] || echo "fzf bash completion"
-[ -x "$(which brew)" ] && [ -f "$(brew --prefix fzf)/shell/completion.bash" ] && source "$(brew --prefix fzf)/shell/completion.bash"
-[ -z "$DEBUG" ] || echo "fzf keybindings"
-[ -x "$(which brew)" ] && [ -f "$(brew --prefix fzf)/shell/key-bindings.bash" ] && source "$(brew --prefix fzf)/shell/key-bindings.bash"
+if [ ! -e "$sh_combined" ]; then
+  [ -z "$DEBUG" ] || echo "Generating combined sh config:  $sh_combined"
+  (
+    cd ~/.config/dotfiles/shellrc || exit 1
+    for rcfile in $(find ./ -type f -o -type l | sort -n); do
+      cat "$rcfile" >> $sh_combined
+    done
 
-[ -z "$DEBUG" ] || echo "bash completion"
-[[ -r "$(brew --prefix bash-completion)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix bash-completion)/etc/profile.d/bash_completion.sh"
+    [ -x "$(which rbenv)" ] && rbenv init - "$0" >> $sh_combined
+    [ -f ~/.fzf.bash ] && cat "~/.fzf.bash" >> $sh_combined
+    [ -x "$(which brew)" ] && [ -f "$(brew --prefix fzf)/shell/completion.bash" ] && cat "$(brew --prefix fzf)/shell/completion.bash" >> $sh_combined
+    [ -x "$(which brew)" ] && [ -f "$(brew --prefix fzf)/shell/key-bindings.bash" ] && cat "$(brew --prefix fzf)/shell/key-bindings.bash" >> $sh_combined
+    # [[ -r "$(brew --prefix bash-completion)/etc/profile.d/bash_completion.sh" ]] && cat "$(brew --prefix bash-completion)/etc/profile.d/bash_completion.sh" >> $sh_combined
+    [ -f "$HOME/.cargo/env" ] && cat "$HOME/.cargo/env" >> $sh_combined
 
-# Rust me one more time!
-[ -z "$DEBUG" ] || echo "cargo env"
-[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+    [ -f "$HOME/.git-prompt.sh" ] && cat "$HOME/.git-prompt.sh" >> $sh_combined
+  )
+  [ -z "$DEBUG" ] || echo "Done combined sh config!"
+else
+  [ -z "$DEBUG" ] || echo "Skipped combining sh config!"
+fi
+[ -z "$DEBUG" ] || echo "Sourcing $sh_combined"
+source "$sh_combined"
+[ -z "$DEBUG" ] || echo "Done sourcing $sh_combined"

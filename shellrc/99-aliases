@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+[ -z "$DEBUG" ] || echo "Setting up aliases..."
 alias '?'=duck
 alias '??'=google
 alias a="source aliases"
@@ -13,3 +14,4 @@ alias r="$HOME/.config/dotfiles/bin/r" # To override shell builtin.
 alias grep="rg"
 alias less="bat --plain"
 alias h="hanami"
+[ -z "$DEBUG" ] || echo "Done setting up aliases..."

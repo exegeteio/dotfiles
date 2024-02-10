@@ -15,24 +15,35 @@ if type brew &>/dev/null; then
   FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
 fi
 
-for rcfile in $HOME/.config/dotfiles/shellrc/*; do
-  if [[ -z "$DEBUG" ]]; then
-    source $rcfile
-  else
-    echo "Sourcing ${rcfile}..."
-    start=$(date +%s)
-    source $rcfile
-    echo "Finished in: $(expr $(date +%s) - $start) seconds"
-  fi
-done
+sh_combined="/tmp/shrc-combined_$(date +%F).zsh"
+
+if [ ! -e "$sh_combined" ]; then
+  echo "Generating combined sh config:  $sh_combined"
+  (
+    cd ~/.config/dotfiles/shellrc || exit 1
+    for rcfile in $(find ./ -type f -o -type l | sort -n); do
+      cat "$rcfile" >> $sh_combined
+    done
+  )
+  [ -x "$(which rbenv)" ] && rbenv init - "$0" >> $sh_combined
+  [ -f ~/.fzf.zsh ] && cat ~/.fzf.zsh >> $sh_combined
+  [ -x "$(which brew)" ] && [ -f "$(brew --prefix fzf)/shell/completion.zsh" ] && cat "$(brew --prefix fzf)/shell/completion.zsh" >> $sh_combined
+  [ -x "$(which brew)" ] && [ -f "$(brew --prefix fzf)/shell/key-bindings.zsh" ] && cat "$(brew --prefix fzf)/shell/key-bindings.zsh" >> $sh_combined
+  [ -f "$HOME/.cargo/env" ] && cat "$HOME/.cargo/env" >> $sh_combined
+  [ -f "$HOME/.git-prompt.sh" ] && cat "$HOME/.git-prompt.sh" >> $sh_combined
+
+  echo "Done combined zsh config!"
+  [ -z "$DEBUG" ] || echo "Done combined sh config!"
+else
+  [ -z "$DEBUG" ] || echo "Skipped combining sh config!"
+fi
+
+[ -z "$DEBUG" ] || echo "Sourcing $sh_combined"
+source "$sh_combined"
+[ -z "$DEBUG" ] || echo "Done sourcing $sh_combined"
 
 # Comes late for tab-completing CDPATH.
 compinit
-
-# Source init which use compdef.
-for rcfile in $HOME/.config/dotfiles/shellrc/compdef/*; do
-  source $rcfile
-done
 
 #########
 # vi mode
@@ -72,10 +83,8 @@ bindkey -M vicmd '/' history-incremental-search-forward
 bindkey -M viins '^R' history-incremental-pattern-search-backward
 bindkey -M viins '^F' history-incremental-pattern-search-forward
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -x "$(which brew)" ] && [ -f "$(brew --prefix fzf)/shell/completion.zsh" ] && source "$(brew --prefix fzf)/shell/completion.zsh"
-[ -x "$(which brew)" ] && [ -f "$(brew --prefix fzf)/shell/key-bindings.zsh" ] && source "$(brew --prefix fzf)/shell/key-bindings.zsh"
 
+[[ -z "$DEBUG" ]] || echo "Loading fzf custom key-bindings"
 if [[ -n "$FZF" ]]; then
   bindkey "^R" fzf-history-widget
   bindkey "^T" fzf-file-widget

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+[ -z "$DEBUG" ] || echo "Setting up fzf options..."
 if [[ -f "~/.fzf.$RBENV_SHELL" ]]; then
   FZF="$(which fzf)"
   source "$HOME/.fzf.$RBENV_SHELL"
@@ -10,4 +11,4 @@ if [[ -z "$TMUX" ]]; then
 else
   export FZF_TMUX_OPTS="-p 40%"
 fi
-
+[ -z "$DEBUG" ] || echo "Done setting up fzf options..."

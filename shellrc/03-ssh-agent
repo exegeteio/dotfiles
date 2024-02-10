@@ -2,6 +2,7 @@
 
 # Set up SSH Agent
 # Poached from:  https://code.visualstudio.com/docs/remote/containers#_using-ssh-keys
+[ -z "$DEBUG" ] || echo "Setting up ssh agent..."
 if [ -d "$HOME/.ssh" ]; then
   if [[ -z "$SSH_AUTH_SOCK" ]]; then
     # Check for a currently running instance of the agent
@@ -19,4 +20,4 @@ if [ -d "$HOME/.ssh" ]; then
     fi
   fi
 fi
-
+[ -z "$DEBUG" ] || echo "Done setting up ssh agent..."
