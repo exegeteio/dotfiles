@@ -12,8 +12,8 @@ if [[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] &
   if [[ -z "$SSH_CLIENT" ]]; then
     cur_path=$(realpath `pwd`)
     code_path=$(realpath $HOME/code/)
-    if [[ $cur_path == $code_path* ]]; then
-      exec tmux.re $(basename `pwd`)
+    if [[ "$cur_path" == $code_path* ]]; then
+      exec tmux.re "$cur_path"
     else
       exec tmux.re "main"
     fi
