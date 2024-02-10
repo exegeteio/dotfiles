@@ -17,7 +17,7 @@ map <C-d> <C-d>zz
 nnoremap <C-e> :tabnext<CR>
 nnoremap <C-w> :tabprev<CR>
 
-map <leader><space> <Action>(RecentFiles)
+map <leader><leader> <Action>(RecentFiles)
 map <leader>c <Action>($Copy)
 map <leader>fc <Action>(CopyContentRootPath)
 map <leader>ff <Action>(ReformatCode)
@@ -28,6 +28,7 @@ map <leader>gg viw<Action>(FindInPath)<Esc>b
 map <leader>gi <Action>(GotoImplementation)
 map <leader>gm <Action>(RecentFiles)
 map <leader>gs <Action>(SearchEverywhere)
+map <leader>gS <Action>(FileStructurePopup)
 map <leader>gt <Action>(GotoSymbol)
 map <leader>gT <Action>(GotoTest)
 map <leader>gu <Action>(ShowUsages)
@@ -42,7 +43,7 @@ map <leader>ra <Action>(Refactorings.QuickListPopupAction)
 map <leader>rs <Action>(ChangeSignature)
 map <leader>rv <Action>(IntroduceVariable)
 map <leader>sg <Action>(SearchEverywhere)
-map <leader>tl <Action>(GotoSymbol)
+map <leader>tl <Action>(RunClass)
 map <leader>tt <Action>(Run)
 map <leader>vz <Action>(ToggleZenMode)
 " Jump between methods
