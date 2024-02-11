@@ -10,11 +10,7 @@ import (
 func main() {
 	// check if the user has provided a prompt as the first cli argument
 	var prompt string
-	if len(os.Args) > 1 {
-		prompt = os.Args[1]
-	} else {
-		prompt = "Continue?"
-	}
+	prompt = getPrompt(prompt)
 
 	// Print the prompt to the console and get a response.
 	print(prompt + " (y/n): ")
@@ -36,13 +32,29 @@ func main() {
 	}
 }
 
+func getPrompt(prompt string) string {
+	if len(os.Args) > 1 {
+		prompt = os.Args[1]
+	} else {
+		prompt = "Continue?"
+	}
+	return prompt
+}
+
 func readChar() (c byte, err error) {
 	// switch stdin into 'raw' mode
 	oldState, err := term.MakeRaw(int(os.Stdin.Fd()))
 	if err != nil {
 		return 0, err
 	}
-	defer term.Restore(int(os.Stdin.Fd()), oldState)
+
+	// Be sure we switch back!
+	defer func(fd int, oldState *term.State) {
+		err := term.Restore(fd, oldState)
+		if err != nil {
+			panic(err)
+		}
+	}(int(os.Stdin.Fd()), oldState)
 
 	b := make([]byte, 1)
 	_, err = os.Stdin.Read(b)
