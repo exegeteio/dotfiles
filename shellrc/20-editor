@@ -1,25 +1,25 @@
 #!/usr/bin/env bash
 
 [ -z "$DEBUG" ] || echo "Setting up EDITOR..."
-# RubyMine if available
-if [[  ! -z "$IDEA_INITIAL_DIRECTORY" ]] && [[ -x "$(which rubymine)" ]]; then
-  echo "Using rubymine for editor"
-  export EDITOR='rubymine --wait'
-  export EDITOR_ARGS='code.args'
-  return
+if [ -z "$EDITOR" ]; then
+  # RubyMine if available
+  if [[  ! -z "$IDEA_INITIAL_DIRECTORY" ]] && [[ -x "$(which rubymine)" ]]; then
+    echo "Using rubymine for editor"
+    export EDITOR='rubymine --wait'
+    export EDITOR_ARGS='code.args'
+  # VS Code if available.
+  elif [ "$TERM_PROGRAM" = "vscode" ]; then
+    export EDITOR='code -wr'
+    export EDITOR_ARGS='code.args'
+  # Neovim
+  elif [ -x "$(which nvim)" ]; then
+    export EDITOR='nvim'
+    export EDITOR_ARGS='vi.args'
+  # World's best vallback.
+  else
+    export EDITOR='vim'
+    export EDITOR_ARGS='vi.args'
+  fi
 fi
 
-# VS Code if available.
-if [ "$TERM_PROGRAM" = "vscode" ]; then
-  export EDITOR='code -wr'
-  export EDITOR_ARGS='code.args'
-  return
-fi
-
-if [ -x "$(which nvim)" ]; then
-  export EDITOR='nvim'
-else
-  export EDITOR='vim'
-fi
-export EDITOR_ARGS='vi.args'
 [ -z "$DEBUG" ] || echo "Done setting up EDITOR..."
