@@ -15,11 +15,32 @@ if [ -z "$EDITOR" ]; then
   elif [ -x "$(which nvim)" ]; then
     export EDITOR='nvim'
     export EDITOR_ARGS='vi.args'
-  # World's best vallback.
+  # World's best fallback.
   else
     export EDITOR='vim'
     export EDITOR_ARGS='vi.args'
   fi
+fi
+
+if [[ -z "$1" ]]; then
+  # No argument, skip this!
+elif [ "$1" = "rubymine" ]; then
+  export EDITOR='rubymine --wait'
+  export EDITOR_ARGS='code.args'
+# VS Code if available.
+elif [ "$1" = "code" ]; then
+  export EDITOR='code -wr'
+  export EDITOR_ARGS='code.args'
+# Neovim
+elif [ "$1" = "nvim" ]; then
+  export EDITOR='nvim'
+  export EDITOR_ARGS='vi.args'
+# World's best fallback.
+elif [ "$1" = "vim" ]; then
+  export EDITOR='vim'
+  export EDITOR_ARGS='vi.args'
+else
+  echo "Must choose one of:  rubymine, code, nvim, vim"
 fi
 
 [ -z "$DEBUG" ] || echo "Done setting up EDITOR..."
