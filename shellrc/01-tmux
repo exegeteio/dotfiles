@@ -12,8 +12,9 @@
 [ -z "$DEBUG" ] || echo "Checking tmux"
 if [[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && [[ -z "$VSCODE_PID" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && [[ -z "$INTELLIJ_ENVIRONMENT_READER" ]] && [[ -z "$FIG_JETBRAINS_SHELL_INTEGRATION" ]]; then
   if [[ -z "$SSH_CLIENT" ]]; then
-    cur_path=$(realpath `pwd`)
-    code_path=$(realpath $HOME/code/)
+    [ -z "$DEBUG" ] || echo "Starting tmux"
+    cur_path=$(realpath -q `pwd`)
+    code_path=$(realpath -q $HOME/code/)
     if [[ "$cur_path" == $code_path* ]]; then
       exec tmux.re "$cur_path"
     else
