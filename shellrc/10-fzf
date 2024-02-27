@@ -2,7 +2,7 @@
 
 [ -z "$DEBUG" ] || echo "Setting up fzf options..."
 if [[ -f "~/.fzf.$RBENV_SHELL" ]]; then
-  FZF="$(which fzf)"
+  export FZF="$(which fzf)"
   source "$HOME/.fzf.$RBENV_SHELL"
 fi
 export FZF

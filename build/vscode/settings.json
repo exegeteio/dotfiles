@@ -91,4 +91,5 @@
         "files.insertFinalNewline": true,
         "files.trimTrailingWhitespace": true,
     },
+    "editor.lineNumbers": "relative",
 }
