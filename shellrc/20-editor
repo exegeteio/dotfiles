@@ -5,8 +5,8 @@ if [ -z "$EDITOR" ]; then
   # RubyMine if available
   if [[  ! -z "$IDEA_INITIAL_DIRECTORY" ]] && [[ -x "$(which rubymine)" ]]; then
     echo "Using rubymine for editor"
-    export EDITOR='rubymine --wait'
-    export EDITOR_ARGS='code.args'
+    export EDITOR='rubymine'
+    export EDITOR_ARGS='rubymine.args'
   # VS Code if available.
   elif [ "$TERM_PROGRAM" = "vscode" ]; then
     export EDITOR='code -wr'
@@ -25,8 +25,8 @@ fi
 if [[ -z "$1" ]]; then
   # No argument, skip this!
 elif [ "$1" = "rubymine" ]; then
-  export EDITOR='rubymine --wait'
-  export EDITOR_ARGS='code.args'
+  export EDITOR='rubymine'
+  export EDITOR_ARGS='rubymine.args'
 # VS Code if available.
 elif [ "$1" = "code" ]; then
   export EDITOR='code -wr'

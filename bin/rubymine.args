@@ -1,0 +1,31 @@
+#!/usr/bin/env ruby
+
+class File
+  attr_accessor :file, :line, :column
+
+  def initialize(file, line, column)
+    @file = file
+    @line = line
+    @column = column
+  end
+
+  def inspect
+    "#<File:#{file} line:#{line} column:#{column}>"
+  end
+
+  def to_s
+    out = []
+    out << "--line #{line}" if line
+    out << "--column #{column}" if column
+    out << file
+    out.join(' ')
+  end
+end
+
+files = [] # TODO
+$stdin.readlines.each do |line|
+  parts = line.split(':')
+  files << File.new(parts[0], parts[1], parts[2])
+end
+
+puts files.map(&:to_s).join(' ')
