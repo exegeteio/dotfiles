@@ -32,6 +32,9 @@ if [ ! -e "$sh_combined" ]; then
   [ -f "$HOME/.cargo/env" ] && cat "$HOME/.cargo/env" >> $sh_combined
   [ -f "$HOME/.git-prompt.sh" ] && cat "$HOME/.git-prompt.sh" >> $sh_combined
 
+  # Always use my env settings last.
+  cat "$HOME/.config/dotfiles/shellrc/00-env" >> $sh_combined
+
   echo "Done combined zsh config!"
   [ -z "$DEBUG" ] || echo "Done combined sh config!"
 else
