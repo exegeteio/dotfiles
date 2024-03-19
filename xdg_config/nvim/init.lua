@@ -713,7 +713,7 @@ vim.keymap.set('v', '<leader>c', '"+y')
 
 vim.keymap.set({ 'n', 'v' }, "<leader>ff", function()
   vim.lsp.buf.format({ async = true })
-end, opts)
+end, {})
 
 -- Setup list options.
 vim.o.listchars = "space:*,trail:*,nbsp:*,extends:>,precedes:<,tab:|>"

@@ -19,20 +19,23 @@ nnoremap <C-w> :tabprev<CR>
 
 map <leader><leader> <Action>(RecentFiles)
 map <leader>c <Action>($Copy)
+map <leader>ca <Action>(RefactoringMenu)
+map <leader>ds <Action>(GotoSymbol)
 map <leader>fc <Action>(CopyContentRootPath)
 map <leader>ff <Action>(ReformatCode)
-map <leader>gd <Action>(GotoDeclaration)
 map <leader>gg viw<Action>(FindInPath)<Esc>b
 " map <leader>gb <Action>(Forward)
 " map <leader>gf <Action>(Back)
-map <leader>gi <Action>(GotoImplementation)
+map <leader>gI <Action>(GotoImplementation)
 map <leader>gm <Action>(RecentFiles)
+map <leader>gr <Action>(ShowUsages)
 map <leader>gs <Action>(SearchEverywhere)
 map <leader>gS <Action>(FileStructurePopup)
 map <leader>gt <Action>(GotoSymbol)
 map <leader>gT <Action>(GotoTest)
 map <leader>gu <Action>(ShowUsages)
 map <leader>gy <Action>(GotoTypeDeclaration)
+map <leader>l <Action>(EditorToggleShowWhitespaces)
 map <leader>o <Action>(GotoFile)
 map <leader>p <Action>($Paste)
 map <leader>rr :source ~/.ideavimrc<CR>
@@ -43,12 +46,17 @@ map <leader>ra <Action>(Refactorings.QuickListPopupAction)
 map <leader>rs <Action>(ChangeSignature)
 map <leader>rv <Action>(IntroduceVariable)
 map <leader>sg <Action>(SearchEverywhere)
+" Hacky way to resume a search by not highlighting anything.
+map <leader>sr <Action>(FindInPath)
 map <leader>tl <Action>(RunClass)
 map <leader>tt <Action>(Run)
 map <leader>vz <Action>(ToggleZenMode)
+map <leader>ws <Action>(GotoSymbol)
 " Jump between methods
 map <leader>[ <Action>(EditorCodeBlockStart)
 map <leader>] <Action>(EditorCodeBlockEnd)
+" Reveal file in Project / Explorer view.
+map <leader>Gf <Action>(SelectInProjectView)
 
 " Visual Keymaps!
 vmap <leader>p <Action>($Paste)
@@ -56,6 +64,7 @@ vmap <leader>p <Action>($Paste)
 " Fix my slow lift on shift when doing :w.
 command! W :w
 command! Wq :wq
+command! Git :action Diff.EditorGutterPopupMenu
 
 " Set!
 set hlsearch
