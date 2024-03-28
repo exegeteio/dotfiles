@@ -4,6 +4,7 @@
   churn = !"git lg1b | grep -v year | grep ago"
   co = "checkout"
   cop = "checkout -p ':!/Gemfile.lock' ':!/config/database.yml'"
+  ct = !"g.bcopy && git commit"
   g = "checkout Gemfile.lock db/schema.rb config/environments/test.rb"
   lg = lg1
   lg1 = lg1s --all
@@ -39,10 +40,6 @@
 [checkout]
   guess = false
 
-[diff]
-    tool = vscode
-[difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
