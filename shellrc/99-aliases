@@ -13,6 +13,6 @@ alias :q="exit"
 alias r="$HOME/.config/dotfiles/bin/r" # To override shell builtin.
 alias re="source $HOME/.config/dotfiles/shellrc/20-editor"
 alias grep="rg"
-alias less="bat --plain"
+[ -x "$(which bat)" ] && alias less="bat --plain"
 alias h="hanami"
 [ -z "$DEBUG" ] || echo "Done setting up aliases..."
