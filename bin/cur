@@ -6,3 +6,4 @@ pwd="$(pwd)"
 rm $current
 ln -s "${pwd}/${@}" "$current"
 w current
+basename "$(ls -alhd "$current")"

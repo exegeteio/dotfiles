@@ -48,6 +48,7 @@ map <leader>rv <Action>(IntroduceVariable)
 map <leader>sg <Action>(SearchEverywhere)
 " Hacky way to resume a search by not highlighting anything.
 map <leader>sr <Action>(FindInPath)
+map <leader>ta <Action>(RerunFailedTests)
 map <leader>tl <Action>(RunClass)
 map <leader>tt <Action>(Run)
 map <leader>vz <Action>(ToggleZenMode)
