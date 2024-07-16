@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+base=$(basename $(pwd))
+branch=$1
+target_dir="$HOME/code/${base}_${branch}"
+
+if [ -z "${branch}" ]; then
+    echo 'Usage: branch <branch name>'
+    echo "No branch name, exiting..."
+    exit 1
+fi
+
+existing=$(git worktree list | grep -w "${target_dir}")
+
+if [ ! -z "$existing" ]; then
+    echo "Worktree '${target_dir}' exists, doing nothing."
+    exit 1
+fi
+
+git fetch --all -q 2>&1 > /dev/null
+base_branch="origin/main"
+if [ ! -z "$(git branch -a | grep -w "origin/${branch}")" ]; then
+  base_branch="origin/${branch}"
+elif [ ! -z "$(git branch -a | grep -w "${branch}")" ]; then
+  base_branch="${branch}"
+fi
+git worktree add --no-guess-remote --no-track -B "${branch}" "${target_dir}" "${base_branch}"
+
+if [ -x "$(which branch.post)" ]; then
+  cd "${target_dir}"
+  branch.post
+fi
+
+echo && echo "Now on branch:"
+(cd "${target_dir}" && git branch -vv --list "${branch}")

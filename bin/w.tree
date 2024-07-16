@@ -2,7 +2,7 @@
 
 [ -d "$1" ] && cd "$1"
 
-folder=$(g worktree list | grep -vw $(pwd) | columnize | first | sed 's#.*/##' | menu)
+folder=$(g worktree list | grep -vw $(pwd) | columnize | first | strip_path | menu)
 
 if [ -z "$folder" ]; then
   echo "No folder selected!"

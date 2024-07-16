@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Strip everything before the last slash from a path
+# passed via STDIN.
+sed 's#.*/##'
