@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
-
 [ -z "$DEBUG" ] || echo "Setting up EDITOR..."
 if [ -z "$EDITOR" ]; then
   # RubyMine if available
-  if [[  ! -z "$IDEA_INITIAL_DIRECTORY" ]] && [[ -x "$(which rubymine)" ]]; then
-    echo "Using rubymine for editor"
-    export EDITOR='rubymine'
-    export EDITOR_ARGS='rubymine.args'
+  if [[  ! -z "$IDEA_INITIAL_DIRECTORY" ]]; then
+    type=$(echo $__CFBundleIdentifier | sed 's/.*\.//' | tr '[:upper:]' '[:lower:]')
+    if [[ -x "$(which "$type")" ]]; then
+      echo "Using $type for editor"
+      export EDITOR="$type"
+      export EDITOR_ARGS="rubymine.args"
+    fi
   # VS Code if available.
   elif [ "$TERM_PROGRAM" = "vscode" ]; then
     export EDITOR='code -wr'
