@@ -20,7 +20,7 @@ if tmux has-session -t "=$*" 2>/dev/null; then
     exec tmux switchc -t "$name"
   fi
 else
-  tmux new-session -s "$name" -c "${target:-${cur_path:-$CODE_PATH}}" \
+  tmux new-session -s "$name" -c "${dir:-${cur_path:-$CODE_PATH}}" \
     -e TMUX_NAME="$name" \
     -e TERM_PROGRAM="$TERM_PROGRAM" \
     -e TERM_EMULATOR="$TERMINAL_EMULATOR" \
