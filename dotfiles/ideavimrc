@@ -79,7 +79,8 @@ set incsearch
 set number
 set relativenumber
 set smartcase
+set matchit
 
 " Experimental!
-set textwidth=80
+set textwidth=120
 set colorcolumn=+1

@@ -11,3 +11,6 @@
 
 # Jetbrains
 **/.idea/
+
+# Local .pryrc
+/.pryrc
