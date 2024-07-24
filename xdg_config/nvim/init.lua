@@ -112,7 +112,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -359,7 +359,7 @@ local function live_grep_git_root()
   local git_root = find_git_root()
   if git_root then
     require('telescope.builtin').live_grep({
-      search_dirs = {git_root},
+      search_dirs = { git_root },
     })
   end
 end
@@ -501,15 +501,15 @@ local on_attach = function(_, bufnr)
 end
 
 -- document existing key chains
-require('which-key').register {
-  ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-  ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-  ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-  ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-  ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-  ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-}
+-- require('which-key').register {
+--   ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
+--   ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+--   ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
+--   ['<leader>h'] = { name = 'More git', _ = 'which_key_ignore' },
+--   ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
+--   ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
+--   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+-- }
 
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
@@ -532,9 +532,9 @@ local servers = {
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} }
 
-  ruby_ls = {},
+  ruby_lsp = {},
   solargraph = {},
-  html = { filetypes = { 'html', 'twig', 'hbs', 'rbs'} },
+  html = { filetypes = { 'html', 'twig', 'hbs', 'rbs' } },
 
   lua_ls = {
     Lua = {
@@ -635,8 +635,12 @@ vim.keymap.set("n", "<C-q>", "<cmd>Telescope harpoon marks<cr>")
 vim.keymap.set("n", "<C-Q>", ui.toggle_quick_menu)
 
 -- harpoon / rspec
-vim.keymap.set('n', '<leader>tt', function() require("harpoon.tmux").sendCommand("{down-of}", "tc; time rspec %s\r", vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())) end)
-vim.keymap.set('n', '<leader>tl', function() require("harpoon.tmux").sendCommand("{down-of}", "tc; time rspec %s:%s\r", vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()), vim.fn.line(".")) end)
+vim.keymap.set('n', '<leader>tt',
+  function() require("harpoon.tmux").sendCommand("{down-of}", "tc; time rspec %s\r",
+      vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())) end)
+vim.keymap.set('n', '<leader>tl',
+  function() require("harpoon.tmux").sendCommand("{down-of}", "tc; time rspec %s:%s\r",
+      vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()), vim.fn.line(".")) end)
 
 vim.keymap.set("n", "<C-w>", function() ui.nav_prev() end)
 vim.keymap.set("n", "<C-e>", function() ui.nav_next() end)
@@ -683,12 +687,12 @@ vim.keymap.set('n', '<leader>gg', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>gt', require('telescope.builtin').treesitter, { desc = '[G]oto [T]reesitter' })
 vim.keymap.set('n', '<leader>gm', function(_)
   require('telescope.builtin').find_files {
-    find_command = {"g.mod"}
+    find_command = { "g.mod" }
   }
 end, { desc = '[G]oto [M]odified' })
 vim.keymap.set('n', '<leader>gb', function(_)
   require('telescope.builtin').find_files {
-    find_command = {"g.bmod"}
+    find_command = { "g.bmod" }
   }
 end, { desc = '[G]oto [B]ranch Modified' })
 
