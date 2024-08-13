@@ -9,4 +9,4 @@ if [ -z "$folder" ]; then
   exit
 fi
 
-exec tmux.re "${folder:-main}"
+exec e "${folder:-main}"

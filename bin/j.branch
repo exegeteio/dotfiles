@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+regex = /([\d\w]{3,}-\d{3,})/
+
+ARGV.each do |arg|
+  arg.match(regex).to_a.uniq.each do |match|
+    puts match
+  end
+end

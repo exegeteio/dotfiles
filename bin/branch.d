@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
-tree=$(git worktree list | columnize | first | menu)
+branch=$1
 
-git worktree remove "$tree"
+if [ -z "${branch}" ]; then
+  branch=$(w.t | menu | columnize | first)
+fi
+
+git worktree remove "$branch"
+echo "Removed ${branch}"

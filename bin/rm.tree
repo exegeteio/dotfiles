@@ -9,4 +9,9 @@ if [ -z "$folder" ]; then
   exit
 fi
 
-exec tmux.re "${folder:-main}"
+if [ ! -d "$folder" ]; then
+  echo "Folder does not exist!"
+  exit
+fi
+
+exec rubymine "${folder:-.}"

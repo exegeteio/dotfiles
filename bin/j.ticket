@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+token=$(echo -n "$(op read $JIRA_API_USER):$(op read $JIRA_API_KEY)" | base64)
+curl -s -H "Authorization: Basic $token" \
+     -H "Content-Type: application/json" \
+     "$(op read $JIRA_DOMAIN)/rest/api/2/issue/$(g.branch)"
