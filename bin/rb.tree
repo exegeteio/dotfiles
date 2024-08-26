@@ -2,7 +2,7 @@
 
 [ -d "$1" ] && cd "$1"
 
-folder=$(w.t | menu | columnize | first | strip_path)
+folder="${CODE_PATH:-${HOME}/code}/$(w.t | menu | columnize | first)"
 
 if [ -z "$folder" ]; then
   echo "No folder selected!"
@@ -14,4 +14,4 @@ if [ ! -d "$folder" ]; then
   exit
 fi
 
-exec rubymine "${folder:-.}"
+TMUX="" EDITOR="" exec rubymine "${folder:-.}"
