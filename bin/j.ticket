@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# Requires environment variables similar to:
+# export JIRA_DOMAIN="op://<Vault name>/<Saved account name>/hostname"
+# export JIRA_API_KEY="op://<Vault name>/<Saved account name>/credential"
+# export JIRA_API_USER="op://<Vault name>/<Saved account name>/username"
+# hostname/credential/username are the field names in the saved account in 1pass.
+
 set -e
 
 token=$(echo -n "$(op read $JIRA_API_USER):$(op read $JIRA_API_KEY)" | base64)
