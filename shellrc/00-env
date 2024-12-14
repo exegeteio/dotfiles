@@ -33,40 +33,4 @@ fi
 
 [ -x "$(which bat)" ] && export PAGER="bat --plain"
 
-# Function to remove duplicates from PATH
-function remove_path_duplicates() {
-  # Declare an associative array to hold the paths
-  typeset -A path_hash
-
-  # Split the PATH variable into an array based on the colon separator
-  local -a path_array=("${(@s/:/)PATH}")
-
-  # Clear the PATH variable to start fresh
-  new_path=""
-
-  # Iterate over the path_array elements
-  for path in $path_array; do
-    # Check if the path is not already in the associative array
-    if [[ -z $path_hash[$path] ]]; then
-      # If not, add it to the associative array and to the PATH
-      path_hash[$path]=1
-      if [[ ! -d "$path" ]]; then
-        [[ -z "$DEBUG" ]] || echo "Not adding $path to PATH because it does not exist!"
-      elif [[ -n $new_path ]]; then
-        new_path="$new_path:$path"
-      else
-        new_path="$path"
-      fi
-    fi
-  done
-
-  export PATH="$new_path"
-}
-
-# Call the function to remove duplicates from PATH
-[ -z "$DEBUG" ] || echo "Removing duplicates from PATH..."
-[ -z "$DEBUG" ] || echo "Went from ${#PATH} ..."
-remove_path_duplicates
-[ -z "$DEBUG" ] || echo "To ${#PATH} ..."
-
 [ -z "$DEBUG" ] || echo "Done setting up ENV..."

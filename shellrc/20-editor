@@ -2,8 +2,8 @@
 [ -z "$DEBUG" ] || echo "Setting up EDITOR..."
 if [ -z "$EDITOR" ]; then
   # RubyMine if available
-  if [[  ! -z "$IDEA_INITIAL_DIRECTORY" ]]; then
-    type=$(echo $__CFBundleIdentifier | sed 's/.*\.//' | tr '[:upper:]' '[:lower:]')
+  if [[ -n "$IDEA_INITIAL_DIRECTORY" ]]; then
+    type=$(echo "$__CFBundleIdentifier" | sed 's/.*\.//' | tr '[:upper:]' '[:lower:]')
     if [[ -x "$(which "$type")" ]]; then
       echo "Using $type for editor"
       export EDITOR="$type"
@@ -25,7 +25,7 @@ if [ -z "$EDITOR" ]; then
 fi
 
 if [[ -z "$1" ]]; then
-  # No argument, skip this!
+  true # No argument, skip this!
 elif [ "$1" = "rubymine" ]; then
   export EDITOR='rubymine'
   export EDITOR_ARGS='rubymine.args'

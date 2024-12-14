@@ -9,6 +9,6 @@ export FZF
 if [[ -z "$TMUX" ]]; then
   export FZF_TMUX_OPTS=""
 else
-  export FZF_TMUX_OPTS="-p 40%"
+  export FZF_TMUX_OPTS="-p 75%"
 fi
 [ -z "$DEBUG" ] || echo "Done setting up fzf options..."
