@@ -6,7 +6,7 @@ OS="$(uname)"
 if [ "$OS" == "Linux" ]; then
   prefix="/home/linuxbrew/.linuxbrew"
 elif [ "$OS" == "Darwin" ]; then
-  prefix="$HOME/.brew"
+  prefix="/opt/homebrew"
 fi
 
 if [ ! -d "$prefix" ]; then
