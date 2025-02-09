@@ -38,7 +38,7 @@
       "int" : 0
     },
     "appSpecs" : {
-      "string" : "[{\"isGroup\":true,\"loc\":0,\"shortcut\":{\"modifierFlags\":262144,\"keyCode\":19},\"children\":[{\"h\":\"1\",\"id\":2,\"w\":\"1\",\"title\":\"RDQUnAwrvR5x8VpaYQYc8s5CisHUl4JT4XUUvA\\\/CoS1LDARHlEw6F2HRHcoZ\",\"loc\":0,\"display\":-3,\"bundleId\":\"com.apple.Safari\"}],\"launchApps\":true,\"id\":9,\"bringToFront\":true,\"name\":\"Browser\"},{\"name\":\"Chat\",\"loc\":0,\"bringToFront\":true,\"isGroup\":true,\"children\":[{\"loc\":9,\"y\":\"0\",\"w\":\".75\",\"id\":19,\"bundleId\":\"com.hnc.Discord\",\"h\":\"1\",\"display\":-3,\"x\":\".75\",\"title\":\"DGCBMSY4FYcaRHHzS7YNP59efOgeg4+kG3CkzkqFoHQgDTcNOu7haiCdhiiujYJzlZysR\\\/sj+JoIJhshYbg2lIVkp30=\"}],\"shortcut\":{\"keyCode\":20,\"modifierFlags\":262144},\"id\":26},{\"isGroup\":true,\"shortcut\":{\"keyCode\":21,\"modifierFlags\":262144},\"loc\":0,\"id\":35,\"bringToFront\":true,\"children\":[{\"x\":\"0\",\"y\":\"0\",\"bundleId\":\"com.hey.app.desktop\",\"display\":-3,\"h\":\"1\",\"id\":29,\"loc\":9,\"title\":\"jqRdM1535Qr+SpaFrmBgp6Wnumdck6D6VzzZjY8Yyr\\\/X\",\"w\":\".5\"},{\"bundleId\":\"ch.protonmail.desktop\",\"title\":\"ZZ3OkQXQEc3vAdf3IJEXm7tvDpaDutjBD0yaBdFSkwxhao7BgUs7\",\"display\":-3,\"loc\":9,\"x\":\".5\",\"id\":28,\"h\":\"1\",\"y\":\"0\",\"w\":\".5\"}],\"name\":\"Email\"},{\"name\":\"Notes\",\"id\":54,\"bringToFront\":true,\"loc\":0,\"shortcut\":{\"modifierFlags\":262144,\"keyCode\":23},\"children\":[{\"title\":\"u8iIklOsbFPbJ8xy25XZsU8GqXfKYiju2sHIpmDcn8+NTg==\",\"id\":47,\"display\":-3,\"w\":\"1\",\"bundleId\":\"com.electron.logseq\",\"h\":\"1\",\"x\":\"0\",\"y\":\"0\",\"loc\":9}],\"isGroup\":true},{\"bringToFront\":true,\"isGroup\":true,\"id\":66,\"name\":\"Editor\",\"children\":[{\"title\":\"GZPEP8wM7lotIIk\\\/C8HKQVLFiuoS6gMfbTZ\\\/yC9e7r0=\",\"id\":56,\"h\":\"0.95\",\"bundleId\":\"com.googlecode.iterm2\",\"display\":-3,\"w\":\"0.975\",\"loc\":0},{\"bundleId\":\"com.jetbrains.rubymine\",\"w\":\"1\",\"h\":\"1\",\"x\":\"0\",\"title\":\"xkGPk9tVUE1jqWsppekrwb481jS+D56CV9vuIbJVb6zzeb\\\/W\",\"display\":-3,\"id\":76,\"loc\":9,\"y\":\"0\"}],\"shortcut\":{\"keyCode\":18,\"modifierFlags\":262144},\"loc\":0}]"
+      "string" : "[{\"name\":\"Editor\",\"children\":[{\"id\":56,\"loc\":0,\"w\":\"0.975\",\"display\":-3,\"bundleId\":\"com.googlecode.iterm2\",\"h\":\"0.95\",\"title\":\"JDQg27SN9J7Y9syfklYFBo6pfDt3roOEtaXHHAi02K0=\"}],\"loc\":0,\"id\":66,\"shortcut\":{\"keyCode\":18,\"modifierFlags\":262144},\"isGroup\":true,\"bringToFront\":true},{\"shortcut\":{\"keyCode\":19,\"modifierFlags\":262144},\"isGroup\":true,\"launchApps\":true,\"bringToFront\":true,\"loc\":0,\"name\":\"Browser\",\"id\":9,\"children\":[{\"x\":\"0\",\"bundleId\":\"org.mozilla.firefox\",\"title\":\"yW6mHzdCzeXHm\\\/wl5WustaR3NWOnBdI1nWlQKiKZyk5xmDknmfcpD5Ukyg==\",\"y\":\"0\",\"h\":\"1\",\"id\":90,\"loc\":9,\"w\":\"1\",\"display\":-3}]},{\"loc\":0,\"id\":26,\"isGroup\":true,\"children\":[{\"id\":19,\"loc\":9,\"h\":\"1\",\"x\":\".75\",\"bundleId\":\"com.hnc.Discord\",\"title\":\"ZMw\\\/\\\/6VaEouZ5TBbdAS1Sr2nOqpyQzdLaFdvo4NVyWdsLOXB5Q1ed63bN+AesqiPVT518nIeLrAVlaep62xvIQLuF4Q=\",\"display\":-3,\"y\":\"0\",\"w\":\".75\"}],\"shortcut\":{\"keyCode\":20,\"modifierFlags\":262144},\"name\":\"Chat\",\"bringToFront\":true},{\"children\":[{\"title\":\"R2fuoXQ76hrbbELgQ2coz9KWMQW0B6jZ244FFNpxoE\\\/J\",\"loc\":9,\"bundleId\":\"com.hey.app.desktop\",\"y\":\"0\",\"x\":\"0\",\"display\":-3,\"w\":\".5\",\"h\":\"1\",\"id\":29},{\"w\":\"0.5\",\"display\":0,\"id\":81,\"loc\":9,\"bundleId\":\"ch.protonmail.desktop\",\"title\":\"0U5\\\/eNaIlVPSY7bJ5FuVGmBM0aHX9wEx2e7bJGU9eCvuKYwR4jXx\",\"h\":\"1\",\"x\":\"0.5\",\"y\":\"0\"}],\"bringToFront\":true,\"id\":35,\"name\":\"Email\",\"isGroup\":true,\"loc\":0,\"shortcut\":{\"keyCode\":21,\"modifierFlags\":262144}},{\"name\":\"Notes\",\"bringToFront\":true,\"children\":[{\"display\":-3,\"h\":\"0.95\",\"y\":\"0\",\"id\":47,\"loc\":9,\"x\":\"0\",\"w\":\"0.95\",\"title\":\"ayp+tpkYGoTHQfMShtyTdg2qcJ\\\/uIUc0UiKZI3KBZYp\\\/eQ==\",\"bundleId\":\"com.electron.logseq\"}],\"loc\":0,\"isGroup\":true,\"id\":54,\"shortcut\":{\"keyCode\":23,\"modifierFlags\":262144}}]"
     },
     "applyGapToEdges" : {
       "int" : 0
@@ -155,7 +155,7 @@
       "int" : 3
     },
     "iCloudSync" : {
-      "int" : 0
+      "int" : 1
     },
     "ignoreBehavior" : {
       "int" : 0
@@ -275,7 +275,7 @@
       "int" : 2
     },
     "reticleColor" : {
-      "string" : "{\"blue\":0.2,\"green\":0.3,\"alpha\":0.5,\"red\":0.8}"
+      "string" : "{\"red\":0.8,\"green\":0.3,\"alpha\":0.5,\"blue\":0.2}"
     },
     "reticleDisplayMinDist" : {
       "float" : 0
@@ -293,7 +293,7 @@
       "int" : 35
     },
     "saveLayoutShortcut" : {
-
+      "string" : "null"
     },
     "screenEdgeGapBottom" : {
       "float" : 0
@@ -550,6 +550,6 @@
       "modifierFlags" : 1310720
     }
   },
-  "timestamp" : 760738506.809588,
+  "timestamp" : 760822564.588603,
   "version" : "172"
 }
