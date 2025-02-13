@@ -5,7 +5,6 @@ if [[ -f "~/.fzf.$RBENV_SHELL" ]]; then
   export FZF="$(which fzf)"
   source "$HOME/.fzf.$RBENV_SHELL"
 fi
-export FZF
 if [[ -z "$TMUX" ]]; then
   export FZF_TMUX_OPTS=""
 else

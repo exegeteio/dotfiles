@@ -10,18 +10,18 @@
 # - Not in Jetbrains' shell environment checker (not the same as not in Jetbrains.
 
 [ -z "$DEBUG" ] || echo "Checking tmux"
-if [[ -x "$(which tmux)" ]] && [[ -z "$TMUX" ]] && [[ -f "$HOME/.auto_tmux" ]] && [[ -z "$VSCODE_PID" ]] && [[ "$TERM_PROGRAM" != "vscode" ]] && [[ -z "$INTELLIJ_ENVIRONMENT_READER" ]] && [[ -z "$FIG_JETBRAINS_SHELL_INTEGRATION" ]]; then
+if [[ -z "${SKIP_TMUX}${TMUX}${VSCODE_PID}" ]] && [[ -x "$(which tmux 2>&1)" ]] && [[ -f "$HOME/.auto_tmux" ]]; then
   if [[ -z "$SSH_CLIENT" ]]; then
-    [ -z "$DEBUG" ] || echo "Starting tmux"
-    cur_path=$(realpath -q `pwd`)
-    code_path=$(realpath -q $HOME/code/)
+    [ -z "$DEBUG" ] || echo "Starting tmux in $(pwd)"
+    cur_path=$(realpath -q `pwd` 2>&1)
+    code_path=$(realpath -q $HOME/code/ 2>&1)
     if [[ "$cur_path" == $code_path* ]]; then
       exec tmux.re "$cur_path"
     else
       exec tmux.re "main"
     fi
   else
-    exec tmux.re "$(whoami)"
+    exec tmux.re "$(whoami 2>&1)"
   fi
 fi
 [ -z "$DEBUG" ] || echo "Done checking tmux"

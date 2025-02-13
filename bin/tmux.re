@@ -13,6 +13,7 @@ if tmux has-session -t "=$*" 2>/dev/null; then
   tmux setenv -t "$name" TERM_PROGRAM "$TERM_PROGRAM"
   tmux setenv -t "$name" TERM_EMULATOR "$TERMINAL_EMULATOR"
   tmux setenv -t "$name" IDEA_INITIAL_DIRECTORY "$IDEA_INITIAL_DIRECTORY"
+  tmux setenv -t "$name" CURRENT_DIR "$cur_path"
   tmux setenv -t "$name" EDITOR ""
   if [ -z "$TMUX" ]; then
     exec tmux attach-session -t "$name"
@@ -25,6 +26,7 @@ else
     -e TERM_PROGRAM="$TERM_PROGRAM" \
     -e TERM_EMULATOR="$TERMINAL_EMULATOR" \
     -e IDEA_INITIAL_DIRECTORY="$IDEA_INITIAL_DIRECTORY" \
+    -e CURRENT_DIR="$cur_path" \
     -e EDITOR="" \
     -d
   # Recurse

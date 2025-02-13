@@ -1,30 +1,10 @@
 #!/usr/bin/env bash
 
 [ -z "$DEBUG" ] || echo "Setting up ENV..."
-export XDG_CONFIG_HOME="$HOME/.config/"
+export XDG_CONFIG_HOME="$HOME/.config"
 export DOTFILES_PATH="$XDG_CONFIG_HOME/dotfiles"
-export PATH="$HOME/bin:$XDG_CONFIG_HOME/dotfiles/bin:$HOME/.cargo/bin:$HOME/.brew/bin:/home/linuxbrew/.linuxbrew/bin:$HOME/go/bin:$HOME/.rbenv/bin:$HOME/.deno/bin:$PATH"
-export CDPATH="$HOME:$HOME/code/:$HOME/code/github/:$HOME/code/github/exegeteio/:$HOME/code/gitlab/:$HOME/Desktop/"
-if [ ! -z "$WORKSPACE" ]; then
-  export CDPATH="$WORKSPACE:$WORKSPACE/code/:$WORKSPACE/code/github/:$WORKSPACE/code/github/exegeteio/:$WORKSPACE/code/gitlab/:$WORKSPACE/Desktop/"
-fi
-
-# Prettier Docker commands, parallel builds.
-export DOCKER_BUILDKIT=1
-
-# Allow connect back to rails from inside Docker.
-export RAILS_DEVELOPMENT_HOSTS=host.docker.internal,localhost,.ngrok.io
-
-# Only set the port if not already set.  Good for devcontainers.
-[[ -z "$PORT" ]] && export PORT=3000
-
-# Setup Golang
-export GOPATH=$HOME/code/go
-export GOBIN=$GOPATH/bin
-export PATH=$GOBIN:$PATH
-
-# Rancher Desktop
-[[ -d "$HOME/.rd/bin" ]] && export PATH="$HOME/.rd/bin:$PATH"
+export PATH="$HOME/bin:$DOTFILES_PATH/bin:$HOME/.cargo/bin:$HOME/.brew/bin:$HOME/go/bin:$HOME/code/go/bin:$HOME/.rbenv/shims:$HOME/.deno/bin:$PATH"
+export CDPATH="$HOME:$HOME/code"
 
 # For tmux workspaces.
 if [ -z "$CODE_PATH" ]; then

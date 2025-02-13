@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-[ -z "$DEBUG" ] || echo "Setting up asdf..."
-[[ -f ~/.asdf/asdf.sh ]] && source "$HOME/.asdf/asdf.sh"
-[ -z "$DEBUG" ] || echo "Done setting up asdf..."

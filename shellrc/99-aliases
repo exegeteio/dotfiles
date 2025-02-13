@@ -1,18 +1,12 @@
 #!/usr/bin/env bash
 
 [ -z "$DEBUG" ] || echo "Setting up aliases..."
-alias '?'=duck
-alias '??'=google
-alias a="source aliases"
 alias gf="git fetch --all -p"
 alias less="less -r"
 alias ll="ls -lh"
 alias ls="ls --color=always"
-alias phish="http --follow -p hH"
 alias :q="exit"
 alias r="$HOME/.config/dotfiles/bin/r" # To override shell builtin.
-alias re="source $HOME/.config/dotfiles/shellrc/20-editor"
 alias grep="rg"
 [ -x "$(which bat)" ] && alias less="bat --plain"
-alias h="hanami"
 [ -z "$DEBUG" ] || echo "Done setting up aliases..."

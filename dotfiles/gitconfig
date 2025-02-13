@@ -16,6 +16,7 @@
   lgds = log -p --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
   lgf = !"git lg1 --name-only"
   maindiff = diff origin/main...HEAD
+  mc = !"git maindiff | pbcopy"
   omerge = "merge -X ours"
   pullmain = !"git checkout main && git pull && git checkout -"
   s = "status -sb"

@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-# Allows overriding with ~/.zshenv
-[[ -z "$NOTES_PATH" ]] && NOTES_PATH="$HOME/icloud/vnotes/"
-export NOTES_PATH
-if type compdef >/dev/null 2>&1; then
-  compdef "_files -W $NOTES_PATH" n
-fi
-

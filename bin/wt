@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+basedir="${CODE_PATH:-$HOME/code/}"
+dir="$1"
+target="${basedir}/${1}"
+
+[[ -d "$target" ]] || (echo "Not a valid directory:  ${target}" && exit)
+w.tree "$target"

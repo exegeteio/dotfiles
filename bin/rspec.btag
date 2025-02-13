@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-tag=$(git branch --show-current)
+branch=$(git branch --show-current)
 # Lower case
-tag=${tag,,}
+tag=${branch,,}
 # Replace - with _.
 tag=${tag//-/_}
-echo "Running:  be rspec --tag=$tag $@"
-rspec "--tag=$tag" $@
+echo "Running:  be rspec --tag=$tag --tag=$branch $@"
+rspec "--tag=$tag" "--tag=$branch" $@

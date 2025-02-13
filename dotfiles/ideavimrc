@@ -27,16 +27,17 @@ map <leader>ca <Action>(RefactoringMenu)
 map <leader>ds <Action>(GotoSymbol)
 map <leader>fc <Action>(CopyContentRootPath)
 map <leader>ff <Action>(ReformatCode)
-map <leader>gg viw<Action>(FindInPath)<Esc>b
-" map <leader>gb <Action>(Forward)
-" map <leader>gf <Action>(Back)
 map <leader>gI <Action>(GotoImplementation)
+map <leader>gS <Action>(FileStructurePopup)
+map <leader>gT <Action>(GotoTest)
+" map <leader>gb <Action>(Forward)
+map <leader>gd <Action>(GotoDeclarationOnly)
+" map <leader>gf <Action>(Back)
+map <leader>gg viw<Action>(FindInPath)<Esc>b
 map <leader>gm <Action>(RecentFiles)
 map <leader>gr <Action>(ShowUsages)
 map <leader>gs <Action>(SearchEverywhere)
-map <leader>gS <Action>(FileStructurePopup)
 map <leader>gt <Action>(GotoSymbol)
-map <leader>gT <Action>(GotoTest)
 map <leader>gu <Action>(ShowUsages)
 map <leader>gy <Action>(GotoTypeDeclaration)
 map <leader>l <Action>(EditorToggleShowWhitespaces)
@@ -53,7 +54,6 @@ map <leader>sg <Action>(SearchEverywhere)
 " Hacky way to resume a search by not highlighting anything.
 map <leader>sr <Action>(FindInPath)
 map <leader>ta <Action>(RerunFailedTests)
-map <leader>tt <Action>(RunCovreage)
 map <leader>tl <Action>(RunClass)
 map <leader>tt <Action>(Run)
 map <leader>vz <Action>(ToggleZenMode)
@@ -80,6 +80,8 @@ set number
 set relativenumber
 set smartcase
 set matchit
+set quickscope
+let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " Experimental!
 set textwidth=120

@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-# Allows overriding with ~/.zshenv
-[[ -z "$CODE_PATH" ]] && CODE_PATH="$HOME/code/"
-export CODE_PATH
-if type compdef >/dev/null 2>&1; then
-  compdef "_files -W $CODE_PATH" w
-fi
-
