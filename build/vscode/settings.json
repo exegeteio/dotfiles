@@ -46,50 +46,206 @@
     "vim.smartRelativeLine": true,
     "vim.vimrc.enable": true,
     "vim.normalModeKeyBindings": [
-        { "before": [ "<leader>", "o" ],
-          "commands": [ "workbench.action.quickOpen" ] },
-        { "before": [ "<leader>", " " ],
-          "commands": [ "workbench.action.showEditorsInActiveGroup" ] },
-        { "before": [ "<leader>", "f", "c" ],
-          "commands": [ "copyFilePath" ] },
-        { "before": [ "<leader>", "f", "f" ],
-          "commands": [ "editor.action.formatDocument" ] },
-        { "before": [ "<leader>", "g", "d" ],
-          "commands": [ "editor.action.revealDefinition" ] },
-        { "before": [ "<leader>", "g", "g" ],
-          "commands": [ ":normal viw", "workbench.action.findInFiles" ]
-        }, { "before": [ "<leader>", "g", "s" ],
-          "commands": [ "workbench.action.findInFiles" ] },
-        { "before": [ "<leader>", "p" ],
-          "commands": [ "execPaste" ] },
-        { "before": [ "<leader>", "v", "z" ],
-          "commands": [ "workbench.action.toggleZenMode" ] },
-        { "before": [ "<leader>", "g", "p" ],
-          "commands": [ "github.copilot.generate" ] },
-        { "before": [ "<leader>", "g", "c" ],
-          "commands": [ "workbench.panel.chat.view.copilot.focus" ] },
-        { "before": [ ":", "W", "<CR>" ],
-          "commands": [ "workbench.action.files.save" ] },
+        {
+            "before": [
+                "<leader>",
+                "o"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                " "
+            ],
+            "commands": [
+                "workbench.action.showEditorsInActiveGroup"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "c"
+            ],
+            "commands": [
+                "copyRelativeFilePath"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "f"
+            ],
+            "commands": [
+                "editor.action.formatDocument"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinition"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "u"
+            ],
+            "commands": [
+                "editor.action.goToReferences"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "g"
+            ],
+            "commands": [
+                ":normal viw",
+                "workbench.action.findInFiles"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.findInFiles"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "commands": [
+                "execPaste"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "v",
+                "z"
+            ],
+            "commands": [
+                "workbench.action.toggleZenMode"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "p"
+            ],
+            "commands": [
+                "github.copilot.generate"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "g",
+                "c"
+            ],
+            "commands": [
+                "workbench.panel.chat.view.copilot.focus"
+            ]
+        },
+        {
+            "before": [
+                ":",
+                "W",
+                "<CR>"
+            ],
+            "commands": [
+                "workbench.action.files.save"
+            ]
+        },
+        {
+            "before": [
+                "]",
+                "g"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        },
+        {
+            "before": [
+                "[",
+                "g"
+            ],
+            "commands": [
+                "editor.action.marker.prev"
+            ]
+        }
     ],
     "vim.visualModeKeyBindings": [
-        { "before": [ "<leader>", "c" ],
-          "commands": [ "execCopy" ] },
-        { "before": [ "<leader>", "f", "f" ],
-          "commands": [ "editor.action.formatSelection" ] },
-        { "before": [ "<leader>", "p" ],
-          "commands": [ "execPaste" ] },
+        {
+            "before": [
+                "<leader>",
+                "c"
+            ],
+            "commands": [
+                "execCopy"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "f",
+                "f"
+            ],
+            "commands": [
+                "editor.action.formatSelection"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "p"
+            ],
+            "commands": [
+                "execPaste"
+            ]
+        }
     ],
-
-    // Ruby
     "[ruby]": {
         "editor.defaultFormatter": "Shopify.ruby-lsp",
         "editor.formatOnSave": false,
         "editor.formatOnType": true,
         "editor.insertSpaces": true,
-        "editor.semanticHighlighting.enabled": false,
+        "editor.semanticHighlighting.enabled": true,
         "editor.tabSize": 2,
-        "files.insertFinalNewline": true,
-        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true
+    },
+    "rubyLsp.indexing": {
+        "excludedPatterns": [
+            "**/spec/**.rb"
+        ],
     },
     "editor.lineNumbers": "relative",
+    "terminal.integrated.env.osx": {
+        "SKIP_TMUX": "true"
+    },
+    "terminal.external.osxExec": "iTerm2.app",
+    "terminal.integrated.tabs.defaultIcon": "console",
+    "terminal.integrated.scrollback": 10000,
+    "workbench.colorTheme": "Default Dark Modern",
+    "editor.formatOnSaveMode": false,
+    "files.trimTrailingWhitespaceInRegexAndStrings": false,
+    "editor.trimAutoWhitespace": false
 }

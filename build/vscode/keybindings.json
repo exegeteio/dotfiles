@@ -188,11 +188,11 @@
   {
     "key": "shift+alt+[",
     "command": "workbench.action.terminal.focusPrevious",
-    "when": "terminalHasBeenCreated || terminalProcessSupported"
+    "when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocusInAny && terminalHasBeenCreated || terminalFocusInAny && terminalProcessSupported"
   },
   {
     "key": "shift+alt+'",
     "command": "workbench.action.terminal.focusNext",
-    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+    "when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocusInAny && terminalHasBeenCreated || terminalFocusInAny && terminalProcessSupported"
   },
 ]

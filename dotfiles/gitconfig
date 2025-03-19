@@ -1,5 +1,7 @@
 [alias]
   a = "add -p ':!/Gemfile.lock' ':!/config/database.yml' ':!/config/environments/test.rb'"
+  amod = !"git a $(g.mod | menu)"
+  lgmod = !"git lg1 $(g.mod | menu)"
   bstash = !"git stash -um \"WIP: $(g.branch) $(date +%F-%T)\""
   churn = !"git lg1b | grep -v year | grep ago"
   co = "checkout"
