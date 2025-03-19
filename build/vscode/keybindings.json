@@ -52,11 +52,6 @@
     "command": "-workbench.action.splitEditor"
   },
   {
-    "key": "cmd+\\",
-    "command": "-workbench.action.terminal.split",
-    "when": "terminalFocus && terminalProcessSupported"
-  },
-  {
     "key": "cmd+b",
     "command": "-workbench.action.toggleSidebarVisibility"
   },
@@ -110,62 +105,6 @@
     "key": "cmd+k m",
     "command": "editor.action.toggleMinimap",
     "when": "editorTextFocus"
-  },
-  {
-    "key": "ctrl+b c",
-    "command": "workbench.action.terminal.new",
-    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
-  },
-  {
-    "key": "ctrl+b ctrl+k",
-    "command": "workbench.action.terminal.clear",
-    "when": "terminalFocus && terminalProcessSupported"
-  },
-  {
-    "key": "ctrl+b h",
-    "command": "workbench.action.navigateLeft"
-  },
-  {
-    "key": "ctrl+b h",
-    "command": "workbench.action.terminal.focusPreviousPane",
-    "when": "terminalFocus && terminalProcessSupported"
-  },
-  {
-    "key": "ctrl+b j",
-    "command": "workbench.action.navigateDown"
-  },
-  {
-    "key": "ctrl+b k",
-    "command": "workbench.action.navigateUp"
-  },
-  {
-    "key": "ctrl+b l",
-    "command": "workbench.action.navigateRight"
-  },
-  {
-    "key": "ctrl+b l",
-    "command": "workbench.action.terminal.focusNextPane",
-    "when": "terminalFocus && terminalProcessSupported"
-  },
-  {
-    "key": "ctrl+b n",
-    "command": "workbench.action.terminal.focusNext",
-    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
-  },
-  {
-    "key": "ctrl+b p",
-    "command": "workbench.action.terminal.focusPrevious",
-    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
-  },
-  {
-    "key": "ctrl+b shift+\\",
-    "command": "workbench.action.splitEditor",
-    "when": "editorFocus"
-  },
-  {
-    "key": "ctrl+b shift+\\",
-    "command": "workbench.action.terminal.split",
-    "when": "terminalFocus && terminalProcessSupported"
   },
   {
     "key": "ctrl+shift+5",
@@ -230,5 +169,30 @@
   {
     "key": "shift+cmd+o",
     "command": "workbench.action.files.openFolderViaWorkspace"
+  },
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "cmd+k",
+    "command": "workbench.action.terminal.clear",
+    "when": "terminalFocus && terminalProcessSupported"
+  },
+  {
+    "key": "cmd+k",
+    "command": "-workbench.action.terminal.clear",
+    "when": "terminalFocus && terminalHasBeenCreated && !accessibilityModeEnabled || terminalFocus && terminalProcessSupported && !accessibilityModeEnabled || accessibilityModeEnabled && accessibleViewIsShown && terminalHasBeenCreated && accessibleViewCurrentProviderId == 'terminal' || accessibilityModeEnabled && accessibleViewIsShown && terminalProcessSupported && accessibleViewCurrentProviderId == 'terminal'"
+  },
+  {
+    "key": "shift+alt+[",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalHasBeenCreated || terminalProcessSupported"
+  },
+  {
+    "key": "shift+alt+'",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
 ]

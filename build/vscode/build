@@ -1,9 +1,16 @@
 #!/usr/bin/env bash
 
-dest="$HOME/Library/Application Support/Code/User"
-if [ -e "$dest" ]; then
-  rm -f "${dest}/keybindings.json" "${dest}/settings.json"
-  ln -s "$HOME/.config/dotfiles/build/vscode/keybindings.json" "${dest}/keybindings.json" 2>/dev/null
-  ln -s "$HOME/.config/dotfiles/build/vscode/settings.json" "${dest}/settings.json" 2>/dev/null
+vscode="$HOME/Library/Application Support/Code/User"
+if [ -e "$vscode" ]; then
+  rm -f "${vscode}/keybindings.json" "${vscode}/settings.json"
+  ln -s "$HOME/.config/dotfiles/build/vscode/keybindings.json" "${vscode}/keybindings.json" 2>/dev/null
+  ln -s "$HOME/.config/dotfiles/build/vscode/settings.json" "${vscode}/settings.json" 2>/dev/null
+fi
+
+cursor="$HOME/Library/Application Support/Cursor/User/"
+if [ -e "$cursor" ]; then
+  rm -f "${cursor}/keybindings.json" "${cursor}/settings.json"
+  ln -s "$HOME/.config/dotfiles/build/vscode/keybindings.json" "${cursor}/keybindings.json" 2>/dev/null
+  ln -s "$HOME/.config/dotfiles/build/vscode/settings.json" "${cursor}/settings.json" 2>/dev/null
 fi
 
