@@ -8,7 +8,10 @@
 
 set -e
 
+# Either use the first argument to the script, or execute g.branch to get the current ticket number.
+ticket=${1:-$(g.branch)}
+
 token=$(echo -n "$(op read $JIRA_API_USER):$(op read $JIRA_API_KEY)" | base64)
 curl -s -H "Authorization: Basic $token" \
      -H "Content-Type: application/json" \
-     "$(op read $JIRA_DOMAIN)/rest/api/2/issue/$(g.branch)"
+     "$(op read $JIRA_DOMAIN)/rest/api/2/issue/${ticket}"

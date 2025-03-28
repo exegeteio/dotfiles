@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+files="$(g sdiff --name-only | menu)"
+out="$(g lg1 ${files} | menu | columnize | second)"
+g commit --fixup "${out}"

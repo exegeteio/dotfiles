@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+location="${LSQ_LOCATION:-"${HOME}/logseq"}"
+
+if [ ! -d "$location" ]; then
+    echo "Logseq location not found at $location"
+    exit 1
+fi
+
+branch="${BRANCH:-"$(g.branch)"}"
+
+if [ -z "$branch" ]; then
+    target="journals/$(date +%Y_%m_%d).md"
+else
+    target="pages/${branch}.md"
+fi
+
+echo -e "\n- $*\n" >> "${location}/${target}"
+echo "Added to $target"

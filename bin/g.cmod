@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+files="$(g.mod | menu)"
+out="$(g lg1 ${files} | menu | columnize | second)"
+echo -n $out | pbcopy
+echo "Copied ${out}..."
