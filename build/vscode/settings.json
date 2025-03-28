@@ -12,7 +12,6 @@
     "editor.wordWrap": "on",
     "files.autoSave": "onFocusChange",
     "git.autofetch": true,
-    "html.format.wrapLineLength": 80,
     "markdown.preview.fontSize": 20,
     "scm.inputFontSize": 20,
     "screencastMode.fontSize": 40,
@@ -22,20 +21,12 @@
     "terminal.integrated.tabs.enabled": false,
     "terminal.integrated.tabs.location": "right",
     "window.zoomLevel": 1,
-    "workbench.layoutControl.enabled": false,
     "workbench.sideBar.location": "right",
     "workbench.startupEditor": "none",
-    "zenMode.centerLayout": false,
-    "zenMode.fullScreen": false,
     "zenMode.hideLineNumbers": false,
-    "zenMode.hideStatusBar": false,
     "editor.rulers": [
-        80,
         120
     ],
-
-    // VIM
-    // To improve performance"
     "extensions.experimental.affinity": {
         "vscodevim.vim": 1
     },
@@ -247,5 +238,9 @@
     "workbench.colorTheme": "Default Dark Modern",
     "editor.formatOnSaveMode": false,
     "files.trimTrailingWhitespaceInRegexAndStrings": false,
-    "editor.trimAutoWhitespace": false
+    "editor.trimAutoWhitespace": false,
+    "zenMode.showTabs": "none",
+    "zenMode.centerLayout": false,
+    "zenMode.fullScreen": false,
+    "security.promptForLocalFileProtocolHandling": false
 }

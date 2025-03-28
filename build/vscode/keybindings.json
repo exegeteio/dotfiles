@@ -195,4 +195,14 @@
     "command": "workbench.action.terminal.focusNext",
     "when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocusInAny && terminalHasBeenCreated || terminalFocusInAny && terminalProcessSupported"
   },
+  {
+    "key": "shift+alt+'",
+    "command": "workbench.action.nextEditor",
+    "when": "editorFocus"
+  },
+  {
+    "key": "shift+alt+[",
+    "command": "workbench.action.previousEditor",
+    "when": "editorFocus"
+  },
 ]
