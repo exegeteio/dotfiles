@@ -11,6 +11,12 @@ if [ -z "$CODE_PATH" ]; then
   export CODE_PATH="$HOME/code"
 fi
 
+if [ -x "$(which go)" ]; then
+  export GOPATH="$HOME/go"
+  export GOBIN="$GOPATH/bin"
+  export PATH="$GOBIN:$PATH"
+fi
+
 [ -x "$(which bat)" ] && export PAGER="bat --plain"
 
 [ -z "$DEBUG" ] || echo "Done setting up ENV..."
