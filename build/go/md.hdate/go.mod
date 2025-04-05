@@ -1,3 +1,3 @@
 module github.com/exegeteio/dotfiles/go/md.hdate
 
-go 1.17
+go 1.24.2
