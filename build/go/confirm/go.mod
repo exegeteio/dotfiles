@@ -1,7 +1,8 @@
 module github.com/exegeteio/dotfiles/build/go/confirm
 
-go 1.21.6
+go 1.24.2
 
-require golang.org/x/term v0.16.0
-
-require golang.org/x/sys v0.16.0 // indirect
+require (
+	golang.org/x/sys v0.31.0 // indirect
+	golang.org/x/term v0.30.0 // indirect
+)
