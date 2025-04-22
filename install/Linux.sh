@@ -13,9 +13,9 @@ if [ ! -z "${DISPLAY}" ]; then
   PACKAGES="gnome-tweaks code chromium-browser firefox ulauncher ${PACKAGES}"
 fi
 
-sudo apt-get update
+sudo apt-get update -qqy
 echo "Attempting to install:  ${PACKAGES}"
-sudo apt-get install ${PACKAGES}
+sudo apt-get install -qqy --no-install-recommends ${PACKAGES}
 
 if [ ! -z "${USER}" ]; then
   echo "Adding ${USER} to the \"docker\" group."
