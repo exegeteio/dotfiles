@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo "$(op read $JIRA_DOMAIN)/secure/QuickSearch.jspa?searchString=$(urlencode $(g.branch))"
