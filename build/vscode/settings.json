@@ -235,12 +235,35 @@
     "terminal.external.osxExec": "iTerm2.app",
     "terminal.integrated.tabs.defaultIcon": "console",
     "terminal.integrated.scrollback": 10000,
-    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.colorTheme": "Default High Contrast",
     "editor.formatOnSaveMode": false,
     "files.trimTrailingWhitespaceInRegexAndStrings": false,
     "editor.trimAutoWhitespace": false,
     "zenMode.showTabs": "none",
     "zenMode.centerLayout": false,
     "zenMode.fullScreen": false,
-    "security.promptForLocalFileProtocolHandling": false
+    "security.promptForLocalFileProtocolHandling": false,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
+    },
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "git.openRepositoryInParentFolders": "never",
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "dotfiles.repository": "https://github.com/exegeteio/dotfiles",
+    "dotfiles.targetPath": "~/.config/dotfiles"
 }

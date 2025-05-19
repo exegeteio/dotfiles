@@ -14,3 +14,6 @@
 
 # Local .pryrc
 /.pryrc
+
+# Aider files
+/.aider.*

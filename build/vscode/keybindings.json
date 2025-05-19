@@ -92,7 +92,7 @@
     "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
   },
   {
-    "key": "cmd+k g",
+    "key": "alt+cmd+g",
     "command": "workbench.view.scm",
     "when": "workbench.scm.active"
   },
@@ -204,5 +204,9 @@
     "key": "shift+alt+[",
     "command": "workbench.action.previousEditor",
     "when": "editorFocus"
+  },
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
   },
 ]
