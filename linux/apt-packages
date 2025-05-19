@@ -3,6 +3,7 @@ build-essential
 ca-certificates
 curl
 file
+fzf
 git
 less
 libssl-dev
