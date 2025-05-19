@@ -7,6 +7,7 @@ git
 less
 libssl-dev
 procps
+ripgrep
 ssh-client
 sudo
 tmux

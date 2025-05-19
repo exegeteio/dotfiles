@@ -1,5 +1,14 @@
 # frozen_string_literal: true
 
+brew "bash"
+brew "bash-completion"
+brew "fzf"
+brew "git"
+brew "gnu-sed"
+brew "ripgrep"
+brew "tmux"
+brew "wget"
+
 cask "1password"
 cask "discord"
 cask "firefox"
@@ -14,9 +23,3 @@ cask "raycast"
 cask "rectangle-pro"
 cask "signal"
 cask "tailscale"
-
-brew "bash"
-brew "bash-completion"
-brew "git"
-brew "gnu-sed"
-brew "wget"
