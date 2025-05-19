@@ -18,5 +18,6 @@ if [ -x "$(which go)" ]; then
 fi
 
 [ -x "$(which bat)" ] && export PAGER="bat --plain"
+[ -x "$(which rbenv)" ] && rbenv init - "$0"
 
 [ -z "$DEBUG" ] || echo "Done setting up ENV..."
