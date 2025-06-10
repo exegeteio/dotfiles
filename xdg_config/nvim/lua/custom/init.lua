@@ -18,5 +18,13 @@ vim.o.listchars = "space:*,trail:*,nbsp:*,extends:>,precedes:<,tab:|>"
 require("custom.keymaps")
 require("custom.plugins.init")
 
+-- Return to previous place in the buffer:
+vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+  pattern = { "*" },
+  callback = function()
+    vim.api.nvim_exec2('silent! normal! g`"zz', { output = false })
+  end,
+})
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
