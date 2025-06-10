@@ -65,3 +65,11 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Enable “Do Not Track”
 defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
+# Install Homebrew
+dotfiles="${DOTFILES_PATH:-${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles}"
+[[ -x "${dotfiles}/brew.sh" ]] && bash "${dotfiles}/brew.sh"
+# Reload to get homebrew environment variables.
+source ~/.zshrc
+
+# Install using app id's.
+[[ -x "$(which mas)" ]] && /usr/bin/env mas install $(grep -v "^#" "${dotfiles}/install/app_store_ids.txt")
