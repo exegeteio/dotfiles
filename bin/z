@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+file="$HOME/logseq/journals/$(date +%Y_%m_%d).md"
+
+(cd $HOME/logseq && exec nvim $file)
+
