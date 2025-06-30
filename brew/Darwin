@@ -11,6 +11,7 @@ brew "tmux"
 brew "wget"
 
 cask "1password"
+cask "brave-browser"
 cask "discord"
 cask "firefox"
 cask "hey"
