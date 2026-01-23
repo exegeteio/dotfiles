@@ -1,6 +1,7 @@
 cask "font-jetbrains-mono-nerd-font"
 
 brew "bat"
+brew "claude-code"
 brew "deno"
 brew "gh"
 brew "git"
