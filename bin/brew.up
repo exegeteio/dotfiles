@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -e pipefail
+
+brew update -qq
+brew outdated
+echo
+confirm "⚠️ Update? ⚠️" && brew upgrade
