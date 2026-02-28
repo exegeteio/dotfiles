@@ -1,0 +1,34 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline=false
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$docker_context\
+$mise\
+$sudo\
+$cmd_duration\
+$os\
+$container\
+$character"""
+
+[git_branch]
+format="[$branch(:$remote_branch)]($style) "
+
+[git_status]
+format="([$ahead_behind]($style) )"
+
+[cmd_duration]
+format="[$duration]($style) "
+style="bold red"
+# min_time=2_000
+show_notifications=true
+min_time_to_notify=900_000
+
