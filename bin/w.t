@@ -9,13 +9,18 @@ touch "$cache_file"
 [ -f "$cache_file" ] || echo "$repo_name - $(cd $repo_dir && g.branch)" >> "$cache_file"
 
 trees=$(git worktree list | first)
+branch_pattern="${WORKTREE_BRANCH_FORMAT:-}"
 for dir in $trees; do
-  bname=$(basename $dir)
+  bname=$(basename "$dir")
+  branch=$(cd "$dir" && g.branch)
+  if [ -n "$branch_pattern" ]; then
+    [[ "$branch" =~ $branch_pattern ]] || continue
+  fi
   desc=$(grep -e "^$bname\s" "$cache_file")
   if [ -z "$desc" ]; then
-    title=$(cd $dir && j.title)
+    title=$(cd "$dir" && j.title)
     if [ "$title" == "null" ]; then
-      desc="$bname - $(cd $dir && g.branch) - Not found"
+      desc="$bname - $branch - Not found"
       echo "$desc" >> "$cache_file"
     else
       desc="$bname - $title"
