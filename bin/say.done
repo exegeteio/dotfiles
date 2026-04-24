@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
+if [ -t 0 ]; then
+	message="$*"
+else
+	message="$(cat)"
+fi
+
 [ ! -z "$NTFY_TOPIC" ] && curl -s \
 	-H "Title: Work complete!" \
-	-d "${*}" \
+	-d "${message}" \
 	"https://ntfy.sh/${NTFY_TOPIC}" \
 	1> /dev/null;
-say "Zug Zug.  Work complete!  ${*}" &
+say "Zug Zug.  Work complete!  ${message}" &
