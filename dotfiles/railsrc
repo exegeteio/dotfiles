@@ -1,6 +1,13 @@
 --skip-test
 --asset-pipeline=propshaft
---database=postgresql
+--database=sqlite3
 --javascript=importmap
 --skip-action-mailbox
+--skip-action-mailer
+--skip-action-text
+--skip-action-mailer
+--skip-action-job
+--skip-action-storage
+--skip-action-cable
+--skip-solid
 --template=$DOTFILES_PATH/rails.templ.rb
