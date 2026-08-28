@@ -17,17 +17,17 @@ if [ ! -x "$(which brew)" ]; then
   eval "$(${prefix}/bin/brew shellenv)"
 fi
 
-local="$HOME/.config/dotfiles/brew/"
-brewfilecmd="curl -fsSL https://raw.githubusercontent.com/exegeteio/dotfiles/main/brew/"
+local="$HOME/.config/dotfiles"
+brewfilecmd="curl -fsSL https://raw.githubusercontent.com/exegeteio/dotfiles/main"
 if [ -d "$local" ]; then
   brewfilecmd="cat $local"
 fi
 
-${brewfilecmd}/base | brew bundle install -q --file=-
+${brewfilecmd}/common/Brewfile | brew bundle install -q --file=-
 
 if [ "$OS" == "Darwin" ]; then
-  ${brewfilecmd}/Darwin | brew bundle install -q --file=-
+  ${brewfilecmd}/macos/Brewfile | brew bundle install -q --file=-
 elif [ "$OS" == "Linux" ]; then
-  ${brewfilecmd}/Linux | brew bundle install -q --file=-
+  ${brewfilecmd}/linux/Brewfile | brew bundle install -q --file=-
 fi
 

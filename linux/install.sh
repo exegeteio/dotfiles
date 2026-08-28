@@ -22,9 +22,9 @@ link_file() {
 }
 
 echo "Linking Hyprland customizations..."
-link_file "$dotfiles/omarchy/hypr/input.lua" ~/.config/hypr/input.lua
-link_file "$dotfiles/omarchy/hypr/looknfeel.lua" ~/.config/hypr/looknfeel.lua
-link_file "$dotfiles/omarchy/hypr/bindings.lua" ~/.config/hypr/bindings.lua
+link_file "$dotfiles/linux/omarchy/hypr/input.lua" ~/.config/hypr/input.lua
+link_file "$dotfiles/linux/omarchy/hypr/looknfeel.lua" ~/.config/hypr/looknfeel.lua
+link_file "$dotfiles/linux/omarchy/hypr/bindings.lua" ~/.config/hypr/bindings.lua
 
 if command -v hyprctl >/dev/null 2>&1 && hyprctl reload >/dev/null 2>&1; then
   echo "Hyprland config reloaded."
@@ -44,7 +44,7 @@ else
 fi
 
 echo "Removing every Chromium extension except 1Password. This step closes Chromium if it is running."
-bash "$dotfiles/omarchy/bash/chromium-prune-extensions.sh"
+bash "$dotfiles/linux/omarchy/bash/chromium-prune-extensions.sh"
 
 if omarchy pkg present tailscale >/dev/null 2>&1; then
   echo "Tailscale is already installed. Skipping this step."
@@ -84,8 +84,8 @@ omarchy pkg drop \
   xournalpp
 
 echo "Linking the Omarchy shell customizations (9-workspace indicator)..."
-link_file "$dotfiles/omarchy/shell/shell.json" ~/.config/omarchy/shell.json
-link_file "$dotfiles/omarchy/shell/plugins/exegete.workspaces" ~/.config/omarchy/plugins/exegete.workspaces
+link_file "$dotfiles/linux/omarchy/shell/shell.json" ~/.config/omarchy/shell.json
+link_file "$dotfiles/linux/omarchy/shell/plugins/exegete.workspaces" ~/.config/omarchy/plugins/exegete.workspaces
 omarchy restart shell >/dev/null 2>&1 || true
 
 echo "Done."

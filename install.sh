@@ -7,7 +7,7 @@ set -e
 
 dotfiles="${DOTFILES_PATH:-${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles}"
 if [ ! -e "$dotfiles" ]; then
-  if [ -d "$(dirname $0)/dotfiles" ]; then
+  if [ -d "$(dirname $0)/common/dotfiles" ]; then
     echo "Linking $(dirname $0) to ${dotfiles}..."
     mkdir -p "${XDG_CONFIG_HOME:-$HOME/.config}"
     ln -s "$(realpath $(dirname $0))" "$dotfiles"
@@ -17,13 +17,19 @@ if [ ! -e "$dotfiles" ]; then
   fi
 fi
 
-os=$(uname)
+case "$(uname)" in
+  Darwin) os_dir="macos" ;;
+  Linux) os_dir="linux" ;;
+  *) os_dir="" ;;
+esac
 
 cd "$dotfiles"
 
 ./dotfiles.sh
 
-installer="$dotfiles/install/$os.sh"
-[[ -x "$installer" ]] && bash "$installer"
+if [ -n "$os_dir" ]; then
+  installer="$dotfiles/$os_dir/install.sh"
+  [[ -x "$installer" ]] && bash "$installer"
+fi
 
 cd -

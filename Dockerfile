@@ -11,7 +11,7 @@ RUN useradd -mU -G root exegete \
 USER exegete
 
 ADD ./brew.sh /tmp/
-ADD ./brew /tmp/brew
+ADD ./common /tmp/brew
 WORKDIR /tmp/
 RUN /tmp/brew.sh
 

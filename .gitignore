@@ -3,9 +3,9 @@
 .DS_Store
 **/*.lock.json
 
-dotfiles/vim/plugged
-xdg_config/nvim/plugin
-dotfiles/vim/.netrwhist
+common/dotfiles/vim/plugged
+common/xdg_config/nvim/plugin
+common/dotfiles/vim/.netrwhist
 
 # Neovim lock file go away.
-xdg_config/nvim/lazy-lock.json
+common/xdg_config/nvim/lazy-lock.json

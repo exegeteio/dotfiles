@@ -72,4 +72,4 @@ dotfiles="${DOTFILES_PATH:-${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles}"
 source ~/.zshrc
 
 # Install using app id's.
-[[ -x "$(which mas)" ]] && /usr/bin/env mas install $(grep -v "^#" "${dotfiles}/install/app_store_ids.txt")
+[[ -x "$(which mas)" ]] && /usr/bin/env mas install $(grep -v "^#" "${dotfiles}/macos/app_store_ids.txt")
