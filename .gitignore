@@ -4,8 +4,10 @@
 **/*.lock.json
 
 common/dotfiles/vim/plugged
-common/xdg_config/nvim/plugin
+linux/omarchy/nvim/plugin
+macos/xdg_config/nvim/plugin
 common/dotfiles/vim/.netrwhist
 
 # Neovim lock file go away.
-common/xdg_config/nvim/lazy-lock.json
+linux/omarchy/nvim/lazy-lock.json
+macos/xdg_config/nvim/lazy-lock.json

@@ -2,6 +2,22 @@
 
 echo "Beginning MacOS setup..."
 
+dotfiles="${DOTFILES_PATH:-${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles}"
+
+# Symlink a file. First back up any real file already at the destination.
+link_file() {
+  local src="$1" dest="$2"
+  mkdir -p "$(dirname "$dest")"
+  if [ -e "$dest" ] && [ ! -L "$dest" ]; then
+    mv "$dest" "$dest.bak.$(date +%s)"
+    echo "Backed up existing $dest"
+  fi
+  ln -sfn "$src" "$dest"
+}
+
+echo "Linking nvim config..."
+link_file "$dotfiles/macos/xdg_config/nvim" "${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
+
 [ -L "$HOME/icloud" ] || ln -s "$HOME/Library/Mobile Documents/com~apple~CloudDocs" "$HOME/icloud"
 
 # Disable “natural” (Lion-style) scrolling
@@ -66,7 +82,6 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
 # Install Homebrew
-dotfiles="${DOTFILES_PATH:-${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles}"
 prefix="/opt/homebrew"
 if [ ! -d "$prefix" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

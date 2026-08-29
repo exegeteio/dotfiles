@@ -26,6 +26,9 @@ link_file "$dotfiles/linux/omarchy/hypr/input.lua" ~/.config/hypr/input.lua
 link_file "$dotfiles/linux/omarchy/hypr/looknfeel.lua" ~/.config/hypr/looknfeel.lua
 link_file "$dotfiles/linux/omarchy/hypr/bindings.lua" ~/.config/hypr/bindings.lua
 
+echo "Linking nvim config..."
+link_file "$dotfiles/linux/omarchy/nvim" ~/.config/nvim
+
 if command -v hyprctl >/dev/null 2>&1 && hyprctl reload >/dev/null 2>&1; then
   echo "Hyprland config reloaded."
 else

@@ -1,0 +1,1 @@
+/usr/share/omarchy-nvim/config/lua/plugins/snacks-animated-scrolling-off.lua
