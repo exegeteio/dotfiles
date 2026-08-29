@@ -4,7 +4,7 @@ if [ -z "$EDITOR" ]; then
   # RubyMine if available
   if [[ -n "$IDEA_INITIAL_DIRECTORY" ]]; then
     type=$(echo "$__CFBundleIdentifier" | sed 's/.*\.//' | tr '[:upper:]' '[:lower:]')
-    if [[ -x "$(which "$type")" ]]; then
+    if command -v "$type" >/dev/null 2>&1; then
       echo "Using $type for editor"
       export EDITOR="$type"
       export EDITOR_ARGS="rubymine.args"
@@ -14,7 +14,7 @@ if [ -z "$EDITOR" ]; then
     export EDITOR='code -wr'
     export EDITOR_ARGS='code.args'
   # Neovim
-  elif [ -x "$(which nvim)" ]; then
+  elif command -v nvim >/dev/null 2>&1; then
     export EDITOR='nvim'
     export EDITOR_ARGS='vi.args'
   # World's best fallback.

@@ -10,7 +10,7 @@
 # - Not in Jetbrains' shell environment checker (not the same as not in Jetbrains.
 
 [ -z "$DEBUG" ] || echo "Checking tmux"
-if [[ -z "${SKIP_TMUX}${TMUX}${VSCODE_PID}" ]] && [[ -x "$(which tmux 2>&1)" ]] && [[ -f "$HOME/.auto_tmux" ]]; then
+if [[ -z "${SKIP_TMUX}${TMUX}${VSCODE_PID}" ]] && command -v tmux >/dev/null 2>&1 && [[ -f "$HOME/.auto_tmux" ]]; then
   if [[ -z "$SSH_CLIENT" ]]; then
     [ -z "$DEBUG" ] || echo "Starting tmux in $(pwd)"
     cur_path=$(realpath -q `pwd` 2>&1)

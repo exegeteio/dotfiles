@@ -8,5 +8,5 @@ alias ls="ls --color=always"
 alias :q="exit"
 alias r="$HOME/.config/dotfiles/bin/r" # To override shell builtin.
 alias grep="rg"
-[ -x "$(which bat)" ] && alias less="bat --plain"
+command -v bat >/dev/null 2>&1 && alias less="bat --plain"
 [ -z "$DEBUG" ] || echo "Done setting up aliases..."
