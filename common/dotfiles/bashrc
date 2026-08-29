@@ -24,7 +24,7 @@ if [ ! -e "$sh_combined" ]; then
       cat "$rcfile" >> $sh_combined
     done
   )
-  command -v rbenv >/dev/null 2>&1 && rbenv init - "$0" >> $sh_combined
+  # rbenv is set up by shellrc/00-env, which is already cat'd above.
   [ -f ~/.fzf.bash ] && cat ~/.fzf.bash >> $sh_combined
   command -v brew >/dev/null 2>&1 && [ -f "$(brew --prefix fzf)/shell/completion.bash" ] && cat "$(brew --prefix fzf)/shell/completion.bash" >> $sh_combined
   command -v brew >/dev/null 2>&1 && [ -f "$(brew --prefix fzf)/shell/key-bindings.bash" ] && cat "$(brew --prefix fzf)/shell/key-bindings.bash" >> $sh_combined

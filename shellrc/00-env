@@ -18,6 +18,18 @@ if command -v go >/dev/null 2>&1; then
 fi
 
 command -v bat >/dev/null 2>&1 && export PAGER="bat --plain"
-command -v rbenv >/dev/null 2>&1 && eval "$(rbenv init - "$0")"
+
+# Only init rbenv once per shell. RBENV_SHELL is exported, so it leaks into
+# child shells and through the tmux exec in 01-tmux; the rbenv() function does
+# not. Guard on the function so every new shell inits, but a re-sourced 00-env
+# (bashrc cats it twice) does not. --no-rehash drops a ~50ms rehash per shell;
+# run `rbenv rehash` by hand after installing gem binstubs.
+if command -v rbenv >/dev/null 2>&1; then
+  if [ -n "${ZSH_VERSION-}" ]; then
+    [[ -n ${functions[rbenv]} ]] || eval "$(rbenv init - --no-rehash zsh)"
+  else
+    declare -F rbenv >/dev/null || eval "$(rbenv init - --no-rehash bash)"
+  fi
+fi
 
 [ -z "$DEBUG" ] || echo "Done setting up ENV..."
