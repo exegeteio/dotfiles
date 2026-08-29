@@ -28,6 +28,8 @@
   spullmain = !"git stash -um \"spull: $(g.branch) $(date +%F-%T)\" && git checkout main && git pull && git checkout - && git stash pop"
   ss = "status -s ':!/Gemfile.lock' ':!/config/database.yml' ':!/config/environments/test.rb'"
   tmerge = "merge -X theirs"
+  match-upstream = !"git branch --set-upstream-to=origin/$(g.branch) $(g.branch)"
+  first-push = !"git push --set-upstream origin $(g.branch)"
 [core]
   excludesFile = ~/.gitignore
   hooksPath = ~/.git/hooks
