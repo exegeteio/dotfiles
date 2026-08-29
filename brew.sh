@@ -12,10 +12,5 @@ if [ ! -x "$(which brew)" ]; then
   eval "$(${prefix}/bin/brew shellenv)"
 fi
 
-local="$HOME/.config/dotfiles"
-brewfilecmd="curl -fsSL https://raw.githubusercontent.com/exegeteio/dotfiles/main"
-if [ -d "$local" ]; then
-  brewfilecmd="cat $local"
-fi
-
-${brewfilecmd}/macos/Brewfile | brew bundle install -q --file=-
+dotfiles="${DOTFILES_PATH:-${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles}"
+brew bundle install -q --file="$dotfiles/macos/Brewfile"
