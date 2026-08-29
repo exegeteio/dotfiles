@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# If running interactively, do not do anything.
+# If running non-interactively AND non-login, do not do anything.
 [[ -z "$DEBUG" ]] || echo "Checking interactive"
-[[ ! -o interactive ]] && return
+[[ ! -o interactive && ! -o login ]] && return
 
 # Brew setup first!
 export PATH="$HOME/.brew/bin:/opt/homebrew/bin:$PATH"
