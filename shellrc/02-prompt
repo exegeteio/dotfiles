@@ -2,8 +2,12 @@
 
 [ -z "$DEBUG" ] || echo "Setting up PROMPT..."
 # Testing out starship.
-if [ -x "$(which starship)" ]; then
-  eval "$(starship init zsh)"
+if command -v starship >/dev/null 2>&1; then
+  if [ -n "${ZSH_VERSION-}" ]; then
+    eval "$(starship init zsh)"
+  else
+    eval "$(starship init bash)"
+  fi
 else
   export GIT_PS1_SHOWCOLORHINTS=true
   if [[ -n ${ZSH_VERSION-} ]]; then

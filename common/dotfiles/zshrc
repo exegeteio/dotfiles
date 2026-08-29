@@ -13,7 +13,7 @@ for rcfile in $(find "$shellrc/" -type f -o -type l | sort -n); do
 done
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -x "$(which brew)" ] && [ -f "$(brew --prefix fzf)/shell/completion.zsh" ] && source "$(brew --prefix fzf)/shell/completion.zsh"
+command -v brew >/dev/null 2>&1 && [ -f "$(brew --prefix fzf)/shell/completion.zsh" ] && source "$(brew --prefix fzf)/shell/completion.zsh"
 
 # Comes late for tab-completing CDPATH.
 autoload -Uz compinit promptinit
