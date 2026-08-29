@@ -15,3 +15,8 @@ for config in $configs; do
   rm -Rf "$outfile"
   ln -s "${dotfiles}/common/xdg_config/${config}" "$outfile"
 done
+
+# Claude skills (synced via git, other ~/.claude files remain local)
+mkdir -p "$HOME/.claude"
+rm -Rf "$HOME/.claude/skills"
+ln -s "${dotfiles}/skills" "$HOME/.claude/skills"
