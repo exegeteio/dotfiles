@@ -1,34 +1,40 @@
 # Just my dotfiles
 
-## Warning!
+## Warning
 
-This is my personal repo.  You're welcome to use it as an example or jumping off point, but please
-do not rely on this being a stable repository for your own personal workflow.
+This is my personal repository. You can use it as an example. Do not rely on this repository as a
+stable base for your own workflow. This repository can change without notice.
 
 # Install
 
-`install.sh` is the install file. It symlinks `common/dotfiles/` to `~/.` and `common/xdg_config/`
-to `~/.config/` (via `dotfiles.sh`), then runs the OS-specific `macos/install.sh` or
-`linux/install.sh`.
+`install.sh` is the install script. The script links `common/dotfiles/` to `~/.`. The script links
+`common/xdg_config/` to `~/.config/`. The `dotfiles.sh` script does this linking. After that,
+`install.sh` runs the correct script for your OS: `macos/install.sh` or `linux/install.sh`.
 
 # Layout
 
-- `common/` — files applied on every OS: dotfile symlink targets (`common/dotfiles/`,
-  `common/xdg_config/`) and the base Homebrew bundle (`common/Brewfile`).
-- `macos/` — `install.sh` (macOS defaults, Homebrew, Mac App Store installs), `Brewfile`
-  (macOS-only casks/brews), `app_store_ids.txt`, and `configs/` (iTerm, Rectangle, JetBrains,
-  Terminal.app configs — not symlinked automatically, kept for manual reference).
-- `linux/` — `install.sh` targets [Omarchy](https://omarchy.org) (Arch Linux + Hyprland) only,
-  and exits if the `omarchy` command is not present. It symlinks the Hyprland and Omarchy shell
-  overrides in `linux/omarchy/` into `~/.config/`, installs 1Password and Tailscale via
-  `omarchy install service` (skipped if already installed), removes every Chromium extension
-  except 1Password (see `linux/omarchy/bash/chromium-prune-extensions.sh` — this closes Chromium
-  and cannot be undone), adds and removes some web apps, and drops some preinstalled packages.
-  `Brewfile` is Linux-only brews. `apt-packages` is used only by the unrelated `Dockerfile` /
-  `linux.sh` plain Ubuntu container (a generic non-GUI sandbox, not an attempt to run Omarchy).
+- `common/` — Files in this directory apply to every OS. The directory has the dotfile link
+  targets (`common/dotfiles/`, `common/xdg_config/`) and the base Homebrew file
+  (`common/Brewfile`).
+- `macos/` — This directory has the macOS setup. `install.sh` sets macOS defaults, installs
+  Homebrew, and installs apps from the Mac App Store. `Brewfile` lists macOS-only casks and
+  brews. `app_store_ids.txt` lists Mac App Store app IDs. `configs/` holds reference configs for
+  iTerm, Rectangle, JetBrains apps, and Terminal.app. No script links these configs
+  automatically. Copy them by hand when you need them.
+- `linux/` — This directory has the Linux setup for [Omarchy](https://omarchy.org) (Arch Linux
+  and Hyprland) only. `install.sh` stops if the `omarchy` command is not on the system. The
+  script links the Hyprland and Omarchy shell changes in `linux/omarchy/` to `~/.config/`. The
+  script installs 1Password and Tailscale with the `omarchy install service` command. The script
+  skips this step if the apps are already installed. The script removes every Chromium extension
+  except 1Password — see `linux/omarchy/bash/chromium-prune-extensions.sh` for this step.
+  Warning: this step closes Chromium, and you cannot undo it. The script adds and removes some
+  web apps. The script also removes some preinstalled packages. `Brewfile` lists Linux-only
+  brews. `apt-packages` is unrelated to Omarchy — the `Dockerfile` and `linux.sh` scripts use it
+  to build a plain Ubuntu container. This container is a generic, non-GUI sandbox. It does not
+  run Omarchy.
 
 # Homebrew
 
-`brew.sh` installs Homebrew if needed, then installs `common/Brewfile` plus the OS-specific
-`macos/Brewfile` or `linux/Brewfile`.
-
+`brew.sh` installs Homebrew if the system does not have it. Then the script installs
+`common/Brewfile`. Then the script installs the correct OS file: `macos/Brewfile` or
+`linux/Brewfile`.
