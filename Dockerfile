@@ -10,11 +10,6 @@ RUN useradd -mU -G root exegete \
 
 USER exegete
 
-ADD ./brew.sh /tmp/
-ADD ./common /tmp/brew
-WORKDIR /tmp/
-RUN /tmp/brew.sh
-
 # ADD install.sh /tmp/
 # RUN /tmp/install.sh
 RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/exegeteio/dotfiles/main/install.sh)"

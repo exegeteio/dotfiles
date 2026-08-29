@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
-
+# Install Homebrew on macOS. This script does not support Linux.
 set -e
 
-OS="$(uname)"
-if [ "$OS" == "Linux" ]; then
-  prefix="/home/linuxbrew/.linuxbrew"
-elif [ "$OS" == "Darwin" ]; then
-  prefix="/opt/homebrew"
-fi
+prefix="/opt/homebrew"
 
 if [ ! -d "$prefix" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -23,11 +18,4 @@ if [ -d "$local" ]; then
   brewfilecmd="cat $local"
 fi
 
-${brewfilecmd}/common/Brewfile | brew bundle install -q --file=-
-
-if [ "$OS" == "Darwin" ]; then
-  ${brewfilecmd}/macos/Brewfile | brew bundle install -q --file=-
-elif [ "$OS" == "Linux" ]; then
-  ${brewfilecmd}/linux/Brewfile | brew bundle install -q --file=-
-fi
-
+${brewfilecmd}/macos/Brewfile | brew bundle install -q --file=-

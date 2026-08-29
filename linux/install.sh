@@ -4,8 +4,8 @@
 set -euo pipefail
 
 if ! command -v omarchy >/dev/null 2>&1; then
-  echo "The omarchy command is not present. This script only supports Omarchy Linux." >&2
-  exit 1
+  echo "The omarchy command is not present. This script only supports Omarchy Linux. Skipping." >&2
+  exit 0
 fi
 
 dotfiles="${DOTFILES_PATH:-${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles}"
