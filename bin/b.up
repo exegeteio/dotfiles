@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-rbenv 2>&1>/dev/null
 (
   cd "$BLOG_PATH/.."
   open "http://localhost:4000"

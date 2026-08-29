@@ -11,6 +11,17 @@ stable base for your own workflow. This repository can change without notice.
 `common/xdg_config/` to `~/.config/`. The `dotfiles.sh` script does this linking. After that,
 `install.sh` runs the correct script for your OS: `macos/install.sh` or `linux/install.sh`.
 
+# Tool versions
+
+[mise](https://mise.jdx.dev) manages the language runtimes. The file
+`common/xdg_config/mise/config.toml` lists the global versions. The `dotfiles.sh` script links
+this file to `~/.config/mise/`. To install the listed versions, run `mise install`.
+
+The `shellrc/00-env` script activates mise in each interactive shell. The same script adds the
+mise shims to `PATH`. The shims serve the scripts that do not read the shell config.
+
+The `Brewfile` installs mise on macOS. Omarchy supplies mise on Linux.
+
 # Layout
 
 - `common/` — Files in this directory apply to every OS. The directory has the dotfile link

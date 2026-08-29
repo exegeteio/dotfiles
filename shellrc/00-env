@@ -3,7 +3,7 @@
 [ -z "$DEBUG" ] || echo "Setting up ENV..."
 export XDG_CONFIG_HOME="$HOME/.config"
 export DOTFILES_PATH="$XDG_CONFIG_HOME/dotfiles"
-export PATH="$HOME/bin:$DOTFILES_PATH/bin:$HOME/.cargo/bin:$HOME/.brew/bin:$HOME/go/bin:$HOME/code/go/bin:$HOME/.rbenv/shims:$HOME/.deno/bin:$PATH"
+export PATH="$HOME/bin:$DOTFILES_PATH/bin:$HOME/.cargo/bin:$HOME/.brew/bin:$HOME/go/bin:$HOME/code/go/bin:${XDG_DATA_HOME:-$HOME/.local/share}/mise/shims:$HOME/.deno/bin:$PATH"
 export CDPATH="$HOME:$HOME/code"
 
 # For tmux workspaces.
@@ -19,16 +19,19 @@ fi
 
 command -v bat >/dev/null 2>&1 && export PAGER="bat --plain"
 
-# Only init rbenv once per shell. RBENV_SHELL is exported, so it leaks into
-# child shells and through the tmux exec in 01-tmux; the rbenv() function does
-# not. Guard on the function so every new shell inits, but a re-sourced 00-env
-# (bashrc cats it twice) does not. --no-rehash drops a ~50ms rehash per shell;
-# run `rbenv rehash` by hand after installing gem binstubs.
-if command -v rbenv >/dev/null 2>&1; then
+# mise manages the language runtimes. The shims in PATH above serve the shells
+# that do not read this file. This block activates mise, which puts the real
+# tool paths ahead of the shims.
+#
+# Only activate mise once per shell. MISE_SHELL is exported, so it leaks into
+# child shells and through the tmux exec in 01-tmux; the mise() function does
+# not. Guard on the function so every new shell activates, but a re-sourced
+# 00-env (bashrc cats it twice) does not.
+if command -v mise >/dev/null 2>&1; then
   if [ -n "${ZSH_VERSION-}" ]; then
-    [[ -n ${functions[rbenv]} ]] || eval "$(rbenv init - --no-rehash zsh)"
+    [[ -n ${functions[mise]} ]] || eval "$(mise activate zsh)"
   else
-    declare -F rbenv >/dev/null || eval "$(rbenv init - --no-rehash bash)"
+    declare -F mise >/dev/null || eval "$(mise activate bash)"
   fi
 fi
 

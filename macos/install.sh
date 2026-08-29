@@ -93,5 +93,8 @@ brew bundle install -q --file="${dotfiles}/macos/Brewfile"
 # Reload to get homebrew environment variables.
 source ~/.zshrc
 
+# Install the language runtimes that ~/.config/mise/config.toml lists.
+command -v mise >/dev/null 2>&1 && mise install
+
 # Install using app id's.
 command -v mas >/dev/null 2>&1 && /usr/bin/env mas install $(grep -v "^#" "${dotfiles}/macos/app_store_ids.txt")
