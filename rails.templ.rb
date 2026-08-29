@@ -55,9 +55,16 @@ after_bundle do
   )
 
   # Add SimpleCSS to layout.
+  styles = <<~SNIPPET
+    <%= stylesheet_link_tag 'https://unpkg.com/simpledotcss/simple.min.css' %>
+    <style>
+      :root { --accent: deepskyblue; --accent-bg: #f5f7ff; --accent-hover: skyblue; --marked: hotpink; }
+      @media (prefers-color-scheme: dark) { :root { --accent-bg: #2b2b36; } }
+    </style>
+  SNIPPET
   inject_into_file(
     'app/views/layouts/application.html.erb',
-    "<%= stylesheet_link_tag 'https://unpkg.com/simpledotcss/simple.min.css' %>",
+    styles,
     before: '</head>'
   )
 
