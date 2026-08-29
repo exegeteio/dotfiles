@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -x "$(which spring)" ]; then
+if command -v spring >/dev/null 2>&1; then
   echo "Switching to spring..."
   exec spring rails "$@"
 else

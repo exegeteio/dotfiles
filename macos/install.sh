@@ -71,7 +71,7 @@ prefix="/opt/homebrew"
 if [ ! -d "$prefix" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-if [ ! -x "$(which brew)" ]; then
+if ! command -v brew >/dev/null 2>&1; then
   eval "$(${prefix}/bin/brew shellenv)"
 fi
 brew bundle install -q --file="${dotfiles}/macos/Brewfile"
@@ -79,4 +79,4 @@ brew bundle install -q --file="${dotfiles}/macos/Brewfile"
 source ~/.zshrc
 
 # Install using app id's.
-[[ -x "$(which mas)" ]] && /usr/bin/env mas install $(grep -v "^#" "${dotfiles}/macos/app_store_ids.txt")
+command -v mas >/dev/null 2>&1 && /usr/bin/env mas install $(grep -v "^#" "${dotfiles}/macos/app_store_ids.txt")

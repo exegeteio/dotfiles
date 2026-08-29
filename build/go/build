@@ -2,7 +2,7 @@
 
 export CGO_ENABLED=0
 
-[ -x "$(which go)" ] || exit 1
+command -v go >/dev/null 2>&1 || exit 1
 
 _install () {
   echo "  Installing $1..."

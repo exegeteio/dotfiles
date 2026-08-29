@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
 # Before `set -e` so this can continue even if xcode already setup.
-[ -x "$(which xcode-select)" ] && xcode-select --install
+command -v xcode-select >/dev/null 2>&1 && xcode-select --install
 
 set -e
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-if [[ -x "$(which fzf-tmux)" ]]; then
+if command -v fzf-tmux >/dev/null 2>&1; then
   exec fzf-tmux -p -0 -1 -m --bind ctrl-a:select-all -q "$*"
-elif [[ -x "$(which fzf)" ]]; then
+elif command -v fzf >/dev/null 2>&1; then
   exec fzf -0 -1 -m --bind ctrl-a:select-all -q "$*"
 else
   in=$(</dev/stdin)

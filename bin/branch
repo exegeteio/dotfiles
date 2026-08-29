@@ -26,7 +26,7 @@ elif [ ! -z "$(git branch -a | grep -w "${branch}")" ]; then
 fi
 git worktree add --no-guess-remote --no-track -B "${branch}" "${target_dir}" "${base_branch}"
 
-if [ -x "$(which branch.post)" ]; then
+if command -v branch.post >/dev/null 2>&1; then
   cd "${target_dir}"
   branch.post
 fi
