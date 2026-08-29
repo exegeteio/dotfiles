@@ -18,7 +18,7 @@ link_file() {
     mv "$dest" "$dest.bak.$(date +%s)"
     echo "Backed up existing $dest"
   fi
-  ln -sf "$src" "$dest"
+  ln -sfn "$src" "$dest"
 }
 
 echo "Linking Hyprland customizations..."
