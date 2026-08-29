@@ -31,8 +31,3 @@ stable base for your own workflow. This repository can change without notice.
   Homebrew — Omarchy uses its own package manager. `apt-packages` is unrelated to Omarchy — the
   `Dockerfile` and `linux.sh` scripts use it to build a plain Ubuntu container. This container is
   a generic, non-GUI sandbox. It does not run Omarchy, and it does not use Homebrew either.
-
-# Homebrew
-
-Homebrew setup applies to macOS only. `brew.sh` installs Homebrew if the Mac does not have it.
-Then the script installs every brew and cask in `macos/Brewfile`.

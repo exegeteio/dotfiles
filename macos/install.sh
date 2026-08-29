@@ -67,7 +67,14 @@ defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
 # Install Homebrew
 dotfiles="${DOTFILES_PATH:-${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles}"
-[[ -x "${dotfiles}/brew.sh" ]] && bash "${dotfiles}/brew.sh"
+prefix="/opt/homebrew"
+if [ ! -d "$prefix" ]; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+if [ ! -x "$(which brew)" ]; then
+  eval "$(${prefix}/bin/brew shellenv)"
+fi
+brew bundle install -q --file="${dotfiles}/macos/Brewfile"
 # Reload to get homebrew environment variables.
 source ~/.zshrc
 
