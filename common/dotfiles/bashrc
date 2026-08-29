@@ -25,9 +25,9 @@ if [ ! -e "$sh_combined" ]; then
     done
   )
   # mise is activated by shellrc/00-env, which is already cat'd above.
-  [ -f ~/.fzf.bash ] && cat ~/.fzf.bash >> $sh_combined
-  command -v brew >/dev/null 2>&1 && [ -f "$(brew --prefix fzf)/shell/completion.bash" ] && cat "$(brew --prefix fzf)/shell/completion.bash" >> $sh_combined
-  command -v brew >/dev/null 2>&1 && [ -f "$(brew --prefix fzf)/shell/key-bindings.bash" ] && cat "$(brew --prefix fzf)/shell/key-bindings.bash" >> $sh_combined
+  # `fzf --bash` prints the key bindings and the completion. It replaces the
+  # old lookup under `brew --prefix fzf`, because mise installs fzf now.
+  command -v fzf >/dev/null 2>&1 && fzf --bash >> $sh_combined
   [ -f "$HOME/.cargo/env" ] && cat "$HOME/.cargo/env" >> $sh_combined
   [ -f "$HOME/.git-prompt.sh" ] && cat "$HOME/.git-prompt.sh" >> $sh_combined
 

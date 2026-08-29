@@ -13,14 +13,20 @@ stable base for your own workflow. This repository can change without notice.
 
 # Tool versions
 
-[mise](https://mise.jdx.dev) manages the language runtimes. The file
+[mise](https://mise.jdx.dev) manages the language runtimes and most of the CLI tools. The file
 `common/xdg_config/mise/config.toml` lists the global versions. The `dotfiles.sh` script links
 this file to `~/.config/mise/`. To install the listed versions, run `mise install`.
+
+The runtimes track a range. Node follows the LTS line, and Ruby follows the 4.x line. The CLI
+tools track the latest release. Run `mise outdated` to see what is behind. Run `mise upgrade` to
+move up inside the range.
 
 The `shellrc/00-env` script activates mise in each interactive shell. The same script adds the
 mise shims to `PATH`. The shims serve the scripts that do not read the shell config.
 
-The `Brewfile` installs mise on macOS. Omarchy supplies mise on Linux.
+The `Brewfile` installs mise on macOS. Omarchy supplies mise on Linux. The `Brewfile` keeps the
+tools that mise cannot supply, and the tools that sit too close to the system to move: `git`,
+`bash`, and `tmux`.
 
 # Layout
 

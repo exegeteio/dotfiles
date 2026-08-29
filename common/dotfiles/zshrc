@@ -12,8 +12,9 @@ for rcfile in $(find "$shellrc/" -type f -o -type l | sort -n); do
   source "$rcfile"
 done
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-command -v brew >/dev/null 2>&1 && [ -f "$(brew --prefix fzf)/shell/completion.zsh" ] && source "$(brew --prefix fzf)/shell/completion.zsh"
+# `fzf --zsh` prints the key bindings and the completion. It replaces the old
+# lookup under `brew --prefix fzf`, because mise installs fzf now.
+command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
 
 # Comes late for tab-completing CDPATH.
 autoload -Uz compinit promptinit

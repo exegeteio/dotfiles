@@ -1,20 +1,15 @@
 # frozen_string_literal: true
 
+# mise installs bat, claude-code, fzf, gh, neovim, ripgrep, and shellcheck.
+# See common/xdg_config/mise/config.toml.
 brew "bash"
 brew "bash-completion"
-brew "bat"
-brew "claude-code"
-brew "fzf"
-brew "gh"
 brew "git"
 brew "gnu-sed"
 brew "httpie"
 brew "mas"
 brew "mise"
 brew "moreutils"
-brew "neovim"
-brew "ripgrep"
-brew "shellcheck"
 brew "tmux"
 brew "tree"
 brew "watch"

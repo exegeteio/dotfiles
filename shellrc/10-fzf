@@ -1,18 +1,14 @@
 #!/usr/bin/env bash
 
 [ -z "$DEBUG" ] || echo "Setting up fzf options..."
-# This block read $RBENV_SHELL before mise replaced rbenv. Name the shell here
-# instead, so no version manager owns this value.
-if [ -n "${ZSH_VERSION-}" ]; then
-  fzf_shell="zsh"
-else
-  fzf_shell="bash"
-fi
-if [[ -f "$HOME/.fzf.$fzf_shell" ]]; then
+# This block looked for ~/.fzf.$RBENV_SHELL, which the fzf git install script
+# writes. That file never existed here, so $FZF stayed empty and the fzf key
+# bindings in zshrc never applied. Set $FZF from the fzf binary instead. The
+# zshrc and the bashrc load the bindings themselves, with `fzf --zsh` and
+# `fzf --bash`.
+if command -v fzf >/dev/null 2>&1; then
   export FZF="$(command -v fzf)"
-  source "$HOME/.fzf.$fzf_shell"
 fi
-unset fzf_shell
 if [[ -z "$TMUX" ]]; then
   export FZF_TMUX_OPTS=""
 else

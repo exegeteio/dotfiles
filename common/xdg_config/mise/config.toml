@@ -1,14 +1,30 @@
 # Global tool versions. mise uses these when a project does not set its own.
 # To install them, run `mise install`.
 #
-# These values are ranges, not pins. `node = "lts"` tracks the current Node LTS
-# line. `ruby = "4"` tracks the newest Ruby 4.x release. Run `mise outdated` to
-# see what is behind, and `mise upgrade` to move up inside the range.
+# The runtime values are ranges, not pins. `node = "lts"` tracks the current
+# Node LTS line. `ruby = "4"` tracks the newest Ruby 4.x release. Run
+# `mise outdated` to see what is behind, and `mise upgrade` to move up inside
+# the range.
 #
 # `mise upgrade --bump` leaves the range and rewrites this file. The command
 # keeps the precision that is already here, so it writes "5", not "5.1.2".
 # This file is a link into the dotfiles repo, so that write shows in `git diff`.
+#
+# The CLI tools track "latest". They are single static binaries, and no project
+# depends on one exact version.
+#
+# Some tools stay with Homebrew on macOS. `git`, `bash`, and `tmux` are too
+# close to the system to move. `mise` must install itself first. The registry
+# has no entry for `bash-completion`, `gnu-sed`, `httpie`, `moreutils`,
+# `tree`, `watch`, or `wget`.
 
 [tools]
+bat = "latest"
+claude-code = "latest"
+fzf = "latest"
+gh = "latest"
+neovim = "latest"
 node = "lts"
+ripgrep = "latest"
 ruby = "4"
+shellcheck = "latest"
