@@ -91,4 +91,7 @@ link_file "$dotfiles/linux/omarchy/shell/shell.json" ~/.config/omarchy/shell.jso
 link_file "$dotfiles/linux/omarchy/shell/plugins/exegete.workspaces" ~/.config/omarchy/plugins/exegete.workspaces
 omarchy restart shell >/dev/null 2>&1 || true
 
+echo "Setting OS-wide text size (shell, GTK apps, terminals)..."
+omarchy display text size 20
+
 echo "Done."
