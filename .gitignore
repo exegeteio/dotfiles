@@ -11,3 +11,8 @@ common/dotfiles/vim/.netrwhist
 # Neovim lock file go away.
 linux/omarchy/nvim/lazy-lock.json
 macos/xdg_config/nvim/lazy-lock.json
+
+# LazyVim state file. LazyVim rewrites it at each start, and it keeps a news
+# marker. The extras now live in the lua config instead.
+linux/omarchy/nvim/lazyvim.json
+macos/xdg_config/nvim/lazyvim.json
