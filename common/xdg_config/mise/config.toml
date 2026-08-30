@@ -28,3 +28,6 @@ node = "lts"
 ripgrep = "latest"
 ruby = "4"
 shellcheck = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["ruby"]
