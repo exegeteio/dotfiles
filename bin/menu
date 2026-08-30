@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
-if command -v fzf-tmux >/dev/null 2>&1; then
-  exec fzf-tmux -p -0 -1 -m --bind ctrl-a:select-all -q "$*"
-elif command -v fzf >/dev/null 2>&1; then
-  exec fzf -0 -1 -m --bind ctrl-a:select-all -q "$*"
+# mise installs only the `fzf` binary, without the `fzf-tmux` script. The
+# built-in `--tmux` option draws the same popup. fzf ignores the option outside
+# of tmux.
+if command -v fzf >/dev/null 2>&1; then
+  exec fzf --tmux center,75% -0 -1 -m --bind ctrl-a:select-all -q "$*"
 else
   in=$(</dev/stdin)
   if [[ -z "$in" ]]; then

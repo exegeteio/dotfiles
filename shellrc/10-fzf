@@ -9,9 +9,11 @@
 if command -v fzf >/dev/null 2>&1; then
   export FZF="$(command -v fzf)"
 fi
-if [[ -z "$TMUX" ]]; then
-  export FZF_TMUX_OPTS=""
-else
-  export FZF_TMUX_OPTS="-p 75%"
-fi
+
+# Do not set FZF_TMUX_OPTS. The key bindings call the `fzf-tmux` script when
+# that variable holds a value, but mise installs only the `fzf` binary. Use the
+# built-in `--tmux` option instead. fzf ignores the option outside of tmux, so
+# this file does not test for tmux.
+export FZF_DEFAULT_OPTS="--tmux center,75%"
+unset FZF_TMUX_OPTS
 [ -z "$DEBUG" ] || echo "Done setting up fzf options..."
