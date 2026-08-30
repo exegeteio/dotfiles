@@ -45,6 +45,4 @@ tools that mise cannot supply, and the tools that sit too close to the system to
   extension except 1Password — see `linux/omarchy/bash/chromium-prune-extensions.sh` for this
   step. Warning: this step closes Chromium, and you cannot undo it. The script adds and removes
   some web apps. The script also removes some preinstalled packages. This setup does not use
-  Homebrew — Omarchy uses its own package manager. `apt-packages` is unrelated to Omarchy — the
-  `Dockerfile` and `linux.sh` scripts use it to build a plain Ubuntu container. This container is
-  a generic, non-GUI sandbox. It does not run Omarchy, and it does not use Homebrew either.
+  Homebrew — Omarchy uses its own package manager.
