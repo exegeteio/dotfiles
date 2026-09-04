@@ -29,6 +29,6 @@ format="([$ahead_behind]($style) )"
 format="[$duration]($style) "
 style="bold red"
 # min_time=2_000
-show_notifications=true
-min_time_to_notify=900_000
+# show_notifications=true
+# min_time_to_notify=900_000
 

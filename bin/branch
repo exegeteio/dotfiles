@@ -1,34 +1,124 @@
 #!/usr/bin/env bash
 
-base=$(basename $(pwd))
-branch=$1
+set -euo pipefail
+
+if [ "${1:-}" = "-h" ] || [ "${1:-}" = "--help" ]; then
+    cat <<'EOF'
+branch - create a git worktree for BRANCH in a dedicated directory.
+
+USAGE
+    branch <branch name>
+    branch -h | --help
+
+WHAT IT DOES
+    1. Computes the target directory as:
+           $HOME/code/<basename of current directory>_<branch name>
+       The basename of the CURRENT WORKING DIRECTORY is used, so this must be
+       run from inside the repository you want a worktree of. Exits 1 if the
+       current directory is not in a git repository.
+    2. Exits without changes if a worktree is already registered at that path.
+    3. Runs `git fetch --all` quietly, then picks a base commit-ish, in order:
+           origin/<branch name>   if that remote branch exists
+           <branch name>          if that local branch exists
+           origin/main            otherwise
+       A failed fetch is NOT fatal (so an offline run can still branch from
+       local refs); it prints a warning to stderr and the base may be stale.
+    4. Runs:
+           git worktree add --no-guess-remote --no-track -B <branch name> \
+               <target dir> <base>
+       Note `-B`: if a local branch of that name already exists, it is RESET to
+       the chosen base. Because step 3 prefers the branch's own remote/local
+       ref, the usual outcome is a no-op reset, but a local branch that is ahead
+       of its remote WILL lose those commits. Do not use this to reattach to a
+       local-only branch with unpushed work unless that reset is intended.
+       The new branch has no upstream tracking configured. If this fails, the
+       script exits 1 and no hook runs.
+    5. Prints `Created worktree: <target dir>`.
+    6. If `branch.post` is on PATH and executable, cds into the new worktree and
+       runs it. That hook is machine-local (not part of this repo) and may do
+       arbitrary project setup, so treat its output as expected noise. A
+       non-zero hook exits 1: the worktree exists but setup is incomplete.
+    7. Prints `git branch -vv --list <branch name>` from the new worktree.
+
+ARGUMENTS
+    <branch name>   Required. Branch to create or check out. A name containing
+                    "/" nests the target directory (feature/x under repo "app"
+                    yields $HOME/code/app_feature/x), which is legal but rarely
+                    what you want; prefer flat names.
+
+EXIT STATUS
+    0   Worktree created and any `branch.post` hook succeeded (or help printed).
+    1   Any of: no branch name given; not inside a git repository; a worktree
+        already exists at the target path; `git worktree add` failed;
+        `branch.post` failed.
+
+    The script runs under `set -euo pipefail` and aborts on the first
+    unhandled error, so exit 0 means the whole sequence completed. The failure
+    message naming the step goes to stderr. Note that exit 1 does NOT mean
+    nothing changed: a hook failure leaves the worktree in place.
+
+CALLER NOTES
+    This is a separate process: it does NOT change your shell's directory. The
+    "Now on branch:" output describes the new worktree, not your shell. To work
+    in it, cd to $HOME/code/<basename>_<branch name> yourself.
+
+    Removing a worktree is a different tool: `branch.d <path>`.
+
+EXAMPLES
+    # From ~/repos/juno, create a worktree at ~/code/juno_ABC-123-fix-login
+    branch ABC-123-fix-login
+
+    # Existing remote branch: worktree is based on origin/<branch name>
+    branch release-2026-08
+EOF
+    exit 0
+fi
+
+base=$(basename "$(pwd)")
+branch=${1:-}
 target_dir="$HOME/code/${base}_${branch}"
 
 if [ -z "${branch}" ]; then
     echo 'Usage: branch <branch name>'
+    echo "Run 'branch --help' for details."
     echo "No branch name, exiting..."
     exit 1
 fi
 
-existing=$(git worktree list | grep -w "${target_dir}")
+if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    echo "Not inside a git repository, exiting..." >&2
+    exit 1
+fi
+
+existing=$(git worktree list | grep -w "${target_dir}" || true)
 
 if [ ! -z "$existing" ]; then
     echo "Worktree '${target_dir}' exists, doing nothing."
     exit 1
 fi
 
-git fetch --all -q 2>&1 > /dev/null
+if ! git fetch --all -q > /dev/null 2>&1; then
+    echo "Warning: 'git fetch --all' failed; base branch may be stale." >&2
+fi
+
 base_branch="origin/main"
 if [ ! -z "$(git branch -a | grep -w "origin/${branch}")" ]; then
   base_branch="origin/${branch}"
 elif [ ! -z "$(git branch -a | grep -w "${branch}")" ]; then
   base_branch="${branch}"
 fi
-git worktree add --no-guess-remote --no-track -B "${branch}" "${target_dir}" "${base_branch}"
+if ! git worktree add --no-guess-remote --no-track -B "${branch}" "${target_dir}" "${base_branch}"; then
+    echo "Failed to create worktree '${target_dir}', exiting..." >&2
+    exit 1
+fi
 
 if command -v branch.post >/dev/null 2>&1; then
+echo "Created worktree: ${target_dir}"
   cd "${target_dir}"
-  branch.post
+  if ! branch.post; then
+      echo "branch.post failed in '${target_dir}', exiting..." >&2
+      exit 1
+  fi
 fi
 
 echo && echo "Now on branch:"

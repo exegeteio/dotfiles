@@ -13,6 +13,13 @@
 # The CLI tools track "latest". They are single static binaries, and no project
 # depends on one exact version.
 #
+# `fzf-tmux` is the exception. It is not its own tool: it is a bash wrapper that
+# lives in the fzf source tree, and the fzf release asset the registry points at
+# holds only the `fzf` binary, so `fzf = "latest"` does not bring it along. The
+# `http` backend fetches the script from its tag instead. That backend has no
+# version list, so this one entry has to name a version, and it has to be bumped
+# by hand whenever `fzf` moves. Keep it equal to `fzf --version`.
+#
 # Some tools stay with Homebrew on macOS. `git`, `bash`, and `tmux` are too
 # close to the system to move. `mise` must install itself first. The registry
 # has no entry for `bash-completion`, `gnu-sed`, `httpie`, `moreutils`,
