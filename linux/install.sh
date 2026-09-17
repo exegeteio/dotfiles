@@ -59,6 +59,12 @@ fi
 echo "Adding the Proton Mail web app..."
 omarchy webapp install "Proton Mail" "https://mail.proton.me" "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/proton-mail.png"
 
+echo "Adding the Calendar web app..."
+omarchy webapp install "Calendar" "https://www.icloud.com/calendar/" "calendar"
+
+echo "Adding the Notes web app..."
+omarchy webapp install "Notes" "https://www.icloud.com/notes" ""
+
 echo "Removing unwanted preinstalled web apps..."
 UNWANTED_WEBAPPS=(
   "Basecamp"

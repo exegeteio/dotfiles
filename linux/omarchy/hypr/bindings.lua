@@ -57,6 +57,11 @@ end
 o.bind("CTRL + SHIFT + 3", "Notes", { webapp = "https://www.icloud.com/notes/", focus = true })
 o.window("chrome-www.icloud.com__notes_-Default", { workspace = "3" })
 
+-- Always open the Hey web app on workspace 7, and bind CTRL + SHIFT + 7 to
+-- launch it (or focus it, if it's already open there).
+o.window("chrome-app.hey.com__-Default", { workspace = "7" })
+o.bind("CTRL + SHIFT + 7", "Hey", { webapp = "https://app.hey.com", focus = true })
+
 -- Bind CTRL + SHIFT + 8 to open (or focus) the Apple Calendar web app.
 -- Before this change, this key combination had no global binding. Pin the
 -- window to workspace 8 so it always opens there.
