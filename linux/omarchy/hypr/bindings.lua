@@ -51,6 +51,18 @@ for workspace = 1, 10 do
   o.bind("CTRL + " .. key, "Switch to workspace " .. workspace, hl.dsp.focus({ workspace = tostring(workspace) }))
 end
 
+-- Bind CTRL + SHIFT + 3 to open (or focus) the Notes web app. Before this
+-- change, this key combination had no global binding. Pin the window to
+-- workspace 3 so it always opens there.
+o.bind("CTRL + SHIFT + 3", "Notes", { webapp = "https://www.icloud.com/notes/", focus = true })
+o.window("chrome-www.icloud.com__notes_-Default", { workspace = "3" })
+
+-- Bind CTRL + SHIFT + 8 to open (or focus) the Apple Calendar web app.
+-- Before this change, this key combination had no global binding. Pin the
+-- window to workspace 8 so it always opens there.
+o.bind("CTRL + SHIFT + 8", "Calendar", { webapp = "https://www.icloud.com/calendar/", focus = true })
+o.window("chrome-www.icloud.com__calendar_-Default", { workspace = "8" })
+
 -- Examples for the Logitech MX Keys keyboard:
 -- o.bind("SUPER + SHIFT + S", nil, "omarchy-capture-screenshot")
 -- o.bind("SUPER + H", nil, "voxtype record toggle")
