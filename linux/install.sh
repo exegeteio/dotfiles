@@ -25,6 +25,7 @@ echo "Linking Hyprland customizations..."
 link_file "$dotfiles/linux/omarchy/hypr/input.lua" ~/.config/hypr/input.lua
 link_file "$dotfiles/linux/omarchy/hypr/looknfeel.lua" ~/.config/hypr/looknfeel.lua
 link_file "$dotfiles/linux/omarchy/hypr/bindings.lua" ~/.config/hypr/bindings.lua
+link_file "$dotfiles/linux/omarchy/hypr/monitors.lua" ~/.config/hypr/monitors.lua
 
 echo "Linking nvim config..."
 link_file "$dotfiles/linux/omarchy/nvim" ~/.config/nvim
@@ -96,6 +97,9 @@ echo "Linking the Omarchy shell customizations (9-workspace indicator)..."
 link_file "$dotfiles/linux/omarchy/shell/shell.json" ~/.config/omarchy/shell.json
 link_file "$dotfiles/linux/omarchy/shell/plugins/exegete.workspaces" ~/.config/omarchy/plugins/exegete.workspaces
 omarchy restart shell >/dev/null 2>&1 || true
+
+echo "Linking the Aperture Science logo as the screensaver art..."
+link_file "$dotfiles/linux/omarchy/branding/screensaver.txt" ~/.config/omarchy/branding/screensaver.txt
 
 echo "Setting OS-wide text size (shell, GTK apps, terminals)..."
 omarchy display text size 20

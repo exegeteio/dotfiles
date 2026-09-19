@@ -39,7 +39,8 @@ tools that mise cannot supply, and the tools that sit too close to the system to
   automatically. Copy them by hand when you need them.
 - `linux/` — This directory has the Linux setup for [Omarchy](https://omarchy.org) (Arch Linux
   and Hyprland) only. `install.sh` skips its work if the `omarchy` command is not on the system.
-  The script links the Hyprland and Omarchy shell changes in `linux/omarchy/` to `~/.config/`.
+  The script links the Hyprland changes, the Omarchy shell changes, and the screensaver art (the
+  Aperture Science logo) in `linux/omarchy/` to `~/.config/`.
   The script installs 1Password and Tailscale with the `omarchy install service` command. The
   script skips this step if the apps are already installed. The script removes every Chromium
   extension except 1Password — see `linux/omarchy/bash/chromium-prune-extensions.sh` for this
