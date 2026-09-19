@@ -100,4 +100,11 @@ omarchy restart shell >/dev/null 2>&1 || true
 echo "Setting OS-wide text size (shell, GTK apps, terminals)..."
 omarchy display text size 20
 
+echo "Setting the default coding agent to Claude Code..."
+# Not `omarchy default agent claude`: that command execs into an interactive
+# agent session once the agent is installed, which this script must not do.
+# Writing the state file directly gets the same persisted result.
+mkdir -p ~/.config/omarchy/defaults
+printf 'claude\n' >~/.config/omarchy/defaults/agent
+
 echo "Done."
