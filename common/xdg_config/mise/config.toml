@@ -29,6 +29,7 @@
 bat = "latest"
 claude-code = "latest"
 fzf = "latest"
+"http:fzf-tmux" = { version = "0.74.3", url = "https://raw.githubusercontent.com/junegunn/fzf/v{{ version }}/bin/fzf-tmux" }
 gh = "latest"
 neovim = "latest"
 node = "lts"
