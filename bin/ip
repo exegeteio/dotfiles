@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-
-ip=$(http -F exegete.io/whoami | jq -r ".ip")
-echo "${ip} => $(host $ip)"
-unset ip

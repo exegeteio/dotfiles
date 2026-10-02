@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 
 echo "=== default"
-host ads.google.com | grep -i 'has address'
-host www.google.com | grep -i 'has address'
+dig +short A ads.google.com | head -1
+dig +short A www.google.com | head -1
 
 for pihole in $PIHOLES
 do
   echo "=== $pihole"
-  host ads.google.com "$pihole" | grep -i 'has address'
-  host www.google.com "$pihole" | grep -i 'has address'
+  dig +short A ads.google.com "@$pihole" | head -1
+  dig +short A www.google.com "@$pihole" | head -1
 done
-
