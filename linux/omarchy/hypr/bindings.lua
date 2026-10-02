@@ -40,6 +40,18 @@ o.bind("SUPER + CTRL + RETURN", "Terminal", { omarchy = "terminal" })
 hl.unbind("SUPER + CTRL + A")
 o.bind("SUPER + CTRL + A", "Claude Code", "omarchy-agent")
 
+-- Bind SUPER + SHIFT + V to the clipboard manager (paste from history).
+-- Before this change, this key combination had no global binding.
+-- SUPER + CTRL + V also opens the clipboard manager.
+o.bind("SUPER + SHIFT + V", "Clipboard manager", "omarchy-shell shell toggle omarchy.clipboard")
+
+-- Bind CTRL + SHIFT + V to the clipboard manager too. Before this change,
+-- this key combination had no global binding.
+-- Warning: Hyprland reads this key combination before any app can read it.
+-- This blocks the Ctrl+Shift+V shortcut in every app. Two examples are
+-- terminal paste and browser paste-as-plain-text.
+o.bind("CTRL + SHIFT + V", "Clipboard manager", "omarchy-shell shell toggle omarchy.clipboard")
+
 -- Use CTRL + number to switch workspaces. Before this change, the key
 -- combination was SUPER + number.
 -- Warning: Hyprland reads this key combination before any app can read it.

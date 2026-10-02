@@ -81,6 +81,10 @@ for webapp in "${UNWANTED_WEBAPPS[@]}"; do
   omarchy webapp remove "$webapp"
 done
 
+echo "Installing extra packages..."
+# bind provides dig, used by bin/pihole.test.
+omarchy pkg add bind
+
 echo "Removing unwanted preinstalled packages..."
 omarchy pkg drop \
   cliamp \
