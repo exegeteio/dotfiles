@@ -3,12 +3,10 @@
 -- (macos/xdg_config/nvim). Each of those dofile()s this file after loading
 -- its own base config, so this stays platform-independent.
 --
--- A few of these intentionally override LazyVim defaults (for example:
--- n/N center the screen here, instead of LazyVim's search-direction-aware
--- version). Where a personal keymap could collide with a useful LazyVim
--- default (<leader>gg for Lazygit, <leader>gb for Git Blame Line, <leader>l
--- for the Lazy UI, <leader>fc for Find Config File), the personal keymap
--- was moved to a free key instead.
+-- These intentionally override LazyVim defaults: n/N center the screen,
+-- and the original personal <leader>gg, <leader>gb, <leader>l, <leader>ff and
+-- <leader>fc mappings take precedence over Lazygit, Git Blame Line, the Lazy
+-- UI, Find Files and Find Config File.
 
 local map = vim.keymap.set
 
@@ -35,6 +33,11 @@ map("n", "<leader>o", function()
   Snacks.picker.files()
 end, { desc = "Find Files" })
 
+-- Grep for the word under the cursor.
+map("n", "<leader>gg", function()
+  Snacks.picker.grep_word()
+end, { desc = "Grep Word" })
+
 -- Find files that are treesitter symbols.
 map("n", "<leader>gt", function()
   Snacks.picker.treesitter()
@@ -46,13 +49,12 @@ map("n", "<leader>gm", function()
 end, { desc = "Goto Modified" })
 
 -- Find files changed on this branch (see bin/g.bmod in this dotfiles repo).
--- Capital M, since <leader>gm is taken above and <leader>gb is LazyVim's Git Blame Line.
-map("n", "<leader>gM", function()
+map("n", "<leader>gb", function()
   Snacks.picker.pick({ finder = "proc", cmd = "g.bmod", format = "file", title = "Branch Modified Files" })
 end, { desc = "Goto Branch Modified" })
 
 -- Yank the filename to the system clipboard.
-map("n", "<leader>fy", '<cmd>:silent execute ":!echo -n % | pbcopy"<cr>', { desc = "Yank Filename" })
+map("n", "<leader>fc", '<cmd>:silent execute ":!echo -n % | pbcopy"<cr>', { desc = "Yank Filename" })
 -- Yank the filename with the current line number.
 map("n", "<leader>fl", '<cmd>:silent execute ":!echo %:".line(\'.\')." | pbcopy"<cr>', { desc = "Yank Filename:Line" })
 
@@ -67,5 +69,10 @@ map("n", "<leader>c", '"+y', { desc = "Yank to Clipboard" })
 map("n", "<leader>p", '"+p', { desc = "Paste from Clipboard" })
 map("v", "<leader>c", '"+y', { desc = "Yank to Clipboard" })
 
--- Toggle invisible characters. <leader>l is LazyVim's Lazy plugin manager.
-map("n", "<leader>uv", ":set list!<cr>", { desc = "Toggle Invisible Characters" })
+-- Format the current buffer, or the visual selection.
+map({ "n", "v" }, "<leader>ff", function()
+  vim.lsp.buf.format({ async = true })
+end, { desc = "Format" })
+
+-- Toggle invisible characters.
+map("n", "<leader>l", ":set list!<cr>", { desc = "Toggle Invisible Characters" })
