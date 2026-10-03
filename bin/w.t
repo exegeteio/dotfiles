@@ -2,7 +2,7 @@
 
 repo_dir="$(git worktree list | head -n 1 | first )"
 repo_name="$(basename $repo_dir)"
-cache_file="/tmp/$repo_name.trees.cache"
+cache_file="$HOME/tmp/$repo_name.trees.cache"
 touch "$cache_file"
 
 # Replace the main repo every time.
