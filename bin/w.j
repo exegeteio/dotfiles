@@ -5,4 +5,4 @@ file="~/logseq/journals/$(date +%Y_%m_%d).md"
 #   tmux new-window -d -n logseq "(cd ~/logseq && nvim $file)"
 # fi
 
-tmux display-popup -E -w 90% -h 80% -E "z"
+tmux display-popup -E -w 80% -h 80% -E "z"
