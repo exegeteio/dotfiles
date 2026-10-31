@@ -1,20 +1,14 @@
 #!/usr/bin/env bash
+# Start tmux in each new interactive shell when all of these conditions are true:
+# - The tmux command exists.
+# - The shell is not in tmux, VS Code, or a JetBrains environment checker.
+# - The file ~/.auto_tmux exists.
+# - SKIP_TMUX is not set.
 
-# If:
-# - Tmux exists.
-# - Not already in tmux.
-# - ~/.auto_tmux exists.
-# - Not in VS Code.
-# - Not in VS Code again.
-# - Not in Jetbrains' environment checker.
-# - Not in Jetbrains' shell environment checker (not the same as not in Jetbrains.
-
-[ -z "$DEBUG" ] || echo "Checking tmux"
 if [[ -z "${SKIP_TMUX}${TMUX}${VSCODE_PID}" ]] && command -v tmux >/dev/null 2>&1 && [[ -f "$HOME/.auto_tmux" ]]; then
   if [[ -z "$SSH_CLIENT" ]]; then
-    [ -z "$DEBUG" ] || echo "Starting tmux in $(pwd)"
-    cur_path=$(realpath -q `pwd` 2>&1)
-    code_path=$(realpath -q $HOME/code/ 2>&1)
+    cur_path=$(realpath -q "$(pwd)" 2>&1)
+    code_path=$(realpath -q "$HOME/code/" 2>&1)
     if [[ "$cur_path" == $code_path* ]]; then
       exec tmux.re "$cur_path"
     else
@@ -24,4 +18,3 @@ if [[ -z "${SKIP_TMUX}${TMUX}${VSCODE_PID}" ]] && command -v tmux >/dev/null 2>&
     exec tmux.re "$(whoami 2>&1)"
   fi
 fi
-[ -z "$DEBUG" ] || echo "Done checking tmux"

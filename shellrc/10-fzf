@@ -1,19 +1,9 @@
 #!/usr/bin/env bash
-
-[ -z "$DEBUG" ] || echo "Setting up fzf options..."
-# This block looked for ~/.fzf.$RBENV_SHELL, which the fzf git install script
-# writes. That file never existed here, so $FZF stayed empty and the fzf key
-# bindings in zshrc never applied. Set $FZF from the fzf binary instead. The
-# zshrc and the bashrc load the bindings themselves, with `fzf --zsh` and
-# `fzf --bash`.
-if command -v fzf >/dev/null 2>&1; then
-  export FZF="$(command -v fzf)"
-fi
+# Options for fzf. The bashrc and the zshrc load the key bindings themselves,
+# after the vi key bindings, so the fzf bindings win.
 
 # Do not set FZF_TMUX_OPTS. The key bindings call the `fzf-tmux` script when
 # that variable holds a value, but mise installs only the `fzf` binary. Use the
-# built-in `--tmux` option instead. fzf ignores the option outside of tmux, so
-# this file does not test for tmux.
+# built-in `--tmux` option instead. fzf ignores the option outside of tmux.
 export FZF_DEFAULT_OPTS="--tmux center,75%"
 unset FZF_TMUX_OPTS
-[ -z "$DEBUG" ] || echo "Done setting up fzf options..."

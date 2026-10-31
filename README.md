@@ -28,6 +28,20 @@ The `Brewfile` installs mise on macOS. Omarchy supplies mise on Linux. The `Brew
 tools that mise cannot supply, and the tools that sit too close to the system to move: `git`,
 `bash`, and `tmux`.
 
+# Shell config
+
+Bash and zsh load the same files. Each shell reads `shellrc/[0-9]*` in order, so one edit applies
+to both shells at the next new shell. No cache file exists.
+
+- `common/dotfiles/bashrc` and `common/dotfiles/zshrc` hold only the settings that one shell
+  needs: completion, history, vi mode, and the fzf key bindings.
+- `common/dotfiles/inputrc` sets the vi keys for bash. The `bindkey` lines in `zshrc` set the same
+  keys for zsh.
+- `common/dotfiles/bash_profile` makes a login bash read `bashrc`.
+- `shellrc/00-env` sets `$_sh` to `bash` or `zsh`. Other files use it to run `tool init $_sh`.
+- `~/.shellrc.local` holds the settings for one machine. It is not in this repository. Each shell
+  sources it last.
+
 # Layout
 
 - `common/` — Files in this directory apply to every OS. The directory has the dotfile link

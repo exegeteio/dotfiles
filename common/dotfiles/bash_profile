@@ -1,0 +1,2 @@
+# Login shells on macOS read this file, not ~/.bashrc.
+[[ -f "$HOME/.bashrc" ]] && source "$HOME/.bashrc"

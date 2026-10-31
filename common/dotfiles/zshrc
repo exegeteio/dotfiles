@@ -1,69 +1,40 @@
-#!/usr/bin/env bash
-# If running non-interactively AND non-login, do not do anything.
-[[ -z "$DEBUG" ]] || echo "Checking interactive"
-[[ ! -o interactive && ! -o login ]] && return
+#!/usr/bin/env zsh
+# The shared files in shellrc/ hold the settings for bash and zsh. This file
+# holds the settings that only zsh uses.
 
-# Brew setup first!
-export PATH="$HOME/.brew/bin:/opt/homebrew/bin:$PATH"
-
-shellrc="${XDG_CONFIG:-$HOME/.config}/dotfiles/shellrc"
-[[ -d "$shellrc" ]] || exit 1
-for rcfile in $(find "$shellrc/" -type f -o -type l | sort -n); do
+shellrc="${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles/shellrc"
+for rcfile in "$shellrc"/[0-9]*(N); do
   source "$rcfile"
 done
 
-# `fzf --zsh` prints the key bindings and the completion. It replaces the old
-# lookup under `brew --prefix fzf`, because mise installs fzf now.
-command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
-
-# Comes late for tab-completing CDPATH.
-autoload -Uz compinit promptinit
+# Completion. Run compinit before the fzf completion loads.
+autoload -Uz compinit
 compinit
 
-#########
-# vi mode
-#########
+# History.
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
+setopt APPEND_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE
 
+# Vi mode. The bash settings for the same keys are in ~/.inputrc.
 bindkey -v
+export KEYTIMEOUT=1 # Hundredths of a second.
 
-# switch to command mode with jj
+# Go to command mode with Control-J.
 bindkey '^j' vi-cmd-mode
-
-# `v` is already mapped to visual mode, so we need to use a different key to
-# open Vim
+# Open the command line in the editor. Vi mode uses `v` for visual mode.
 bindkey -M vicmd "^V" edit-command-line
 
-# Make Vi mode transitions faster (KEYTIMEOUT is in hundredths of a second)
-export KEYTIMEOUT=1
-
-# incremental search in insert mode
-bindkey "^F" history-incremental-search-forward
-bindkey "^R" history-incremental-search-backward
-
-# beginning search with arrow keys and j/k
-# bindkey "^[OA" up-line-or-beginning-search
-# bindkey "^[OB" down-line-or-beginning-search
-# bindkey -M vicmd "k" up-line-or-beginning-search
-# bindkey -M vicmd "j" down-line-or-beginning-search
-
-# beginning search in insert mode, redundant with the up/down arrows above
-# but a little easier to press.
+# Search the history.
 bindkey "^P" history-search-backward
 bindkey "^N" history-search-forward
-
-# incremental search in vi command mode
 bindkey -M vicmd '?' history-incremental-search-backward
 bindkey -M vicmd '/' history-incremental-search-forward
-# navigate matches in incremental search
 bindkey -M viins '^R' history-incremental-pattern-search-backward
 bindkey -M viins '^F' history-incremental-pattern-search-forward
 
+# Load the fzf bindings last, so that they replace the bindings above.
+command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
 
-[[ -z "$DEBUG" ]] || echo "Loading fzf custom key-bindings"
-if [[ -n "$FZF" ]]; then
-  bindkey "^R" fzf-history-widget
-  bindkey "^T" fzf-file-widget
-  bindkey -M vicmd '?' fzf-history-widget
-  bindkey -M viins "^R" fzf-history-widget
-  bindkey -M viins "^t" fzf-file-widget
-fi
+[[ -f "$HOME/.shellrc.local" ]] && source "$HOME/.shellrc.local"

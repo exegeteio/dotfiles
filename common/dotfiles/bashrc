@@ -1,44 +1,33 @@
 #!/usr/bin/env bash
+# The shared files in shellrc/ hold the settings for bash and zsh. This file
+# holds the settings that only bash uses.
 
-# DEBUG=1
-# export PS4='+[${SECONDS}s][${BASH_SOURCE}:${LINENO}]: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'; set -x;
+# Do nothing in a shell that is not interactive.
+[[ $- == *i* ]] || return
 
-[ -z "$DEBUG" ] || echo "Starting .bashrc"
-
-# Brew setup first!
-export PATH="$HOME/.brew/bin:/opt/homebrew/bin:$PATH"
-
-# Silence warning on MacOS.
+# Silence the warning on macOS.
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-# Set vim mode.
+shellrc="${XDG_CONFIG_HOME:-$HOME/.config}/dotfiles/shellrc"
+for rcfile in "$shellrc"/[0-9]*; do
+  [[ -f "$rcfile" ]] && source "$rcfile"
+done
+
+# Completion.
+for completion in /opt/homebrew/etc/profile.d/bash_completion.sh /usr/share/bash-completion/bash_completion; do
+  [[ -r "$completion" ]] && { source "$completion"; break; }
+done
+
+# History.
+HISTSIZE=50000
+HISTFILESIZE=50000
+HISTCONTROL=ignoreboth
+shopt -s histappend
+
+# Vi mode. The file ~/.inputrc sets the keys, and `set -o vi` sets the mode.
 set -o vi
 
-sh_combined="/tmp/shrc-combined_$(date +%F).bash"
+# Load the fzf bindings last, so that they replace the bindings in ~/.inputrc.
+command -v fzf >/dev/null 2>&1 && eval "$(fzf --bash)"
 
-if [ ! -e "$sh_combined" ]; then
-  echo "Generating combined sh config:  $sh_combined"
-  (
-    cd ~/.config/dotfiles/shellrc || exit 1
-    for rcfile in $(find ./ -type f -o -type l | sort -n); do
-      cat "$rcfile" >> $sh_combined
-    done
-  )
-  # mise is activated by shellrc/00-env, which is already cat'd above.
-  # `fzf --bash` prints the key bindings and the completion. It replaces the
-  # old lookup under `brew --prefix fzf`, because mise installs fzf now.
-  command -v fzf >/dev/null 2>&1 && fzf --bash >> $sh_combined
-  [ -f "$HOME/.cargo/env" ] && cat "$HOME/.cargo/env" >> $sh_combined
-  [ -f "$HOME/.git-prompt.sh" ] && cat "$HOME/.git-prompt.sh" >> $sh_combined
-
-  # Always use my env settings last.
-  cat "$HOME/.config/dotfiles/shellrc/00-env" >> $sh_combined
-
-  echo "Done combined bash config!"
-  [ -z "$DEBUG" ] || echo "Done combined sh config!"
-else
-  [ -z "$DEBUG" ] || echo "Skipped combining sh config!"
-fi
-[ -z "$DEBUG" ] || echo "Sourcing $sh_combined"
-source "$sh_combined"
-[ -z "$DEBUG" ] || echo "Done sourcing $sh_combined"
+[[ -f "$HOME/.shellrc.local" ]] && source "$HOME/.shellrc.local"

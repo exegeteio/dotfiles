@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
-[ -z "$DEBUG" ] || echo "Setting up aliases..."
 alias gf="git fetch --all -p"
-alias less="less -r"
 alias ll="ls -lh"
 alias ls="ls --color=always"
 alias :q="exit"
 alias r="$HOME/.config/dotfiles/bin/r" # To override shell builtin.
 alias grep="rg"
-command -v bat >/dev/null 2>&1 && alias less="bat --plain"
-[ -z "$DEBUG" ] || echo "Done setting up aliases..."
+if command -v bat >/dev/null 2>&1; then
+  alias less="bat --plain"
+else
+  alias less="less -r"
+fi

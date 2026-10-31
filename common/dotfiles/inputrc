@@ -1,0 +1,22 @@
+# Readline settings for bash. The zshrc sets the same keys with `bindkey`.
+
+set editing-mode vi
+# Wait 10 ms for a second key after Escape. This matches KEYTIMEOUT=1 in zsh.
+set keyseq-timeout 10
+
+$if mode=vi
+  set keymap vi-insert
+  # Go to command mode with Control-J.
+  "\C-j": vi-movement-mode
+  # Search the history.
+  "\C-p": history-search-backward
+  "\C-n": history-search-forward
+  "\C-r": reverse-search-history
+  "\C-f": forward-search-history
+
+  set keymap vi-command
+  # Open the command line in the editor.
+  "\C-v": edit-and-execute-command
+  "?": reverse-search-history
+  "/": forward-search-history
+$endif

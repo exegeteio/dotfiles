@@ -1,26 +1,4 @@
 #!/usr/bin/env bash
+# The starship program draws the prompt in bash and in zsh.
 
-[ -z "$DEBUG" ] || echo "Setting up PROMPT..."
-# Testing out starship.
-if command -v starship >/dev/null 2>&1; then
-  if [ -n "${ZSH_VERSION-}" ]; then
-    eval "$(starship init zsh)"
-  else
-    eval "$(starship init bash)"
-  fi
-else
-  export GIT_PS1_SHOWCOLORHINTS=true
-  if [[ -n ${ZSH_VERSION-} ]]; then
-    if [[ -x "$HOME/.git-prompt.sh" ]]; then
-      source "$HOME/.git-prompt.sh"
-      setopt PROMPT_SUBST
-      export PROMPT='%F{magenta}%1~$(__git_ps1 " %s") %F{cyan}↣ %f'
-    else
-      export PROMPT='%F{magenta}%1~ %F{cyan}↣ %f'
-    fi
-  else
-    export PS1='\[\033[1;35m\]\W$(__git_ps1 " %s") \[\033[1;36m\]↣ \[\033[0m\]'
-  fi
-fi
-
-[ -z "$DEBUG" ] || echo "Done setting up PROMPT..."
+command -v starship >/dev/null 2>&1 && eval "$(starship init "$_sh")"

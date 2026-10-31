@@ -1,48 +1,30 @@
 #!/usr/bin/env bash
-[ -z "$DEBUG" ] || echo "Setting up EDITOR..."
+# Choose the default editor. Run `editor <name>` to change it in the shell.
+
+editor() {
+  case "$1" in
+    rubymine) EDITOR='rubymine'; EDITOR_ARGS='rubymine.args' ;;
+    code) EDITOR='code -wr'; EDITOR_ARGS='code.args' ;;
+    nvim | vim) EDITOR="$1"; EDITOR_ARGS='vi.args' ;;
+    *) echo "Must choose one of:  rubymine, code, nvim, vim" >&2; return 1 ;;
+  esac
+  export EDITOR EDITOR_ARGS
+}
+
 if [ -z "$EDITOR" ]; then
-  # RubyMine if available
-  if [[ -n "$IDEA_INITIAL_DIRECTORY" ]]; then
-    type=$(echo "$__CFBundleIdentifier" | sed 's/.*\.//' | tr '[:upper:]' '[:lower:]')
-    if command -v "$type" >/dev/null 2>&1; then
-      echo "Using $type for editor"
-      export EDITOR="$type"
+  if [ -n "$IDEA_INITIAL_DIRECTORY" ]; then
+    # The bundle ID of the JetBrains IDE ends with the name of its command.
+    ide=$(echo "$__CFBundleIdentifier" | sed 's/.*\.//' | tr '[:upper:]' '[:lower:]')
+    if command -v "$ide" >/dev/null 2>&1; then
+      export EDITOR="$ide"
       export EDITOR_ARGS="rubymine.args"
     fi
-  # VS Code if available.
+    unset ide
   elif [ "$TERM_PROGRAM" = "vscode" ]; then
-    export EDITOR='code -wr'
-    export EDITOR_ARGS='code.args'
-  # Neovim
+    editor code
   elif command -v nvim >/dev/null 2>&1; then
-    export EDITOR='nvim'
-    export EDITOR_ARGS='vi.args'
-  # World's best fallback.
+    editor nvim
   else
-    export EDITOR='vim'
-    export EDITOR_ARGS='vi.args'
+    editor vim
   fi
 fi
-
-if [[ -z "$1" ]]; then
-  true # No argument, skip this!
-elif [ "$1" = "rubymine" ]; then
-  export EDITOR='rubymine'
-  export EDITOR_ARGS='rubymine.args'
-# VS Code if available.
-elif [ "$1" = "code" ]; then
-  export EDITOR='code -wr'
-  export EDITOR_ARGS='code.args'
-# Neovim
-elif [ "$1" = "nvim" ]; then
-  export EDITOR='nvim'
-  export EDITOR_ARGS='vi.args'
-# World's best fallback.
-elif [ "$1" = "vim" ]; then
-  export EDITOR='vim'
-  export EDITOR_ARGS='vi.args'
-else
-  echo "Must choose one of:  rubymine, code, nvim, vim"
-fi
-
-[ -z "$DEBUG" ] || echo "Done setting up EDITOR..."

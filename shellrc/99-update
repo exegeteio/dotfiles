@@ -1,17 +1,12 @@
 #!/usr/bin/env bash
-
-# Script to auto-update my dotfiles if necessary.  "Necessary" as determined by
-# being checked in the last day.
+# Update the dotfiles one time each day. The update runs in the background.
 
 tmp="/tmp/dotfiles-update_$(date +%F).log"
 
-if [ ! -e "$tmp" ]; then
+if [ ! -e "$tmp" ] && [ -e "$HOME/.config/dotfiles/.git" ]; then
+  # The outer subshell prevents the job notice in an interactive shell.
   (
-    cd ~/.config/dotfiles || exit 1
-    if [ -e ".git" ]; then
-      git bstash >> "$tmp"
-      git pull >> "$tmp"
-      git stash pop >> "$tmp"
-    fi
+    cd "$HOME/.config/dotfiles" || exit 1
+    { git bstash; git pull; git stash pop; } >> "$tmp" 2>&1 &
   )
 fi
