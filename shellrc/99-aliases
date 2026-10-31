@@ -4,10 +4,17 @@ alias gf="git fetch --all -p"
 alias ll="ls -lh"
 alias ls="ls --color=always"
 alias :q="exit"
-alias r="$HOME/.config/dotfiles/bin/r" # To override shell builtin.
+alias r="bin/rails" # To override shell builtin.
 alias grep="rg"
 if command -v bat >/dev/null 2>&1; then
   alias less="bat --plain"
 else
   alias less="less -r"
+fi
+
+# Open the editor. Use nvim when it exists, and vim if it does not.
+if command -v nvim >/dev/null 2>&1; then
+  alias e="nvim"
+else
+  alias e="vim"
 fi
