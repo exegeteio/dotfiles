@@ -19,3 +19,5 @@
 /.aider.*
 
 **/.claude/settings.local.json
+/.beads/
+.beads.gate.lock
