@@ -3,8 +3,8 @@
 location="${LSQ_LOCATION:-"${HOME}/logseq"}"
 
 if [ ! -d "$location" ]; then
-    echo "Logseq location not found at $location"
-    exit 1
+  echo "Logseq location not found at $location"
+  exit 1
 fi
 
 target="journals/$(date +%Y_%m_%d).md"
@@ -12,5 +12,7 @@ if [ ! -z "$PAGE" ]; then
   target="pages/${PAGE}.md"
 fi
 
-echo -e "\n- $*\n" >> "${location}/${target}"
+echo -e "\n- $*\n" >>"${location}/${target}"
 echo "Added to $target"
+
+open -a Logseq "${location}/${target}"

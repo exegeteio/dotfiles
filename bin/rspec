@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-if command -v spring >/dev/null 2>&1; then
-  echo "Switching to spring..."
-  exec spring rspec "$@"
-else
-  exec be rspec "$@"
-fi

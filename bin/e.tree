@@ -9,4 +9,4 @@ if [ -z "$folder" ]; then
   exit
 fi
 
-exec e "${folder:-main}"
+exec e "$(w.dir "$folder")"

@@ -8,14 +8,11 @@ touch "$cache_file"
 # Replace the main repo every time.
 [ -f "$cache_file" ] || echo "$repo_name - $(cd $repo_dir && g.branch)" >> "$cache_file"
 
-trees=$(git worktree list | first)
-branch_pattern="${WORKTREE_BRANCH_FORMAT:-}"
+trees=$(g.ls)
 for dir in $trees; do
   bname=$(basename "$dir")
   branch=$(cd "$dir" && g.branch)
-  if [ -n "$branch_pattern" ]; then
-    [[ "$branch" =~ $branch_pattern ]] || continue
-  fi
+  [ "$branch" == "main" ] && continue
   desc=$(grep -e "^$bname\s" "$cache_file")
   if [ -z "$desc" ]; then
     title=$(cd "$dir" && j.title)

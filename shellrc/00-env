@@ -40,10 +40,21 @@ else
   unset -f _dedupe_path
 fi
 
-# mise manages the language runtimes. The shims in PATH serve the scripts that
-# do not read this file. `mise activate` puts the real tool paths ahead of the
-# shims. MISE_SHELL leaks into child shells, but the mise function does not, so
-# test for the function.
+# mise manages the language runtimes through shims only. A full `mise activate`
+# writes the real tool directories into PATH, and apps launched from that shell
+# inherit them ahead of the shims, so they ignore .ruby-version. MISE_SHELL leaks
+# into child shells, but the mise function does not, so test for the function.
 if command -v mise >/dev/null 2>&1 && ! typeset -f mise >/dev/null 2>&1; then
-  eval "$(mise activate "$_sh")"
+  eval "$(mise activate "$_sh" --shims)"
+fi
+
+# Keep the custom commands ahead of the system paths. In zsh, the first prompt
+# hook of mise rebuilds PATH and moves $DOTFILES_PATH/bin behind /usr/bin, so
+# these hooks restore the order.
+if [ "$_sh" = zsh ]; then
+  _dotfiles_path_first() {
+    path=("$HOME/bin" "$DOTFILES_PATH/bin" "${(@)path:#($HOME/bin|$DOTFILES_PATH/bin)}")
+  }
+  precmd_functions+=(_dotfiles_path_first)
+  chpwd_functions+=(_dotfiles_path_first)
 fi
