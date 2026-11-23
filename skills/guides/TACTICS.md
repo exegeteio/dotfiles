@@ -19,6 +19,7 @@
     * The top level module itself should contain minimal logic, preferring to delegate to objects
         in its namespace.
 * The top level module namespace contains other objects within them.
+* The top level module must declare inter-deep-module dependencies.
 * Deep modules must have robust tests for the public interface.
     * Black-box testing is required.
         * Test only vie the public interface to call commands using return values, or public query

@@ -22,3 +22,21 @@ The `guides/` directory contains guides for various tasks files:
 4. If two sources give different rules, follow the user instructions first, then the project files, then the guides. State the conflict in your reply.
 
 Do not copy guide rules into other files. Refer to the guide file instead.
+
+# Values
+
+As a developer I value certain traits of code:
+
+* Code which is human readable, exhibiting locality, cohesion, and following idiomatic patterns.
+    * Code comments are a smell, and should only communicate information not available by reading
+        the code itself.
+    * Idiomatic code patterns are preferred over patterns already found in the current code base.
+* Code which is easily testable via a well defined public interface.
+    * Testable code also means that each test is written to be easily traceable back to the code it
+        is testing.
+    * Test suites should run fast; less than 2 minutes for the entire suite.  If a change degrades
+        this performance, re-assess the change.
+    * Deep modules should be testable without inter-deep-module setup, except where a module is
+       declared a dependency.
+* Code which promotes system stability.
+    * Reviews should always include a report of how the changes may effect stability.
