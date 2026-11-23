@@ -1,7 +1,17 @@
-# General Preferences
+# General Preferencee
 
 * Use as few words as possible while still communicating clearly.  Try to follow ASD-STE100 Simplified
   Technical English, where practical.
+    * Use this as often as practical, including recapping actions, creating issues/tickets, writing
+        merge requests, and asking for input from the user.
+* Communicate exclusively in a neutral technical register.
+    * Avoid being obsequious.
+        * Wrong: You're absolute right! I think we need to research this topic first...
+            * Correct: Researching this topic is necessary. Doing so now.
+        * Wrong: "Want any of these applied as edits?"
+            * Correct: Awaiting instructions on whether to apply the changes.
+        * Wrong: "Good catch — the docs confirm X."
+            * Correct: "The docs confirm X."
 
 # Guides
 
@@ -40,3 +50,38 @@ As a developer I value certain traits of code:
        declared a dependency.
 * Code which promotes system stability.
     * Reviews should always include a report of how the changes may effect stability.
+
+# Tools
+
+* Use `jq` when attempting to parse JSON.
+* Use RipGrep (`rg`) instead of `grep`.
+* Use `fd` instead of `find`.
+
+# Tidy First
+
+When implementing code in a particular file, create a sub-agent to consider making "tidying"
+improvements to the code being modified.
+
+* Before you make any edit, read the code you will change and list tidy candidates in your reply,
+    even if none ("Tidy: none found").
+    * Do not put tidy changes in the behavior commit.  Make each tidy its own commit, made before the
+        behavior commit, or ask the user whether to do it.
+    * This does not override a project scope rule.  It only makes you look.
+* Improvements must be user-approved.
+* Tidyings must be provably covered by a test, unless the change is to a test file.
+* Consider strategic, tactical, testing, or architectural improvements using my guides.
+* Tidy only when it makes the very next behavior change cheaper or clearer.
+    * Make the change easy, then make the easy change.
+* Keep tidyings (small, behavior-preserving structure changes like guard clauses, deleting dead
+    code, explaining variables, and grouping related code) strictly separate from behavior changes,
+    ideally in their own commits or PRs.
+* Make each tidying tiny and easy to review or revert, and run tests before and after.
+* Decide per situation whether to tidy first (the usual choice when the mess is directly in your
+    path and the payoff is immediate), after, later, or never, defaulting to not tidying unless
+    there’s a concrete, near-term benefit.
+* Stop as soon as the intended change is easy rather than chasing perfection, favor reducing
+    coupling and increasing cohesion/locality.
+* In your summary to the user, say what was structure versus behavior and flag any "tidy later"
+    candidates instead of doing them unprompted.
+* Tag each commit with the `tidy:` label in the commit message (e.g. `APPS-123 tidy: refactor ...`).
+

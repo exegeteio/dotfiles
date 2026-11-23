@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Copy the skills to Claude Code, Codex and Cursor. The script does nothing
+# until the last commit in skills/ changes. It runs in the background.
+
+if command -v skills.sync >/dev/null 2>&1; then
+  # The outer subshell prevents the job notice in an interactive shell.
+  (skills.sync >> "${TMPDIR:-/tmp}/skills-sync.log" 2>&1 &)
+fi

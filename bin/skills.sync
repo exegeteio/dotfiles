@@ -1,0 +1,99 @@
+#!/usr/bin/env bash
+# Copy skills/ and skills/AGENTS.md to Claude Code, Codex and Cursor.
+# Runs only when the last commit that touched skills/ has changed.
+# Use -f to run again regardless.
+#
+# Not copied: skills/bak, skills/synced.
+# Skipped with a warning: a destination skill that is a symlink.
+
+set -euo pipefail
+
+force=0
+[ "${1-}" = "-f" ] && force=1
+
+script="$(readlink -f "$0" 2>/dev/null || echo "$0")"
+repo="$(cd "$(dirname "$script")" && git rev-parse --show-toplevel)"
+src="$repo/skills"
+state="${XDG_STATE_HOME:-$HOME/.local/state}/skills-sync"
+begin='<!-- BEGIN skills-sync -->'
+end='<!-- END skills-sync -->'
+
+commit="$(git -C "$repo" log -1 --format=%H -- skills)"
+[ -n "$commit" ] || exit 0
+if [ "$force" = 0 ] && [ "$(cat "$state/commit" 2>/dev/null)" = "$commit" ]; then
+  exit 0
+fi
+mkdir -p "$state"
+
+# Put stdin between the markers of $1. Text outside the markers stays.
+merge_block() {
+  local file=$1 tmp
+  tmp="$(mktemp)"
+  [ -e "$file" ] && awk -v b="$begin" -v e="$end" '
+    $0 == b { skip = 1; next }
+    $0 == e { skip = 0; next }
+    skip { next }
+    /^$/ { blank++; next }
+    { while (blank > 0) { print ""; blank-- } print }
+  ' "$file" > "$tmp"
+  [ -s "$tmp" ] && echo >> "$tmp"
+  { echo "$begin"; cat; echo "$end"; } >> "$tmp"
+  if cmp -s "$tmp" "$file" 2>/dev/null; then rm -f "$tmp"; else mv "$tmp" "$file"; fi
+}
+
+copy_skill() {
+  local from=$1 to=$2
+  if [ -L "$to" ]; then
+    echo "skills.sync: skip $to (symlink)" >&2
+    return 0
+  fi
+  mkdir -p "$to"
+  rsync -a --delete --exclude .DS_Store "$from/" "$to/"
+}
+
+skill_names() {
+  local dir name
+  for dir in "$src"/*/; do
+    name="$(basename "$dir")"
+    case "$name" in bak | synced) continue ;; esac
+    [ -f "$dir/SKILL.md" ] && echo "$name"
+  done
+}
+
+sync_tool() {
+  local tool=$1 home=$HOME/$1 skills=$2 agents_mode=$3 name old
+  [ -d "$home" ] || return 0
+  mkdir -p "$skills" "$state"
+
+  local manifest="$state/$tool.skills"
+  skill_names > "$manifest.new"
+  if [ -f "$manifest" ]; then
+    while IFS= read -r old; do
+      grep -qxF "$old" "$manifest.new" || { [ -L "$skills/$old" ] || rm -rf "${skills:?}/$old"; }
+    done < "$manifest"
+  fi
+  while IFS= read -r name; do
+    copy_skill "$src/$name" "$skills/$name"
+  done < "$manifest.new"
+  mv "$manifest.new" "$manifest"
+
+  case "$agents_mode" in
+    import)
+      # Claude Code: own copy of AGENTS.md, imported by CLAUDE.md.
+      copy_skill "$src/guides" "$home/guides"
+      cp "$src/AGENTS.md" "$home/AGENTS.md"
+      echo '@AGENTS.md' | merge_block "$home/CLAUDE.md"
+      ;;
+    block)
+      # Codex and Cursor: keep their own AGENTS.md text, and own the block.
+      copy_skill "$src/guides" "$home/guides"
+      merge_block "$home/AGENTS.md" < "$src/AGENTS.md"
+      ;;
+  esac
+}
+
+sync_tool .claude "$HOME/.claude/skills" import
+sync_tool .codex "$HOME/.codex/skills" block
+sync_tool .cursor "$HOME/.cursor/skills" block
+
+echo "$commit" > "$state/commit"
