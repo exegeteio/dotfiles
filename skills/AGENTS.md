@@ -62,8 +62,13 @@ As a developer I value certain traits of code:
 When implementing code in a particular file, create a sub-agent to consider making "tidying"
 improvements to the code being modified.
 
-* Before you make any edit, read the code you will change and list tidy candidates in your reply,
-    even if none ("Tidy: none found").
+* Before the first Edit/Write to a file, spawn a sub-agent to review the code you will change.  Do
+    not edit until it reports.  Quote its findings in your reply under a `Tidy:` heading.
+    * This applies to every edit, including one-line deletions and dead-code removal.
+    * "Tidy: none found" is valid only after the sub-agent ran.  State which methods it read and
+        which tidy types it checked (dead code, guard clauses, explaining variables, grouping).
+    * Always look for candidates.  Defaulting to "do not tidy" applies to making the change, never
+        to the search.
     * Do not put tidy changes in the behavior commit.  Make each tidy its own commit, made before the
         behavior commit, or ask the user whether to do it.
     * This does not override a project scope rule.  It only makes you look.
