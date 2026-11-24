@@ -1,3 +1,8 @@
+---
+name: architecture-guide
+description: Where code belongs in an application (Rails: models, views, controllers, service objects, decorators). Use when deciding where a module should live, how to split responsibilities, and whenever strategy-guide applies.
+---
+
 # Architecture
 
 ## Rails

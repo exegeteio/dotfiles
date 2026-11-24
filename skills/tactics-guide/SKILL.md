@@ -1,3 +1,8 @@
+---
+name: tactics-guide
+description: Tactical coding rules: static-style types, dependency injection, deep modules, strategy pattern. Use before writing or changing any application code, including small edits.
+---
+
 # Tactical Values
 
 ## Tactical

@@ -1,3 +1,8 @@
+---
+name: strategy-guide
+description: Module design rules: cohesive boundaries, public interfaces, dependency injection. Use when designing a solution, not only when writing code: new modules, module boundary changes, turning requirements into a plan or tickets (module boundaries decide how work is split), and planning tidyings. Load architecture-guide with it.
+---
+
 ## Strategy
 
 * Design module boundaries around cohesive functionality.  Modules should have a clear public

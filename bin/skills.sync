@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Copy skills/ and skills/AGENTS.md to Claude Code, Codex and Cursor.
-# Runs only when the last commit that touched skills/ has changed.
-# Use -f to run again regardless.
+# Runs only when the content of skills/ has changed since the last run,
+# committed or not. Use -f to run again regardless.
 #
 # Not copied: skills/bak, skills/synced.
 # Skipped with a warning: a destination skill that is a symlink.
@@ -18,9 +18,17 @@ state="${XDG_STATE_HOME:-$HOME/.local/state}/skills-sync"
 begin='<!-- BEGIN skills-sync -->'
 end='<!-- END skills-sync -->'
 
-commit="$(git -C "$repo" log -1 --format=%H -- skills)"
-[ -n "$commit" ] || exit 0
-if [ "$force" = 0 ] && [ "$(cat "$state/commit" 2>/dev/null)" = "$commit" ]; then
+# Hash of the path and content of every skills/ file that gets copied.
+skills_fingerprint() {
+  git -C "$repo" ls-files -z --cached --others --exclude-standard -- \
+    skills ':!skills/bak' ':!skills/synced' |
+    (cd "$repo" && xargs -0 shasum -a 256 2>/dev/null || true) |
+    sort -k2 | shasum -a 256 | cut -d' ' -f1
+}
+
+fingerprint="$(skills_fingerprint)"
+last_synced="$(cat "$state/fingerprint" 2>/dev/null || true)"
+if [ "$force" = 0 ] && [ "$last_synced" = "$fingerprint" ]; then
   exit 0
 fi
 mkdir -p "$state"
@@ -63,7 +71,8 @@ skill_names() {
 sync_tool() {
   local tool=$1 home=$HOME/$1 skills=$2 agents_mode=$3 name old
   [ -d "$home" ] || return 0
-  mkdir -p "$skills" "$state"
+  mkdir -p "$skills"
+  [ -L "$home/guides" ] || rm -rf "${home:?}/guides"
 
   local manifest="$state/$tool.skills"
   skill_names > "$manifest.new"
@@ -80,13 +89,11 @@ sync_tool() {
   case "$agents_mode" in
     import)
       # Claude Code: own copy of AGENTS.md, imported by CLAUDE.md.
-      copy_skill "$src/guides" "$home/guides"
       cp "$src/AGENTS.md" "$home/AGENTS.md"
       echo '@AGENTS.md' | merge_block "$home/CLAUDE.md"
       ;;
     block)
       # Codex and Cursor: keep their own AGENTS.md text, and own the block.
-      copy_skill "$src/guides" "$home/guides"
       merge_block "$home/AGENTS.md" < "$src/AGENTS.md"
       ;;
   esac
@@ -96,4 +103,4 @@ sync_tool .claude "$HOME/.claude/skills" import
 sync_tool .codex "$HOME/.codex/skills" block
 sync_tool .cursor "$HOME/.cursor/skills" block
 
-echo "$commit" > "$state/commit"
+echo "$fingerprint" > "$state/fingerprint"

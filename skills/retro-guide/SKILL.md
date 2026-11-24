@@ -1,3 +1,8 @@
+---
+name: retro-guide
+description: Retrospective process for evaluating an implementation and improving the system. Use when the user asks for a retrospective or asks you to evaluate the process after an implementation. Offer one when an implementation or epic completes.
+---
+
 # Retrospective
 
 After implementation, evaluate the process to provide feedback back into the system.
