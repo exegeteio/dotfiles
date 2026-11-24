@@ -20,6 +20,8 @@ description: Tactical coding rules: static-style types, dependency injection, de
 
 ## Ruby Deep Modules
 
+* Follow John Ousterhout's deep module design; strategy-guide states the principles. The rules
+    below are the Ruby mechanics.
 * Deep modules have a `module` type top level object which acts as its public interface.
     * The top level module itself should contain minimal logic, preferring to delegate to objects
         in its namespace.
